@@ -32,6 +32,30 @@ document.querySelectorAll('form[data-proto]').forEach(f=>f.addEventListener('sub
   q.addEventListener('input',()=>{const v=norm(q.value.trim());let n=0;
     cards.forEach(c=>{const ok=!v||norm(c.dataset.busca).includes(v);c.hidden=!ok;if(ok)n++});
     if(nores)nores.hidden=n>0});
+
+  // Campo vazio + foco: mostra as 10 publicações mais lidas (GET /publicacoes/mais-lidas)
+  const box=q.closest('.lsearch');if(!box)return;
+  const pn=document.createElement('div');pn.className='mlidas';pn.id='mlidas';pn.hidden=true;pn.setAttribute('role','listbox');
+  pn.innerHTML='<p class="mlidas-t">Mais lidas</p><ol></ol>';box.appendChild(pn);
+  q.setAttribute('aria-controls','mlidas');q.setAttribute('aria-expanded','false');
+  const ol=pn.querySelector('ol');let carregado=null;
+  const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const carregar=()=>carregado||(carregado=fetch('/publicacoes/mais-lidas',{headers:{Accept:'application/json'}})
+    .then(r=>r.ok?r.json():[]).catch(()=>[]).then(l=>{
+      ol.innerHTML=l.length?l.map((i,k)=>`<li><a href="${esc(i.url)}" role="option"><b>${k+1}</b><span>${esc(i.titulo)}${i.data?`<time>${esc(i.data)}</time>`:''}</span></a></li>`).join('')
+        :'<li class="mlidas-vazio">Nenhuma publicação ainda.</li>';}));
+  const abrir=()=>{if(q.value.trim())return fechar();carregar().then(()=>{if(document.activeElement===q||pn.contains(document.activeElement)){pn.hidden=false;q.setAttribute('aria-expanded','true')}})};
+  const fechar=()=>{pn.hidden=true;q.setAttribute('aria-expanded','false')};
+  q.addEventListener('focus',abrir);q.addEventListener('click',abrir);
+  q.addEventListener('input',()=>q.value.trim()?fechar():abrir());
+  q.addEventListener('keydown',e=>{if(e.key==='Escape'){fechar();}
+    if(e.key==='ArrowDown'&&!pn.hidden){const a=ol.querySelector('a');if(a){e.preventDefault();a.focus()}}});
+  pn.addEventListener('keydown',e=>{const as=[...ol.querySelectorAll('a')],i=as.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'&&i<as.length-1){e.preventDefault();as[i+1].focus()}
+    if(e.key==='ArrowUp'){e.preventDefault();(i>0?as[i-1]:q).focus()}
+    if(e.key==='Escape'){fechar();q.focus()}});
+  document.addEventListener('pointerdown',e=>{if(!box.contains(e.target))fechar()});
+  box.addEventListener('focusout',()=>setTimeout(()=>{if(!box.contains(document.activeElement))fechar()},0));
 })();
 
 // Matéria: copiar o link da página

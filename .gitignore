@@ -364,3 +364,6 @@ FodyWeavers.xsd
 /Frontend/SiteCDL.Web/wwwroot/wp-content/uploads/2025
 /Frontend/SiteCDL.Web/wwwroot/wp-content/uploads/banners
 /Frontend/SiteCDL.Web/wwwroot/wp-content/uploads/posts
+
+# Contagem de visualizações do site (cada servidor tem a sua)
+/Frontend/SiteCDL.Web/App_Data/

@@ -1,0 +1,57 @@
+@using SiteCDL.Services
+@{
+    ViewData["Title"] = "Painel do Associado — Entrar";
+    ViewBag.metaDescription = "Acesse o Painel do Associado CDL Uberlândia: benefícios, 2ª via de boletos, consultas SPC, cursos e atendimento.";
+    string? erro = ViewBag.Erro;
+}
+@section Head {
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="~/novo/painel.css" asp-append-version="true">
+}
+
+<section class="pa-login">
+    <div class="wrap pa-login-in">
+        <div class="pa-login-txt">
+            <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li aria-current="page">Painel do Associado</li></ol></nav>
+            <span class="eyebrow">Área exclusiva</span>
+            <h1>Painel do <span class="serif">Associado.</span></h1>
+            <p class="lead">Tudo o que sua empresa tem com a CDL Uberlândia em um só lugar.</p>
+            <ul class="pa-login-lista">
+                <li><i>✓</i>Benefícios e descontos exclusivos</li>
+                <li><i>✓</i>2ª via de boletos da mensalidade</li>
+                <li><i>✓</i>Saldo e histórico de consultas SPC</li>
+                <li><i>✓</i>Inscrições, cursos e certificados</li>
+                <li><i>✓</i>Dados da empresa e atendimento</li>
+            </ul>
+            <p class="pa-login-nao">Ainda não é associado? <a href="/associe-se">Conheça as vantagens e associe-se →</a></p>
+        </div>
+
+        <form class="pa-card pa-form" method="post" action="/painel-associado/entrar" autocomplete="on">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl">
+            <h2>Entrar</h2>
+            @if (erro != null) {<p class="pa-erro" role="alert">@erro</p>}
+            <label>E-mail ou CNPJ<input name="login" value="@ViewBag.Login" required autocomplete="username" placeholder="seu@email.com.br ou 00.000.000/0000-00"></label>
+            <label>Senha
+                <span class="pa-senha"><input name="senha" type="password" required autocomplete="current-password" placeholder="Sua senha"><button type="button" data-ver-senha aria-label="Mostrar senha">Mostrar</button></span>
+            </label>
+            <div class="pa-form-row">
+                <label class="pa-check"><input type="checkbox" name="lembrar" value="true"> Manter conectado</label>
+                <a href="/painel-associado/entrar#esqueci" data-esqueci>Esqueci minha senha</a>
+            </div>
+            <p class="pa-esqueci" id="esqueci" hidden>Para redefinir a senha, fale com a equipe de relacionamento: <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener">WhatsApp (34) 3239-3457</a> ou <a href="mailto:comercial@cdludi.org.br">comercial@cdludi.org.br</a>.</p>
+            <button class="btn btn-primary" type="submit">Entrar no painel <span class="arr">→</span></button>
+            <div class="pa-demo">
+                <b>Acesso de demonstração</b>
+                <span>E-mail: <code>@PainelDemoService.LoginDemo</code> · Senha: <code>@PainelDemoService.SenhaDemo</code></span>
+                <button type="button" class="pa-demo-btn" data-demo="@PainelDemoService.LoginDemo|@PainelDemoService.SenhaDemo">Preencher</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+document.querySelectorAll('[data-ver-senha]').forEach(b=>b.addEventListener('click',()=>{const i=b.previousElementSibling;const v=i.type==='password';i.type=v?'text':'password';b.textContent=v?'Ocultar':'Mostrar';b.setAttribute('aria-label',v?'Ocultar senha':'Mostrar senha')}));
+document.querySelectorAll('[data-esqueci]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const p=document.getElementById('esqueci');p.hidden=!p.hidden}));
+document.querySelectorAll('[data-demo]').forEach(b=>b.addEventListener('click',()=>{const [l,s]=b.dataset.demo.split('|');const f=b.closest('form');f.login.value=l;f.senha.value=s;f.querySelector('[type=submit]').focus()}));
+</script>

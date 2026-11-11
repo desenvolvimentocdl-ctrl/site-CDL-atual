@@ -10,12 +10,47 @@ namespace SiteCDL.Web.Controllers
     {
 
         private readonly HttpClient _httpClient;
-        public PostController(IHttpClientFactory httpClientFactory)
+        private readonly SiteCDL.Services.MaisLidasService _maisLidas;
+        public PostController(IHttpClientFactory httpClientFactory, SiteCDL.Services.MaisLidasService maisLidas)
         {
             _httpClient = httpClientFactory.CreateClient("ApiHttpClient");
-
+            _maisLidas = maisLidas;
         }
-     
+
+        /// <summary>
+        /// As 10 publicações mais lidas (usadas no campo "Buscar nesta página").
+        /// Enquanto a contagem não tiver 10 matérias, completa com as mais recentes.
+        /// </summary>
+        [HttpGet("publicacoes/mais-lidas")]
+        [ResponseCache(Duration = 120)]
+        public async Task<IActionResult> MaisLidas()
+        {
+            const int total = 10;
+            var lista = _maisLidas.Top(total);
+            if (lista.Count < total)
+            {
+                try
+                {
+                    var json = await _httpClient.GetStringAsync("post/page/1");
+                    var recentes = JsonSerializer.Deserialize<List<Post>>(json) ?? new();
+                    foreach (var p in recentes)
+                    {
+                        if (lista.Count >= total) break;
+                        var rota = p.PostCategoria?.Route ?? "";
+                        if (string.IsNullOrEmpty(p.Slug) || lista.Any(i => i.Slug == p.Slug && i.Rota == rota)) continue;
+                        lista.Add(new SiteCDL.Services.MaisLidasService.Item { Rota = rota, Slug = p.Slug, Titulo = SiteCDL.Services.MaisLidasService.TextoLimpo(p.Titulo), Data = p.Data });
+                    }
+                }
+                catch (Exception) { /* sem API: devolve só o que já foi contado */ }
+            }
+            return Json(lista.Select(i => new
+            {
+                titulo = i.Titulo,
+                url = $"/publicacoes/{i.Rota}/{i.Slug}",
+                data = i.Data?.ToString("d MMM yyyy").Replace(".", ""),
+                visualizacoes = i.Visualizacoes
+            }));
+        }
 
         [HttpGet("publicacoes/{route}")]
         public async Task<IActionResult> Index(string route,int pagina=1)
@@ -39,6 +74,7 @@ namespace SiteCDL.Web.Controllers
             var responseData = await response.Content.ReadAsStringAsync();
 
             var pageData = JsonSerializer.Deserialize<DetalhePostGeral>(responseData);
+            _maisLidas.Registrar(pageData?.Noticia, HttpContext);
 
             return View("Detail", pageData);
         }

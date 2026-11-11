@@ -41,6 +41,22 @@ builder.Services.AddHttpClient("ApiHttpClient", client =>
 
  
 
+builder.Services.AddSingleton<SiteCDL.Services.MaisLidasService>(); // contador de "mais lidas" (App_Data/visualizacoes.json)
+// Painel do Associado (DEMONSTRACAO): login por cookie proprio, sem tocar no banco.
+builder.Services.AddSingleton<SiteCDL.Services.PainelDemoService>();
+builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(o =>
+    {
+        o.LoginPath = "/painel-associado/entrar";
+        o.LogoutPath = "/painel-associado/sair";
+        o.AccessDeniedPath = "/painel-associado/entrar";
+        o.Cookie.Name = "cdl.associado";
+        o.Cookie.HttpOnly = true;
+        o.Cookie.SameSite = SameSiteMode.Lax;
+        o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+        o.ExpireTimeSpan = TimeSpan.FromHours(8);
+        o.SlidingExpiration = true;
+    });
 builder.Services.AddScoped<SiteCDL.Services.Api.PostService>();
 builder.Services.AddScoped<SiteCDL.Repository.Api.PostRepository>();
 
@@ -102,6 +118,7 @@ app.UseStaticFiles();
 app.UseRouting(); 
  
 app.UseCors("AllowSpecificOrigins");
+app.UseAuthentication();
 app.UseAuthorization();
 
  
