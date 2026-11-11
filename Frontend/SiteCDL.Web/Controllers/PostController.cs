@@ -21,6 +21,9 @@ namespace SiteCDL.Web.Controllers
         public async Task<IActionResult> Index(string route,int pagina=1)
         {
             var response = await _httpClient.GetAsync($"post/{route}/page/{pagina}");
+            // categoria sem publicações: a API responde 404 — mostra a lista vazia em vez de erro 500
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                return View("Index", new List<Post>());
             response.EnsureSuccessStatusCode();
 
             var responseData = await response.Content.ReadAsStringAsync();

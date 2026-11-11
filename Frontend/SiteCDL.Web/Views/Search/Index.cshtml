@@ -1,84 +1,62 @@
 ﻿@model List<SiteCDL.Models.Search>
-
+@*
+    Busca do site (/buscar?id=termo) — mesma busca de antes (SearchService: publicações + páginas), visual novo.
+*@
 @{
-    string cabecalho = "Buscar";
-
-    ViewData["Title"] = cabecalho;
-    ViewBag.Route = cabecalho;
-
+    ViewData["Title"] = "Buscar";
+    string termo = Context.Request.Query["id"].ToString();
+    var meses = new[] { "jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez" };
 }
 
-@await Html.PartialAsync("CabecalhoPage", cabecalho)
+<section class="lhero" id="hero">
+    <div class="wrap">
+        <nav class="crumb" aria-label="Você está em">
+            <ol><li><a href="/">Início</a></li><li aria-current="page">Buscar</li></ol>
+        </nav>
+        <div class="lhead rv">
+            <div>
+                <h1>Buscar</h1>
+                @if (termo.Length > 2 && Model != null)
+                {
+                    <p class="lead">@Model.Count resultado@(Model.Count == 1 ? "" : "s") para “@termo”.</p>
+                }
+            </div>
+        </div>
+        <form class="lbar rv d1 busca-form" method="get" action="/buscar" role="search">
+            <label class="lsearch busca-grande"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg><input type="search" name="id" value="@termo" placeholder="Busque por notícias, serviços, páginas…" aria-label="Termo de busca" minlength="3" required></label>
+            <button class="btn btn-primary" type="submit">Buscar <span class="arr">→</span></button>
+        </form>
+    </div>
+</section>
 
-<section>
-    <div class="container">
+<section class="sec lsec">
+    <div class="wrap">
         @if (Model != null && Model.Count > 0)
         {
-            <div class="row mb-4">
+            <div class="posts">
                 @foreach (var item in Model)
                 {
-                    <div class="col-lg-3 col-md-6 mb-1-9 mb-lg-4">
-                        <article class="card border-0 card-style4">
-                            <div class="card-img bg-img cover-background theme-overlay" style="min-height: 160px; margin-top: 0px !important; background-color: #0A3484; background-image: url('@(item.Imagem != null && item.Imagem != "" ? "/wp-content/uploads/" + item.Imagem : item.ImagemBase64 != null && item.ImagemBase64 != "" ? item.ImagemBase64 : "/img/no-image.jpg")')"></div>
-                            <div class="card-body py-2-0 px-2-0">
-                                @if (item.Data != null)
-                                {
-                                    <span class="d-block mb-3">
-                                        <i class="fas fa-calendar-alt text-primary mr-1" aria-hidden="true"></i> @Convert.ToDateTime(item.Data).Day de @Convert.ToDateTime(item.Data).ToString("MMMM") de @Convert.ToDateTime(item.Data).Year
-                                    </span>
-                                }
-
-                                @if (item.PostCategoria != null  )
-                                {
-                                    <h3 class="h5 mb-0">
-                                        <a href="/publicacoes/@item.PostCategoria.Route/@item.Slug">@Html.Raw(item.Titulo)</a>
-                                    </h3>
-                                }
-                                else if (item.Controller != null)
-                                {
-                                    <h3 class="h5 mb-0">
-                                        <a href="/@item.Slug">@Html.Raw(item.Titulo)</a>
-                                    </h3>
-                                }
-
-                                <p class="card-text mt-4 mb-4">@Html.Raw((item.Subtitulo != null ? (item.Subtitulo.Length > 150 ? item.Subtitulo.Substring(0, 150) + "..." : item.Subtitulo) : ""))</p>
-                                @if (item.PostCategoria != null  )
-                                {
-                                    <a href="/publicacoes/@item.PostCategoria.Route/@item.Slug">
-                                        <p>
-                                            <span class="mr-2">Leia Mais</span><i class="fa fa-plus text-primary"></i>
-                                        </p>
-                                    </a>
-                                }
-                                else if (item.Controller != null)
-                                {
-                                    <a href="/@item.Slug" >
-                                        <p>
-                                            <span class="mr-2">Leia Mais</span><i class="fa fa-plus text-primary"></i>
-                                        </p>
-                                    </a>
-                                }
-                            </div>
-                            @if (item.PostCategoria != null && item.PostCategoria.Nome != null)
-                            {
-                                <div class="card-footer bg-white px-0 mx-2-0 d-flex py-1-6 justify-content-between">
-                                    <span class="text-primary">
-                                        <i class="fa fa-tags mr-1" aria-hidden="true"></i> @item.PostCategoria.Nome
-                                    </span>
-                                </div>
-                            }
-                        </article>
-                    </div>
+                    string url = item.PostCategoria != null ? "/publicacoes/" + item.PostCategoria.Route + "/" + item.Slug : "/" + item.Slug;
+                    string img = !string.IsNullOrEmpty(item.Imagem) ? "/wp-content/uploads/" + item.Imagem : (!string.IsNullOrEmpty(item.ImagemBase64) ? item.ImagemBase64 : "");
+                    string tipo = item.PostCategoria?.Nome ?? "Página";
+                    string sub = item.Subtitulo ?? "";
+                    if (sub.Length > 150) { sub = sub.Substring(0, 150) + "…"; }
+                    <a class="post rv" href="@url">
+                        <span class="post-img @(img == "" ? "noimg" : "")">@if (img != "") {<img src="@img" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()">}</span>
+                        <span class="post-meta"><b>@tipo</b>@if (item.Data != null) {<time>@(item.Data.Value.Day + " " + meses[item.Data.Value.Month - 1] + " " + item.Data.Value.Year)</time>}</span>
+                        <h3>@Html.Raw(item.Titulo)</h3>
+                        @if (sub != "") {<p>@Html.Raw(sub)</p>}
+                    </a>
                 }
             </div>
         }
+        else if (termo.Length > 2)
+        {
+            <div class="nores-box rv"><h2>Nenhum resultado encontrado</h2><p>Tente outra palavra, como “SPC”, “certificado” ou “curso”.</p></div>
+        }
         else
         {
-            <div class="d-flex align-items-center justify-content-center">
-                <div>
-                    <h3>Nenhum resultado encontrado</h3>
-                </div>
-            </div>
+            <div class="nores-box rv"><h2>O que você procura?</h2><p>Digite pelo menos 3 letras para buscar em notícias, comunicados e páginas do site.</p></div>
         }
     </div>
 </section>

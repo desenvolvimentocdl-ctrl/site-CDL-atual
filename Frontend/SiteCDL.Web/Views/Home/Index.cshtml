@@ -1,773 +1,439 @@
-﻿@model Home;
-@using Microsoft.AspNetCore.Mvc.Razor;
-
+@model Home
+@*
+    Página inicial — visual novo (protótipo desing-novo-site---cdl).
+    Gerado por C:\Projetos\prototipo-ferramentas\gerar_home.py. Dados: HomeController (API "home" + API da Loja).
+*@
 @{
-    ViewData["Title"] = "CDL Uberlândia - Página inicial";
-}       
- 
-<div class="rev_slider_wrapper mt-responsive-carousel desktop"   >
-    <div class="rev_slider" id="rev_slider_1" data-version="5.4.5" >
-        <ul>
-            @if (Model != null && Model.Banners != null && Model.Banners.Count > 0)
-            {
-                DateTime dataAtual = DateTime.Now;
-                int count = 0;
+    ViewData["Title"] = "";
+    ViewBag.BodyClass = "home";
 
-                foreach (var banner in Model.Banners)
-                {
-                    if (!string.IsNullOrWhiteSpace(banner.CaminhoDesktop)) 
-                    {
-                        string link = banner.Link != null ? banner.Link : "";
+    var banners = Model?.Banners ?? new List<SiteCDL.Models.Banner>();
+    var bannersDesk = banners.Where(b => !string.IsNullOrWhiteSpace(b.CaminhoDesktop)).ToList();
+    var bannersMob = banners.Where(b => !string.IsNullOrWhiteSpace(b.CaminhoMobile)).ToList();
+    var noticias = Model?.Noticias ?? new List<SiteCDL.Models.Post>();
 
-                        <li data-fstransition="fade" data-transition="fade" style="cursor:pointer" onclick="linkBanner('@link')" data-easein="Power4.easeInOut" data-hideslideonmobile="off" data-easeout="Power4.easeInOut" data-slotamount="default" data-masterspeed="300" data-fsmasterspeed="0" data-fsslotamount="0" data-saveperformance="off">
-                            <img src="~/wp-content/uploads/banners/@banner.CaminhoDesktop" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg"  />
-                        </li>
-
-                        count++;
-                    }
-                }
-
-                if (count == 0)
-                {
-                    <li data-fstransition="fade" data-transition="fade" style="cursor:pointer" onclick="linkBanner('https://cdludi.org.br/')" data-easein="Power4.easeInOut" data-hideslideonmobile="off" data-easeout="Power4.easeInOut" data-slotamount="default" data-masterspeed="300" data-fsmasterspeed="0" data-fsslotamount="0" data-saveperformance="off">
-                        <img src="/img/no-image.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg" />
-                    </li>
-                }
-            }
-        </ul>
-    </div>
-</div>
-<div class="rev_slider_wrapper mt-responsive-carousel mobile">
-    <div class="rev_slider" id="rev_slider_2" data-version="5.4.5">
-        <ul>
-            @if (Model != null && Model.Banners != null && Model.Banners.Count > 0)
-            {
-                DateTime dataAtual = DateTime.Now;
-                int count = 0;
-
-                foreach (var banner in Model.Banners)
-                {
-                    if (!string.IsNullOrWhiteSpace(banner.CaminhoMobile)) 
-                    {
-                        string link = banner.Link != null ? banner.Link : "";
-
-                        <li data-fstransition="fade" data-transition="fade" style="cursor:pointer" onclick="linkBanner('@link')" data-easein="Power4.easeInOut" data-hideslideonmobile="off" data-easeout="Power4.easeInOut" data-slotamount="default" data-masterspeed="300" data-fsmasterspeed="0" data-fsslotamount="0" data-saveperformance="off">
-                            <img src="~/wp-content/uploads/banners/@banner.CaminhoMobile" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg" />
-                        </li>
-
-                        count++;
-                    }
-                }
-
-                if (count == 0)
-                {
-                    <li data-fstransition="fade" data-transition="fade" style="cursor:pointer" onclick="linkBanner('https://cdludi.org.br/')" data-easein="Power4.easeInOut" data-hideslideonmobile="off" data-easeout="Power4.easeInOut" data-slotamount="default" data-masterspeed="300" data-fsmasterspeed="0" data-fsslotamount="0" data-saveperformance="off">
-                        <img src="/img/no-image.jpg" alt="" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg" />
-                    </li>
-                }
-            }
-        </ul>
-    </div>
-</div>
-<section>
-    <div class="container">
-        <div class="mb-5 text-center">
-            <span class="text-uppercase text-primary small font-weight-700 letter-spacing-1 mb-2 d-block">Fique por dentro das</span>
-            <h2 class="h1 mb-0"> Publicações</h2>
-            <div class="d-flex align-items-center justify-content-lg-end justify-content-center">
-                <div class="mt-2">
-                    <a asp-controller="publicacoes" asp-action="" class="text-body">Ver todas as publicações <i class="fas fa-arrow-right small ml-2"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            @if (Model.Noticias != null && Model.Noticias.Count > 0)
-            {
-                string urlImagem = "";
-
-                foreach (var item in Model.Noticias)
-                {
-                    urlImagem = item.ImagemBase64 != null && item.ImagemBase64 != "" ? item.ImagemBase64 : item.Imagem != null && item.Imagem != "" ? $"/wp-content/uploads/{item.Imagem}" : "/img/no-image.jpg";
-
-                    <div class="col-lg-3 col-md-6 mb-1-9 mb-lg-0">
-                        <a href="/publicacoes/@item.PostCategoria.Route/@item.Slug">
-                            <article class="card border-0 card-style4">
-                                <div class="card-img bg-img cover-background theme-overlay" style="min-height: 160px; margin-top: 0px !important; background-color: #0A3484;background-image: url('@urlImagem')" data-background="@urlImagem"></div>
-                                <div class="card-body py-2-0 px-2-0">
-                                    <span class="d-block mb-3">
-                                        <i class="fas fa-calendar-alt text-primary mr-1" aria-hidden="true"></i> @Convert.ToDateTime(item.Data).Day de @Convert.ToDateTime(item.Data).ToString("MMMM") de @Convert.ToDateTime(item.Data).Year
-                                    </span>
-                                    <h3 class="h5 mb-2">@Html.Raw(item.Titulo)</h3>
-                                    <p>
-                                        <span class="mr-2">Leia Mais</span><i class="fa fa-plus text-primary"></i>
-                                    </p>
-                                 </div>
-                                <div class="card-footer bg-white px-0 mx-2-0 d-flex py-1-6 justify-content-between">
-                                    <span class="text-primary">
-                                        <i class="fa fa-tags mr-1" aria-hidden="true"></i> @item.PostCategoria.Nome
-                                    </span>
-                                </div>
-                            </article>
-                        </a>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-    <div class="container mb-5 mt-5">
-        <div class="mb-5 text-center">
-            <span class="text-uppercase text-primary small font-weight-700 letter-spacing-1 mb-2 d-block">Conheça nossas</span>
-            <h2 class="h1 mb-0"> Soluções</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-lg-3 mb-1-9">
-                <a asp-route="Pages" asp-route-slug="certificado-digital" class=" ">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="fas fa-user-lock text-primary" aria-hidden="true"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">Emissão Certificado Digital</h3>
-                                </div>
-                                <p class="mb-2">Transações pela internet com validade jurídica!</p>Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                 </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-1-9">
-                <a asp-route="Pages" asp-route-slug="spc-avisa" class=" ">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="fas fa-search-dollar text-primary" aria-hidden="true"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">SPC Avisa</h3>
-                                </div>
-                                <p class="mb-2">Monitoramento de documentos</p>Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-1-9">
-                <a href="https://www.presentedasortecdludi.com/varejoon">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="fas fa-shopping-bag text-primary"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">Varejo On</h3>
-                                </div>
-                                <p class="mb-2">Iniciativa gratuita de campanhas promocionais inovadoras para o comércio.</p>Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-1-9">
-                <a href="https://jobs.quickin.io/cdludi/jobs?page=1" target="_blank" class=" ">
-                    <article class="card border-0 card-style4">
-
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="far fa-user-circle text-primary" aria-hidden="true"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">Vagas de emprego</h3>
-                                </div>
-                                <p class="mb-2">Candidate-se as nossas vagas de emprego</p>Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-1-9  ">
-                <a href="https://loja.cdludi.org.br/descontos" target="_blank" class=" ">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="fas fa-ticket-alt text-primary" aria-hidden="true"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">Rede de Descontos</h3>
-                                </div>
-                                <p class="mb-2">Confira os descontos oferecidos por nossos parceiros</p>Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3  mb-1-9 ">
-                <a asp-route="Pages" asp-route-slug="cdl-gestao" class=" ">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <img src="~/img/icon-nfe.svg" width="40" height="40" />
-                                    <h3 class="h5 mb-0 ml-3">CDL Gestão e NFe</h3>
-                                </div>
-                                <p class="mb-2">Notas fiscais eletrônicas com agilidade e segurança</p>
-                                     Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3  mb-1-9  ">
-                <a asp-route="Pages" asp-route-slug="bdmg" class=" ">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="fas fa-money-check-alt text-primary" aria-hidden="true"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">Crédito BDMG</h3>
-                                </div>
-                                <p class="mb-2">Acesse e simule seu crédito no BDMG</p>
-                                     Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                    </article>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3  mb-1-9  ">
-                <a asp-route="Pages" asp-route-slug="combo-solucoes" class=" ">
-                    <article class="card border-0 card-style4">
-                        <div class="card border-0 card-style6 h-100">
-                            <div class="card-body p-2-0">
-                                <div class="d-flex mb-4 align-items-center">
-                                    <p class="h1">
-                                        <i class="fas fa-plus text-primary" aria-hidden="true"></i>
-                                    </p>
-                                    <h3 class="h5 mb-0 ml-3">Combo de Soluções</h3>
-                                </div>
-                                <p class="mb-2">Benefícios valiosos para desenvolver ainda mais.</p>
-                                     Saiba mais<i class="fas fa-arrow-right small ml-2"></i>
-                             </div>
-                        </div>
-                   </article>
-                </a>
-            </div>
-        </div>
-    </div>
- 
-    <div class="container-fluid pl-0 pr-0 mb-5">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <a href="https://loja.cdludi.org.br/CDLMenorPreco"><img src="/img/Home/cdl_menor_preco.webp " style="width:100%" /></a>
-            </div>
-        </div>
-    </div>
-
-    @if (ViewBag.Cursos.Count > 0 || Model?.Cursos?.Where(x => x.DataInicio <= DateTime.Now && x.DataFim >= DateTime.Now).ToList().Count > 0)
+    // ---------- agenda: Loja (API) + posts das categorias Cursos e Eventos dentro do período ----------
+    var agenda = new List<ItemAgenda>();
+    string Abs(string u) => string.IsNullOrWhiteSpace(u) ? "" : (u.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || u.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? u : "https://" + u);
+    void DaLoja(IEnumerable<dynamic> lista, string tipo, string campoData)
     {
-        <div class="container">
-            <div class="mb-4 text-center">
-                <span class="text-uppercase text-primary small font-weight-700 letter-spacing-1 mb-2 d-block">SE PROGRAME COM A</span>
-                <h2 class="h1 mb-0"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cursos">Agenda de cursos CDL</a></h2>
-                <div class="d-flex align-items-center justify-content-lg-end justify-content-center">
-                    <div class="mt-2">
-                        <a href="https://loja.cdludi.org.br/compras/cursos" class="text-body">Ver todos os cursos <i class="fas fa-arrow-right small ml-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-
-                @if (ViewBag.Cursos.Count > 0)
-                {
-                    /* Lista de Cursos cadastrados na Loja (vem da API) */
-
-                    int i = 1;
-
-                    foreach (var curso in ViewBag.Cursos)
-                    {
-                        @*    if (i > 3)
-                        {
-                            break;
-                        } *@
-
-                        string urlLandingPage = "";
-                      
-                        if (!string.IsNullOrWhiteSpace(curso.urlLandingPage.ToString()))
-                        {
-                            if (!curso.urlLandingPage.ToString().StartsWith("https://", StringComparison.OrdinalIgnoreCase) && !curso.urlLandingPage.ToString().StartsWith("http://", StringComparison.OrdinalIgnoreCase))
-                            {
-                                urlLandingPage = "https://" + curso.urlLandingPage;
-                            }
-                            else
-                            {
-                                urlLandingPage = curso.urlLandingPage;
-                            }
-                        }
-                        else
-                        {
-                            urlLandingPage = "https://loja.cdludi.org.br/Compras/Produto/" + curso.slug;
-
-                        }
-
-
-                        <div class="col-md-6 col-lg-4 mb-1-9 mb-lg-0 mt-4">
-                            <article class="card border-0 card-style4">
-
-                                <div class="card border-0 border-radius-10 card-style3">
-                                    <a href="@urlLandingPage" class="text-dark" target="_blank">
-
-                                        <div class="card-img">
-                                            <div class="card-img bg-img cover-background theme-overlay" style="min-height: 450px; margin-top: 0px !important; background-color: #0A3484; background-image: url('https://loja.cdludi.org.br/Anexos/servicos/@curso.codigo/@curso.imagem')" data-background="https://loja.cdludi.org.br/Anexos/servicos/@curso.codigo/@curso.imagem"></div>
-                                            <span class="icon"><i class="fas fa-dollar-sign"></i></span>
-                                        </div>
-                                        <div class="card-body pb-2-0 pt-6 px-1-6 px-sm-2-6">
-                                           
-
-                                            <h3 class="h5 mb-3">
-                                                <span class="text-dark">@curso.titulo</span>
-                                            </h3>
-
-                                            @if (!string.IsNullOrWhiteSpace(curso.dataInicioCurso.ToString()) && !string.IsNullOrWhiteSpace(curso.dataFimCurso.ToString()))
-                                            {
-                                                if (curso.dataInicioCurso == curso.dataFimCurso)
-                                                {
-                                                    <p class="mb-0">Dia @curso.dataInicioCurso</p>
-                                                }
-                                                else
-                                                {
-                                                    <p class="mb-0">De @curso.dataInicioCurso a @curso.dataFimCurso</p>
-                                                }
-                                            }
-
-                                            @if (!string.IsNullOrWhiteSpace(curso.horaInicioCurso.ToString()) && !string.IsNullOrWhiteSpace(curso.horaFimCurso.ToString()))
-                                            {
-                                                if (curso.horaInicioCurso == curso.horaFimCurso)
-                                                {
-                                                    <p>@(curso.horaInicioCurso + "h")</p>
-                                                }
-                                                else
-                                                {
-                                                    <p>@(curso.horaInicioCurso + "h") às @(curso.horaFimCurso + "h")</p>
-                                                }
-                                            }
-
-                                            <p style="margin-top:-10px"><strong>Curso Presencial</strong></p>
-
-                                            @{
-                                                string labelBotao = "Inscreva-se";
-
-                                                // if (curso.gratuito == "N")
-                                                // {
-                                                //     if (!string.IsNullOrWhiteSpace(curso.valorunitario.ToString()))
-                                                //     {
-                                                //         labelBotao = "Compre Agora";
-                                                //     }
-                                                // }
-                                            }
-
-                                            <span class="butn md">@labelBotao</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </article>
-                        </div>
-
-                        i++;
-                    }
-                }
-                
-                @if (Model?.Cursos != null)
-                {
-                    /* Lista de posts da categoria "Cursos" e que não estão cadastrados na Loja */
-
-                    int i = 1;
-
-                    foreach (var cursoPost in Model.Cursos.Where(x => x.DataInicio <= DateTime.Now && x.DataFim >= DateTime.Now))
-                    {
-                  @*       if (i > 3)
-                        {
-                            break;
-                        } *@
-
-                        string urlLandingPage = "/publicacoes/cursos/" + cursoPost.Slug;
-
-                        if (!string.IsNullOrWhiteSpace(cursoPost.Link))
-                        {
-                            if (!cursoPost.Link.StartsWith("https://", StringComparison.OrdinalIgnoreCase) && !cursoPost.Link.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
-                            {
-                                urlLandingPage = "https://" + cursoPost.Link;
-                            }
-                            else
-                            {
-                                urlLandingPage = cursoPost.Link;
-                            }
-                        }
-
-                        <div class="col-md-6 col-lg-4 mb-1-9 mb-lg-0 mt-4">
-                            <a href="@urlLandingPage" class="text-dark" target="_blank">
-                                <article class="card border-0 card-style4">
-
-                                    <div class="card border-0 border-radius-10 card-style3">
-                                        <div class="card-img">
-                                            <div class="card-img bg-img cover-background theme-overlay" style="min-height: 450px; margin-top: 0px !important; background-color: #0A3484; background-image: url('@(!string.IsNullOrWhiteSpace(cursoPost.Imagem) ? "/wp-content/uploads/" + cursoPost.Imagem : "/img/no-image.jpg")')" data-background="@(!string.IsNullOrWhiteSpace(cursoPost.Imagem) ? "/wp-content/uploads/" + cursoPost.Imagem : "/img/no-image.jpg")"></div>
-                                            <span class="icon"><i class="fas fa-dollar-sign"></i></span>
-                                        </div>
-                                        <div class="card-body pb-2-0 pt-7 px-1-6 px-sm-2-6">
-
-                                            <h3 class="h5 mb-3">
-                                                <span class="text-dark">@cursoPost.Titulo</span>
-                                            </h3>
-
-                                            @if (!string.IsNullOrWhiteSpace(cursoPost.Subtitulo))
-                                            {
-                                                <p class="mb-0">@cursoPost.Subtitulo</p>
-                                                <p></p>
-                                            }
-
-                                            <p><strong>Curso Presencial</strong></p>
-
-                                            <span class="butn md">Inscreva-se</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </a>
-                        </div>
-
-                        i++;
-                    }
-                }
-
-            </div>
-        </div>
-    }
-
-    <div class="container-fluid pl-0 pr-0 mb-5">
- 
-    </div>
-
-    @if (ViewBag.Eventos.Count > 0 || Model?.Eventos?.Where(x => x.DataInicio <= DateTime.Now && x.DataFim >= DateTime.Now).ToList().Count > 0)
-    {
-        <div class="container mb-5">
-            <div class="mb-4 text-center">
-                <span class="text-uppercase text-primary small font-weight-700 letter-spacing-1 mb-2 d-block">Fique por dentro</span>
-                <h2 class="h1 mb-0">Agenda de eventos CDL</h2>
-                <div class="d-flex align-items-center justify-content-lg-end justify-content-center">
-                    <div class="mt-2">
-                        <a href="https://loja.cdludi.org.br/compras/eventos" class="text-body">Ver todos os eventos <i class="fas fa-arrow-right small ml-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @if (ViewBag.Eventos.Count > 0)
-                {
-                    /* Lista de Eventos cadastrados na Loja (vem da API) */
-
-                    int i = 1;
-
-                    foreach (var evento in ViewBag.Eventos)
-                    {
-                    @*     if (i > 3)
-                        {
-                            break;
-                        } *@
-
-                        string labelBotao = "Inscreva-se";
-@* 
-                        if (evento.gratuito == "N")
-                        {
-                            if (!string.IsNullOrWhiteSpace(evento.valorunitario.ToString()))
-                            {
-                                labelBotao = "Compre Agora";
-                            }
-                        }
- *@
-                        string urlLandingPage = "https://loja.cdludi.org.br/Compras/Eventos";
-
-                        if (!string.IsNullOrWhiteSpace(evento.urlLandingPage.ToString()))
-                        {
-                            if (!evento.urlLandingPage.ToString().StartsWith("https://", StringComparison.OrdinalIgnoreCase) && !evento.urlLandingPage.ToString().StartsWith("http://", StringComparison.OrdinalIgnoreCase))
-                            {
-                                urlLandingPage = "https://" + evento.urlLandingPage;
-                            }
-                            else
-                            {
-                                urlLandingPage = evento.urlLandingPage;
-                            }
-                        }
-                        else
-                        {
-                            urlLandingPage = "https://loja.cdludi.org.br/Compras/Produto/" + evento.slug;
-                        }
-
-                        <div class="col-md-6 col-lg-4 mb-2-9 mb-lg-0 mt-4">
-                            <article class="card border-0 card-style4">
-                                <a href="@urlLandingPage" target="_blank">
-                                    <div class="team-style2">
-                                        <div class="card-img bg-img cover-background theme-overlay" style="min-height: 400px; margin-top: 0px !important; background-color: #0A3484; background-image: url('https://loja.cdludi.org.br/Anexos/servicos/@evento.codigo/@evento.imagem')" data-background="https://loja.cdludi.org.br/Anexos/servicos/@evento.codigo/@evento.imagem"></div>
-                                        <div class="bg-white team-text py-4 position-relative text-left pl-4">
-                                            <h3 class="h6 mb-1">@evento.titulo</h3>
-
-                                            @{
-                                                string dataEvento = "";
-                                                string horaEvento = "";
-
-                                                if (!string.IsNullOrWhiteSpace(evento.dataInicioEvento.ToString()) && !string.IsNullOrWhiteSpace(evento.dataFimEvento.ToString()))
-                                                {
-                                                    if (evento.dataInicioEvento == evento.dataFimEvento)
-                                                    {
-                                                        dataEvento = "Dia " + evento.dataInicioEvento;
-                                                    }
-                                                    else
-                                                    {
-                                                        dataEvento = "De " + evento.dataInicioEvento + " a " + evento.dataFimEvento;
-                                                    }
-                                                }
-
-                                                if (!string.IsNullOrWhiteSpace(evento.horaInicioEvento.ToString()) && !string.IsNullOrWhiteSpace(evento.horaFimEvento.ToString()))
-                                                {
-                                                    horaEvento = " às " + evento.horaInicioEvento + "h";
-                                                }
-                                            }
-
-                                            <span class="font-weight-600 small text-uppercase text-primary">@dataEvento @horaEvento</span>
-
-                                            <br />
-
-                                            <span class="butn md mt-3">@labelBotao</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </article>
-                        </div>
-
-                        i++;
-                    }
-                }
-
-                @if (Model?.Eventos != null)
-                {
-                    /* Lista de posts da categoria "Eventos" e que não estão cadastrados na Loja */
-
-                    int i = 1;
-
-                    foreach (var eventoPost in Model.Eventos.Where(x => x.DataInicio <= DateTime.Now && x.DataFim >= DateTime.Now))
-                    {
-                   @*      if (i > 3)
-                        {
-                            break;
-                        }
- *@
-                        string urlLandingPage = "/publicacoes/cursos/" + eventoPost.Slug;
-
-                        if (!string.IsNullOrWhiteSpace(eventoPost.Link))
-                        {
-                            if (!eventoPost.Link.StartsWith("https://", StringComparison.OrdinalIgnoreCase) && !eventoPost.Link.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
-                            {
-                                urlLandingPage = "https://" + eventoPost.Link;
-                            }
-                            else
-                            {
-                                urlLandingPage = eventoPost.Link;
-                            }
-                        }
-
-                        <div class="col-md-6 col-lg-4 mb-2-9 mb-lg-0 mt-4">
-                            <article class="card border-0 card-style4">
-                                <a href="@urlLandingPage" target="_blank">
-                                    <div class="team-style2">
-                                        <div class="card-img bg-img cover-background theme-overlay" style="min-height: 400px; margin-top: 0px !important; background-color: #0A3484; background-image: url('@(!string.IsNullOrWhiteSpace(eventoPost.Imagem) ? "/wp-content/uploads/" + eventoPost.Imagem : "/img/no-image.jpg")')" data-background="@(!string.IsNullOrWhiteSpace(eventoPost.Imagem) ? "/wp-content/uploads/" + eventoPost.Imagem : "/img/no-image.jpg")"></div>
-                                        <div class="bg-white team-text py-4 position-relative text-left pl-4">
-                                            <h3 class="h6 mb-1">@eventoPost.Titulo</h3>
-
-                                            @if (!string.IsNullOrWhiteSpace(eventoPost.Subtitulo))
-                                            {
-                                                <span class="font-weight-600 small text-uppercase text-primary">@eventoPost.Subtitulo</span>
-                                            }
-
-                                            <br />
-
-                                            <span class="butn md mt-3">Inscreva-se</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </article>
-                        </div>
-
-                        i++;
-                    }
-                }
-            </div>
-        </div>
-    }
-     
-    <div class="container">
-        <div class="mb-5 mt-3 text-center">
-            <h2 class="h1 mb-0">Comunicados</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4 mb-1-9 mb-lg-0">
-                <article class="card border-0">
-                    <a href="https://cdluberlandia.cdludi.org.br/mentoria-de-negocios" class=" " target="_blank">
-                        <div class="div-imagem-comunicado-1"></div>
-                        <div class="card-body text-center">
-                            <div style="height:75px">
-                                <h3 class="h5 mb-3 mt-3 font-weight-300">Exclusivo para Associado CDL</h3>
-                            </div>
-                            <div style="height:50px">
-                                <span class="butn md">Clique aqui</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-1-9 mb-lg-0">
-                <article class="card border-0">
-                    <a href="https://jobs.quickin.io/cdludi" class=" " target="_blank">
-                        <div class="div-imagem-comunicado-2"></div>
-                        <div class="card-body text-center">
-                            <div style="height:75px">
-                                <h3 class="h5 mb-3 mt-3 font-weight-300">Confira nossas soluções</h3>
-                            </div>
-                            <div style="height:50px">
-                                <span class="butn md">Clique aqui</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <article class="card border-0">
-                    <a href="https://cdluberlandia.cdludi.org.br/cdlcentral" target="_blank" class=" " >
-                        <div class="div-imagem-comunicado-3"></div>
-                        <div class="card-body text-center">
-                            <div style="height:75px">
-                                <h3 class="h5 mb-3 mt-3 font-weight-300">Confira todas as ações</h3>
-                            </div>
-                            <div style="height:50px">
-                                <span  class="butn md">Clique aqui</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="parallax cover-background md" data-overlay-dark="7" data-background="/img/bg-07.webp">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="text-white mb-3 h1">Depoimentos</h2>
-        </div>
-        <div class="owl-carousel owl-theme" id="testmonials-carousel">
-
-            <div class="testmonial-single text-center">
-                <img src="~/img/maxxima.png" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Na CDL Uberlândia, encontramos parceria, representatividade e as ferramentas certas para evoluir com solidez."
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Maxsuel Luiz Pereira</h6>
-                <span class="mb-0 text-white letter-spacing-2">MAXXIMA - Medicina e Segurança do Trabalho</span>
-                <p>
-                    <a href="https://www.instagram.com/reels/DScrGiAkdMe/" target="_blank"><img src="~/img/play2.png" style="vertical-align: middle"></a>
-                    <span class="mb-0 text-white letter-spacing-2" style="vertical-align: middle">Dê o play e descubra os benefícios de fazer parte da CDL Uberlândia.</span>
-                </p>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/242229565_4351177138331702_3790341517642464186_n.jpg" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Gostaria de parabenizar a CDL pela excelência na prestação deos serviços! Sempre que demandei os serviços, fui muito bem atendido, seja através da automação e/ou pelos funcionários. Nas minhas últimas demandas, a presteza e competência (não apenas) da Joyce Oliveira, Júlia Alves e Lara Staelly evidenciaram que o associado tem um PARCEIRO! Agradeço demais aos que referenciei pelo profissionalismo e excelência! Á toda EQUIPE CDL, OBRIGADO! PARABÉNS!"
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Vasco Alvarenga Mamede</h6>
-                <span class="mb-0 text-white letter-spacing-2">Núcleo de Estudos e Reforço Didático Especializado</span>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/logo.jpg" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Recebemos aqui tudo sobre a campanha, sou muito grata pela oportunidade de participar. Já colamos alguns cartazes para já começar a fomentar. No geral, estou muito feliz em participar, principalmente quando induz nossos pacientes a andarem em dia com seus pagamentos, que é a campanha que lançaremos aqui: ande em dia com seu pagamento e retire seu cupom. Então, sou muito grata pela oportunidade de participar."
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Viviane Batista Alvarenga</h6>
-                <span class="mb-0 text-white letter-spacing-2">Clinort</span>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/transferir-2.png" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "O feedback é altamente positivo, em agradecimento pela estrutura montada para atender nossa demanda. Acredito que a escolha foi em cheio, foi assertiva ao máximo possível daquilo que a gente estava pleiteando em tremos de treinamento e tudo mais. Foi uma semente que foi plantada e acredito que a mesma vai frutificar, não somente dentro das nossas unidades aqui de Uberlândia, mas para todos que estão nesse Brasil. Muito Obrigado!"
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Jeferson</h6>
-                <span class="mb-0 text-white letter-spacing-2">ADM do Brasil</span>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/trans.png" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Como associado CDL só tenho a agradecer, pois nesses 23 anos sempre fui bem atendido em vossos produtos que são ofertados. A CDL está de parabéns, é o que tenho a declarar."
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Edson Campelo</h6>
-                <span class="mb-0 text-white letter-spacing-2">Gerente da Transpontual</span>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/transferir.png" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Somos muito satisfeitos com o atendimento e também os servios da CDL, particularmente, sua assistência e atenção as nossas demandas são excelentes! Abraços"
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Diogo Freitas</h6>
-                <span class="mb-0 text-white letter-spacing-2">Supervisor de Gente e Gestão</span>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/transferir-1.png" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Tenho que agradecer a CDL pela parceria que tem com a gente, principalmente com as lojas dos bairros, com a assessoria, a questão financeira, a questão jurídica,   O presidente defendendo a abertura do comércio. Assessoria também na questão de cursos. Já fizemos vários cursos. A CDL é uma parceira e juntos somos mais fortes."
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Martinho de Sousa</h6>
-                <span class="mb-0 text-white letter-spacing-2">Proprietário da Zapatto Magazine</span>
-            </div>
-
-            <div class="testmonial-single text-center">
-                <img src="https://cdludi.org.br/wp-content/uploads/2022/06/conceito.png" style="width:100px;height:100px" alt="" class="rounded-circle border">
-                <span class="h4 align-top d-block pt-4 mb-3"><i class="fas fa-quote-left"></i></span>
-                <p class="text-white mb-4 w-lg-65 mx-auto">
-                    "Excelente.
-                    Só temos a agradecer pelo atendimento, foi super rápido, muito prestativo. A Meire nos atendeu em tempo recorde, porque como trabalhamos com prestação de serviços para Cargill, às vezes eles solicitam muito em cima da hora os treinamentos, então em todo tempo ela nos atendeu muito rápido, a organização da sala foi muito boa, o café que ela se dispôs a oferecer pra nós foi excelente. Então só tenho que agradecer mesmo. Estão de parabéns com o atendimento. Continuem assim que seremos sempre grandes parceiros."
-                </p>
-                <h6 class="letter-spacing-1 text-primary">Proprietário</h6>
-                <span class="mb-0 text-white letter-spacing-2">Conceito Treinamentos</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-
-    function linkBanner(link) {
-
-        if (link[0] === 'h' && link[1] === 't' && link[2] === 't' && link[3] === 'p') {
-            window.open(link, '_blank');
-        } else {
-            window.open(`https://${link}`, '_blank');
+        if (lista == null) return;
+        foreach (var x in lista)
+        {
+            string landing = Convert.ToString(x.urlLandingPage) ?? "";
+            string url = landing != "" ? Abs(landing) : "/loja/produto/" + Convert.ToString(x.slug);
+            string ini = Convert.ToString(x[campoData + "Inicio" + tipo]) ?? "";
+            string fim = Convert.ToString(x[campoData + "Fim" + tipo]) ?? "";
+            string hIni = Convert.ToString(x["horaInicio" + tipo]) ?? "";
+            string hFim = Convert.ToString(x["horaFim" + tipo]) ?? "";
+            var (dia, mes) = DiaMes(ini, fim);
+            string horario = hIni == "" ? "" : (hFim == "" || hFim == hIni ? hIni + "h" : hIni + "h às " + hFim + "h");
+            agenda.Add(new ItemAgenda
+            {
+                Tipo = tipo, Titulo = Convert.ToString(x.titulo) ?? "", Url = url, Dia = dia, Mes = mes,
+                Detalhe = string.Join(" · ", new[] { horario, tipo == "Curso" ? "Presencial" : "" }.Where(s => s != "")),
+                Imagem = "https://loja.cdludi.org.br/Anexos/servicos/" + Convert.ToString(x.codigo) + "/" + Convert.ToString(x.imagem)
+            });
         }
     }
+    DaLoja(ViewBag.Eventos as IEnumerable<dynamic>, "Evento", "data");
+    DaLoja(ViewBag.Cursos as IEnumerable<dynamic>, "Curso", "data");
+    void DosPosts(List<SiteCDL.Models.Post> lista, string tipo)
+    {
+        if (lista == null) return;
+        foreach (var p in lista.Where(x => x.DataInicio <= DateTime.Now && x.DataFim >= DateTime.Now))
+        {
+            agenda.Add(new ItemAgenda
+            {
+                Tipo = tipo, Titulo = p.Titulo ?? "", Url = !string.IsNullOrWhiteSpace(p.Link) ? Abs(p.Link) : "/publicacoes/cursos/" + p.Slug,
+                Dia = "", Mes = "", Detalhe = p.Subtitulo ?? "",
+                Imagem = !string.IsNullOrWhiteSpace(p.Imagem) ? "/wp-content/uploads/" + p.Imagem : ""
+            });
+        }
+    }
+    DosPosts(Model?.Eventos, "Evento");
+    DosPosts(Model?.Cursos, "Curso");
+}
+@functions {
+    public class ItemAgenda { public string Tipo = "", Titulo = "", Url = "", Dia = "", Mes = "", Detalhe = "", Imagem = ""; }
 
+    static readonly string[] Meses = { "jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez" };
 
-    jQuery("#rev_slider_1").on("revolution.slide.onloaded", function () {
-        jQuery(".tp-revslider-slidesli").css("opacity", "1");
-    });
-</script>
+    // Datas da Loja chegam como texto (ex.: 16/11/2026). Se não der para ler, mostra o texto como veio.
+    (string, string) DiaMes(string ini, string fim)
+    {
+        var br = System.Globalization.CultureInfo.GetCultureInfo("pt-BR");
+        bool okI = DateTime.TryParse(ini, br, System.Globalization.DateTimeStyles.None, out var di);
+        bool okF = DateTime.TryParse(fim, br, System.Globalization.DateTimeStyles.None, out var df);
+        if (!okI) return (ini, "");
+        if (!okF || df.Date == di.Date) return (di.Day.ToString(), Meses[di.Month - 1]);
+        if (df.Month == di.Month) return (di.Day + "–" + df.Day, Meses[di.Month - 1]);
+        return (di.Day + "/" + di.Month, "a " + df.Day + "/" + df.Month);
+    }
+
+    string UrlPost(SiteCDL.Models.Post p) => "/publicacoes/" + (p.PostCategoria?.Route ?? "") + "/" + p.Slug;
+    string ImgPost(SiteCDL.Models.Post p) => !string.IsNullOrEmpty(p.Imagem) ? "/wp-content/uploads/" + p.Imagem : (!string.IsNullOrEmpty(p.ImagemBase64) ? p.ImagemBase64 : "");
+    string DataCurta(DateTime? d) => d == null ? "" : d.Value.Day + " " + Meses[d.Value.Month - 1] + " " + d.Value.Year;
+}
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="glow"></div>
+  <div class="wrap hero-top">
+    <span class="badge"><b>Desde 1977</b> Uma das cinco maiores CDLs do Sistema CNDL</span>
+    <h1><span class="w">Quem</span> <span class="w">faz</span> <span class="w">o</span> <span class="w">comércio</span> <span class="w">de</span> <span class="w">Uberlândia</span> <span class="w serif">não</span> <span class="w serif">anda</span> <span class="w serif">sozinho.</span></h1>
+    <p class="lead">Representatividade, crédito, proteção e capacitação para empresas e profissionais — com dados reais sobre o varejo da cidade.</p>
+    <div class="ctas">
+      <a href="/associe-se" class="btn btn-primary">Quero me associar <span class="arr">→</span></a>
+      <a href="#solucoes" class="btn btn-light">Conhecer soluções</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="thermo rv d2" id="thermo">
+      <div class="thermo-bar">
+        <b>Termômetro do Varejo de Uberlândia <em class="ed">Edição nov/2026</em></b>
+        <span>Fontes: pesquisa CDL Uberlândia (Black Friday 2026) e CNDL/SPC Brasil (set/2026)</span>
+      </div>
+      <div class="th-grid">
+        <div class="tcard">
+          <div class="lbl">Black Friday 2026 · intenção de gasto vs. 2025</div>
+          <div class="big"><span data-count="46">0</span><small>%</small></div>
+          <div class="lbl" style="margin-top:6px">pretendem gastar mais</div>
+          <div class="bars">
+            <div class="bar"><span>Gastar mais</span><div class="track"><div class="fill" data-w="46"></div></div><b>46%</b></div>
+            <div class="bar"><span>Mesmo valor</span><div class="track"><div class="fill" data-w="23"></div></div><b>23%</b></div>
+            <div class="bar"><span>Não sabem</span><div class="track"><div class="fill" data-w="21"></div></div><b>21%</b></div>
+            <div class="bar"><span>Gastar menos</span><div class="track"><div class="fill" data-w="10"></div></div><b>10%</b></div>
+          </div>
+          <div class="src">Fonte: CDL Uberlândia, nov/2026</div>
+        </div>
+        <div class="tcard">
+          <div class="lbl">Busca por crédito · set/26 vs. set/25</div>
+          <div class="big">+<span data-count="49.56" data-dec="2">0</span><small>%</small></div>
+          <span class="up">▲ crescimento anual</span>
+          <div style="margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div><div style="font-size:24px;font-weight:500;letter-spacing:-.03em"><span data-count="38.73" data-dec="2">0</span>%</div><div class="lbl">tinham restrição ativa</div></div>
+            <div><div style="font-size:24px;font-weight:500;letter-spacing:-.03em"><span data-count="3.6" data-dec="2">0</span>%</div><div class="lbl">contrataram crédito</div></div>
+          </div>
+          <div class="src" style="margin-top:0">Fonte: CNDL/SPC Brasil, set/2026</div>
+        </div>
+        <div class="tcard">
+          <div class="lbl">Black Friday · pagamento no cartão de crédito</div>
+          <div class="ring">
+            <svg width="120" height="120" viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" data-p="67"/></svg>
+            <span><b data-count="67" style="font-weight:500">0</b>%</span>
+          </div>
+          <div class="lbl" style="text-align:center;margin-top:10px">50% parcelado · 17% à vista</div>
+          <div class="src">Fonte: CDL Uberlândia, nov/2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-label="Indicadores do varejo">
+    <div class="track-x">
+      <div class="it"><span class="tag">Black Friday</span>Pretendem gastar mais <b>46%</b></div>
+      <div class="it"><span class="tag">Crédito</span>Busca em setembro <b>+49,56%</b></div>
+      <div class="it"><span class="tag">Descontos</span>Esperam mais de 30% <b>70%</b></div>
+      <div class="it"><span class="tag">Pagamento</span>Pix na Black Friday <b>22%</b></div>
+      <div class="it"><span class="tag">Gasto</span>Acima de R$ 1.000 <b>42%</b></div>
+      <div class="it"><span class="tag">Ofertas</span>Buscam em sites e apps das lojas <b>41%</b></div>
+      <div class="it"><span class="tag">Prazo</span>Opção pelo Simples Nacional até <b>20/12</b></div>
+      <!-- duplicado para loop contínuo -->
+      <div class="it" aria-hidden="true"><span class="tag">Black Friday</span>Pretendem gastar mais <b>46%</b></div>
+      <div class="it" aria-hidden="true"><span class="tag">Crédito</span>Busca em setembro <b>+49,56%</b></div>
+      <div class="it" aria-hidden="true"><span class="tag">Descontos</span>Esperam mais de 30% <b>70%</b></div>
+      <div class="it" aria-hidden="true"><span class="tag">Pagamento</span>Pix na Black Friday <b>22%</b></div>
+      <div class="it" aria-hidden="true"><span class="tag">Gasto</span>Acima de R$ 1.000 <b>42%</b></div>
+      <div class="it" aria-hidden="true"><span class="tag">Ofertas</span>Buscam em sites e apps das lojas <b>41%</b></div>
+      <div class="it" aria-hidden="true"><span class="tag">Prazo</span>Opção pelo Simples Nacional até <b>20/12</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK ACCESS ============ -->
+<section class="quick">
+  <div class="wrap">
+    <div class="qbox rv">
+      <h3>Acesso rápido<span>Os serviços mais procurados</span></h3>
+      <div class="chips">
+        <a href="https://www.itau.com.br/servicos/boletos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>2ª via de boleto</a>
+        <a href="/certificado-digital"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="12" rx="2"/><circle cx="12" cy="11" r="2.5"/></svg>Certificado digital</a>
+        <a href="/spc-consulta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg>Consulta CPF</a>
+        <a href="/spc-negociacao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4v16"/></svg>Negocie seus débitos</a>
+        <a href="https://jobs.quickin.io/cdludi/jobs?page=1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2"/></svg>Vagas de emprego</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGOS ============ -->
+<section class="logos">
+  <p>Parte do Sistema CNDL — presente nas 27 unidades federativas</p>
+  <div class="mask">
+    <div class="track-x">
+      <span class="lg lgi"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="lg lgi"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="lg lgi"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><span class="lg lgi"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></span><span class="lg s">BDMG</span><span class="lg">CDL Saúde</span><span class="lg s">Rita Saúde</span><span class="lg">Varejo On</span>
+      <span class="lg lgi" aria-hidden="true"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></span><span class="lg s" aria-hidden="true">BDMG</span><span class="lg" aria-hidden="true">CDL Saúde</span><span class="lg s" aria-hidden="true">Rita Saúde</span><span class="lg" aria-hidden="true">Varejo On</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMPANHAS (banners cadastrados no portal) ============ -->
+@if (bannersDesk.Count > 0 || bannersMob.Count > 0)
+{
+<section class="camp" id="campanhas">
+  <div class="wrap">
+    <div class="camp-head rv">
+      <div><span class="eyebrow">Em destaque</span><h3>Campanhas da CDL</h3></div>
+    </div>
+    <div class="camp-stage">
+    <button class="cbtn prev" data-dir="-1" aria-label="Anterior">←</button><button class="cbtn next" data-dir="1" aria-label="Próxima">→</button>
+    <div class="camp-track desk rv d1">@foreach (var b in bannersDesk) {<a class="slide" href="@(string.IsNullOrWhiteSpace(b.Link) ? "#campanhas" : b.Link)"><img src="/wp-content/uploads/banners/@b.CaminhoDesktop" alt="@(b.Nome ?? "Campanha CDL")" loading="lazy" decoding="async"></a>}</div>
+    <div class="camp-track mob rv d1">@foreach (var b in (bannersMob.Count > 0 ? bannersMob : bannersDesk)) {<a class="slide" href="@(string.IsNullOrWhiteSpace(b.Link) ? "#campanhas" : b.Link)"><img src="/wp-content/uploads/banners/@(string.IsNullOrWhiteSpace(b.CaminhoMobile) ? b.CaminhoDesktop : b.CaminhoMobile)" alt="@(b.Nome ?? "Campanha CDL")" loading="lazy" decoding="async"></a>}</div>
+    </div>
+    <div class="camp-dots" aria-hidden="true"></div>
+  </div>
+</section>
+}
+
+<!-- ============ SOLUÇÕES (BENTO) ============ -->
+<section class="sec" id="solucoes">
+  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Soluções</span><h2>Ferramentas para vender mais, <span class="serif">com segurança.</span></h2></div>
+      <a href="/vantagens-associado" class="btn btn-light rv d1">Todas as soluções <span class="arr">→</span></a>
+    </div>
+
+    <div class="bento">
+      <a class="bx dark c2 r2 rv" href="/spc-brasil">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/><path d="M12 8.2c-.4-.5-1-.7-1.6-.7-.9 0-1.6.5-1.6 1.3 0 1.7 3.3 1 3.3 2.7 0 .8-.7 1.3-1.7 1.3-.7 0-1.3-.3-1.7-.8M10.5 6.5v1M10.5 12.8v1"/></svg></span>
+        <span class="k">SPC Brasil</span>
+        <h3>Venda a prazo sabendo exatamente para quem.</h3>
+        <p>Consultas, registros e monitoramento de documentos com a maior base de crédito do varejo brasileiro.</p>
+        <div class="spc-list">
+          <span class="row">Consultas e registro <span>→</span></span>
+          <span class="row">SPC Avisa — monitoramento <span>→</span></span>
+          <span class="row">Consulta CPF <span>→</span></span>
+        </div>
+        <div class="go">Acessar o SPC <i>→</i></div>
+      </a>
+
+      <a class="bx blue c2 rv d1" href="/combo-solucoes">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+        <span class="k">Mais vantajoso</span>
+        <h3>Combo de Soluções</h3>
+        <p>Os principais benefícios da CDL reunidos em um só pacote para sua empresa.</p>
+        <div class="go">Montar meu combo <i>→</i></div>
+      </a>
+
+      <a class="bx rv d2" href="/certificado-digital">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7.5" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6 1.2 0 2.3.3 3.2.9"/><rect x="14" y="14" width="7" height="6" rx="1.2"/><path d="M15.7 14v-1.5a1.8 1.8 0 0 1 3.6 0V14"/></svg></span>
+        <span class="k">Digital</span>
+        <h3>Certificado Digital</h3>
+        <p>Transações pela internet com validade jurídica.</p>
+        <div class="go">Emitir <i>→</i></div>
+      </a>
+
+      <a class="bx rv d3" href="/cdl-gestao">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><rect x="3" y="11.5" width="11" height="5.5" rx="1"/><path d="M5.3 15.5v-2.5l2 2.5v-2.5M9.4 15.5v-2.5h2M9.4 14.2h1.5"/></svg></span>
+        <span class="k">Gestão</span>
+        <h3>CDL Gestão e NFe</h3>
+        <p>Notas fiscais eletrônicas com agilidade e segurança.</p>
+        <div class="go">Saiba mais <i>→</i></div>
+      </a>
+
+      <a class="bx rv" href="/bdmg">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M7.6 9.5c-.3-.4-.8-.6-1.3-.6-.7 0-1.3.4-1.3 1 0 1.4 2.7.8 2.7 2.2 0 .6-.6 1-1.4 1-.6 0-1.1-.2-1.4-.6M6.3 8.3v.6M6.3 13.1v.6M11 11h7M11 14h5"/></svg></span>
+        <span class="k">Crédito</span>
+        <h3>Crédito BDMG</h3>
+        <p>Simule crédito para investir no seu negócio.</p>
+        <div class="go">Simular <i>→</i></div>
+      </a>
+
+      <a class="bx rv d1" href="https://www.presentedasortecdludi.com/varejoon">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></span>
+        <span class="k">Vendas</span>
+        <h3>Varejo On</h3>
+        <p>Campanhas promocionais gratuitas para o comércio.</p>
+        <div class="go">Participar <i>→</i></div>
+      </a>
+
+      <a class="bx rv d2" href="/loja/descontos">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v8a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2z"/><rect x="7.5" y="9.5" width="9" height="5" rx="1"/></svg></span>
+        <span class="k">Benefícios</span>
+        <h3>Rede de Descontos</h3>
+        <p>Descontos exclusivos em parceiros.</p>
+        <div class="go">Ver parceiros <i>→</i></div>
+      </a>
+
+      <a class="bx rv d3" href="https://jobs.quickin.io/cdludi/jobs?page=1">
+        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18.5c1.2-2 3.2-3 5.5-3s4.3 1 5.5 3"/></svg></span>
+        <span class="k">Pessoas</span>
+        <h3>Vagas de emprego</h3>
+        <p>Candidate-se às vagas divulgadas pela CDL.</p>
+        <div class="go">Ver vagas <i>→</i></div>
+      </a>
+    </div>
+    <a class="mp rv" href="/loja/menor-preco"><img src="/novo/img/cdl-menor-preco.webp" data-remote="/img/Home/cdl_menor_preco.webp" alt="CDL MenorPreço" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb mp-fb" style="display:none"><b>CDL MenorPreço</b> Compare preços no comércio associado →</span></a>
+  </div>
+</section>
+
+<!-- ============ NÚMEROS + HISTÓRIA ============ -->
+<section class="sec nums" id="numeros">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Institucional</span><h2>Quase cinco décadas <span class="serif">defendendo o comércio local.</span></h2></div>
+      <a href="/nossa-historia" class="btn btn-light rv d1">Nossa história <span class="arr">→</span></a>
+    </div>
+    <div class="num-grid">
+      <div class="num rv"><div class="v"><span data-count="49">0</span></div><p>anos de atuação em Uberlândia, desde 1977</p></div>
+      <div class="num rv d1"><div class="v"><span class="serif">Top</span> 5</div><p>entre as maiores CDLs do Sistema CNDL</p></div>
+      <div class="num rv d2"><div class="v"><span data-count="27">0</span></div><p>unidades federativas com presença do Sistema CNDL</p></div>
+      <div class="num rv d3"><div class="v">~<span data-count="2000" data-sep="1">0</span></div><p>Câmaras de Dirigentes Lojistas no Brasil</p></div>
+    </div>
+
+    <div class="timeline rv" id="tl">
+      <div class="tl-line"><i></i></div>
+      <div class="tl">
+        <div><b>1977</b><span>Fundação, com 18 associados, no Senac</span></div>
+        <div><b>SPC</b><span>Traz o serviço de proteção ao crédito para a cidade</span></div>
+        <div><b>1989</b><span>Inauguração da sede atual</span></div>
+        <div><b>1991</b><span>Criação da Fundação CDL</span></div>
+        <div><b>2024</b><span>Selo “Juntos pelos ODS” — Movimento Nacional ODS de Minas Gerais</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE SE ASSOCIAR (ref.: Mews / Attio) ============ -->
+<section class="sec assoc" id="associe">
+  <div class="wrap assoc-grid">
+    <div class="assoc-side">
+      <div class="rv"><span class="eyebrow">Para associados</span><h2>O que sua empresa <span class="serif">passa a ter.</span></h2>
+      <p class="lead" style="margin-top:18px">A CDL recebe empresários, lojistas, prestadores de serviços e profissionais autônomos de Uberlândia.</p></div>
+      <div class="mvv rv d1">
+        <div><span>Missão</span><p>Fomentar o associativismo, influenciar o ambiente político-institucional e apoiar o desenvolvimento de nossos associados, compartilhando informações e soluções com credibilidade.</p></div>
+        <div><span>Visão</span><p>Ser uma associação empresarial reconhecida pela excelência e representatividade, sendo referência para os associados, parceiros e comunidade.</p></div>
+        <div><span>Valores</span><ul class="vals"><li>Coragem</li><li>Credibilidade</li><li>Determinação</li><li>Envolvimento</li><li>Ética</li><li>Inovação</li><li>Lisura</li><li>Sustentabilidade</li></ul></div>
+      </div>
+      <a href="/associe-se" class="btn btn-primary rv d2">Quero me associar <span class="arr">→</span></a>
+    </div>
+    <ol class="bn-list"><li class="bn rv"><span class="bn-n">/01</span><h3>Orientações gratuitas</h3><p>Jurídica, segurança digital, captação e retenção de clientes, recuperação de inadimplência, gestão de processos e análise de política de crédito.</p></li><li class="bn rv"><span class="bn-n">/02</span><h3>Soluções SPC</h3><p>SPC Consultas e Registro, SPC Avisa, SPC Conciliador, Certificado Digital e Cadastro Positivo.</p></li><li class="bn rv"><span class="bn-n">/03</span><h3>Gestão de pessoas e processos</h3><p>CDL Saúde, CDL Talentos, CDL Estágio, CDL Aprendiz, cursos, treinamento in company e consultoria em gestão e inovação.</p></li><li class="bn rv"><span class="bn-n">/04</span><h3>Relacionamento e capacitação</h3><p>Café Empreendedor, Feira de Oportunidades, HSM Online, Giro de Mercado, Jornada Empresarial e CDL Convenções e Eventos.</p></li><li class="bn rv"><span class="bn-n">/05</span><h3>Saúde financeira</h3><p>CDL Gestão e NF-e, cobrança e recuperação de crédito, parceria BDMG e parceria Sicredi.</p></li><li class="bn rv"><span class="bn-n">/06</span><h3>Marketing e vendas</h3><p>CDL Mídia, rede de descontos, pesquisas de mercado e campanhas promocionais.</p></li><li class="bn rv"><span class="bn-n">/07</span><h3>Representatividade</h3><p>Assessoria de imprensa e político-institucional, comunicados sobre deliberações municipais e CDL Direto.</p></li></ol>
+  </div>
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section class="sec" id="agenda">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Agenda</span><h2>Aprenda, conecte-se <span class="serif">e cresça.</span></h2></div>
+      <div class="ag-links rv d1"><a href="/loja/cursos" class="btn btn-light">Todos os cursos <span class="arr">→</span></a><a href="/loja/eventos" class="btn btn-light">Todos os eventos <span class="arr">→</span></a></div>
+    </div>
+    <div class="ag-grid">
+      @{ int nCard = 0; }
+      @foreach (var a in agenda)
+      {
+        nCard++;
+        <a class="ac rv d@(((nCard - 1) % 3) + 1)" href="@a.Url" target="@(a.Url.StartsWith("/") ? "_self" : "_blank")" rel="noopener">
+          <div class="ac-cover @(a.Imagem == "" ? "noimg" : "")">@if (a.Imagem != "") {<img class="cv" src="@a.Imagem" alt="@a.Titulo" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()">}<div class="ac-chips"><span class="chip">@a.Tipo</span></div></div>
+          <div class="ac-body">
+            @if (a.Dia != "") {<div class="ac-date"><b>@a.Dia</b><span>@a.Mes</span></div>}
+            <div class="ac-info"><h3>@a.Titulo</h3>@if (a.Detalhe != "") {<p>@a.Detalhe</p>}</div>
+          </div>
+          <div class="ac-foot"><span>Inscreva-se</span><i>→</i></div>
+        </a>
+      }
+      @if (agenda.Count == 0)
+      {
+        <p class="nores">Nenhum curso ou evento com inscrições abertas no momento. Confira a <a href="https://loja.cdludi.org.br">Loja CDL</a>.</p>
+      }
+    </div>
+    <a class="ag-ead rv" href="/loja/cursos-ead">
+      <span class="chip">EAD</span><b>Cursos online da CDL</b><span class="ead-t">Estude no seu ritmo, com certificado</span><i>→</i>
+    </a>
+  </div>
+</section>
+
+<!-- ============ PUBLICAÇÕES (com imagens, como no site original) ============ -->
+<section class="sec" id="publicacoes" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Publicações</span><h2>Dados e notícias <span class="serif">do varejo.</span></h2></div>
+      <a href="/publicacoes" class="btn btn-light rv d1">Todas as publicações <span class="arr">→</span></a>
+    </div>
+    <nav class="ncats rv" aria-label="Categorias de publicações"><a href="/publicacoes/noticias">Notícias</a><a href="/publicacoes/cdldireto">Opinião</a><a href="/publicacoes/comunicados">Comunicados</a><a href="/publicacoes/cdlacao">CDL em Ação</a><a href="/publicacoes/pesquisas">Pesquisa</a><a href="/publicacoes/cae">CAE</a></nav>
+    <div class="nwrap">
+      @if (noticias.Count > 0)
+      {
+        var f = noticias[0];
+        <a class="nf rv" href="@UrlPost(f)"><div class="nimg">@if (ImgPost(f) != "") {<img src="@ImgPost(f)" alt="" loading="lazy" decoding="async" onerror="this.remove()">}<span class="nph" aria-hidden="true"><img src="/novo/img/logo-branco.png" alt=""></span></div><div class="nf-b"><div class="nmeta"><span class="ncat">@(f.PostCategoria?.Nome)</span><time>@DataCurta(f.Data)</time></div><h3>@Html.Raw(f.Titulo)</h3><span class="nmore">Ler matéria <i>→</i></span></div></a>
+        <div class="nlist rv d1">
+        @foreach (var n in noticias.Skip(1).Take(4))
+        {
+          <a class="ni" href="@UrlPost(n)"><div class="nimg">@if (ImgPost(n) != "") {<img src="@ImgPost(n)" alt="" loading="lazy" decoding="async" onerror="this.remove()">}<span class="nph" aria-hidden="true"><img src="/novo/img/logo-branco.png" alt=""></span></div><div><div class="nmeta"><span class="ncat">@(n.PostCategoria?.Nome)</span><time>@DataCurta(n.Data)</time></div><b>@Html.Raw(n.Titulo)</b></div></a>
+        }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPOIMENTOS ============ -->
+<section class="sec" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Associados</span><h2>Quem faz parte, <span class="serif">recomenda.</span></h2></div>
+    </div>
+    <div class="tst">
+      <div class="tq rv">
+        <div>
+          <div class="mark">“</div>
+          <blockquote>Na CDL Uberlândia, encontramos parceria, representatividade e as ferramentas certas para evoluir com solidez.</blockquote>
+        </div>
+        <div class="who"><span class="clogo dark"><img src="/novo/img/dep-maxxima.png" data-remote="/img/maxxima.png" alt="MAXXIMA" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb av" style="display:none">ML</span></span><div><b>Maxsuel Luiz Pereira</b><span>MAXXIMA — Medicina e Segurança do Trabalho</span></div></div>
+      </div>
+      <div class="tgrid">
+        <div class="tc hl rv d1"><div class="co"><span class="clogo"><img src="/novo/img/dep-transpontual.png" data-remote="/wp-content/uploads/2022/06/trans.png" alt="Transpontual" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Transpontual</span></span></div><div class="big">23 anos</div><div class="topic">como associado, com bom atendimento ao longo de todo o período</div><div class="p"><div class="av">EC</div><div><b>Edson Campelo</b>Gerente · Transpontual</div></div></div>
+        <div class="tc rv d2"><div class="co"><span class="clogo round"><img src="/novo/img/dep-zapatto.png" data-remote="/wp-content/uploads/2022/06/transferir-1.png" alt="Zapatto Magazine" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Zapatto Magazine</span></span></div><div class="topic">Parceria com o comércio de bairro: assessoria financeira, jurídica e cursos</div><div class="p"><div class="av">MS</div><div><b>Martinho de Sousa</b>Proprietário</div></div></div>
+        <div class="tc rv d3"><div class="co"><span class="clogo"><img src="/novo/img/dep-adm.png" data-remote="/wp-content/uploads/2022/06/transferir-2.png" alt="ADM do Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">ADM do Brasil</span></span></div><div class="topic">Avaliação positiva do treinamento e da estrutura oferecidos</div><div class="p"><div class="av">J</div><div><b>Jeferson</b>ADM do Brasil</div></div></div>
+        <div class="tc rv d4"><div class="co"><span class="clogo"><img src="/novo/img/dep-clinort.jpg" data-remote="/wp-content/uploads/2022/06/logo.jpg" alt="Clinort" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Clinort</span></span></div><div class="topic">Campanha que incentiva pacientes a manter os pagamentos em dia</div><div class="p"><div class="av">VA</div><div><b>Viviane Batista Alvarenga</b>Clinort</div></div></div>
+      </div>
+    </div>
+
+    <div class="awards rv">
+      <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Juntos pelos ODS</b><span>Movimento ODS Minas · 2024</span></div></div>
+      <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Moção de Aplausos</b><span>Câmara Municipal · 2022</span></div></div>
+      <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Selo Empresa Amiga</b><span>Observatório Social de Uberlândia</span></div></div>
+      <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Comenda Alexandrino Garcia</b><span>Câmara Municipal de Uberlândia</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (ref.: Origin) ============ -->
+<section class="sec faq" id="duvidas">
+  <div class="wrap faq-grid">
+    <div class="rv"><span class="eyebrow">Dúvidas frequentes</span><h2><span class="serif">Respostas</span> para as dúvidas mais comuns.</h2>
+      <p class="lead" style="margin-top:18px">Não encontrou o que procura? Fale com a equipe de atendimento.</p>
+      <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener" class="btn btn-light" style="margin-top:24px">Falar com o atendimento <span class="arr">→</span></a></div>
+    <div class="fq-list rv d1"><details class="fq" open><summary>Quem pode se associar à CDL Uberlândia?<i></i></summary><div class="fa"><p>Empresários, lojistas, prestadores de serviços e profissionais autônomos de Uberlândia. A adesão é feita pela página <a href="/associe-se">Associe-se</a>.</p></div></details><details class="fq"><summary>Como acesso o SPC?<i></i></summary><div class="fa"><p>Associados entram pelo <a href="https://sistema.spc.org.br/spc/controleacesso/autenticacao/entry.action" target="_blank" rel="noopener">sistema SPC</a>, também disponível no botão “Acesse o SPC” do menu.</p></div></details><details class="fq"><summary>Como emito a segunda via do boleto?<i></i></summary><div class="fa"><p>A segunda via é emitida pela <a href="https://www.itau.com.br/servicos/boletos" target="_blank" rel="noopener">página de boletos do Itaú</a>.</p></div></details><details class="fq"><summary>Qual é o horário de atendimento e onde fica a sede?<i></i></summary><div class="fa"><p>De segunda a sexta, das 8h às 18h (sábado e domingo fechado). A sede fica na <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Belo+Horizonte%2C+1290+-+Osvaldo+Rezende%2C+Uberl%C3%A2ndia+-+MG%2C+38400-454" target="_blank" rel="noopener">Av. Belo Horizonte, 1290, bairro Osvaldo Rezende, Uberlândia - MG, CEP 38400-454</a>. Atendimento pelo telefone (34) 3239-3400 ou pelo <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener">WhatsApp (34) 3239-3457</a>.</p></div></details><details class="fq"><summary>A CDL aluga espaços para eventos?<i></i></summary><div class="fa"><p>Sim. O CDL Convenções e Eventos inclui auditório, foyer e as salas Espaço Mais, Executiva, Cecília Meireles e Machado de Assis. <a href="/cdl-convencoes-e-eventos">Ver espaços</a>.</p></div></details><details class="fq"><summary>Como a CDL trata meus dados pessoais?<i></i></summary><div class="fa"><p>As políticas de privacidade e de cookies estão na <a href="/lgpd">Área LGPD</a>. A encarregada de dados (DPO) é Lécia Queiroz.</p></div></details></div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section>
+  <div class="wrap">
+    <div class="cta rv" id="cta">
+      <div class="grid-bg"></div>
+      <h2>Sua empresa mais forte <span class="serif">a partir de hoje.</span></h2>
+      <p>Associe-se à CDL Uberlândia e tenha acesso ao SPC, cursos, convênios de saúde, descontos e representação junto ao poder público.</p>
+      <div class="ctas">
+        <a href="/associe-se" class="btn btn-white">Quero me associar <span class="arr">→</span></a>
+        <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener" class="btn btn-ghost-w">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+

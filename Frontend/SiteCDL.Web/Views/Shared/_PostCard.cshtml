@@ -1,0 +1,40 @@
+@model SiteCDL.Models.Post
+@*
+    Card de publicação (lista, home e "veja também").
+    ViewData["destaque"] = true  -> card grande (o mais recente da lista)
+*@
+@{
+    var p = Model;
+    string img = !string.IsNullOrEmpty(p.Imagem) ? "/wp-content/uploads/" + p.Imagem
+               : !string.IsNullOrEmpty(p.ImagemBase64) ? p.ImagemBase64 : "";
+    string rota = p.PostCategoria?.Route ?? "";
+    string url = "/publicacoes/" + rota + "/" + p.Slug;
+    string categoria = p.PostCategoria?.Nome ?? "";
+    var data = p.Data ?? DateTime.MinValue;
+    string dataCurta = p.Data != null ? data.ToString("d MMM yyyy").Replace(".", "") : "";
+    string subtitulo = p.Subtitulo ?? "";
+    if (subtitulo.Length > 160) { subtitulo = subtitulo.Substring(0, 160) + "…"; }
+    bool destaque = ViewData["destaque"] is bool b && b;
+    string busca = System.Text.RegularExpressions.Regex.Replace((p.Titulo ?? "") + " " + subtitulo, "<[^>]+>", "");
+}
+@if (destaque)
+{
+    <a class="lfeat rv" href="@url" data-busca="@busca">
+        <span class="lfeat-img @(img == "" ? "noimg" : "")">@if (img != "") {<img src="@img" alt="" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()">}</span>
+        <span class="lfeat-txt">
+            <span class="post-meta"><b>@categoria</b>@if (p.Data != null) {<time datetime="@data.ToString("yyyy-MM-dd")">@dataCurta</time>}<em>Mais recente</em></span>
+            <h2>@Html.Raw(p.Titulo)</h2>
+            @if (subtitulo != "") {<p>@Html.Raw(subtitulo)</p>}
+            <span class="lfeat-go">Ler publicação <i>→</i></span>
+        </span>
+    </a>
+}
+else
+{
+    <a class="post rv" href="@url" data-busca="@busca">
+        <span class="post-img @(img == "" ? "noimg" : "")">@if (img != "") {<img src="@img" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()">}</span>
+        <span class="post-meta"><b>@categoria</b>@if (p.Data != null) {<time datetime="@data.ToString("yyyy-MM-dd")">@dataCurta</time>}</span>
+        <h3>@Html.Raw(p.Titulo)</h3>
+        @if (subtitulo != "") {<p>@Html.Raw(subtitulo)</p>}
+    </a>
+}

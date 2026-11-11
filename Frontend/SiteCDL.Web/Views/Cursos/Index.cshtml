@@ -1,281 +1,44 @@
-﻿@using System;
-@using System.Globalization;
-
+@*
+    Cursos (/cursos) — visual novo. Textos fixos do protótipo (iguais aos do site oficial); turmas: ViewBag.Cursos (API da Loja, CursosController).
+    Gerado por C:\Projetos\prototipo-ferramentas\gerar_cursos.py
+*@
 @{
-    string cabecalho = "Agenda de Cursos CDL";
-
-    ViewData["Title"] = cabecalho;
-    ViewBag.Route = "cursos";
+    ViewData["Title"] = "Cursos";
 }
- 
 
-@await Html.PartialAsync("CabecalhoPage", "Cursos")
-
-<section>
-    <div class="container">
-        <div class="row" style="display: flex;">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: flex; flex-direction: column; justify-content: center;">
-                <h1 class="text-blue">Conquiste novas habilidades e impulsione sua carreira conosco!</h1>
-                <p>Fique por dentro das novas oportunidades de aprendizado, <strong>confira nossa agenda de cursos.</strong></p>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <img src="https://cdludi.org.br/wp-content/uploads/elementor/thumbs/imagem-site-qkq4p7pmmqqiuuev4kv4ey19rf8tkoweagz5df9hgg.png" />
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-                <p>A CDL Uberlândia oferece uma ampla gama de cursos projetados para capacitar profissionais e empresários em diversas áreas de atuação. Ao participar desses cursos, os participantes podem esperar benefícios significativos que os ajudarão a avançar em suas carreiras e aprimorar suas habilidades.</p>
-            </div>
-            <div class="row mt-5">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 text-center">
-                    <img src="~/img/icon-1.svg" width="100" height="100" />
-                    <h5>Cursos Híbridos</h5>
-                    <p>Aulas ministradas presencialmente ou Online, proporcionando interação direta com instrutores e colegas de curso.</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 text-center">
-                    <img src="~/img/icon-2.svg" width="100" height="100" />
-                    <h5>Certificado</h5>
-                    <p>Receba um certificado reconhecido ao finalizar o curso.</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 text-center">
-                    <img src="~/img/icon-3.svg" width="100" height="100" />
-                    <h5>Conteúdo Exclusivo</h5>
-                    <p>Acesso a conteúdos desenvolvidos por especialistas em cada área.</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 text-center">
-                    <img src="~/img/icon-4.svg" width="100" height="100" />
-                    <h5>Coffee Break</h5>
-                    <p>Momentos de networking e relaxamento durante os intervalos, acompanhados de um coffee break de qualidade.</p>
-                    <p><i>Exclusivo para cursos presenciais.</i></p>
-                </div>
-            </div>
-        </div>
+<!-- ============ Cursos — modelo Produto/serviço ============
+     REGRA: textos literais de https://cdludi.org.br/cursos — ATENÇÃO: "mais de 45 anos de atuação" (a história oficial diz 1977). Turmas, instrutores e valores são os publicados em 09/11/2026. Depoimentos literais, só com o primeiro nome, como no original. O título "Quem fez, recomenda." é de design. -->
+<section class="phero" id="hero">
+  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="glow"></div>
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><span>Para você</span></li><li aria-current="page">Cursos</li></ol></nav>
+    <div class="phero-grid">
+      <div class="phero-txt rv"><span class="badge"><b>Agenda</b> Cursos</span><h1>Conquiste novas habilidades e <span class="serif">impulsione sua carreira conosco!</span></h1><p class="lead">Fique por dentro das novas oportunidades de aprendizado, confira nossa agenda de cursos.</p><p class="lead" style="margin-top:12px">A CDL Uberlândia oferece uma ampla gama de cursos projetados para capacitar profissionais e empresários em diversas áreas de atuação. Ao participar desses cursos, os participantes podem esperar benefícios significativos que os ajudarão a avançar em suas carreiras e aprimorar suas habilidades.</p><div class="ctas"><a href="#turmas" class="btn btn-primary">Ver próximas turmas <span class="arr">→</span></a><a href="/loja/cursos" class="btn btn-light" target=_blank rel=noopener>Todos os cursos na Loja CDL <span class="arr">→</span></a></div></div>
+      <figure class="ph-foto rv d1"><img src="/novo/img/eventos/cursos-1.webp" alt="Cursos" decoding="async"></figure>
     </div>
+  </div>
 </section>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                @if (ViewBag.Cursos.Count > 0)
-                {
-                    <div class="row text-center" style="background-color: #00A79D">
-                        <h1 class="text-white mt-1">Confira nossas próximas turmas!</h1>
-                    </div>
-
-                    @foreach (var curso in ViewBag.Cursos)
-                    {
-                        <div class="row mt-4">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-4">
-
-                                @if (!string.IsNullOrWhiteSpace(curso.imagem.ToString()))
-                                {
-                                    <img class="mb-5 img-responsive img-fotos" src="https://loja.cdludi.org.br/Anexos/servicos/@curso.codigo/@curso.imagem" />
-                                }
-
-                                <h3>@curso.titulo</h3>
-
-                                @if (!string.IsNullOrWhiteSpace(curso.dataInicioCurso.ToString()) && !string.IsNullOrWhiteSpace(curso.dataFimCurso.ToString()))
-                                {
-                                    if (curso.dataInicioCurso == curso.dataFimCurso)
-                                    {
-                                        <h5 class="mb-0 mt-3">Data:</h5>
-                                        <h3 class="verde-claro mb-0">@curso.dataInicioCurso</h3>
-                                    }
-                                    else
-                                    {
-                                        <h5 class="mb-0 mt-3">Data:</h5>
-                                        <h3 class="verde-claro mb-0">@curso.dataInicioCurso a @curso.dataFimCurso</h3>
-                                    }
-                                }
-
-                                @if (!string.IsNullOrWhiteSpace(curso.horaInicioCurso.ToString()) && !string.IsNullOrWhiteSpace(curso.horaFimCurso.ToString()))
-                                {
-                                    if (curso.horaInicioCurso == curso.horaFimCurso)
-                                    {
-                                        <h5>@(curso.horaInicioCurso + "h"), Presencial.</h5>
-                                    }
-                                    else
-                                    {
-                                        <h5>@(curso.horaInicioCurso + "h") às @(curso.horaFimCurso + "h"), Presencial.</h5>
-                                    }
-                                }
-
-                                @if (!string.IsNullOrWhiteSpace(curso.instrutor.ToString()))
-                                {
-                                    <h5 class="mb-0 mt-3">Instrutor:</h5>
-                                    <h3 class="verde-claro">@curso.instrutor</h3>
-                                }
-
-                                @if (curso.gratuito == "N")
-                                {
-                                    if (!string.IsNullOrWhiteSpace(curso.valorunitario.ToString()))
-                                    {
-                                        <h5 class="mb-0 mt-3">Investimento:</h5>
-                                        <h3 class="verde-claro">R$ @curso.valorunitario</h3>
-                                    }
-                                }
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                @Html.Raw(curso.descricao)
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                @{
-
-                                    string urlLandingPage = "";
-
-                                    if (!string.IsNullOrWhiteSpace(curso.urlLandingPage.ToString()))
-                                    {
-                                        if (!curso.urlLandingPage.ToString().StartsWith("https://", StringComparison.OrdinalIgnoreCase) && !curso.urlLandingPage.ToString().StartsWith("http://", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            urlLandingPage = "https://" + curso.urlLandingPage;
-                                        }
-                                        else
-                                        {
-                                            urlLandingPage = curso.urlLandingPage;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        urlLandingPage = "https://loja.cdludi.org.br/Compras/Produto/" + curso.slug;
-
-                                    }
-                                }
-
-                                <a class="btn btn-lg text-white" href="@urlLandingPage" style="background-color: #00A79D; border-color: #00A79D" target="_blank"><strong>Saiba mais!</strong></a>
-                            </div>
-                        </div>
-                        <hr class="mt-5 mb-5" />
-                    }
-                }
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <p class="text-center">Participar dos cursos da CDL Uberlândia não apenas oferece conhecimentos práticos e teóricos essenciais para o sucesso profissional, mas também proporciona uma experiência enriquecedora e motivadora, que <strong>contribui para o desenvolvimento pessoal e profissional de cada participante!</strong></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-                <img src="~/img/icon-5.svg" width="110" height="110" />
-                <p>A CDL Uberlândia já proporcionou <strong>capacitação a diversos profissionais</strong>, preparando-os para ingressar no mercado de trabalho.</p>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-                <img src="~/img/icon-6.svg" width="110" height="110" />
-                <p>Com mais de <strong>45 anos de atuação</strong> na região, somos uma instituição consolidada, reconhecida pela confiança e tradição.</p>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-                <img src="~/img/icon-7.svg" width="110" height="110" />
-                <p>Conte com uma instituição de renome no Brasil para <strong>impulsionar sua carreira!</strong></p>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="owl-carousel owl-theme text-center">
-                    <div class="item">
-                        <p class="depoimento">Curso maravilhoso, com pessoas maravilhosas! Técnicas e assuntos bons para melhorar o atendimento e ter mais conhecimento em vendas!</p>
-                        <p class="depoimento-pequeno mb-0"><strong>Caroline</strong></p>
-                        <p class="verde-claro pequeno mb-0">Curso Vendas com Técnicas de PNL</p>
-                    </div>
-                    <div class="item">
-                        <p class="depoimento">Superou todas as minhas expectativas, dentre elas trouxe bastante ferramentas para resolver o conflito antes de virar um confronto.</p>
-                        <p class="depoimento-pequeno mb-0"><strong>Lucilia</strong></p>
-                        <p class="verde-claro pequeno mb-0">Curso Administração de Conflitos</p>
-                    </div>
-                    <div class="item">
-                        <p class="depoimento">Aprendizado para a vida! Enriquece nosso conhecimento e nos deixa mais motivados para trabalhar!</p>
-                        <p class="depoimento-pequeno mb-0"><strong>Karine</strong></p>
-                        <p class="verde-claro pequeno mb-0">Curso Atendimento</p>
-                    </div>
-                    <div class="item">
-                        <p class="depoimento">Curso muito bem proveitoso, sanando dúvidas e com explicações claras e objetivas. Pouco tempo para muito conteúdo, com isso deixou um gostinho de quero mais.</p>
-                        <p class="depoimento-pequeno mb-0"><strong>Joel</strong></p>
-                        <p class="verde-claro pequeno mb-0">Curso Marketing 360º</p>
-                    </div>
-                    <div class="item">
-                        <p class="depoimento">Saio extremamente satisfeito com o treinamento. CONTEÚDO MARAVILHOSO e todas as dúvidas respondidas de forma brilhante.</p>
-                        <p class="depoimento-pequeno mb-0"><strong>Márcio</strong></p>
-                        <p class="verde-claro pequeno mb-0">Curso Liderança de Alta Performance</p>
-                    </div>
-                    <div class="item">
-                        <p class="depoimento">Instrutor com uma excelente didática e cativando a atenção da turma - energia excepcional.</p>
-                        <p class="depoimento-pequeno mb-0"><strong>Aline</strong></p>
-                        <p class="verde-claro pequeno mb-0">Curso Como construir uma Carreira de Alta Performance</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 text-center">
-                <h2 class="text-blue mb-0"><i>Perguntas</i></h2>
-                <h2 class="text-blue"><i>frequentes</i></h2>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                <div class="accordion" id="accordionDuvidas">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed text-blue" type="button" data-bs-toggle="collapse" data-bs-target="#item-1" aria-expanded="false" aria-controls="collapseOne">
-                                <strong><i class="fas fa-play mr-3"></i>Onde acontecem as aulas?</strong>
-                            </button>
-                        </h2>
-                        <div id="item-1" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
-                            <div class="accordion-body">
-                                <p>Os Cursos da CDL Uberlândia são realizados em nossa sede <strong>(End.: Av. Belo Horizonte, 1290 – Osvaldo Rezende)</strong></p>
-                                <p>Ou na Modalidade Online, confira onde acontecerá suas aulas na descrição do curso.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed text-blue" type="button" data-bs-toggle="collapse" data-bs-target="#item-2" aria-expanded="false" aria-controls="collapseTwo">
-                                <strong><i class="fas fa-play mr-3"></i>Qual a duração dos cursos?</strong>
-                            </button>
-                        </h2>
-                        <div id="item-2" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
-                            <div class="accordion-body">
-                                <p>Nossos cursos tem duração de 3 dias, acontecendo das 19h às 22h, totalizando uma carga horária de 9 horas.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed text-blue" type="button" data-bs-toggle="collapse" data-bs-target="#item-3" aria-expanded="false" aria-controls="collapseThree">
-                                <strong><i class="fas fa-play mr-3"></i>Como faço para me inscrever?</strong>
-                            </button>
-                        </h2>
-                        <div id="item-3" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
-                            <div class="accordion-body">
-                                <p>Para se inscrever e participar dos cursos, basta entrar em contato com nossos consultores pelo Whatsapp: (34) 3239-3413 e fornecer suas informações para inscrição.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed text-blue" type="button" data-bs-toggle="collapse" data-bs-target="#item-4" aria-expanded="false" aria-controls="collapseThree">
-                                <strong><i class="fas fa-play mr-3"></i>Associados CDL tem desconto?</strong>
-                            </button>
-                        </h2>
-                        <div id="item-4" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
-                            <div class="accordion-body">
-                                <p>Sim, empresas associadas a CDL Uberlândia possuem 10% de desconto no valor do curso.</p>
-                                <p><strong>Para resgatar seu cupom acesse: </strong><a href="https://loja.cdludi.org.br/descontos" target="_blank">loja.cdludi.org.br/descontos</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<section class="sec"><div class="wrap"><div class="feat-grid c4"><div class="ft rv"><h3>Cursos Híbridos</h3><p>Aulas ministradas presencialmente ou Online, proporcionando interação direta com instrutores e colegas de curso.</p></div><div class="ft rv d1"><h3>Certificado</h3><p>Receba um certificado reconhecido ao finalizar o curso.</p></div><div class="ft rv d2"><h3>Conteúdo Exclusivo</h3><p>Acesso a conteúdos desenvolvidos por especialistas em cada área.</p></div><div class="ft rv"><h3>Coffee Break</h3><p>Momentos de networking e relaxamento durante os intervalos, acompanhados de um coffee break de qualidade.<br><small>Exclusivo para cursos presenciais.</small></p></div></div></div></section><section class="sec steps-sec" id="turmas"><div class="wrap"><div class="sec-head"><div class="rv"><span class="eyebrow">Agenda</span><h2>Confira nossas <span class="serif">próximas turmas!</span></h2></div></div><div class="ccards">
+      @{ int k = 0; }
+      @foreach (var curso in (ViewBag.Cursos as IEnumerable<dynamic>) ?? new List<dynamic>())
+      {
+        string landing = Convert.ToString(curso.urlLandingPage) ?? "";
+        string url = landing != "" ? (landing.StartsWith("http", StringComparison.OrdinalIgnoreCase) ? landing : "https://" + landing) : "/loja/produto/" + Convert.ToString(curso.slug);
+        string ini = Convert.ToString(curso.dataInicioCurso) ?? ""; string fim = Convert.ToString(curso.dataFimCurso) ?? "";
+        string hIni = Convert.ToString(curso.horaInicioCurso) ?? ""; string hFim = Convert.ToString(curso.horaFimCurso) ?? "";
+        string data = ini == "" ? "" : (fim == "" || fim == ini ? ini : ini + " a " + fim);
+        string hora = hIni == "" ? "" : (hFim == "" || hFim == hIni ? hIni + "h" : hIni + "h às " + hFim + "h") + ", Presencial.";
+        string instrutor = Convert.ToString(curso.instrutor) ?? "";
+        string valor = Convert.ToString(curso.gratuito) == "N" && !string.IsNullOrWhiteSpace(Convert.ToString(curso.valorunitario)) ? "R$ " + Convert.ToString(curso.valorunitario) : "";
+        string imagem = Convert.ToString(curso.imagem) ?? "";
+        <a class="ccard rv d@(k++ % 2)" href="@url" target="_blank" rel="noopener">
+          <span class="cc-img">@if (imagem != "") {<img src="https://loja.cdludi.org.br/Anexos/servicos/@Convert.ToString(curso.codigo)/@imagem" alt="@Convert.ToString(curso.titulo)" loading="lazy">}</span>
+          <span class="cc-b"><h3>@Convert.ToString(curso.titulo)</h3>
+            <dl>@if (data != "") {<div><dt>Data</dt><dd>@data@if (hora != "") {<br>@hora}</dd></div>}@if (instrutor != "") {<div><dt>Instrutor</dt><dd>@instrutor</dd></div>}@if (valor != "") {<div><dt>Investimento</dt><dd><b>@valor</b></dd></div>}</dl>
+            <span class="cc-go">Saiba mais! <i>→</i></span></span>
+        </a>
+      }
+      @if (k == 0) {<p class="nores">Nenhuma turma aberta no momento. Confira a <a href="https://loja.cdludi.org.br/compras/cursos">agenda completa na Loja CDL</a>.</p>}
+    </div></section><section class="sec"><div class="wrap"><div class="prose prose-w rv"><p class="big">Participar dos cursos da CDL Uberlândia não apenas oferece conhecimentos práticos e teóricos essenciais para o sucesso profissional, mas também proporciona uma experiência enriquecedora e motivadora, que contribui para o desenvolvimento pessoal e profissional de cada participante!</p><p>A CDL Uberlândia já proporcionou capacitação a diversos profissionais, preparando-os para ingressar no mercado de trabalho. Com mais de 45 anos de atuação na região, somos uma instituição consolidada, reconhecida pela confiança e tradição. Conte com uma instituição de renome no Brasil para impulsionar sua carreira!</p></div></div></section><section class="sec steps-sec"><div class="wrap"><div class="sec-head"><div class="rv"><span class="eyebrow">Depoimentos</span><h2>Quem fez, <span class="serif">recomenda.</span></h2></div></div><div class="deps"><figure class="dep rv d0"><blockquote>“Curso maravilhoso, com pessoas maravilhosas! Técnicas e assuntos bons para melhorar o atendimento e ter mais conhecimento em vendas!”</blockquote><figcaption><b>Caroline</b><span>Curso Vendas com Técnicas de PNL</span></figcaption></figure><figure class="dep rv d1"><blockquote>“Superou todas as minhas expectativas, dentre elas trouxe bastante ferramentas para resolver o conflito antes de virar um confronto.”</blockquote><figcaption><b>Lucilia</b><span>Curso Administração de Conflitos</span></figcaption></figure><figure class="dep rv d2"><blockquote>“Aprendizado para a vida! Enriquece nosso conhecimento e nos deixa mais motivados para trabalhar!”</blockquote><figcaption><b>Karine</b><span>Curso Atendimento</span></figcaption></figure><figure class="dep rv d0"><blockquote>“Curso muito bem proveitoso, sanando dúvidas e com explicações claras e objetivas. Pouco tempo para muito conteúdo, com isso deixou um gostinho de quero mais.”</blockquote><figcaption><b>Joel</b><span>Curso Marketing 360º</span></figcaption></figure><figure class="dep rv d1"><blockquote>“Saio extremamente satisfeito com o treinamento. CONTEÚDO MARAVILHOSO e todas as dúvidas respondidas de forma brilhante.”</blockquote><figcaption><b>Márcio</b><span>Curso Liderança de Alta Performance</span></figcaption></figure></div></div></section>
+<section class="sec" id="relacionados"><div class="wrap"><div class="sec-head"><div class="rv"><span class="eyebrow">Vantagens CDL</span><h2>Eventos e <span class="serif">capacitação.</span></h2></div></div><div class="rel-grid c4t"><a class="rel rv" href="/feira-de-oportunidade"><h3>Feira de Oportunidades</h3><i>→</i></a><a class="rel rv" href="/cafe-empreendedor"><h3>Café Empreendedor</h3><i>→</i></a><a class="rel rv" href="/giro-mercado"><h3>Giro de Mercado</h3><i>→</i></a><a class="rel rv" href="/vantagens-associado"><h3>Vantagens para Associados</h3><i>→</i></a><a class="rel rv" href="/jornada-empresarial"><h3>Jornada Empresarial</h3><i>→</i></a></div></div></section>

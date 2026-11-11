@@ -1,0 +1,48 @@
+@*
+    loja — Loja CDL no visual novo (protótipo testesitecdl.netlify.app). Gerado por C:\Projetos\prototipo-ferramentas\gerar_loja.py
+    Compra, inscrição e login continuam em loja.cdludi.org.br.
+*@
+@{
+    ViewData["Title"] = "Loja CDL";
+}
+
+<section class="lhero loja-hero" id="hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li aria-current="page">Loja CDL</li></ol></nav>
+    <div class="lhead rv"><div><h1>Loja <span class="serif">CDL.</span></h1><p class="lead">Cursos, eventos e descontos em um só lugar.</p></div>
+      <a class="btn btn-light loja-login" href="https://loja.cdludi.org.br/Login" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Entrar</a></div>
+    <nav class="cats loja-abas rv d1" aria-label="Seções da Loja"><a href="/loja" aria-current=page>Início da Loja</a><a href="/loja/eventos">Eventos</a><a href="/loja/cursos">Cursos</a><a href="/loja/cursos-ead">Cursos EAD</a><a href="/loja/descontos">Descontos</a><a href="/loja/parceiros">Parceiros</a><a href="/loja/menor-preco">CDL MenorPreço</a></nav>
+  </div>
+</section>
+<section class="sec" style="padding-top:48px">
+  <div class="wrap">
+    <div class="loja-sec rv"><a class="ls" href="/loja/eventos"><h3>Eventos</h3><p>Feiras, encontros e eventos da CDL.</p><i>→</i></a><a class="ls" href="/loja/cursos"><h3>Cursos</h3><p>Cursos presenciais com certificado.</p><i>→</i></a><a class="ls" href="/loja/cursos-ead"><h3>Cursos EAD</h3><p>95 cursos online para estudar no seu ritmo.</p><i>→</i></a><a class="ls" href="/loja/descontos"><h3>Descontos</h3><p>26 ofertas exclusivas em parceiros.</p><i>→</i></a><a class="ls" href="/loja/parceiros"><h3>Parceiros</h3><p>Empresas associadas por segmento.</p><i>→</i></a><a class="ls" href="/loja/menor-preco"><h3>CDL MenorPreço</h3><p>Solicitações de orçamento em aberto.</p><i>→</i></a>
+      <a class="ls ls-ext" href="https://cdlia.com.br/" target="_blank" rel="noopener"><h3>CDL IA</h3><p>Acesse a plataforma CDL IA.</p><i>↗</i></a></div>
+  </div>
+</section>
+<section class="sec steps-sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Agenda</span><h2>Eventos e cursos <span class="serif">com inscrições abertas.</span></h2></div>
+      <div class="ag-links rv d1"><a href="/loja/eventos" class="btn btn-light">Eventos <span class="arr">→</span></a><a href="/loja/cursos" class="btn btn-light">Cursos <span class="arr">→</span></a></div></div>
+    <div class="lcards">@{ int k = 0; }@foreach (var item in (ViewBag.Agenda as List<SiteCDL.Web.Controllers.LojaItem>) ?? new List<SiteCDL.Web.Controllers.LojaItem>()){ ViewData["d"] = k++ % 3; <partial name="~/Views/Loja/_LojaCard.cshtml" model="item" view-data="ViewData" /> }</div>
+@if (k == 0) {<p class="nores">Nenhum curso ou evento com inscrições abertas no momento. Confira a <a href="https://loja.cdludi.org.br" target="_blank" rel="noopener">Loja CDL</a>.</p>}
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Cursos EAD</span><h2>Estude online, <span class="serif">no seu ritmo.</span></h2></div>
+      <a href="/loja/cursos-ead" class="btn btn-light rv d1">Ver todos os Cursos EAD <span class="arr">→</span></a></div>
+    <div class="egrid"><article class="ecard" data-cat="Administrativos" data-busca="Empreendedorismo Administrativos O objetivo deste curso é ensinar os conceitos relativos ao Empreendedorismo; identificar oportunidades de negócios e desenvolver seu potencial visionário.">
+  <a class="ec-img" href="/loja/cursos-ead/858" target="_blank" rel="noopener"><img src="https://nyc3.digitaloceanspaces.com/cgd-gestao/api/assets/imagens-cursos/empreendedorismov4.jpg" alt="Empreendedorismo" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()"></a>
+  <div class="ec-b"><span class="ec-cat">Administrativos</span><h3>Empreendedorismo</h3><p>O objetivo deste curso é ensinar os conceitos relativos ao Empreendedorismo; identificar oportunidades de negócios e desenvolver seu potencial visionário.</p>
+    <div class="ec-f"><span class="ec-h">8 hrs</span><b>R$ 29,95</b></div>
+    <div class="lc-acts"><a class="btn btn-light" href="/loja/cursos-ead/858" target="_blank" rel="noopener">Ver curso</a><a class="btn btn-primary" href="https://loja.cdludi.org.br/checkout/link?s=empreendedorismo-v4-858" target="_blank" rel="noopener">Comprar <span class="arr">→</span></a></div></div>
+</article><article class="ecard" data-cat="Excel + B.I" data-busca="Matemática Financeira Excel + B.I Neste curso o aluno aprernderá de forma prática, a utilização da matemática financeira foco total na calculadora HP 12c.">
+  <a class="ec-img" href="/loja/cursos-ead/914" target="_blank" rel="noopener"><img src="https://nyc3.digitaloceanspaces.com/cgd-gestao/api/assets/imagens-cursos/matematica-financeira-v2.jpg" alt="Matemática Financeira" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()"></a>
+  <div class="ec-b"><span class="ec-cat">Excel + B.I</span><h3>Matemática Financeira</h3><p>Neste curso o aluno aprernderá de forma prática, a utilização da matemática financeira foco total na calculadora HP 12c.</p>
+    <div class="ec-f"><span class="ec-h">12 hrs</span><b>R$ 29,95</b></div>
+    <div class="lc-acts"><a class="btn btn-light" href="/loja/cursos-ead/914" target="_blank" rel="noopener">Ver curso</a><a class="btn btn-primary" href="https://loja.cdludi.org.br/checkout/link?s=matematica-financeira-v2-914" target="_blank" rel="noopener">Comprar <span class="arr">→</span></a></div></div>
+</article></div>
+  </div>
+</section>
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="pay-note rv"><b>Pagamento seguro</b><span>A compra e o pagamento são feitos no ambiente seguro da Loja CDL. Cursos presenciais em até 4x sem juros no cartão, conforme cada curso.</span></div></div></section>

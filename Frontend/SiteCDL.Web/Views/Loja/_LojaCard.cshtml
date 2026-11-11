@@ -1,0 +1,10 @@
+@* Cartão de evento/curso da Loja (dados ao vivo da API da Loja). Visual igual ao protótipo (loja-cursos.html). *@
+@model SiteCDL.Web.Controllers.LojaItem
+@{ var d = ViewData["d"] ?? 0; }
+<article class="lcard rv d@(d)">
+  <a class="lc-img" href="@Model.UrlPagina">@if (Model.Imagem != "") {<img src="@Model.Imagem" alt="@Model.Titulo" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()">}<span class="lc-tag">@Model.Tipo</span></a>
+  <div class="lc-b"><p class="lc-data">@Model.Periodo</p><h3><a href="@Model.UrlPagina">@Model.Titulo</a></h3>
+    <dl>@if (Model.Horario != "") {<div><dt>Horário</dt><dd>@Model.Horario</dd></div>}@if (Model.CargaHoraria != "") {<div><dt>Carga horária</dt><dd>@Model.CargaHoraria hrs</dd></div>}@if (Model.Instrutor != "") {<div><dt>Instrutor(a)</dt><dd>@Model.Instrutor</dd></div>}</dl>
+    @if (Model.Gratuito) {<p class="lc-preco"><b class="free">Gratuito</b></p>} else {<p class="lc-preco"><b>R$ @Model.Valor</b></p>}
+    <div class="lc-acts"><a class="btn btn-light" href="@Model.UrlPagina">Saiba mais</a><a class="btn btn-primary" href="@Model.UrlCompra" target="_blank" rel="noopener">@Model.TextoCompra <span class="arr">→</span></a></div></div>
+</article>

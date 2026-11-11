@@ -1,17 +1,38 @@
 ﻿@model SiteCDL.Models.Paginas
-
+@*
+    Página que vem do banco (tabela Paginas, editada pelo portal).
+    O conteúdo (Model.Conteudo) é exibido sem alteração; o arquivo wwwroot/novo/site-cdl.css
+    adapta as classes do tema antigo (.row, .col-*, .btn, abas...) ao visual novo, dentro de .cms.
+*@
 @{
-    string cabecalho = Model.Titulo;
-
-    ViewData["Title"] = cabecalho;
-
-    string route = Model.Slug;
-    ViewBag.Route = route;
-
+    ViewData["Title"] = Model.Titulo;
+    ViewBag.Route = Model.Slug;
+    if (!string.IsNullOrWhiteSpace(Model.Seo) && !Model.Seo.TrimStart().StartsWith("<"))
+    {
+        ViewBag.metaDescription = Model.Seo;
+    }
 }
 
-@await Html.PartialAsync("CabecalhoPage", cabecalho)
+<section class="phero ihero pg-hero" id="hero">
+    <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="glow"></div>
+    <div class="wrap">
+        <nav class="crumb" aria-label="Você está em">
+            <ol>
+                <li><a href="/">Início</a></li>
+                <li aria-current="page">@Model.Titulo</li>
+            </ol>
+        </nav>
+        <div class="ihead rv">
+            <h1>@Model.Titulo</h1>
+        </div>
+    </div>
+</section>
 
-
-@Html.Raw(Model.Conteudo)
- 
+<section class="sec pg-sec">
+    <div class="wrap">
+        <div class="cms">
+            @Html.Raw(Model.Conteudo)
+        </div>
+    </div>
+</section>
