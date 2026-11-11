@@ -114,7 +114,9 @@ namespace SiteCDL.Web.Controllers
         public string Periodo => DataFim == "" || DataFim == DataIni ? DataIni : $"{DataIni} à {DataFim}";
         public string Horario => HoraIni == "" ? "" : (HoraFim == "" || HoraFim == HoraIni ? HoraIni : $"{HoraIni} às {HoraFim}");
         public string UrlPagina => "/loja/produto/" + Slug;
-        public string UrlCompra => Gratuito ? $"{LojaController.LojaUrl}/Compras/Produto/{Slug}?inscricao" : $"{LojaController.LojaUrl}/checkout/link?s={Slug}";
+        // Pago ou gratuito, o botão leva direto ao checkout da loja oficial. Antes o gratuito abria a
+        // página do produto na loja antiga e a pessoa tinha que clicar em "inscrever" de novo.
+        public string UrlCompra => $"{LojaController.LojaUrl}/checkout/link?s={Uri.EscapeDataString(Slug ?? "")}";
         public string TextoCompra => Gratuito ? "Inscreva-se" : "Comprar";
     }
 }
