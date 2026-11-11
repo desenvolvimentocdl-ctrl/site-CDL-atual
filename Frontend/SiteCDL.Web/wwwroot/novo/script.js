@@ -29,7 +29,9 @@
     el.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');
     el.querySelectorAll('.ring .fg').forEach(c=>c.style.strokeDashoffset=314-314*c.dataset.p/100);
     io.unobserve(el);
-  }),{threshold:.18,rootMargin:'0px 0px -40px 0px'});
+  // threshold 0: revela assim que o topo entra na tela. Com threshold fracionado (ex.: .18), um bloco
+  // mais alto que ~5x a tela (matéria longa no celular) nunca atinge a fração e ficava invisível.
+  }),{threshold:0,rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.rv,.gridlines,.sec,#tl').forEach(el=>io.observe(el));
 
 })();

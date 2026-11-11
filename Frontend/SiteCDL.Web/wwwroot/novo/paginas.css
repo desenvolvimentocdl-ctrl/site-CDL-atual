@@ -656,7 +656,7 @@ a.g{cursor:pointer;display:block}
    PÁGINAS EM LOTE — LEGISLAÇÃO E LICITAÇÕES
    ===================================================================== */
 .mgrid2{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:start}
-.art-lei{max-width:760px}
+.art-lei{max-width:none}
 .art-lei h2{scroll-margin-top:110px}
 .art-lei h2 .hn{color:var(--blue);margin-right:4px}
 .art-lei>p+p,.art-lei>blockquote+p{margin-top:16px}
@@ -833,7 +833,7 @@ blockquote.lei+blockquote.lei{margin-top:-8px}
 .man p+p,.man figure+p{margin-top:14px}
 .man-img{margin:18px 0 26px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
 @media (max-width:640px){.parc-top{flex-direction:column;align-items:flex-start}.pc-img.big{width:88px;height:88px}}
-.art-pub{max-width:760px}
+.art-pub{max-width:none} /* a coluna do grid (.mgrid2) já limita a largura; abaixo de 1100px o texto ocupa a página toda */
 .art-pub img{border-radius:14px;margin:18px 0;max-width:100%;height:auto}
 .art-pub h2,.art-pub h3,.art-pub h4{color:var(--ink);margin:32px 0 10px;letter-spacing:-.02em;line-height:1.25}
 .art-pub ul,.art-pub ol{margin:12px 0 12px 22px}
