@@ -16,9 +16,10 @@
 <link rel="stylesheet" href="~/novo/site-cdl.css" asp-append-version="true">
 @RenderSection("Head", required: false)
 <script>
-  // Só na máquina de desenvolvimento (127.0.0.1/localhost): a pasta /wp-content/uploads existe apenas no servidor,
-  // então as fotos de notícias/banners são buscadas no site oficial. Em produção este código não faz nada.
-  if (/^(127\.0\.0\.1|localhost)$/.test(location.hostname)) addEventListener('error', function (e) {
+  // Fora do site oficial (localhost, IP da rede interna, servidor de teste): a pasta /wp-content/uploads existe
+  // apenas no servidor de produção, então as fotos de notícias/banners são buscadas em cdludi.org.br.
+  // No próprio cdludi.org.br este código não faz nada.
+  if (!/(^|\.)cdludi\.org\.br$/i.test(location.hostname)) addEventListener('error', function (e) {
     var i = e.target; if (i.tagName !== 'IMG' || i.dataset.oficial) return;
     var c = i.getAttribute('src') || ''; if (c.indexOf('/wp-content/uploads/') !== 0) return;
     e.stopPropagation(); i.dataset.oficial = '1'; i.src = 'https://cdludi.org.br' + c;
