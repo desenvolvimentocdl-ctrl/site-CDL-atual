@@ -71,12 +71,9 @@
         }
         else
         {
-            var resto = Model;
-            if (pagina == 1)
-            {
-                @await Html.PartialAsync("_PostCard", Model[0], new ViewDataDictionary(ViewData) { ["destaque"] = true })
-                resto = Model.Skip(1).ToList();
-            }
+            // Toda página: 1 publicação em destaque + 15 cards (5 linhas completas de 3). A API pagina de 16 em 16.
+            @await Html.PartialAsync("_PostCard", Model[0], new ViewDataDictionary(ViewData) { ["destaque"] = true, ["maisRecente"] = pagina == 1 })
+            var resto = Model.Skip(1).ToList();
             <div class="posts">
                 @foreach (var item in resto)
                 {

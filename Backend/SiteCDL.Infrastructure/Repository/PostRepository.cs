@@ -83,12 +83,15 @@ namespace SiteCDL.Infrastructure.Repository
             return await query.ToListAsync();
         }
 
+        // Lista de publicações do site: 1 destaque + 15 cards = 5 linhas completas de 3.
+        private const int PostsPorPagina = 16;
+
         public async ValueTask<List<Post>> GetPostsByRouteAsync(string route, bool takeAll = false, int pageNumber = 1, int takeAmount = 4)
         {
 
 
             Expression<Func<Post, bool>> expression = x => x.PostCategoria.Route == route && x.Status;
-                Paginacao objPaginacao = new(_paginacaoRepository, pageNumber, 12, expression);
+                Paginacao objPaginacao = new(_paginacaoRepository, pageNumber, PostsPorPagina, expression);
                 Paginacao.RetornaDadosPaginacao pageNumberValidado = await objPaginacao.ValidaQuantidadePagina();
 
 
@@ -111,7 +114,7 @@ namespace SiteCDL.Infrastructure.Repository
 
 
             Expression<Func<Post, bool>> expression = x =>   x.Status;
-            Paginacao objPaginacao = new(_paginacaoRepository, pageNumber, 12, expression);
+            Paginacao objPaginacao = new(_paginacaoRepository, pageNumber, PostsPorPagina, expression);
             Paginacao.RetornaDadosPaginacao pageNumberValidado = await objPaginacao.ValidaQuantidadePagina();
 
 

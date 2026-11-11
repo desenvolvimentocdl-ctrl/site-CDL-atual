@@ -15,6 +15,8 @@
     string subtitulo = p.Subtitulo ?? "";
     if (subtitulo.Length > 160) { subtitulo = subtitulo.Substring(0, 160) + "…"; }
     bool destaque = ViewData["destaque"] is bool b && b;
+    // selo "Mais recente" só no destaque da 1ª página (nas demais o destaque não é o mais novo)
+    bool maisRecente = destaque && !(ViewData["maisRecente"] is bool mr && !mr);
     string busca = System.Text.RegularExpressions.Regex.Replace((p.Titulo ?? "") + " " + subtitulo, "<[^>]+>", "");
 }
 @if (destaque)
@@ -22,7 +24,7 @@
     <a class="lfeat rv" href="@url" data-busca="@busca">
         <span class="lfeat-img @(img == "" ? "noimg" : "")">@if (img != "") {<img src="@img" alt="" decoding="async" onerror="this.parentNode.classList.add('noimg');this.remove()">}</span>
         <span class="lfeat-txt">
-            <span class="post-meta"><b>@categoria</b>@if (p.Data != null) {<time datetime="@data.ToString("yyyy-MM-dd")">@dataCurta</time>}<em>Mais recente</em></span>
+            <span class="post-meta"><b>@categoria</b>@if (p.Data != null) {<time datetime="@data.ToString("yyyy-MM-dd")">@dataCurta</time>}@if (maisRecente) {<em>Mais recente</em>}</span>
             <h2>@Html.Raw(p.Titulo)</h2>
             @if (subtitulo != "") {<p>@Html.Raw(subtitulo)</p>}
             <span class="lfeat-go">Ler publicação <i>→</i></span>

@@ -29,7 +29,8 @@ builder.Services.AddHttpClient("ApiHttpClient", client =>
 {
 
     //client.BaseAddress = new Uri("https://localhost:7110/api/");
-    client.BaseAddress = new Uri("http://127.0.0.1:7110/api/");
+    // Endereco da API: padrao 127.0.0.1:7110; pode ser trocado pela configuracao "ApiBaseUrl" (appsettings, variavel de ambiente ou --ApiBaseUrl=...).
+    client.BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"] ?? "http://127.0.0.1:7110/api/");
     client.Timeout = TimeSpan.FromMinutes(10);  
 });
  
