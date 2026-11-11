@@ -528,7 +528,7 @@ nav.lgjump{display:flex}
 
 @media (max-width:1100px){.lgcards{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.lgcards{grid-template-columns:1fr}.legal{font-size:16px}.legal h2{margin-top:56px}}
-@media print{.sysbar,.contactbar,header,#hdr,footer:not(.art-foot),.toc,.wa,.ck,.lgjump,.art-foot,.glow{display:none!important}.phero{background:none;padding:0}.pdoc{display:block}.rv{opacity:1!important;transform:none!important}}
+@media print{.sysbar,.contactbar,header,#hdr,footer:not(.art-foot),.toc,.spc-float,.ck,.lgjump,.art-foot,.glow{display:none!important}.phero{background:none;padding:0}.pdoc{display:block}.rv{opacity:1!important;transform:none!important}}
 
 /* ---------- Revisão de conteúdo oficial ---------- */
 .tlv li div p{font-size:15.5px;color:#33425c;margin:0}

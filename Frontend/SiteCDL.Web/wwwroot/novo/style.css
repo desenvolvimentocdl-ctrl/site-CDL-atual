@@ -413,9 +413,13 @@ body>footer ul a:hover{color:#fff}
 .fbot{display:flex;justify-content:space-between;font-size:12.5px;color:#8a98b1;padding:18px 8px 0;flex-wrap:wrap;gap:12px}
 .proto-note{color:#b0bccf}
 
-.wa{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.35);z-index:70;transition:transform .25s var(--ease)}
-.wa:hover{transform:scale(1.06)}
-.wa svg{width:26px;height:26px;color:#fff}
+/* Botão flutuante "Acesse SPC" — mesma regra do site antigo (layout.css #chat):
+   fixo no canto inferior direito e só aparece em telas acima de 1901px, onde fica
+   na margem lateral e não tampa notícias nem outro conteúdo. */
+.spc-float{position:fixed;right:10px;bottom:20px;width:221px;z-index:70;line-height:0;transition:transform .25s var(--ease)}
+.spc-float:hover{transform:translateY(-2px)}
+.spc-float img{display:block;width:100%;height:auto}
+@media (max-width:1901px){.spc-float{display:none}}
 
 /* ---------- responsive ---------- */
 @media (max-width:1180px){nav{display:none}.burger{display:grid}}
