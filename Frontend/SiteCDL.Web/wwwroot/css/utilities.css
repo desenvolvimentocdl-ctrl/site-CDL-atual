@@ -1,0 +1,105 @@
+﻿.div-img {
+    padding: 4px;
+}
+
+.img-fotos {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.text-blue {
+    color: #083d87;
+}
+
+.text-yellow {
+    color: #f9d539;
+}
+
+.w-max-200px {
+    max-width: 200px;
+}
+
+.w-max-250px {
+    max-width: 250px;
+}
+
+.display-flex-row-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.display-flex-col-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.reta {
+    border-top: .1rem solid black;
+    margin: 2rem 0;
+}
+
+.reta-gray {
+    border-top: .1rem solid gray;
+    margin: 2rem 0;
+}
+
+.title-p {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* CODIGO ESTADO MOBILE */
+
+@media only screen and (max-width: 989px) {
+    .navbar-default .container {
+        position: relative !important;
+    }
+
+    .black-mobile {
+        background: black !important
+    }
+
+    .bg-img {
+        margin-top: 0px !important;
+    }
+
+    .mt-responsive-carousel {
+        margin-top: 0rem !important;
+    }
+}
+
+
+@media only screen and (max-width: 766px) {
+    .title-p {
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
+
+@media only screen and (max-width: 637px) {
+    .title-p {
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+
+
+.destaque-pill {
+    display: inline-block;
+    padding-left: 9px;
+    padding-right: 9px;
+    background-color: #e9f3ff; /* azul clarinho, pode trocar */
+    color: #004085; /* azul escuro */
+    border-radius: 999px; /* pill style */
+
+    transition: background-color 0.3s ease;
+}
+
+    .destaque-pill:hover {
+        background-color: #d0e7ff; /* um pouco mais escuro no hover */
+        color: #002752;
+    }

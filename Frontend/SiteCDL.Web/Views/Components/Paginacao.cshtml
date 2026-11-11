@@ -1,0 +1,42 @@
+﻿@model dynamic
+
+@if (Model.QuantidadeLinhas != 0 && Model.QuantidadeLinhas > Model.PageSize)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(Model.Previous == 0 ? "disabled" : "")">
+                        <a class="page-link" href="@Model.UrlPaginacao?pagina=@Model.Previous" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @if (Model.TotalPages > 6 && Model.PageNumber > 3)
+                    {
+                        <li class="page-item"><a class="page-link" href="@Model.UrlPaginacao?pagina=1">1</a></li>
+                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                    }
+                    @for (int numberPage = Model.PageNumber - 2; numberPage <= Model.PageNumber + 2 && numberPage <= Model.TotalPages; numberPage++)
+                    {
+                        if (numberPage > 0)
+                        {
+                            <li class="page-item @(Model.PageNumber == numberPage ? "active" : "")"><a class="page-link" href="@Model.UrlPaginacao?pagina=@numberPage">@numberPage</a></li>
+                        }
+                    }
+                    @if (Model.TotalPages > 6 && Model.PageNumber < Model.TotalPages - 2)
+                    {
+                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                        <li class="page-item"><a class="page-link" href="@Model.UrlPaginacao?pagina=@Model.TotalPages">@Model.TotalPages</a></li>
+                    }
+                    <li class="page-item @(Model.PageNumber == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="@Model.UrlPaginacao?pagina=@Model.Next" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,31 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Página não encontrada";
+}
+
+<section style="margin-top:0px;background-color:#083d87 ;min-height:12px !important;padding-bottom:15px;padding-top:0px;line-height:12px" class="page-title-section bg-img cover-background theme-overlay" data-overlay-dark="0">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <ul style="text-align:left">
+                    <li><a asp-controller="Home" asp-action="Index">Página Inicial</a></li>
+                    <li><a href="#">Página não encontrada</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 text-center">
+                <img src="/custom/img/content/error.png" class="mb-4" alt="...">
+                <h2 class="mb-3">Erro 404: Página não encontrada</h2>
+                <p class="mb-4">A página que você procura pode ter sido removida, teve seu nome alterado ou está temporariamente indisponível.</p>
+                <a asp-controller="Home" asp-action="Index" class="butn">Ir Para Página Inicial</a>
+            </div>
+        </div>
+    </div>
+</section>

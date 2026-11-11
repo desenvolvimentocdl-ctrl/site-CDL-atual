@@ -1,0 +1,157 @@
+﻿@model DetalhePostGeral
+
+@{
+    string categoria = Model.Noticia.PostCategoria.Controller.Replace("Controller", "");
+    string cabecalho = Model.Noticia.PostCategoria.Nome;
+
+    ViewData["Title"] = cabecalho;
+
+    string urlCompleta = "";
+    var httpContext = ViewContext.HttpContext;
+    if (httpContext != null)
+    {
+        if (httpContext.Request != null)
+        {
+            urlCompleta = httpContext.Request.Scheme + "://" + httpContext.Request.Host + httpContext.Request.Path + httpContext.Request.QueryString;
+        }
+    }
+
+    string shareTwitter = (urlCompleta != "" ? (Model.Noticia != null ? (Model.Noticia.Titulo != "" ? "https://twitter.com/intent/tweet?url=" + urlCompleta + "&text=" + Model.Noticia.Titulo : "#") : "#") : "#");
+    string shareFacebook = (urlCompleta != "" ? "https://www.facebook.com/sharer/sharer.php?u=" + urlCompleta : "#");
+    string shareLinkedin = (urlCompleta != "" ? "https://www.linkedin.com/sharing/share-offsite/?url=" + urlCompleta : "#");
+    string shareWhatsapp = (urlCompleta != "" ? (Model.Noticia != null ? (Model.Noticia.Titulo != "" ? "whatsapp://send?text=" + Model.Noticia.Titulo + ": " + urlCompleta : "#") : "#") : "#");
+                          
+    string route = Model.Noticia.PostCategoria.Route;
+    ViewBag.Route = route;
+
+}
+
+
+
+
+@await Html.PartialAsync("Cabecalho", cabecalho)
+
+
+<section class="blogs">
+    <div class="container  container-post pt-0">
+            <div class="mb-2 mt-0">
+            <a    onclick="history.back()" class="butn small mt-0"> <i class="fa fa-arrow-circle-left"></i> Voltar</a>
+            </div>
+        <div class="row">
+        
+            <div class="col-lg-9 mb-2-9 mb-lg-0">
+           
+                <div class="post">
+                    <h3>@Html.Raw((Model.Noticia != null ? (Model.Noticia.Titulo != "" ? Model.Noticia.Titulo : "") : ""))</h3>
+
+                    <div class="portfolio-gallery">
+                        <div class="col-lg-12 post-img bg-img  theme-overlay" style="cursor: pointer; border-radius: 15px 15px 0px 0px;   margin-top: 0px !important;background-color: #0A3484; background-image: url('@(Model.Noticia != null && Model.Noticia.Imagem != null ? (Model.Noticia.Imagem != "" ? "/wp-content/uploads/" + Model.Noticia.Imagem : "/img/no-image.jpg") : Model.Noticia != null && Model.Noticia.ImagemBase64 != null && Model.Noticia.ImagemBase64 != "" ? Model.Noticia.ImagemBase64 : "/img/no-image.jpg")')" data-src="@(Model.Noticia != null && Model.Noticia.Imagem != null ? (Model.Noticia.Imagem != "" ? "/wp-content/uploads/" + Model.Noticia.Imagem : Model.Noticia != null && Model.Noticia.ImagemBase64 != null && Model.Noticia.ImagemBase64 != "" ? Model.Noticia.ImagemBase64 : "/img/no-image.jpg") : "/img/no-image.jpg")"></div>
+                    </div>
+                    <div class="">
+                        <div class="blog-list-simple-text post-meta">
+                            <div class="post-title">
+                                <p>
+                                    <em>@Html.Raw((Model.Noticia != null ? (Model.Noticia.Subtitulo != "" ? Model.Noticia.Subtitulo : "") : ""))</em>
+                                </p>
+                            </div>
+                            <ul class="meta pl-0">
+                                <li>
+                                    <i class="fas fa-calendar-alt mr-2" aria-hidden="true"></i>@(Model.Noticia != null ? (Model.Noticia.Data != null ? Convert.ToDateTime(Model.Noticia.Data).Day : "") : "") de @(Model.Noticia != null ? (Model.Noticia.Data != null ? Convert.ToDateTime(Model.Noticia.Data).ToString("MMMM") : "") : "") de @(Model.Noticia != null ? (Model.Noticia.Data != null ? Convert.ToDateTime(Model.Noticia.Data).Year : "") : "")
+                                </li>
+                                <li>
+                                    <i class="fa fa-tags mr-2 ml-4" aria-hidden="true"></i>@Html.Raw((Model.Noticia != null ? (Model.Noticia.PostCategoria.Nome != "" ? Model.Noticia.PostCategoria.Nome : "") : ""))
+                                </li>
+                            </ul>
+                        </div>
+
+                        @if (Model.Noticia.LinkFotos != null)
+                        {
+                            <div class="">
+                                <a href="@Model.Noticia.LinkFotos" target="_blank" class="btn btn-success"><i class="fa fa-camera"></i> Confira as fotos</a>
+                            </div>
+                        }
+                        <div class="post-cont">
+                            <p>@Html.Raw((Model.Noticia != null ? (Model.Noticia.Conteudo != "" ? System.Net.WebUtility.HtmlDecode(Model.Noticia.Conteudo) : "") : ""))</p>
+                        </div>
+                    
+                        <div class="share-post">
+                            <span>Compartilhe</span>
+                            <ul>
+                                <li>
+                                    <a href="@shareWhatsapp" data-action="share/whatsapp/share">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@shareFacebook" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@shareTwitter" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@shareLinkedin" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-12">
+                <div class="side-bar">
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h6>Veja Também</h6>
+                        </div>
+                    </div>
+                    @if (Model.PostsRelacionados != null && Model.PostsRelacionados.Count() > 0)
+                    {
+                        foreach (var relacionadas in Model.PostsRelacionados)
+                        {
+                            <div class="widget">
+                                <div class="mb-1-9 mb-lg-0">
+                                    <a href="/publicacoes/@route/@relacionadas.Slug">
+                                    <article class="card border-0 card-style4">
+                                        <div class="card-img bg-img cover-background theme-overlay" style="min-height: 160px; margin-top: 0px !important; background-color: #0A3484; background-image: url('@(relacionadas.Imagem != null && relacionadas.Imagem != "" ? "/wp-content/uploads/" + relacionadas.Imagem : relacionadas.ImagemBase64 != null && relacionadas.ImagemBase64 != "" ? relacionadas.ImagemBase64 : "/img/no-image.jpg")')"></div>
+                                        <div class="card-body py-1-0 px-2-0">
+                                            <span class="d-block mb-3">
+                                                <i class="fas fa-calendar-alt text-primary mr-2" aria-hidden="true"></i>@Convert.ToDateTime(relacionadas.Data).Day de @Convert.ToDateTime(relacionadas.Data).ToString("MMMM") de @Convert.ToDateTime(relacionadas.Data).Year
+                                            </span>
+                                            <h6 class="mb-4">
+                                                @if (relacionadas.PostCategoria != null && relacionadas.PostCategoria.Controller != null && relacionadas.Slug != null)
+                                                {
+                                                         @Html.Raw(relacionadas.Titulo)
+                                                 }
+                                            </h6>
+                                            @if (relacionadas.PostCategoria != null && relacionadas.PostCategoria.Controller != null && relacionadas.Slug != null)
+                                            {
+                                                     <p>
+                                                        <span class="mr-2">Leia Mais</span><i class="fa fa-plus text-primary"></i>
+                                                    </p>
+                                             }
+                                        </div>
+                                        <div class="card-footer bg-white px-0 mx-2-0 d-flex py-1-6 justify-content-between">
+                                            <span class="text-primary">
+                                                <i class="fa fa-tags mr-2" aria-hidden="true"></i>@Html.Raw(relacionadas.PostCategoria.Nome)
+                                            </span>
+                                        </div>
+                                    </article>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="widget">
+                        <a href="/publicacoes/@route" class="butn small">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

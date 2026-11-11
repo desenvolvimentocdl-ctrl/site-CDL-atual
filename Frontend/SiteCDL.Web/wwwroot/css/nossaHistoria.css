@@ -1,0 +1,71 @@
+.div-row {
+    margin-bottom: 3rem;
+}
+
+.div-image-sobre-cndl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CODIGO ESTADO MOBILE */
+
+@media only screen and (max-width: 1399px) {
+    .div-image-sobre-cndl {
+        margin-top: 1rem;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .div-image-sobre-cndl{
+        margin-top:2rem;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .div-fotos-antigas {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .div-image-sobre-cndl {
+        margin-top:4.5rem;
+    }
+}
+
+@media only screen and (max-width: 766px) {
+    .div-image-sobre-cndl {
+        margin-top: 0;
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+/*/*@media only screen and (max-width: 831px) {
+}
+
+@media only screen and (max-width: 637px) {
+}
+
+@media only screen and (max-width: 774px) {
+}
+
+@media only screen and (max-width: 630px) {
+}
+
+@media only screen and (max-width: 530px) {
+}
+
+@media only screen and (max-width: 430px) {
+}
+
+@media only screen and (max-width: 330px) {
+}
+
+@media only screen and (max-width: 230px) {
+}
+
+@media only screen and (max-width: 130px) {
+}*/

@@ -1,0 +1,46 @@
+.swiper-slide {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* CODIGO ESTADO MOBILE */
+
+/*     @@media only screen and (max-width: 1399px) {
+                                            }
+
+                                            @@media only screen and (max-width: 1199px) {
+                                            }
+
+                                            @@media only screen and (max-width: 991px) {
+                                                .swiper {
+                                                    width: 100%;
+                                                    height: 220px;
+                                                    cursor: grab;
+                                                    cursor: -moz-grab;
+                                                    cursor: -webkit-grab;
+                                                }
+                                            }
+
+                                            @@media only screen and (max-width: 766px) {
+                                                .swiper {
+                                                    width: 100%;
+                                                    height: 240px;
+                                                    cursor: grab;
+                                                    cursor: -moz-grab;
+                                                    cursor: -webkit-grab;
+                                                }
+                                            }
+
+                                            @@media only screen and (max-width: 637px) {
+                                                .swiper {
+                                                    width: 100%;
+                                                    height: 310px;
+                                                    cursor: grab;
+                                                    cursor: -moz-grab;
+                                                    cursor: -webkit-grab;
+                                                }
+                                            } */

@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Chitrakoot Web" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="CDL Uberlândia" />
+
+
+    @if(ViewBag.metaDescription == null)
+    {
+        <meta name="description" content="CDL Uberlândia - Soluções empresariais, plano de saúde, certificação digital, consultas ao SPC e apoio ao comércio local.">
+    }
+    else
+    {
+        <meta name="description" content="@ViewBag.metaDescription" />
+    }
+
+    <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-0B169NQE28&amp;cx=c&amp;_slc=1"></script>
+    <title>@ViewData["Title"] - CDL Uberlândia</title>
+
+    <link rel="shortcut icon" href="~/img/icone.png" />
+    <link rel="apple-touch-icon" href="~/img/icone.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="~/img/icone.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="~/img/icone.png" />
+
+    <link rel="stylesheet" href="~/custom/css/plugins.css">
+
+    <!-- revolution slider css -->
+    <link rel="stylesheet" href="~/custom/css/rev_slider/settings.css">
+    <link rel="stylesheet" href="~/custom/css/rev_slider/layers.css">
+    <link rel="stylesheet" href="~/custom/css/rev_slider/navigation.css">
+
+    <!-- LightBox2 css -->
+    <link rel="stylesheet" href="~/custom/css/lightbox2/lightbox.min.css">
+
+    <!-- Animate -->
+    @* <link rel="stylesheet" href="~/css/animate.min.css"> *@
+
+    <!-- search css -->
+    <link rel="stylesheet" href="~/custom/search/search.css">
+
+    <!-- switcher css -->
+    <link href="~/custom/css/switcher.css" rel="stylesheet">
+
+    <!-- quform css -->@* 
+    <link rel="stylesheet" href="~/custom/quform/css/base.css">
+ *@
+    <!-- theme core css -->
+    <link href="~/custom/css/styles.css" rel="stylesheet">
+
+    <!-- Loader -->
+    <link rel="stylesheet" href="~/loader/LoaderSweetAlert2.css" />
+
+    @* css personalizado *@
+    <link rel="stylesheet" href="~/css/layout.css">
+    <link rel="stylesheet" href="~/css/utilities.css">
+
+
+    @* #pixel CDL *@
+    @* Meta Pixel Code  *@
+    <script>
+        !function(f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function() {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1561720421433069');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=1561720421433069&ev=PageView&noscript=1" />
+    </noscript>
+    
+    
+    
+    @* #pixel workshop *@
+    @* Meta Pixel Code  *@
+    <script>
+        !function(f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function() {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '699923773004567');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=699923773004567&ev=PageView&noscript=1" />
+    </noscript>
+  
+
+</head>
+<body>
+    <!-- PAGE LOADING
+    ================================================== -->
+    <div id="preloader"></div>
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper">
+
+        <!-- HEADER
+        ================================================== -->
+        <header class="header-style3 header-custom">
+
+            <div id="top-bar" class="  d-none d-md-block menu-one">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-12 col-xs-12">
+                            <div>
+                                <ul class="top-social-icon mb-0">
+                                    <li> 
+                                        <i><strong style="color:navy;font-size:14px;vertical-align:central">Sistema CNDL</strong></i>
+                                    </li>
+                                    <li>
+                                        <img id="logo" src="~/img/cndl.png" style="width:80px;vertical-align:central" alt="logo">
+                                    </li>
+                                    <li>
+                                        <img id="logo" src="~/img/fcdl.png" style="width:80px;vertical-align:central" alt="logo">
+                                    </li>
+                                    <li>
+                                        <img id="logo" src="~/img/logofundacaoCDL.png" style="width:66px;margin-top:-6px" alt="logo"></i>
+                                    </li>
+                                    <li>
+                                        <a href="https://sistema.spc.org.br/spc/controleacesso/autenticacao/entry.action" target="_blank"><img id="logo" src="~/img/spc.png" style="width:65px;vertical-align:central" alt="logo"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="top-bar" class="bg-secondary d-none d-md-block menu-two">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-xs-12">
+                            <div class="top-bar-info">
+                                <ul class="list-unstyled">
+                                    <li class="border-right text-white"><i class="fas fa-mobile-alt text-white"></i>(34) 3239-3400</li>
+                                    <li class="border-right text-white"><i class="fas fa-envelope text-white"></i>comercial@cdludi.org.br</li>
+                                    <li class="text-white"><i class="far fa-clock text-white"></i>8:00h - 18:00h</li>
+                                
+                                </ul>
+                            </div>
+                        </div>
+                  
+                        <div class="col-md-3 col-xs-12">
+                            <div>
+                                <ul class="top-social-icon mb-0">
+                                    <li>
+                                        <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/channel/UCGmeCRd9vgxMd8x6CJjsQHA/" target="_blank"><i class="fab fa-youtube"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.facebook.com/cdluberlandia" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/CDLUBERLANDIA" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/cdluberlandia/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/company/cdl-uberl-ndia/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-default">
+
+                <!-- start top search -->
+                <div class="top-search bg-black">
+                    <div class="container">
+                        <div class="row black-mobile">
+                            <form class="search-form" asp-controller="Search" asp-action="Index" method="GET" accept-charset="utf-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon cursor-pointer">
+                                        <button class="search-form_submit fas fa-search text-white" type="submit"></button>
+                                    </span>
+                                    <input type="text" class="search-form_input form-control" name="id" id="search" autocomplete="off" placeholder="Digite e pressione Enter...">
+                                    <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end top search -->
+
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="menu_area alt-font">
+                                <nav class="navbar navbar-expand-lg navbar-light p-0 d-flex justify-content-between">
+
+                                    <div class="navbar-header navbar-header-custom">
+                                        <!-- start logo -->
+                                        <a asp-controller="Home" asp-action="Index" class="navbar-brand xs-width-145px d-inline-block mr-lg-0"><img id="logo" src="~/img/logo.png" alt="logo"></a>
+                                        <!-- end logo -->
+                                    </div>
+
+                                    <div class="navbar-toggler" style="background-color:navy;border-radius:5px;margin-top:5px"></div>
+
+                                    <!-- menu area -->
+                                    <ul class="navbar-nav ml-auto" id="nav" style="overflow: auto; overflow-x: hidden; max-height: 300px">
+                                        <li class="bg-menu">
+                                            <a class="cursor-pointer " style="white-space:nowrap"><span class="destaque-pill">Loja CDL</span></a>
+                                            <ul>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br">Página Inicial</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/compras/eventos">Eventos</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/compras/cursos">Cursos</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/compras/cursosead">Cursos EAD</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://cdlia.com.br/" target="_blank">CDL IA</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/CDLMenorPreco">CDL MenorPreço</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/descontos">Descontos</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/parceiros">Parceiros</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="bg-menu">
+                                            <a class="cursor-pointer">Institucional</a>
+                                            <ul>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="quem-somos">Quem somos</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="nossa-historia">Nossa História</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="corporativo">Corporativo</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="reconhecimento">Reconhecimento</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="fundacao-cdl">Fundação CDL</a></li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="politica-de-sustentabilidade">Política de Sustentabilidade &nbsp;&nbsp;&nbsp;</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="responsabilidade-ambiental">Responsabilidade Ambiental</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="responsabilidade-social">Responsabilidade Social</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="governanca">Governança</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="representatividade">Representatividade</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="diretoria">Diretoria CDL</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="diretoria-fundacao">Diretoria Fundação</a></li>   
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="lgpd">Area LGPD</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="bg-menu">
+                                            <a class="cursor-pointer" asp-controller="publicacoes" asp-action="">Publicações</a>
+                                            <ul>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-controller="publicacoes" asp-action="noticias" asp-action="">Notícias</a> </li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-controller="publicacoes" asp-action="cdldireto" asp-action="">Opinião</a> </li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-controller="publicacoes" asp-action="comunicados" asp-action="">Comunicados</a> </li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-controller="publicacoes" asp-action="cdlacao" asp-action="">CDL em Ação</a></li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-controller="publicacoes" asp-action="pesquisas" asp-action="">Pesquisa</a> </li>
+                                                <li class="bg-menu"><a class="cursor-pointer text-dark" asp-controller="publicacoes" asp-action="cae" asp-action="">CAE</a> </li>
+                                            </ul>
+                                        </li>
+                                        <li class="bg-menu">
+                                            <a class="cursor-pointer" style="white-space:nowrap">Para Você</a>
+                                            <ul>
+                                                <li><a asp-route="Pages" asp-route-slug="associe-se">Associe-se</a></li>
+                                                <li class="bg-menu"><a href="https://jobs.quickin.io/cdludi/jobs?page=1" target="_blank">Candidate-se às nossas vagas</a></li>
+                                                <li class="bg-menu"><a asp-route="Pages" asp-route-slug="certificado-digital">Certificado Digital</a></li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Convênio e Benefícios</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-saude">CDL Saúde</a> </li>
+                                                     </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-pointer" asp-route="Pages" asp-route-slug="cdl-convencoes-e-eventos">CDL Convenções e Eventos</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-auditorio">CDL Auditório</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-foyer">CDL Foyer</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-espaco-mais">Sala Espaço Mais</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-executiva">Sala Executiva</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-cecilia-meireles">Sala Cecília Meireles</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-machado-de-assis">Sala Machado de Assis</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu"><a href="https://loja.cdludi.org.br/descontos" target="_blank">Rede de Descontos</a></li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">SPC</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-brasil">SPC Brasil</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-consulta">SPC Consulta CPF</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-negociacao">SPC Negociação de Débito</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-avisa">SPC Avisa</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-dados">SPC Dados</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-consulta-registro">SPC Consultas e Registro</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="alerta-documento">Alerta de Documentos</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cadastro-positivo">Cadastro Positivo</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Treinamentos</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark"  href="https://loja.cdludi.org.br/compras/cursos">Cursos - Programação Mensal</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="treinamento">Treinamento in company</a> </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="cursor-pointer" style="white-space:nowrap">Para Empresa</a>
+                                            <ul>
+                                                <li><a asp-route="Pages" asp-route-slug="associe-se">Associe-se</a></li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Captação de Novos Clientes</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-midia">CDL Mídia</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-dados">SPC Dados</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-pointer" asp-route="Pages" asp-route-slug="cdl-convencoes-e-eventos">CDL Convenções e Eventos</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-auditorio">CDL Auditório</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-foyer">CDL Foyer</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-espaco-mais">Sala Espaço Mais</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-executiva">Sala Executiva</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-cecilia-meireles">Sala Cecília Meireles</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="sala-machado-de-assis">Sala Machado de Assis</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Consultoria</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a href="https://cdluberlandia.cdludi.org.br/mentoria-de-negocios" target="_blank">Consultoria em Gestão e Inovação</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Convênio e Benefícios</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-saude">CDL Saúde</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://cdluberlandia.cdludi.org.br/rita-saude">Rita Saúde</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Educação Corporativa</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/compras/cursos">Cursos - Programação Mensal</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="treinamento">Treinamento in company</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Gestão de Pessoas</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-talentos">Recrutamento e Seleção</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-estagio">CDL Estágio</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-aprendiz">CDL Aprendiz</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Gestão Operacional e Financeira&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                                    <ul style="min-width:300px !important;z-index:3">
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-gestao">CDL Gestão e NF-e</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-consulta-registro">SPC Consultas e Registro</a> </li>
+                                                        @* <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cdl-cobranca">CDL Cobrança e Recuperação de Crédito</a> </li> *@
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="bdmg">Parceria BDMG</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu"><a asp-route="Pages" asp-route-slug="legislacao">Legislação</a></li>
+                                                <li class="bg-menu"><a asp-route="Pages" asp-route-slug="licitacoes">Licitações</a></li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Responsabilidade Social</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://empresacidada.cdludi.org.br/" target="_blank">Selo Empresa Cidadã</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu"><a href="https://www.itau.com.br/servicos/boletos" target="_blank">Segunda Via de Boleto</a></li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Segurança dos Negócios</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="certificado-digital">Certificado Digital</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="spc-avisa">SPC Avisa</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="cadastro-positivo">Cadastro Positivo</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="bg-menu">
+                                                    <a class="cursor-default">Vantagens para Sua Empresa</a>
+                                                    <ul>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="combo-solucoes">Combo de Soluções</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="vantagens-associado">Vantagens para Associados</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" asp-route="Pages" asp-route-slug="jornada-empresarial">Jornada Empresarial</a> </li>
+                                                        <li class="bg-menu"><a class="cursor-pointer text-dark" href="https://loja.cdludi.org.br/descontos" target="_blank">Rede de Descontos</a> </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li style="margin-right:0px;white-space:nowrap">
+                                            <a href="https://sistema.spc.org.br/spc/controleacesso/autenticacao/entry.action" target="_blank">Acesse o SPC</a>
+                                        </li>
+                                    </ul>
+                   
+                                    <div class="attr-nav">
+                                        <ul>
+                                            <li class="search  ml-sm-3 ml-lg-0" onclick="setFocusInput()"><a style="cursor:pointer"><i class="fas fa-search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 
+
+        </header>
+
+        @RenderBody()
+
+
+        <!-- FOOTER
+        ================================================== -->
+
+        <footer style="margin:0 1rem">
+            <section class="" id="chat" style="margin-bottom:0px">
+
+                <a href="https://sistema.spc.org.br/spc/controleacesso/autenticacao/entry.action" target="_blank">
+                    <img width="450" height="157" src="https://cdludi.org.br/wp-content/uploads/2022/03/acesse-spc.png" alt="" loading="lazy" srcset="https://cdludi.org.br/wp-content/uploads/2022/03/acesse-spc.png 450w, https://cdludi.org.br/wp-content/uploads/2022/03/acesse-spc-300x105.png 300w" sizes="(max-width: 450px) 100vw, 450px">
+                </a>
+
+            </section>
+             <div class="footer-style2 bg-light">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12 mb-1-9 mb-lg-0">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <br />
+                                    <h3 class="h6 mb-4">Soluções CDL</h3>
+                                    <ul class="footer-list mb-0">
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51480"><a asp-route="Pages" asp-route-slug="cdl-midia">CDL Mídia</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48759"><a asp-route="Pages" asp-route-slug="cdl-gestao">CDL Gestão/NFe</a></li>
+                                        @* <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48761"><a asp-route="Pages" asp-route-slug="cdl-cobranca">CDL Cobrança e Recuperação de Crédito</a></li> *@
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48762"><a asp-route="Pages" asp-route-slug="cdl-talentos">CDL Talentos</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48763"><a asp-route="Pages" asp-route-slug="cdl-aprendiz">CDL Aprendiz</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48768"><a asp-route="Pages" asp-route-slug="cdl-saude">CDL Saúde</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48764"><a asp-route="Pages" asp-route-slug="treinamento">Treinamentos In Company</a></li>
+                                        <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48765"><a href="https://cdluberlandia.cdludi.org.br/mentoria-de-negocios" target="_blank">Consultorias em Gestão e Inovação</a></li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51313"><a asp-route="Pages" asp-route-slug="cdl-convencoes-e-eventos">Locação de Salas para Reunião e Treinamento</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="pl-lg-3">
+                                        <br />
+                                        <h3 class="h6 mb-4">SPC Brasil</h3>
+                                        <ul class="footer-list mb-0">
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51314"><a asp-route="Pages" asp-route-slug="spc-brasil">SPC Brasil</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48769"><a asp-route="Pages" asp-route-slug="spc-avisa">SPC Avisa</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48771"><a asp-route="Pages" asp-route-slug="spc-consulta-registro">SPC Consultas e Registro</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48773"><a asp-route="Pages" asp-route-slug="spc-dados">SPC Dados</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48775"><a asp-route="Pages" asp-route-slug="spc-negociacao">Negocie seus Débitos</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48776"><a asp-route="Pages" asp-route-slug="spc-consulta">SPC Consulta CPF</a></li>
+                                        </ul>
+                                        <br />
+                                        <h3 class="h6 mb-4">Vantagens CDL</h3>
+                                        <ul class="footer-list mb-0">
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48778"><a asp-route="Pages" asp-route-slug="cafe-empreendedor">Café Empreendedor</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48779"><a asp-route="Pages" asp-route-slug="feira-de-oportunidade">Feira de Oportunidades</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48780"><a asp-route="Pages" asp-route-slug="giro-mercado">Giro de Mercado</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48781"><a asp-route="Pages" asp-route-slug="hsm-programacao-online">HSM Programação Online</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-voce menu-item-48782"><a href="https://loja.cdludi.org.br/descontos" target="_blank">Rede de Descontos</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-para-empresa menu-item-48783"><a asp-route="Pages" asp-route-slug="jornada-empresarial">Jornada Empresarial</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48784"><a asp-route="Pages" asp-route-slug="orientacoes-juridicas">Orientações Jurídicas</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="pl-lg-3">
+                                        <br />
+                                        <h3 class="h6 mb-4">Links Úteis</h3>
+                                        <ul class="footer-list mb-0">
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49947"><a href="https://empresacidada.cdludi.org.br/b2c/loja/Pagina.do?action=init&idLoja=1984" target="_blank">Selo Empresa Cidadã</a></li>
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49982"><a asp-controller="publicacoes" asp-action="comunicados" asp-action="">Comunicados</a></li>
+                                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51315"><a asp-controller="publicacoes" asp-action="noticias" asp-action="">Notícias</a></li>
+                                        </ul>
+                                        <br />
+                                        <h3 class="h6 mb-4">Fundação CDL</h3>
+                                        <ul class="footer-list mb-0">
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48788"><a asp-route="Pages" asp-route-slug="cdl-aprendiz">CDL Aprendiz</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-cdl-solucoes menu-item-48789"><a asp-route="Pages" asp-route-slug="cdl-talentos">CDL Talentos</a></li>
+                                             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51316"><a href="https://jobs.quickin.io/cdludi/jobs?page=1" target="_blank">Vagas de Emprego e Estágio</a></li>
+                                        </ul>
+                                        <br />
+                                        <h3 class="h6 mb-4">Parceiros</h3>
+                                        <img src="https://cdludi.org.br/wp-content/uploads/2022/03/logos.png" class="attachment-large size-large wp-image-48670" alt="" loading="lazy" srcset="https://cdludi.org.br/wp-content/uploads/2022/03/logos.png 590w, https://cdludi.org.br/wp-content/uploads/2022/03/logos-300x70.png 300w" sizes="(max-width: 590px) 100vw, 590px">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="pl-lg-3 ">
+                                        <br />
+                                        <h3 class="h6 mb-0">Newsletter</h3>
+                                        <br />
+                                        <form id="formNewsletter" action="https://cdludi.org.br" method="post">
+                                            <div class="input-group">
+                                                <input type="email" class="form-control" placeholder="Digite seu e-mail..." name="email" id="emailNewsletter" required>
+                                                <button class="butn pt-0 pb-0 pl-3 pr-3" style="text-transform: none" type="submit">
+                                                    Enviar
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <br />
+                                        <h3 class="h6">Redes sociais</h3>
+                                        <a class="mr-2" href="https://api.whatsapp.com/send?phone=553432393457" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="mr-2" href="https://www.youtube.com/channel/UCGmeCRd9vgxMd8x6CJjsQHA/" target="_blank"><i class="fab fa-youtube"></i></a>
+                                        <a class="mr-2" href="https://www.facebook.com/cdluberlandia" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                        <a class="mr-2" href="https://www.instagram.com/cdluberlandia/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://www.linkedin.com/company/cdl-uberl-ndia/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        <br />
+                                        <br />
+                                        <h3 class="h6 ">Fale com a CDL</h3>
+                                        <h2 class=""><span style="font-size:18px">34</span> 3239-3400</h2>
+                                        <br />
+                                        <a href="https://secure.d4sign.com.br/gopaperless/sustentabilidade/0051c829-b77c-42da-b0a2-84042d1c0442/CAMARA-DE-DIRIGENTES-LOJISTAS-DE-UBERLANDIA.html" target="_blank">
+                                            <img width="1024" height="444" src="https://cdludi.org.br/wp-content/uploads/2022/03/selos_2022_empresa-pt-1024x444.png" class="attachment-large size-large wp-image-52640" alt="" loading="lazy"   sizes="(max-width: 1024px) 100vw, 1024px">
+                                        </a><br />
+                                        <br />
+                                        <div id="siteseal"><script async="" type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=iW7hZVUOCbv3NXUCT8N3oE3E9KRQqDjnDVWwRkFQejBwCwrDW3wuIbOGpzdY"></script> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bg-white py-1-9">
+                <div class="container">
+                    <div class="text-center">
+                        <p class="font-weight-600 mb-0">&copy; CDL Uberlândia 2025 </p>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- all js include start -->
+    <!-- jQuery -->
+    <script src="~/custom/js/core.min.js"></script>
+
+    <!-- Bootstrap Bundle -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- serch -->
+    @* <script src="~/custom/search/search.js"></script> *@
+
+    <!-- Sweet Alert 2 -->
+    <script src="~/SweetAlert2/sweetalert2-11.js"></script>
+    <!-- Loader -->
+    <script src="~/loader/LoaderSweetAlert2.js"></script>
+    <!-- Messages -->
+    <script src="~/messages/MessagesSweetAlert2.js"></script>
+
+    <!-- revolution slider js files start -->
+    <script src="~/custom/js/rev_slider/jquery.themepunch.tools.min.js"></script>
+    <script src="~/custom/js/rev_slider/jquery.themepunch.revolution.min.js"></script>
+@*  <script src="~/custom/js/rev_slider/extensions/revolution.extension.actions.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.migration.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="~/custom/js/rev_slider/extensions/revolution.extension.video.min.js"></script>
+ *@
+    <!-- lightBox2 js -->
+    @* <script src="~/custom/js/lightbox2/lightbox.min.js"></script> *@
+
+    <!-- Typed -->
+    <script src="~/custom/js/typed/typed.js"></script>
+
+    <!-- custom scripts -->
+    <script src="~/custom/js/main.js"></script>
+
+@*     <!-- quform plugins js -->
+    <script src="~/custom/quform/js/plugins.js"></script>
+
+    <!-- quform scripts js -->
+    <script src="~/custom/quform/js/scripts.js"></script>
+
+ *@
+    <!-- js personalizado -->
+    <script src="~/js/site.js"></script>
+
+    <script type="text/javascript">
+
+        document.getElementById("formNewsletter").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            document.getElementById("emailNewsletter").value = "";
+            showMessage('success', 'E-mail cadastrado com sucesso!');
+        });
+        
+    </script>
+
+
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/1473814c-5ec1-4daf-84ba-e141cabce4c9-loader.js"></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLX3YPFBJF"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZLX3YPFBJF');
+
+        function setFocusInput() {
+            document.querySelector('#search').focus();
+        }
+    </script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "t1itjl12d8");
+    </script>
+
+    <script>
+        if (window.history.replaceState) {
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState(null, '', cleanUrl);
+        }
+    </script>
+ 
+    </body>
+</html>

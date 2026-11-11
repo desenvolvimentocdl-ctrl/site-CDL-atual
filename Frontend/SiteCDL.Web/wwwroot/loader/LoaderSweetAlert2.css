@@ -1,0 +1,24 @@
+﻿@charset "UTF-8";
+
+.margin-container {
+    margin: 0 !important
+}
+
+.image-margin {
+    margin: .8em auto .1em !important
+}
+
+.popup-padding {
+    padding: 0 0 .8em !important;
+    height: max-content !important
+}
+
+.btn-confirm {
+    margin-left: 10px !important;
+    margin-right: 10px !important
+}
+
+.padding-message {
+    padding: 9px 25px 10px 25px !important;
+    min-width: 115px !important
+}

@@ -1,0 +1,84 @@
+﻿@model List<SiteCDL.Models.Search>
+
+@{
+    string cabecalho = "Buscar";
+
+    ViewData["Title"] = cabecalho;
+    ViewBag.Route = cabecalho;
+
+}
+
+@await Html.PartialAsync("CabecalhoPage", cabecalho)
+
+<section>
+    <div class="container">
+        @if (Model != null && Model.Count > 0)
+        {
+            <div class="row mb-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-md-6 mb-1-9 mb-lg-4">
+                        <article class="card border-0 card-style4">
+                            <div class="card-img bg-img cover-background theme-overlay" style="min-height: 160px; margin-top: 0px !important; background-color: #0A3484; background-image: url('@(item.Imagem != null && item.Imagem != "" ? "/wp-content/uploads/" + item.Imagem : item.ImagemBase64 != null && item.ImagemBase64 != "" ? item.ImagemBase64 : "/img/no-image.jpg")')"></div>
+                            <div class="card-body py-2-0 px-2-0">
+                                @if (item.Data != null)
+                                {
+                                    <span class="d-block mb-3">
+                                        <i class="fas fa-calendar-alt text-primary mr-1" aria-hidden="true"></i> @Convert.ToDateTime(item.Data).Day de @Convert.ToDateTime(item.Data).ToString("MMMM") de @Convert.ToDateTime(item.Data).Year
+                                    </span>
+                                }
+
+                                @if (item.PostCategoria != null  )
+                                {
+                                    <h3 class="h5 mb-0">
+                                        <a href="/publicacoes/@item.PostCategoria.Route/@item.Slug">@Html.Raw(item.Titulo)</a>
+                                    </h3>
+                                }
+                                else if (item.Controller != null)
+                                {
+                                    <h3 class="h5 mb-0">
+                                        <a href="/@item.Slug">@Html.Raw(item.Titulo)</a>
+                                    </h3>
+                                }
+
+                                <p class="card-text mt-4 mb-4">@Html.Raw((item.Subtitulo != null ? (item.Subtitulo.Length > 150 ? item.Subtitulo.Substring(0, 150) + "..." : item.Subtitulo) : ""))</p>
+                                @if (item.PostCategoria != null  )
+                                {
+                                    <a href="/publicacoes/@item.PostCategoria.Route/@item.Slug">
+                                        <p>
+                                            <span class="mr-2">Leia Mais</span><i class="fa fa-plus text-primary"></i>
+                                        </p>
+                                    </a>
+                                }
+                                else if (item.Controller != null)
+                                {
+                                    <a href="/@item.Slug" >
+                                        <p>
+                                            <span class="mr-2">Leia Mais</span><i class="fa fa-plus text-primary"></i>
+                                        </p>
+                                    </a>
+                                }
+                            </div>
+                            @if (item.PostCategoria != null && item.PostCategoria.Nome != null)
+                            {
+                                <div class="card-footer bg-white px-0 mx-2-0 d-flex py-1-6 justify-content-between">
+                                    <span class="text-primary">
+                                        <i class="fa fa-tags mr-1" aria-hidden="true"></i> @item.PostCategoria.Nome
+                                    </span>
+                                </div>
+                            }
+                        </article>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="d-flex align-items-center justify-content-center">
+                <div>
+                    <h3>Nenhum resultado encontrado</h3>
+                </div>
+            </div>
+        }
+    </div>
+</section>

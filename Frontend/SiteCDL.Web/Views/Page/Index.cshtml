@@ -1,0 +1,17 @@
+﻿@model SiteCDL.Models.Paginas
+
+@{
+    string cabecalho = Model.Titulo;
+
+    ViewData["Title"] = cabecalho;
+
+    string route = Model.Slug;
+    ViewBag.Route = route;
+
+}
+
+@await Html.PartialAsync("CabecalhoPage", cabecalho)
+
+
+@Html.Raw(Model.Conteudo)
+ 
