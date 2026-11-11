@@ -85,10 +85,18 @@ el.style.display='none';var f=el.nextElementSibling;if(f&&f.classList.contains('
         })(window, document, "clarity", "script", "t1itjl12d8");
     </script>
 <script>
-        if (window.history.replaceState) {
-            const cleanUrl = window.location.origin + window.location.pathname;
-            window.history.replaceState(null, '', cleanUrl);
-        }
+        // Limpa só parâmetros de rastreamento (utm_*, fbclid…) da barra de endereço.
+        // Mantém os parâmetros do site (?pagina=, ?id= da busca) para o F5 e o compartilhamento funcionarem.
+        (function () {
+            if (!window.history.replaceState || !window.URLSearchParams) return;
+            var url = new URL(window.location.href);
+            var rastreio = /^(utm_.+|fbclid|gclid|gbraid|wbraid|msclkid|mc_cid|mc_eid|_ga|_gl|igshid|rd_.+)$/i;
+            var mudou = false;
+            Array.from(url.searchParams.keys()).forEach(function (k) {
+                if (rastreio.test(k)) { url.searchParams.delete(k); mudou = true; }
+            });
+            if (mudou) window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+        })();
     </script>
 <script>
   window.dataLayer = window.dataLayer || [];

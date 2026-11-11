@@ -11,7 +11,7 @@
     ViewData["Title"] = cabecalho;
 
     var req = ViewContext.HttpContext.Request;
-    string urlPaginacao = req.Scheme + "://" + req.Host + req.Path;
+    string urlPaginacao = req.PathBase + req.Path;
 
     object paginacao = primeiro == null ? null : new
     {
