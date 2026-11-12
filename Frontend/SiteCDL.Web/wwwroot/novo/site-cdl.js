@@ -31,3 +31,12 @@ document.querySelectorAll('.cms [data-toggle="tab"], .cms [data-bs-toggle="tab"]
     link.innerHTML = '<b>Buscar “' + v.replace(/[&<>"]/g, '') + '” em todo o site</b><span>Notícias, comunicados e páginas</span>';
   });
 })();
+
+// Home: botão Ocultar/Mostrar do Termômetro do Varejo (a escolha fica salva neste navegador)
+(()=>{
+  const b=document.querySelector('[data-thermo-tg]');if(!b)return;
+  const box=b.closest('.thermo'),txt=b.querySelector('span'),K='cdl-thermo-oculto';
+  const set=min=>{box.classList.toggle('min',min);b.setAttribute('aria-expanded',String(!min));txt.textContent=min?'Mostrar':'Ocultar'};
+  try{if(localStorage.getItem(K)==='1')set(true)}catch(e){}
+  b.addEventListener('click',()=>{const min=!box.classList.contains('min');set(min);try{min?localStorage.setItem(K,'1'):localStorage.removeItem(K)}catch(e){}});
+})();

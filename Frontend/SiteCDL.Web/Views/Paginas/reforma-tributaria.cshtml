@@ -1,0 +1,239 @@
+@*
+    reforma-tributaria — guia da Reforma Tributária do Consumo para o comércio (menu Para empresa).
+    Conteúdo informativo, escrito a partir da legislação e dos portais oficiais listados na seção "Legislação e links oficiais".
+    ATUALIZAÇÃO: as datas mudam com frequência. Ao revisar, troque a data em "atualizadoEm" e a seção "Novidades recentes".
+*@
+@{
+    ViewData["Title"] = "Reforma Tributária: o que muda para o comércio";
+    ViewBag.metaDescription = "Guia da CDL Uberlândia sobre a Reforma Tributária do Consumo: IBS, CBS e Imposto Seletivo, novidades de novembro de 2026, cronograma até 2033, o que o comércio deve fazer agora e links oficiais.";
+    var atualizadoEm = new DateTime(2026, 11, 12);
+}
+
+<section class="phero rt-hero" id="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em">
+      <ol>
+        <li><a href="/">Início</a></li>
+        <li><span>Para empresa</span></li>
+        <li aria-current="page">Reforma Tributária</li>
+      </ol>
+    </nav>
+    <div class="lghead rv">
+      <span class="badge"><b>Atualizado em @atualizadoEm.ToString("dd/MM/yyyy")</b> Reforma Tributária do Consumo</span>
+      <h1>Reforma Tributária: <span class="serif">o que muda para o seu comércio.</span></h1>
+      <p class="lead">Um guia direto para lojistas, prestadores de serviço e empresários de Uberlândia: o que já está valendo, o que vem em 2027 e o que fazer agora para não ser pego de surpresa.</p>
+    </div>
+    <div class="rt-kpis rv d1">
+      <div class="rt-kpi"><span class="k">Em 2026 · ano de teste</span><b>0,9% <small>CBS</small> + 0,1% <small>IBS</small></b><p>Destacados na nota fiscal, sem recolhimento para quem cumprir as obrigações acessórias.</p></div>
+      <div class="rt-kpi"><span class="k">Em 2027</span><b>CBS para valer</b><p>A CBS passa a ser cobrada e o PIS e a Cofins deixam de existir.</p></div>
+      <div class="rt-kpi"><span class="k">Em 2033</span><b>Fim do ICMS e do ISS</b><p>Conclusão da transição: o IBS substitui totalmente os dois impostos.</p></div>
+    </div>
+    <nav class="lgjump rv d2" aria-label="Partes da página">
+      <a href="#boletim">Boletim do dia</a><a href="#novidades">Novidades</a><a href="#entenda">Entenda a reforma</a><a href="#cronograma">Cronograma</a><a href="#o-que-fazer">O que fazer agora</a><a href="#simples">Simples Nacional</a><a href="#links-oficiais">Links oficiais</a>
+    </nav>
+  </div>
+</section>
+
+<section class="sec pdoc-sec">
+  <div class="wrap pdoc">
+    <aside class="toc" aria-label="Sumário">
+      <span class="toc-t">Nesta página</span>
+      <a href="#boletim">Boletim diário</a>
+      <a href="#novidades">Novidades recentes</a>
+      <a href="#entenda">Entenda a reforma</a>
+      <a href="#cronograma">Cronograma 2026–2033</a>
+      <a href="#o-que-fazer">O que fazer agora</a>
+      <a href="#simples">Simples Nacional</a>
+      <a href="#split-payment">Split payment</a>
+      <a href="#links-oficiais">Legislação e links oficiais</a>
+    </aside>
+
+    <article class="legal rt">
+
+      <!-- ===== BOLETIM DIÁRIO (wwwroot/novo/dados/boletim-reforma.json) ===== -->
+      <h2 id="boletim">Boletim diário</h2>
+      <p>O resumo do dia para o lojista: tributos e reforma, projetos no Congresso, decisões da Justiça e prazos. Publicado de segunda a sábado, sempre com a fonte de cada informação.</p>
+      <partial name="_BoletimReforma" />
+
+      <!-- ===== NOVIDADES ===== -->
+      <h2 id="novidades">Novidades recentes</h2>
+      <p>O que já mudou nas últimas semanas e o que está no calendário até o fim de 2026.</p>
+
+      <h3 class="rt-gt">Já aconteceu</h3>
+      <ol class="rt-news">
+        <li>
+          <time datetime="2026-10-28">28 out 2026</time>
+          <div>
+            <b>Aprovado o pacote de novas regras da NF-e e da NFC-e</b>
+            <p>O Ato Técnico Conjunto RFB/CGIBS nº 10 aprovou novas notas técnicas para adaptar a NF-e e a NFC-e à reforma, com entrada em produção em 16/11/2026 (veja abaixo).</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-28">28 out 2026</time>
+          <div>
+            <b>Liberadas as APIs de consulta da CBS (versão 2.0)</b>
+            <p>Empresas e escritórios de contabilidade já podem consultar débitos e créditos por integração, com credencial gerada pelo contribuinte ou pelo procurador.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-11">11 nov 2026</time>
+          <div>
+            <b>Receita confirma início em janeiro de 2027 e adia algumas exigências para março</b>
+            <p>Em coletiva, a Receita apresentou o Programa de Conformidade da Reforma para 2027 e adiou para 1º/3/2027 a exigência de documentos fiscais em situações específicas, entre elas as notas de venda de mercadorias por empresas do Simples Nacional. A NFS-e nacional segue no calendário.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-12">12 nov 2026</time>
+          <div>
+            <b>Governo vai propor 30 dias a mais para pagar a CBS em 2027</b>
+            <p>O Ministério da Fazenda anunciou que enviará ao Congresso um projeto de lei complementar para dividir o pagamento da CBS em duas etapas durante 2027: um valor estimado no mês seguinte às vendas e o acerto final no mês posterior (vendas de janeiro: estimativa em fevereiro, acerto em março). O motivo é que o crédito só será liberado depois que o fornecedor pagar o tributo. <strong>Ainda não está valendo</strong>: depende de aprovação do Congresso.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="rt-gt">Próximas datas</h3>
+      <ol class="rt-news rt-prox">
+        <li>
+          <time datetime="2026-11-16">16 nov 2026</time>
+          <div>
+            <b>Novas regras da NF-e e da NFC-e entram em produção</b>
+            <p>A partir desta data passam a valer:</p>
+            <ul>
+              <li><strong>NT 2026.007:</strong> quem é contribuinte de IBS e CBS, mas não de ICMS, pode emitir NF-e sem inscrição estadual;</li>
+              <li><strong>NT 2026.005:</strong> novos campos para informar IBS e CBS nas operações de empresas do Simples Nacional;</li>
+              <li><strong>NT 2026.006:</strong> prepara a NF-e para o split payment (os campos não precisam ser preenchidos em 2026);</li>
+              <li><strong>NT 2025.002 v1.53:</strong> muda a forma de referenciar a nota original em devoluções.</li>
+            </ul>
+            <p>A NT 2026.008 (novos totais da nota) só será exigida em 2027: homologação em 1º/2 e produção em 1º/3.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-30">30 nov 2026</time>
+          <div>
+            <b>Último dia para desistir da opção do Simples pelo regime regular de IBS/CBS</b>
+            <p>Empresas do Simples que optaram, até 30 de setembro, por recolher IBS e CBS fora do DAS no 1º semestre de 2027 podem desistir até o fim de novembro. Uma nova janela de escolha, para o 2º semestre, está prevista para março de 2027. Confirme as datas com seu contador.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11">Nov 2026 <small>sem dia definido</small></time>
+          <div>
+            <b>Ambiente piloto da CBS deve abrir para todas as empresas</b>
+            <p>A Receita Federal prevê ampliar o piloto da CBS, hoje restrito a cerca de 500 empresas. Nele é possível testar a apuração assistida sem nenhum efeito fiscal. A data exata e a forma de acesso ainda não foram divulgadas. O leiaute do módulo de ajustes também está previsto para novembro.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-12">Dez 2026</time>
+          <div>
+            <b>Protótipo do módulo de ajustes da CBS</b>
+            <p>A Receita prevê disponibilizar em dezembro o protótipo do módulo de ajustes da apuração assistida.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- ===== ENTENDA ===== -->
+      <h2 id="entenda">Entenda a reforma em 1 minuto</h2>
+      <p>A Reforma Tributária do Consumo, criada pela <a href="https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm" target="_blank" rel="noopener">Emenda Constitucional 132/2023</a> e regulamentada pela <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm" target="_blank" rel="noopener">Lei Complementar 214/2025</a>, troca cinco tributos sobre o consumo por um modelo de IVA dual: dois tributos com as mesmas regras, um federal e outro de estados e municípios.</p>
+      <div class="rt-swap">
+        <div class="rt-old"><span class="k">Saem</span><ul><li>PIS</li><li>Cofins</li><li>IPI <small>(reduzido a zero, exceto Zona Franca)</small></li><li>ICMS <small>(estadual)</small></li><li>ISS <small>(municipal)</small></li></ul></div>
+        <span class="rt-arrow" aria-hidden="true">→</span>
+        <div class="rt-new"><span class="k">Entram</span><ul><li><b>CBS</b> Contribuição sobre Bens e Serviços <small>(federal)</small></li><li><b>IBS</b> Imposto sobre Bens e Serviços <small>(estados e municípios)</small></li><li><b>IS</b> Imposto Seletivo <small>(sobre produtos prejudiciais à saúde e ao meio ambiente)</small></li></ul></div>
+      </div>
+      <h3>O que muda na prática</h3>
+      <ul>
+        <li><strong>Crédito amplo (não cumulatividade):</strong> o imposto pago nas compras vira crédito para abater do imposto das vendas, inclusive em despesas como energia, aluguel e serviços.</li>
+        <li><strong>Cobrança no destino:</strong> o IBS fica com o estado e o município onde está o comprador, e não mais onde está a empresa vendedora.</li>
+        <li><strong>Imposto “por fora”:</strong> o valor do IBS e da CBS aparece separado do preço na nota fiscal.</li>
+        <li><strong>Crédito só depois do pagamento:</strong> a empresa só aproveita o crédito quando o fornecedor efetivamente recolher o tributo (ou via split payment).</li>
+        <li><strong>Regimes diferenciados:</strong> alguns setores e produtos têm redução de alíquota (por exemplo, 60% de redução em saúde e educação) e a cesta básica nacional tem alíquota zero.</li>
+        <li><strong>Cashback:</strong> devolução de parte do imposto para famílias de baixa renda inscritas no CadÚnico.</li>
+      </ul>
+      <p>Em 2026 foram publicados os regulamentos que detalham as regras: o da CBS (<a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/D12955.htm" target="_blank" rel="noopener">Decreto nº 12.955/2026</a>) e o do IBS (<a href="https://www.cgibs.gov.br/regulamentos" target="_blank" rel="noopener">Resolução CGIBS nº 6/2026</a>). A <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp227.htm" target="_blank" rel="noopener">Lei Complementar 227/2026</a> criou o Comitê Gestor do IBS e alterou pontos da LC 214/2025.</p>
+
+      <!-- ===== CRONOGRAMA ===== -->
+      <h2 id="cronograma">Cronograma da transição</h2>
+      <ol class="rt-tl">
+        <li class="on"><span class="y">2026</span><div><b>Ano de teste</b><p>Notas fiscais trazem CBS de 0,9% e IBS de 0,1%. Quem cumpre as obrigações acessórias fica dispensado de recolher. Os sistemas emissores precisam estar adaptados.</p></div></li>
+        <li><span class="y">2027</span><div><b>CBS começa de verdade</b><p>CBS cobrada integralmente; PIS e Cofins extintos; IPI zerado (exceto Zona Franca de Manaus); começa o Imposto Seletivo. IBS segue simbólico em 0,1%. Split payment começa de forma facultativa.</p></div></li>
+        <li><span class="y">2028</span><div><b>Ajustes</b><p>Mesmo modelo de 2027. A Receita trabalha para tornar o split payment obrigatório.</p></div></li>
+        <li><span class="y">2029–2032</span><div><b>Troca gradual do ICMS e do ISS pelo IBS</b><p>ICMS e ISS caem para 90%, 80%, 70% e 60% das alíquotas atuais, enquanto o IBS sobe na mesma proporção.</p></div></li>
+        <li><span class="y">2033</span><div><b>Novo sistema completo</b><p>ICMS e ISS deixam de existir. Ficam CBS, IBS e Imposto Seletivo.</p></div></li>
+      </ol>
+
+      <!-- ===== O QUE FAZER ===== -->
+      <h2 id="o-que-fazer">O que o comércio deve fazer agora</h2>
+      <ol class="rt-check">
+        <li><b>Converse com o seu contador.</b> Peça uma simulação do impacto da reforma no seu caso: regime tributário, margem, preços e créditos.</li>
+        <li><b>Atualize o sistema emissor de notas.</b> Confirme com o fornecedor que o sistema já atende às notas técnicas de 16/11/2026 e faça testes de emissão, inclusive de devoluções.</li>
+        <li><b>Revise o cadastro de produtos e serviços.</b> Cada item precisa da classificação tributária do IBS e da CBS (cClassTrib), além do NCM ou do código de serviço corretos. A consulta está no <a href="https://dfe-portal.svrs.rs.gov.br/Cff/ClassificacaoTributaria" target="_blank" rel="noopener">Portal da Conformidade Fácil</a>.</li>
+        <li><b>Planeje o fluxo de caixa de 2027.</b> Com o crédito liberado só após o pagamento do fornecedor e a chegada do split payment, o dinheiro do imposto passa a ser separado na hora da venda.</li>
+        <li><b>Reveja preços e contratos longos.</b> Como o imposto passa a ser destacado “por fora”, contratos de aluguel, fornecimento e serviços que atravessam 2027 podem precisar de cláusula de reequilíbrio.</li>
+        <li><b>Escolha bem os fornecedores.</b> Comprar de quem gera crédito de IBS e CBS passa a pesar no custo final.</li>
+        <li><b>Teste antes de valer.</b> Use o ambiente piloto e o <a href="https://consumo.tributos.gov.br/" target="_blank" rel="noopener">Portal de Tributos sobre Bens e Serviços</a> para conferir a apuração.</li>
+        <li><b>Capacite a equipe.</b> Financeiro, fiscal e vendas precisam entender as novas regras. Veja os <a href="/loja/cursos" target="_blank" rel="noopener">cursos da CDL</a> e o curso gratuito do CFC com a Receita Federal (link abaixo).</li>
+      </ol>
+
+      <!-- ===== SIMPLES ===== -->
+      <h2 id="simples">Empresas do Simples Nacional</h2>
+      <p>O Simples Nacional continua existindo. A grande decisão para quem é optante é <strong>como recolher o IBS e a CBS</strong>:</p>
+      <div class="rt-opts">
+        <div><span class="k">Opção 1</span><b>Dentro do DAS</b><p>Tudo continua na guia única. É mais simples, mas o cliente empresa recebe crédito menor de IBS e CBS na compra.</p></div>
+        <div><span class="k">Opção 2</span><b>Regime regular de IBS/CBS</b><p>Os demais tributos seguem no Simples, mas IBS e CBS são pagos fora do DAS. Gera crédito integral para o cliente empresa, o que pode ser decisivo para quem vende para outras empresas (B2B).</p></div>
+      </div>
+      <p>Para o 1º semestre de 2027, a opção foi feita até 30/09/2026 e pode ser cancelada até 30/11/2026. A próxima janela, para o 2º semestre, está prevista para março de 2027. Os campos próprios para IBS e CBS nas notas do Simples (NT 2026.005) entram no leiaute em 16/11/2026, mas a Receita adiou para 1º/3/2027 a exigência dos novos documentos nas vendas de mercadorias por empresas do Simples.</p>
+
+      <!-- ===== SPLIT ===== -->
+      <h2 id="split-payment">Split payment: o imposto separado na hora do pagamento</h2>
+      <p>No split payment, quando o cliente paga (cartão, Pix, boleto), a parte do IBS e da CBS é separada automaticamente e enviada ao governo; a empresa recebe só o valor líquido. Segundo a Receita Federal, o mecanismo começa em 2027 de forma <strong>facultativa e restrita às vendas entre empresas</strong>, e a obrigatoriedade deve vir em 2028. A documentação técnica (manuais de integração, operação e habilitação) já foi publicada pela Receita e pelo Comitê Gestor do IBS.</p>
+      <p class="rt-note">Por que importa para o lojista: o dinheiro do imposto deixa de passar pelo caixa da empresa. É preciso rever capital de giro, prazos com fornecedores e a conciliação das maquininhas.</p>
+
+      <!-- ===== LINKS ===== -->
+      <h2 id="links-oficiais">Legislação e links oficiais</h2>
+      <p>Fontes primárias para consultar, conferir e se aprofundar.</p>
+
+      <h3>Legislação</h3>
+      <div class="rt-links">
+        <a href="https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm" target="_blank" rel="noopener"><b>Emenda Constitucional 132/2023</b><span>Ponto de partida da Reforma Tributária</span></a>
+        <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm" target="_blank" rel="noopener"><b>Lei Complementar 214/2025</b><span>Define as regras operacionais do novo sistema (IBS e CBS)</span></a>
+        <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp227.htm" target="_blank" rel="noopener"><b>Lei Complementar 227/2026</b><span>Cria o Comitê Gestor do IBS e altera a LC 214/2025</span></a>
+        <a href="https://www.cgibs.gov.br/regulamentos" target="_blank" rel="noopener"><b>Resolução CGIBS nº 6/2026</b><span>Regulamento do IBS</span></a>
+        <a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/D12955.htm" target="_blank" rel="noopener"><b>Decreto nº 12.955/2026</b><span>Regulamento da CBS</span></a>
+      </div>
+
+      <h3>Atos e normas técnicas</h3>
+      <div class="rt-links">
+        <a href="https://www.cgibs.gov.br/atos-conjuntos" target="_blank" rel="noopener"><b>Atos Conjuntos RFB/CGIBS</b><span>Normas editadas em conjunto pela Receita Federal e pelo Comitê Gestor</span></a>
+        <a href="https://www.confaz.fazenda.gov.br/legislacao/ajustes/2026" target="_blank" rel="noopener"><b>Ajustes Sinief</b><span>Ajustes de documentos fiscais aprovados no Confaz em 2026</span></a>
+        <a href="https://dfe-portal.svrs.rs.gov.br/Nfe/Documentos" target="_blank" rel="noopener"><b>Notas Técnicas de cada DF-e</b><span>Leiautes de NF-e, NFC-e e demais documentos fiscais eletrônicos</span></a>
+        <a href="https://dfe-portal.svrs.rs.gov.br/Cff/ClassificacaoTributaria" target="_blank" rel="noopener"><b>Portal da Conformidade Fácil</b><span>Tabela de classificação tributária do IBS e da CBS (cClassTrib)</span></a>
+      </div>
+
+      <h3>Portais, manuais e capacitação</h3>
+      <div class="rt-links">
+        <a href="https://www.cgibs.gov.br/" target="_blank" rel="noopener"><b>Comitê Gestor do IBS</b><span>Site oficial do CGIBS</span></a>
+        <a href="https://consumo.tributos.gov.br/" target="_blank" rel="noopener"><b>Portal de Tributos sobre Bens e Serviços</b><span>Plataforma federal da CBS, apuração assistida e piloto</span></a>
+        <a href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/manuais/reforma-tributaria-do-consumo" target="_blank" rel="noopener"><b>Manuais da Reforma Tributária</b><span>Portal federal da Receita Federal para a CBS</span></a>
+        <a href="https://www.cgibs.gov.br/cartilhas" target="_blank" rel="noopener"><b>Cartilhas do IBS</b><span>Materiais explicativos do Comitê Gestor</span></a>
+        <a href="https://www.cgibs.gov.br/documentos-tecnicos" target="_blank" rel="noopener"><b>Manuais de Split Payment</b><span>Documentação técnica da plataforma de split payment</span></a>
+        <a href="https://cfc.org.br/noticias/cfc-rfb-e-fenacon-apresentam-ultimo-modulo-do-curso-sobre-reforma-tributaria/" target="_blank" rel="noopener"><b>CFC – Curso Reforma Tributária do Consumo</b><span>Curso gratuito do CFC com a Receita Federal e a Fenacon, com aulas gravadas</span></a>
+        <a href="https://www.gov.br/nfse/pt-br/biblioteca/aliquotas" target="_blank" rel="noopener"><b>Tabela de Alíquotas de ISS</b><span>Alíquotas de ISS das 5.571 localidades (Portal da NFS-e)</span></a>
+      </div>
+
+      <p class="rt-disc">Conteúdo informativo preparado pela CDL Uberlândia com base na legislação e nos portais oficiais, atualizado em @atualizadoEm.ToString("dd/MM/yyyy"). Prazos e regras ainda podem mudar por novas normas. Não substitui a orientação do seu contador.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="grid-bg"></div>
+      <h2>Prepare sua empresa <span class="serif">para a reforma.</span></h2>
+      <p>Associados da CDL Uberlândia têm acesso a cursos, eventos e orientação para atravessar a transição com segurança.</p>
+      <div class="ctas">
+        <a href="/loja/cursos" target="_blank" rel="noopener" class="btn btn-white">Ver cursos <span class="arr">→</span></a>
+        <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener" class="btn btn-ghost-w">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
