@@ -127,6 +127,23 @@ body{font-size:26px;line-height:1.45}
 .slide pre.quebra{white-space:pre-wrap}
 .tl-l .tt{white-space:normal;overflow:visible;line-height:1.3}
 .slide .g3,.slide .g4,.slide .g5,.slide .g2{gap:30px}
+
+.entregas6{gap:22px!important}
+.entregas6 .bloco{padding:26px 30px;gap:10px}
+.entregas6 .bloco h3{font-size:30px}
+.entregas6 .bloco li{font-size:23px}
+.entregas6 .bloco ul{gap:6px}
+.destaque-novo{border-color:var(--blue)!important;box-shadow:0 0 0 2px var(--blue) inset}
+.destaque-novo .rotulo{color:var(--blue)}
+/* tour 360 */
+.tour-img{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px rgba(10,23,48,.12)}
+.tour-img img{display:block;width:100%}
+.tour-pts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.tour-pts .bloco{padding:26px;gap:10px}.tour-pts .bloco h3{font-size:27px}
+.tour-pts .bloco p{font-size:20px;line-height:1.45}
+.tour-extra .bloco{padding:24px 28px;gap:8px}.tour-extra .bloco p{font-size:20px;line-height:1.45}
+.tour-slide{gap:30px}
+.novo-selo{display:inline-flex;align-items:center;gap:10px;font:700 16px/1 var(--sans);color:#fff;background:var(--blue);padding:10px 16px;border-radius:999px;width:max-content}
 </style>
 </head>
 <body>
@@ -136,8 +153,8 @@ body{font-size:26px;line-height:1.45}
   <div class="grade-fundo"></div>
   <div class="eyebrow">Apresentação · cdludi.org.br</div>
   <h1>Reformulação do site da CDL Uberlândia</h1>
-  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e assistentes de IA e correções de celular e conteúdo.</p>
-  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Ajustes</span></div>
+  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e IAs, tour 360° dos espaços e correções de celular e conteúdo.</p>
+  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Tour 360°</span><span>Ajustes</span></div>
   <div class="rod"><span>CDL Uberlândia · Reformulação do site</span><span id="capa-data"></span></div>
 </section>
 
@@ -161,14 +178,38 @@ body{font-size:26px;line-height:1.45}
 <!-- 3 · entregas -->
 <section class="slide">
   <div class="cab-s"><div class="eyebrow">Visão geral</div><h2>O que foi entregue</h2></div>
-  <div class="g5">
+  <div class="g3 entregas6">
     <div class="bloco"><span class="rotulo">1 · Visual</span><h3>Novo layout</h3><ul><li>Cabeçalho, menu, busca e rodapé novos</li><li>Home, publicações, matéria e busca refeitas</li><li>46 páginas institucionais</li><li>Fontes Manrope e JetBrains Mono</li></ul></div>
     <div class="bloco"><span class="rotulo">2 · Loja</span><h3>Vitrine no site</h3><ul><li>Rota <code>/loja</code> com eventos, cursos e EAD</li><li>Dados ao vivo da API da Loja</li><li>“Inscreva-se” direto no checkout</li><li>Imagens servidas pelo próprio site</li></ul></div>
     <div class="bloco"><span class="rotulo">3 · GEO</span><h3>Pronto para IAs</h3><ul><li><code>llms.txt</code>, <code>robots.txt</code> e <code>sitemap.xml</code></li><li>Dados estruturados em todas as páginas</li><li>Open Graph e canonical</li></ul></div>
     <div class="bloco"><span class="rotulo">4 · Associado</span><h3>Painel (demo)</h3><ul><li>Login, benefícios, boletos, SPC e cursos</li><li>Dados fictícios, nada gravado</li><li>“Mais lidas” nas publicações</li></ul></div>
     <div class="bloco"><span class="rotulo">5 · Ajustes</span><h3>Correções</h3><ul><li>Título sobre a foto e paginação no F5</li><li>Matérias longas que sumiam</li><li>Botões cortados no celular</li><li>Solução volta a compilar</li></ul></div>
+    <div class="bloco destaque-novo"><span class="rotulo">6 · Espaços · novo</span><h3>Tour 360°</h3><ul><li>Tour virtual nos 6 espaços de locação</li><li>Visualizador de imagens com zoom</li><li>Links das campanhas corrigidos</li></ul></div>
   </div>
   <div class="rod"><span>Visão geral</span><span class="pg"></span></div>
+</section>
+
+<!-- 3b · tour 360 -->
+<section class="slide">
+  <div class="cab-s"><span class="novo-selo">Novo · commit ab7412f</span><h2>Tour 360° dos espaços de locação</h2></div>
+  <div class="tour-img"><img src="img/tour360.jpg" alt="Seção Tour virtual 360° na página do CDL Auditório"></div>
+  <div class="rod"><span>Tour 360°</span><span class="pg"></span></div>
+</section>
+
+<section class="slide tour-slide">
+  <div class="cab-s"><div class="eyebrow">Tour 360°</div><h2>Como funciona</h2>
+    <p class="sub">O visitante conhece o espaço antes de reservar: arrasta para olhar em volta, aproxima e abre em tela cheia.</p></div>
+  <div class="tour-pts">
+    <div class="bloco"><span class="rotulo">Onde aparece</span><h3>7 páginas</h3><p>CDL Convenções e os 6 espaços, com botão “Tour 360°” no topo de cada página.</p></div>
+    <div class="bloco"><span class="rotulo">Como publicar</span><h3>Uma foto por espaço</h3><p>Foto panorâmica 2:1 em <code>img/360/{espaço}.jpg</code>. O site detecta sozinho.</p></div>
+    <div class="bloco"><span class="rotulo">Sem foto ainda</span><h3>“Em breve”</h3><p>Sem a foto, mostra a capa com “em breve” e o link para agendar visita.</p></div>
+    <div class="bloco"><span class="rotulo">Desempenho</span><h3>Carrega só no clique</h3><p>O Pannellum só é baixado ao clicar em “Iniciar tour”. A página segue leve.</p></div>
+  </div>
+  <div class="g2 tour-extra">
+    <div class="bloco"><span class="rotulo">Também nesta entrega</span><h3>Visualizador de imagens</h3><p>Fotos de conteúdo abrem ampliadas, com zoom (inclusive pinça no celular), teclado e download. Substitui a galeria dos espaços, que não abria.</p></div>
+    <div class="bloco"><span class="rotulo">Também nesta entrega</span><h3>Links das campanhas</h3><p>Campanha com link leva ao destino cadastrado no Portal (externos em nova aba). Sem link, fica só como imagem.</p></div>
+  </div>
+  <div class="rod"><span>Tour 360°</span><span class="pg"></span></div>
 </section>
 
 <!-- 4 · seção GEO -->

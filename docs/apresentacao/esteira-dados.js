@@ -1,8 +1,146 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T13:30:23+00:00",
+ "geradoEm": "2026-11-12T15:34:24+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "ab7412fc1f33d68895989cd9ec9784ad7b50589a",
+   "curto": "ab7412f",
+   "data": "2026-11-12T12:31:46-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Tour 360° nos espaços, visualizador de imagens e links das campanhas",
+   "corpo": "- CDL Convenções: tour virtual 360° (Pannellum) em todos os espaços;\n  fotos em wwwroot/novo/img/360/{slug}.jpg, \"em breve\" enquanto não houver\n- Visualizador geral de imagens do site com zoom e download\n  (substitui o lightbox da galeria dos espaços, que não abria)\n- Home: campanhas com link levam ao destino cadastrado; sem link ficam só como imagem",
+   "tipo": "Funcionalidade",
+   "adicionadas": 452,
+   "removidas": 57,
+   "totalArquivos": 15,
+   "areas": {
+    "Telas (Razor)": 10,
+    "Imagens e arquivos": 1,
+    "Estilos e scripts": 4
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/visualizador.js",
+     "a": 210,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_Tour360.cshtml",
+     "a": 70,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/paginas.js",
+     "a": 51,
+     "r": 11,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/style.css",
+     "a": 43,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/paginas.css",
+     "a": 32,
+     "r": 8,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Home/Index.cshtml",
+     "a": 24,
+     "r": 2,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/cdl-auditorio.cshtml",
+     "a": 3,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/cdl-foyer.cshtml",
+     "a": 3,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/sala-cecilia-meireles.cshtml",
+     "a": 3,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/sala-espaco-mais.cshtml",
+     "a": 3,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/sala-executiva.cshtml",
+     "a": 3,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/sala-machado-de-assis.cshtml",
+     "a": 3,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/cdl-convencoes-e-eventos.cshtml",
+     "a": 3,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_Layout.cshtml",
+     "a": 1,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/img/360/.gitkeep",
+     "a": 0,
+     "r": 0,
+     "bin": false
+    }
+   ]
+  },
+  {
+   "hash": "6a674f1a6da756115a87947c1cde97a53fa71b7b",
+   "curto": "6a674f1",
+   "data": "2026-11-12T13:36:18+00:00",
+   "autor": "Claude",
+   "titulo": "Slides: linha do tempo em ordem cronológica, sem datas, e sem o slide de pontos de atenção",
+   "corpo": "",
+   "tipo": "Documentação",
+   "adicionadas": 8,
+   "removidas": 21,
+   "totalArquivos": 2,
+   "areas": {
+    "Documentação": 2
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/slides.html",
+     "a": 8,
+     "r": 21,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "1cedb08c358ad0d356ebf14d89c96679ebe8f08c",
    "curto": "1cedb08",

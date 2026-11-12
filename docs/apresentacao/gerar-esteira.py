@@ -27,7 +27,7 @@ REGRAS = [
     ("Infra",          r"solu[cç][aã]o|\.sln|nuget|docker|\bbuild\b|pipeline|workflow|deploy|esteira"),
     ("Correção",       r"corrig|corre[cç][aã]o|conserta|n[aã]o aparecia|aparecem|sumiam|cortad|espremid|perdid|quebrad|\berro\b|\bbug\b|falha"),
     ("Visual",         r"novo visual|\bfontes?\b|tipografia"),
-    ("Funcionalidade", r"\bnov[oa]s?\b|painel|adiciona|\bcria\b|\brota\b|integra|vai direto|passam pelo"),
+    ("Funcionalidade", r"tour|360|visualizador|\bnov[oa]s?\b|painel|adiciona|\bcria\b|\brota\b|integra|vai direto|passam pelo"),
     ("Conteúdo",       r"hist[oó]ria|\btexto|conte[uú]do|publica[cç]"),
     ("Visual",         r"visual|layout|bot[aã]o|\bcor(es)?\b|mobile|celular|\bcss\b"),
 ]
