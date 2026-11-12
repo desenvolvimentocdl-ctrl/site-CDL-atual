@@ -10,6 +10,28 @@
     var banners = Model?.Banners ?? new List<SiteCDL.Models.Banner>();
     var bannersDesk = banners.Where(b => !string.IsNullOrWhiteSpace(b.CaminhoDesktop)).ToList();
     var bannersMob = banners.Where(b => !string.IsNullOrWhiteSpace(b.CaminhoMobile)).ToList();
+
+    // Link da campanha como foi cadastrado no portal: "uol.com" vira "https://uol.com"; links de outros sites abrem em nova aba.
+    // Campanha sem link cadastrado no portal fica só como imagem (sem link "morto" para #campanhas).
+    (string href, bool externo)? LinkCampanha(string? link)
+    {
+        var l = (link ?? "").Trim();
+        if (l == "" || l == "#") return null;
+        if (l.StartsWith("/") || l.StartsWith("#")) return (l, false);
+        if (!System.Text.RegularExpressions.Regex.IsMatch(l, @"^[a-z][a-z0-9+.-]*:", System.Text.RegularExpressions.RegexOptions.IgnoreCase)) l = "https://" + l;
+        if (!Uri.TryCreate(l, UriKind.Absolute, out var u) || !(u.Scheme is "http" or "https" or "mailto" or "tel")) return null;
+        bool doSite = u.Host.Equals("cdludi.org.br", StringComparison.OrdinalIgnoreCase) || u.Host.Equals("www.cdludi.org.br", StringComparison.OrdinalIgnoreCase);
+        return (doSite ? u.PathAndQuery + u.Fragment : u.ToString(), !doSite && u.Scheme.StartsWith("http"));
+    }
+    Microsoft.AspNetCore.Html.IHtmlContent SlideCampanha(SiteCDL.Models.Banner b, string arquivo)
+    {
+        var alt = System.Net.WebUtility.HtmlEncode(b.Nome ?? "Campanha CDL");
+        var img = $"<img src=\"/wp-content/uploads/banners/{System.Net.WebUtility.HtmlEncode(arquivo)}\" alt=\"{alt}\" loading=\"lazy\" decoding=\"async\">";
+        var l = LinkCampanha(b.Link);
+        if (l == null) return new Microsoft.AspNetCore.Html.HtmlString($"<div class=\"slide\">{img}</div>");
+        var alvo = l.Value.externo ? " target=\"_blank\" rel=\"noopener\"" : "";
+        return new Microsoft.AspNetCore.Html.HtmlString($"<a class=\"slide\" href=\"{System.Net.WebUtility.HtmlEncode(l.Value.href)}\"{alvo}>{img}</a>");
+    }
     var noticias = Model?.Noticias ?? new List<SiteCDL.Models.Post>();
 
     // ---------- agenda: Loja (API) + posts das categorias Cursos e Eventos dentro do período ----------
@@ -190,8 +212,8 @@
     </div>
     <div class="camp-stage">
     <button class="cbtn prev" data-dir="-1" aria-label="Anterior">←</button><button class="cbtn next" data-dir="1" aria-label="Próxima">→</button>
-    <div class="camp-track desk rv d1">@foreach (var b in bannersDesk) {<a class="slide" href="@(string.IsNullOrWhiteSpace(b.Link) ? "#campanhas" : b.Link)"><img src="/wp-content/uploads/banners/@b.CaminhoDesktop" alt="@(b.Nome ?? "Campanha CDL")" loading="lazy" decoding="async"></a>}</div>
-    <div class="camp-track mob rv d1">@foreach (var b in (bannersMob.Count > 0 ? bannersMob : bannersDesk)) {<a class="slide" href="@(string.IsNullOrWhiteSpace(b.Link) ? "#campanhas" : b.Link)"><img src="/wp-content/uploads/banners/@(string.IsNullOrWhiteSpace(b.CaminhoMobile) ? b.CaminhoDesktop : b.CaminhoMobile)" alt="@(b.Nome ?? "Campanha CDL")" loading="lazy" decoding="async"></a>}</div>
+    <div class="camp-track desk rv d1">@foreach (var b in bannersDesk) {@SlideCampanha(b, b.CaminhoDesktop!)}</div>
+    <div class="camp-track mob rv d1">@foreach (var b in (bannersMob.Count > 0 ? bannersMob : bannersDesk)) {@SlideCampanha(b, string.IsNullOrWhiteSpace(b.CaminhoMobile) ? b.CaminhoDesktop! : b.CaminhoMobile)}</div>
     </div>
     <div class="camp-dots" aria-hidden="true"></div>
   </div>
