@@ -27,6 +27,39 @@
                : !string.IsNullOrEmpty(n?.ImagemBase64) ? n.ImagemBase64 : "";
     string dataLonga = n?.Data != null ? n.Data.Value.ToString("d 'de' MMMM 'de' yyyy") : "";
     string tituloCurto = tituloTxt.Length > 60 ? tituloTxt.Substring(0, 60) + "…" : tituloTxt;
+
+    // GEO: dados estruturados da matéria (NewsArticle), trilha de navegação e imagem para compartilhamento/IA
+    if (n != null)
+    {
+        string geoSite = SiteCDL.Services.GeoCatalogo.SiteUrlPadrao;
+        string geoUrl = geoSite + req.Path.Value?.TrimEnd('/');
+        string? geoImg = img.StartsWith("/") ? geoSite + img : null; // imagem em base64 não serve como og:image
+        string corpo = System.Text.RegularExpressions.Regex.Replace(System.Net.WebUtility.HtmlDecode(n.Conteudo ?? ""), "<[^>]+>", " ");
+        string? resumo = ViewBag.metaDescription as string;
+        if (string.IsNullOrWhiteSpace(resumo))
+        {
+            var r = System.Text.RegularExpressions.Regex.Replace(corpo, @"\s+", " ").Trim();
+            resumo = r.Length > 160 ? r.Substring(0, 157).TrimEnd() + "…" : r;
+            if (resumo.Length > 0) ViewBag.metaDescription = resumo;
+        }
+        ViewData["Canonical"] = geoUrl;
+        ViewData["OgType"] = "article";
+        if (geoImg != null) ViewData["OgImage"] = geoImg;
+        ViewData["Breadcrumb"] = new List<(string nome, string caminho)>
+        {
+            ("Publicações", "/publicacoes"),
+            (categoria, "/publicacoes/" + route),
+            (tituloTxt, geoUrl),
+        };
+        ViewData["JsonLd"] = SiteCDL.Services.GeoJsonLd.Artigo(geoSite, geoUrl, tituloTxt, resumo, geoImg, n.Data, categoria, corpo);
+    }
+}
+@section Head {
+    @if (n?.Data != null)
+    {
+        <meta property="article:published_time" content="@n.Data.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")-03:00">
+        <meta property="article:section" content="@categoria">
+    }
 }
 
 @if (n == null)
