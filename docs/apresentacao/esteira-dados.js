@@ -1,8 +1,55 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T15:34:24+00:00",
+ "geradoEm": "2026-11-12T15:35:02+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "995803ef0c7a1c3b277efa75cc7d94487a2a6031",
+   "curto": "995803e",
+   "data": "2026-11-12T15:35:01+00:00",
+   "autor": "Claude",
+   "titulo": "Slides: Tour 360° dos espaços (commit ab7412f) e esteira atualizada",
+   "corpo": "- Dois slides novos: captura da seção Tour 360° e como funciona\n  (onde aparece, como publicar a foto, \"em breve\", carregamento sob demanda,\n  visualizador de imagens e links das campanhas)\n- \"O que foi entregue\" ganha a 6ª frente; capa cita o tour\n- Esteira classifica tour/360/visualizador como Funcionalidade",
+   "tipo": "Documentação",
+   "adicionadas": 184,
+   "removidas": 5,
+   "totalArquivos": 5,
+   "areas": {
+    "Documentação": 5
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/esteira-dados.js",
+     "a": 139,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/slides.html",
+     "a": 44,
+     "r": 3,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/gerar-esteira.py",
+     "a": 1,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/tour360.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "ab7412fc1f33d68895989cd9ec9784ad7b50589a",
    "curto": "ab7412f",
