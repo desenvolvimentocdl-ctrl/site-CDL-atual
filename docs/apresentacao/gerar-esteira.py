@@ -79,10 +79,13 @@ def main():
             ar = area_de(caminho)
             areas[ar] = areas.get(ar, 0) + 1
             arquivos.append({"p": caminho, "a": a_i, "r": r_i, "bin": a == "-"})
+        tipo = tipo_de(titulo, corpo)
+        if arquivos and all(f["p"].startswith(("docs/", ".github/")) for f in arquivos):
+            tipo = "Documentação"
         commits.append({
             "hash": h, "curto": curto, "data": data, "autor": autor,
             "titulo": titulo.strip(), "corpo": corpo_limpo,
-            "tipo": tipo_de(titulo, corpo),
+            "tipo": tipo,
             "adicionadas": adic, "removidas": rem,
             "totalArquivos": len(arquivos), "areas": areas,
             "arquivos": sorted(arquivos, key=lambda x: -(x["a"] + x["r"]))[:40],

@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Reformulação Site CDL — Slides</title>
+<!-- Versão em slides 16:9 das páginas da apresentação. Gere o PDF com:  node docs/apresentacao/gerar-pdf.js -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+@page{size:1920px 1080px;margin:0}
+html,body{background:#d9e0ec;margin:0}
+body{font-size:26px;line-height:1.45}
+.slide{width:1920px;height:1080px;background:var(--bg);position:relative;overflow:hidden;
+  padding:88px 120px 120px;display:flex;flex-direction:column;gap:44px;margin:0 auto 24px;break-after:page;page-break-after:always}
+@media print{.slide{margin:0}html,body{background:var(--bg)}}
+.slide h2{font-size:64px;line-height:1.05;letter-spacing:-.035em;margin:0}
+.slide .eyebrow{font-size:18px}
+.slide .lead{font-size:30px;max-width:1400px;line-height:1.45}
+.slide .sub{font-size:24px;max-width:1500px}
+.slide .bloco{padding:32px;border-radius:20px;gap:14px}
+.slide .bloco p,.slide .bloco li{font-size:22px;line-height:1.45}
+.slide .bloco h3{font-size:28px}
+.slide .rotulo{font-size:15px}
+.slide .num{font-size:76px}
+.slide .num small{font-size:26px}
+.slide code{font-size:.85em}
+.slide pre{font-size:19px;line-height:1.55;padding:28px 32px;border-radius:16px;white-space:pre}
+.slide table{font-size:22px}
+.slide th{font-size:15px;padding:16px 22px}
+.slide td{padding:15px 22px}
+.cab-s{display:grid;gap:16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:28px;min-height:0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.rod{position:absolute;left:120px;right:120px;bottom:44px;display:flex;justify-content:space-between;font:500 16px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+.ganho{font-size:22px}
+.ganho::before{margin-top:12px;width:10px;height:10px}
+
+/* capa e encerramento */
+.capa{background:var(--navy);color:#fff;justify-content:center}
+.capa .eyebrow{color:#7fb0ff}
+.capa h1{font-size:120px;line-height:.98;letter-spacing:-.045em;margin:24px 0 32px;max-width:1500px}
+.capa .lead{color:#b8c7e3;font-size:34px;max-width:1300px}
+.capa .rod{color:#7f93b8;border-color:rgba(255,255,255,.12)}
+.capa .chips{display:flex;gap:14px;flex-wrap:wrap;margin-top:56px}
+.capa .chips span{font:600 22px/1 var(--sans);padding:14px 24px;border-radius:999px;border:1px solid rgba(255,255,255,.22);color:#dbe6ff}
+.capa .grade-fundo{position:absolute;inset:0;background-image:linear-gradient(rgba(127,176,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,176,255,.07) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(110deg,transparent 35%,#000 100%);-webkit-mask-image:linear-gradient(110deg,transparent 35%,#000 100%)}
+.capa > *:not(.grade-fundo):not(.rod){position:relative}
+
+/* seções */
+.secao{background:var(--blue);color:#fff;justify-content:flex-end}
+.secao .eyebrow{color:#cfe0ff}
+.secao h2{font-size:140px;letter-spacing:-.05em;color:#fff}
+.secao .lead{color:#dbe6ff}
+.secao .rod{color:#cfe0ff;border-color:rgba(255,255,255,.25)}
+.secao .n{position:absolute;right:110px;top:40px;font:800 420px/1 var(--sans);color:rgba(255,255,255,.12);letter-spacing:-.06em}
+
+/* entregas GEO */
+.entr{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.entr .txt{display:grid;gap:18px}
+.entr .txt p{color:var(--muted);font-size:24px}
+.entr .txt h3{font-size:36px;margin:0;letter-spacing:-.02em}
+
+/* fluxo */
+.fluxo{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.passo{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;display:grid;gap:10px;align-content:start}
+.passo .rotulo{color:var(--blue)}
+.passo h3{font-size:28px;margin:0}
+.passo p{color:var(--muted);font-size:21px}
+
+/* esteira */
+.barra{display:flex;height:22px;border-radius:999px;overflow:hidden;gap:3px}
+.barra span{background:var(--cor)}
+.leg{display:flex;flex-wrap:wrap;gap:12px 32px;font-size:22px;color:var(--ink)}
+.leg i{display:inline-block;width:14px;height:14px;border-radius:4px;background:var(--cor);margin-right:10px;vertical-align:-1px}
+.leg b{font-family:var(--mono);font-weight:500;color:var(--muted);margin-left:6px}
+.tl{display:grid;gap:0;border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+.tl-l{display:grid;grid-template-columns:170px 120px 200px 1fr 210px;gap:20px;align-items:center;padding:13px 26px;border-bottom:1px solid var(--line);font-size:21px}
+.tl-l:last-child{border-bottom:0}
+.tl-l .h{font-family:var(--mono);font-size:19px}
+.tl-l .d{color:var(--muted);font-family:var(--mono);font-size:18px}
+.tl-l .tp{color:var(--cor);font-weight:700;font-size:19px;display:flex;gap:10px;align-items:center}
+.tl-l .tp::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--cor)}
+.tl-l .tt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-l .dl{font-family:var(--mono);font-size:18px;text-align:right}
+.mais{color:var(--ok)} .menos{color:var(--bad)}
+
+/* estrutura */
+.diag svg{width:100%;height:auto;display:block}
+.diag{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px 32px}
+.diag .cx{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+.diag .cx-p{fill:var(--blue-soft);stroke:var(--blue);stroke-width:1.5}
+.diag .cx-db{fill:var(--ok-soft);stroke:var(--ok);stroke-width:1.5}
+.diag .cx-ext{fill:var(--surface);stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4}
+.diag .t{fill:var(--ink);font:700 14px var(--sans)}
+.diag .t2{fill:var(--muted);font:500 11.5px var(--mono)}
+.diag .t3{fill:var(--muted);font:500 12px var(--sans)}
+.diag .seta{stroke:var(--muted);stroke-width:1.5;fill:none}
+.diag .seta-p{stroke:var(--blue);stroke-width:1.8;fill:none}
+.diag .ponta{fill:var(--muted)} .diag .ponta-p{fill:var(--blue)}
+.aviso{display:grid;gap:14px;align-content:start}
+.slide .selo{font-size:17px;padding:8px 14px;width:max-content}
+
+/* escala maior para leitura em projeção */
+.slide .bloco p,.slide .bloco li{font-size:26px}
+.slide .bloco ul{gap:10px}
+.slide .bloco h3{font-size:34px}
+.slide .bloco{padding:36px;gap:18px}
+.slide .rotulo{font-size:17px}
+.slide .num{font-size:96px}
+.slide table{font-size:27px}
+.slide td{padding:22px 26px}
+.slide th{font-size:17px;padding:18px 26px}
+.slide pre{font-size:23px}
+.slide .sub{font-size:28px}
+.ganho{font-size:25px}
+.entr .txt p{font-size:27px}
+.passo{padding:32px}.passo h3{font-size:32px}.passo p{font-size:25px}
+.tl-l{padding:20px 30px;font-size:26px;grid-template-columns:190px 140px 230px 1fr 230px}
+.tl-l .h,.tl-l .tp{font-size:22px}.tl-l .d,.tl-l .dl{font-size:21px}
+.leg{font-size:26px}.barra{height:30px}
+.slide .num{white-space:nowrap}
+.slide .g4 .num{font-size:84px}
+.slide pre.quebra{white-space:pre-wrap}
+.tl-l .tt{white-space:normal;overflow:visible;line-height:1.3}
+.slide .g3,.slide .g4,.slide .g5,.slide .g2{gap:30px}
+</style>
+</head>
+<body>
+
+<!-- 1 · capa -->
+<section class="slide capa">
+  <div class="grade-fundo"></div>
+  <div class="eyebrow">Apresentação · cdludi.org.br</div>
+  <h1>Reformulação do site da CDL Uberlândia</h1>
+  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e assistentes de IA e correções de celular e conteúdo.</p>
+  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Ajustes</span></div>
+  <div class="rod"><span>CDL Uberlândia · Reformulação do site</span><span id="capa-data"></span></div>
+</section>
+
+<!-- 2 · números -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Resumo</div><h2>A reformulação em números</h2></div>
+  <div class="g4">
+    <div class="bloco"><span class="rotulo">Commits da reformulação</span><div class="num" data-n="commits">14</div><p>Todos versionados no Git</p></div>
+    <div class="bloco"><span class="rotulo">Páginas institucionais</span><div class="num">46</div><p>Telas novas em <code>Views/Paginas</code></p></div>
+    <div class="bloco"><span class="rotulo">Páginas da Loja</span><div class="num">161</div><p>Eventos, cursos, EAD, descontos e parceiros</p></div>
+    <div class="bloco"><span class="rotulo">Linhas adicionadas</span><div class="num" data-n="linhas">11,9 mil</div><p data-n="arqs">652 arquivos alterados</p></div>
+  </div>
+  <div class="g3">
+    <div class="bloco"><span class="rotulo">Tecnologia</span><h3>C# · .NET 8 · MySQL 8</h3><p>Site MVC + API em camadas, sem troca de stack.</p></div>
+    <div class="bloco"><span class="rotulo">Rastreadores</span><h3>Todos mantidos</h3><p>Google Analytics, Facebook Pixel, Clarity, RD Station e selo GoDaddy.</p></div>
+    <div class="bloco"><span class="rotulo">Banco de dados</span><h3>Nenhuma alteração</h3><p>O conteúdo do Portal continua alimentando o site.</p></div>
+  </div>
+  <div class="rod"><span>Visão geral</span><span class="pg"></span></div>
+</section>
+
+<!-- 3 · entregas -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Visão geral</div><h2>O que foi entregue</h2></div>
+  <div class="g5">
+    <div class="bloco"><span class="rotulo">1 · Visual</span><h3>Novo layout</h3><ul><li>Cabeçalho, menu, busca e rodapé novos</li><li>Home, publicações, matéria e busca refeitas</li><li>46 páginas institucionais</li><li>Fontes Manrope e JetBrains Mono</li></ul></div>
+    <div class="bloco"><span class="rotulo">2 · Loja</span><h3>Vitrine no site</h3><ul><li>Rota <code>/loja</code> com eventos, cursos e EAD</li><li>Dados ao vivo da API da Loja</li><li>“Inscreva-se” direto no checkout</li><li>Imagens servidas pelo próprio site</li></ul></div>
+    <div class="bloco"><span class="rotulo">3 · GEO</span><h3>Pronto para IAs</h3><ul><li><code>llms.txt</code>, <code>robots.txt</code> e <code>sitemap.xml</code></li><li>Dados estruturados em todas as páginas</li><li>Open Graph e canonical</li></ul></div>
+    <div class="bloco"><span class="rotulo">4 · Associado</span><h3>Painel (demo)</h3><ul><li>Login, benefícios, boletos, SPC e cursos</li><li>Dados fictícios, nada gravado</li><li>“Mais lidas” nas publicações</li></ul></div>
+    <div class="bloco"><span class="rotulo">5 · Ajustes</span><h3>Correções</h3><ul><li>Título sobre a foto e paginação no F5</li><li>Matérias longas que sumiam</li><li>Botões cortados no celular</li><li>Solução volta a compilar</li></ul></div>
+  </div>
+  <div class="rod"><span>Visão geral</span><span class="pg"></span></div>
+</section>
+
+<!-- 4 · seção GEO -->
+<section class="slide secao">
+  <div class="n">01</div>
+  <div class="eyebrow">Commit b104daf · 12/11/2026</div>
+  <h2>GEO</h2>
+  <p class="lead">Generative Engine Optimization: preparar o site para que ChatGPT, Claude, Perplexity, Gemini, Copilot e as respostas com IA do Google encontrem, entendam e citem a CDL com os dados certos.</p>
+  <div class="rod"><span>GEO</span><span class="pg"></span></div>
+</section>
+
+<!-- 5 · GEO números + antes/depois -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">GEO</div><h2>Antes e depois</h2></div>
+  <div class="tab"><table>
+    <thead><tr><th>Item</th><th>Antes</th><th>Agora</th></tr></thead>
+    <tbody>
+      <tr><td><code>/robots.txt</code></td><td class="antes">Não existia</td><td>Libera 16 robôs de busca e IA, bloqueia áreas privadas</td></tr>
+      <tr><td><code>/sitemap.xml</code></td><td class="antes">Não existia</td><td>60 páginas fixas + todas as publicações, com data</td></tr>
+      <tr><td><code>/llms.txt</code></td><td class="antes">Não existia</td><td>Resumo do site em Markdown para assistentes de IA</td></tr>
+      <tr><td>Dados estruturados</td><td class="antes">Um bloco fixo, logo com endereço relativo</td><td>Organization, LocalBusiness, WebSite, WebPage, trilha e NewsArticle</td></tr>
+      <tr><td>Canonical e compartilhamento</td><td class="antes">Ausentes</td><td>Canonical, Open Graph e Twitter Card em todas as páginas</td></tr>
+      <tr><td>Indexação</td><td class="antes">Sem regra</td><td><code>noindex</code> na busca e no painel; trechos e imagens grandes liberados</td></tr>
+    </tbody>
+  </table></div>
+  <div class="rod"><span>GEO</span><span class="pg"></span></div>
+</section>
+
+<!-- 6 · llms.txt e robots -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">GEO · entregas 1 e 2</div><h2>O que a IA lê primeiro</h2></div>
+  <div class="g2">
+    <div class="bloco">
+      <span class="rotulo">/llms.txt</span><h3>Cartão de visitas para IA</h3>
+      <p>Dados da entidade, perguntas frequentes, as 60 páginas com descrição e as 15 publicações mais recentes.</p>
+<pre><span class="k"># CDL Uberlândia</span>
+&gt; Associação privada sem fins lucrativos,
+&gt; fundada em 1977, integrante do Sistema CNDL…
+<span class="k">## Perguntas frequentes</span>
+- **Como consultar se meu nome está no SPC
+  em Uberlândia?** Gratuita na sede…</pre>
+      <span class="ganho">A IA responde com endereço, telefone e link certos.</span>
+    </div>
+    <div class="bloco">
+      <span class="rotulo">/robots.txt</span><h3>Permissão explícita</h3>
+      <p>16 robôs liberados pelo nome (OpenAI, Anthropic, Perplexity, Google, Bing, Apple…). Painel, API e busca bloqueados.</p>
+<pre><span class="k">User-agent:</span> GPTBot
+<span class="k">Allow:</span> /
+<span class="k">Disallow:</span> /painel-associado
+<span class="k">Disallow:</span> /api/
+<span class="k">Sitemap:</span> https://cdludi.org.br/sitemap.xml</pre>
+      <span class="ganho">Conteúdo público liberado; área privada fora dos resultados.</span>
+    </div>
+  </div>
+  <div class="rod"><span>GEO</span><span class="pg"></span></div>
+</section>
+
+<!-- 7 · sitemap + json-ld -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">GEO · entregas 3, 4 e 5</div><h2>Mapa do site e dados estruturados</h2></div>
+  <div class="g3">
+    <div class="bloco">
+      <span class="rotulo">/sitemap.xml</span><h3>Mapa automático</h3>
+      <p>Páginas fixas e todas as publicações lidas da API, com data e prioridade. Cache de 1 hora.</p>
+      <span class="ganho">Matéria nova entra no mapa em até 1 hora, sem ninguém editar arquivo.</span>
+    </div>
+    <div class="bloco">
+      <span class="rotulo">JSON-LD · todas as páginas</span><h3>Quem é a CDL</h3>
+      <p>Razão social, apelidos (CDL UDI), endereço, telefones, horário, CNDL como organização-mãe e redes sociais.</p>
+      <span class="ganho">Google e IAs ligam todos os nomes à mesma entidade.</span>
+    </div>
+    <div class="bloco">
+      <span class="rotulo">NewsArticle · matérias</span><h3>Notícias com data</h3>
+      <p>Título, resumo, imagem, data com fuso -03:00, seção e contagem de palavras.</p>
+      <span class="ganho">Link no WhatsApp mostra foto e título da matéria.</span>
+    </div>
+  </div>
+<pre class="quebra">{ "@type": ["Organization", "LocalBusiness"], "name": "CDL Uberlândia", "alternateName": ["CDL UDI", "CDL Uberlandia"],
+  "foundingDate": "1977", "telephone": "+55 34 3239-3400", "parentOrganization": { "name": "CNDL …" }, "knowsAbout": ["SPC Brasil", …] }</pre>
+  <div class="rod"><span>GEO</span><span class="pg"></span></div>
+</section>
+
+<!-- 8 · fluxo + validar -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">GEO</div><h2>Como uma IA chega até a CDL</h2></div>
+  <div class="fluxo">
+    <div class="passo"><span class="rotulo">Passo 1</span><h3>Pergunta</h3><p>“Onde consulto meu CPF no SPC em Uberlândia?”</p></div>
+    <div class="passo"><span class="rotulo">Passo 2</span><h3>Permissão</h3><p>O robô lê <code>/robots.txt</code> e vê que pode acessar.</p></div>
+    <div class="passo"><span class="rotulo">Passo 3</span><h3>Mapa</h3><p>Lê <code>/llms.txt</code> e <code>/sitemap.xml</code> e acha <code>/spc-consulta</code>.</p></div>
+    <div class="passo"><span class="rotulo">Passo 4</span><h3>Confirmação</h3><p>O JSON-LD confirma endereço, telefone e horário.</p></div>
+    <div class="passo"><span class="rotulo">Passo 5</span><h3>Resposta</h3><p>A IA responde com os dados da CDL e o link como fonte.</p></div>
+  </div>
+  <div class="g3">
+    <div class="bloco"><span class="rotulo">Validar ao vivo</span><p><code>/llms.txt</code> · <code>/robots.txt</code> · <code>/sitemap.xml</code> no navegador; Teste de pesquisa aprimorada do Google e validator.schema.org.</p></div>
+    <div class="bloco"><span class="rotulo">Manutenção</span><p>Página nova em <code>Views/Paginas</code>? Incluir em <code>GeoCatalogo.cs</code>. Publicações entram sozinhas.</p></div>
+    <div class="bloco"><span class="rotulo">Expectativa</span><p>Aumenta a chance de citação correta, mas não garante posição. O efeito aparece em dias a semanas.</p></div>
+  </div>
+  <div class="rod"><span>GEO</span><span class="pg"></span></div>
+</section>
+
+<!-- 9 · seção esteira -->
+<section class="slide secao">
+  <div class="n">02</div>
+  <div class="eyebrow" id="est-atual">Gerado a partir do Git</div>
+  <h2>Esteira de desenvolvimento</h2>
+  <p class="lead">Cada commit da reformulação, com o tipo de mudança e o tamanho da alteração. Os dados são refeitos a cada push no master.</p>
+  <div class="rod"><span>Esteira</span><span class="pg"></span></div>
+</section>
+
+<!-- 10 · esteira números -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Esteira</div><h2>Ritmo e tipo das mudanças</h2></div>
+  <div class="g4">
+    <div class="bloco"><span class="rotulo">Commits</span><div class="num" id="e-commits">–</div><p id="e-periodo"></p></div>
+    <div class="bloco"><span class="rotulo">Arquivos alterados</span><div class="num" id="e-arqs">–</div><p>Soma por commit</p></div>
+    <div class="bloco"><span class="rotulo">Linhas adicionadas</span><div class="num" id="e-mais">–</div><p id="e-menos"></p></div>
+    <div class="bloco"><span class="rotulo">Último commit</span><div class="num mono" id="e-ult" style="font-size:52px">–</div><p id="e-ult-t"></p></div>
+  </div>
+  <div class="bloco">
+    <span class="rotulo">Commits por tipo</span>
+    <div class="barra" id="e-barra"></div>
+    <div class="leg" id="e-leg"></div>
+  </div>
+  <div class="rod"><span>Esteira</span><span class="pg"></span></div>
+</section>
+
+<!-- 11 · linha do tempo (preenchida pelo script; pode gerar mais de um slide) -->
+<template id="tpl-tl">
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Esteira</div><h2>Linha do tempo</h2></div>
+  <div class="tl"></div>
+  <div class="rod"><span>Esteira</span><span class="pg"></span></div>
+</section>
+</template>
+<div id="tl-alvo"></div>
+
+<!-- 12 · seção estrutura -->
+<section class="slide secao">
+  <div class="n">03</div>
+  <div class="eyebrow">Arquitetura · SiteCDL.sln</div>
+  <h2>Estrutura do projeto</h2>
+  <p class="lead">C# sobre .NET 8: front-end ASP.NET Core MVC e API REST em camadas, com MySQL 8 pelo Entity Framework Core.</p>
+  <div class="rod"><span>Estrutura</span><span class="pg"></span></div>
+</section>
+
+<!-- 13 · diagrama -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Estrutura</div><h2>Como as partes conversam</h2></div>
+  <div class="diag"><svg viewBox="0 0 960 440" role="img" aria-label="Diagrama: Navegador acessa SiteCDL.Web, que chama a SiteCDL.API e as APIs da Loja e do Portal; a API usa as camadas Application, Domain e Infrastructure para ler o MySQL; o Web também grava no MySQL diretamente.">
+        <defs>
+          <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ponta" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="mp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ponta-p" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+
+        <!-- navegador -->
+        <rect class="cx" x="20" y="40" width="150" height="72" rx="10"/>
+        <text class="t" x="95" y="70" text-anchor="middle">Navegador</text>
+        <text class="t2" x="95" y="92" text-anchor="middle">visitante · robôs IA</text>
+
+        <!-- web -->
+        <rect class="cx-p" x="230" y="20" width="250" height="250" rx="12"/>
+        <text class="t" x="355" y="48" text-anchor="middle">SiteCDL.Web</text>
+        <text class="t2" x="355" y="68" text-anchor="middle">ASP.NET Core MVC · :5151</text>
+        <text class="t3" x="250" y="100">9 controllers + 4 de API · Razor</text>
+        <text class="t3" x="250" y="124">Layout novo · wwwroot/novo</text>
+        <text class="t3" x="250" y="148">GEO: llms · robots · sitemap</text>
+        <text class="t3" x="250" y="172">Loja, Cursos, Busca</text>
+        <text class="t3" x="250" y="196">Painel do Associado (demo)</text>
+        <text class="t3" x="250" y="220">/portal/* e /kommo/Leads</text>
+        <text class="t2" x="250" y="250">HttpClient "ApiHttpClient"</text>
+
+        <!-- api -->
+        <rect class="cx-p" x="560" y="20" width="200" height="72" rx="12"/>
+        <text class="t" x="660" y="50" text-anchor="middle">SiteCDL.API</text>
+        <text class="t2" x="660" y="72" text-anchor="middle">Web API · :7110/api</text>
+
+        <rect class="cx" x="560" y="120" width="200" height="44" rx="10"/>
+        <text class="t" x="660" y="147" text-anchor="middle">Application</text>
+        <rect class="cx" x="560" y="184" width="200" height="44" rx="10"/>
+        <text class="t" x="660" y="211" text-anchor="middle">Infrastructure</text>
+        <rect class="cx" x="790" y="150" width="150" height="44" rx="10"/>
+        <text class="t" x="865" y="177" text-anchor="middle">Domain</text>
+
+        <!-- banco -->
+        <rect class="cx-db" x="560" y="300" width="200" height="110" rx="12"/>
+        <text class="t" x="660" y="330" text-anchor="middle">MySQL 8 · SiteCDL</text>
+        <text class="t2" x="660" y="354" text-anchor="middle">Post · PostCategoria</text>
+        <text class="t2" x="660" y="374" text-anchor="middle">Paginas · Banners · Lead</text>
+        <text class="t2" x="660" y="394" text-anchor="middle">EF Core + Pomelo</text>
+
+        <!-- externos -->
+        <rect class="cx-ext" x="230" y="320" width="250" height="90" rx="12"/>
+        <text class="t" x="355" y="348" text-anchor="middle">Sistemas externos</text>
+        <text class="t2" x="355" y="372" text-anchor="middle">loja.cdludi.org.br (API)</text>
+        <text class="t2" x="355" y="392" text-anchor="middle">portal.cdludi.org.br (imagens)</text>
+
+        <!-- setas -->
+        <path class="seta-p" d="M170 76 H226" marker-end="url(#mp)"/>
+        <path class="seta-p" d="M480 56 H556" marker-end="url(#mp)"/>
+        <text class="t2" x="518" y="48" text-anchor="middle">REST</text>
+        <path class="seta" d="M660 92 V116" marker-end="url(#m)"/>
+        <path class="seta" d="M660 164 V180" marker-end="url(#m)"/>
+        <path class="seta" d="M760 142 H820 V146" marker-end="url(#m)"/>
+        <path class="seta" d="M760 206 H820 V198" marker-end="url(#m)"/>
+        <path class="seta" d="M660 228 V296" marker-end="url(#m)"/>
+        <path class="seta" d="M355 270 V316" marker-end="url(#m)"/>
+        <path class="seta" d="M480 230 H520 V355 H556" marker-end="url(#m)"/>
+        <text class="t2" x="508" y="290" transform="rotate(-90 508 290)" text-anchor="middle">grava leads, portal</text>
+      </svg></div>
+  <div class="rod"><span>Estrutura</span><span class="pg"></span></div>
+</section>
+
+<!-- 14 · camadas + stack -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Estrutura</div><h2>Camadas e tecnologias</h2></div>
+  <div class="g4">
+    <div class="bloco"><span class="rotulo">SiteCDL.Domain</span><h3>Entidades</h3><p>Post, PostCategoria, Paginas, Banner e interfaces dos repositórios.</p></div>
+    <div class="bloco"><span class="rotulo">SiteCDL.Application</span><h3>Casos de uso</h3><p>Serviços Home, Page e Post, DTOs e AutoMapper 13.</p></div>
+    <div class="bloco"><span class="rotulo">SiteCDL.Infrastructure</span><h3>Dados</h3><p>EF Core 8.0.10 + Pomelo MySQL, repositórios e 11 migrations.</p></div>
+    <div class="bloco"><span class="rotulo">SiteCDL.API</span><h3>REST</h3><p>Controllers Banner, Home, Page e Post. Swagger em desenvolvimento.</p></div>
+  </div>
+  <div class="tab"><table>
+    <tbody>
+      <tr><td>Linguagem</td><td>C# · .NET 8 (SDK 8.0.420)</td><td>Front-end</td><td>ASP.NET Core MVC + Razor</td></tr>
+      <tr><td>Estilo e scripts</td><td>CSS e JavaScript puros</td><td>Banco</td><td>MySQL 8 via Docker Compose</td></tr>
+      <tr><td>Bibliotecas</td><td>AutoMapper · Magick.NET · Newtonsoft.Json</td><td>Autenticação</td><td>Cookie do ASP.NET Core (painel)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="rod"><span>Estrutura</span><span class="pg"></span></div>
+</section>
+
+<!-- 15 · banco -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Estrutura</div><h2>Banco de dados</h2><p class="sub">MySQL 8, base <code>SiteCDL</code>. O conteúdo vem do Portal da CDL; o site só lê, exceto leads.</p></div>
+  <div class="tab"><table>
+    <thead><tr><th>Tabela</th><th>Principais campos</th><th>Quem usa</th></tr></thead>
+    <tbody>
+      <tr><td>Post</td><td>Titulo, Slug, Conteudo, Imagem, Data, Status, PostCategoriaCodigo</td><td>Publicações, busca, sitemap, llms.txt</td></tr>
+      <tr><td>PostCategoria</td><td>Nome, Controller, Route</td><td>Rotas <code>/publicacoes/{rota}</code></td></tr>
+      <tr><td>Paginas</td><td>Titulo, Conteudo, Slug, Seo, Status</td><td>Páginas sem tela nova</td></tr>
+      <tr><td>Banners</td><td>Nome, CaminhoDesktop, CaminhoMobile, Link, DataInicio, DataFim</td><td>Carrossel da home</td></tr>
+      <tr><td>Lead</td><td>Dados do contato</td><td><code>/kommo/Leads</code> (grava)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="rod"><span>Estrutura</span><span class="pg"></span></div>
+</section>
+
+<!-- 16 · pontos de atenção -->
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Próximos passos</div><h2>Pontos de atenção</h2><p class="sub">Itens herdados do código original para tratar nas próximas etapas.</p></div>
+  <div class="g3">
+    <div class="bloco aviso"><span class="selo s-bad">Alta</span><h3>Credenciais no repositório</h3><p>Senhas do MySQL e token da Loja no código. Mover para variáveis de ambiente e trocar as senhas.</p></div>
+    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>Sem testes automatizados</h3><p>Começar pela API e pelas rotas de GEO.</p></div>
+    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>CORS aberto</h3><p>Restringir às origens do Portal e da Loja.</p></div>
+    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>Acesso duplicado ao banco</h3><p>Concentrar o acesso a dados na API.</p></div>
+    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>Publicação sem pipeline</h3><p>Dockerfile comentado e sem CI de build.</p></div>
+    <div class="bloco aviso"><span class="selo s-ok">Info</span><h3>Painel é demonstração</h3><p>Ligar a dados reais exige autenticação de verdade.</p></div>
+  </div>
+  <div class="rod"><span>Próximos passos</span><span class="pg"></span></div>
+</section>
+
+<!-- 17 · encerramento -->
+<section class="slide capa">
+  <div class="grade-fundo"></div>
+  <div class="eyebrow">Obrigado</div>
+  <h1>Perguntas?</h1>
+  <p class="lead">Páginas completas no repositório em <code style="background:rgba(255,255,255,.1);color:#fff">docs/apresentacao</code>: visão geral, GEO, esteira e estrutura.</p>
+  <div class="rod"><span>CDL Uberlândia · Reformulação do site</span><span class="pg"></span></div>
+</section>
+
+<script src="esteira-dados.js"></script>
+<script>
+(function(){
+  var CORES={"GEO":"--t-geo","Visual":"--t-vis","Funcionalidade":"--t-fun","Correção":"--t-cor","Conteúdo":"--t-con","Infra":"--t-inf","Melhoria":"--t-inf","Base":"--t-base"};
+  var cor=function(t){return "var("+(CORES[t]||"--t-inf")+")";};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+  var n=function(x){return x.toLocaleString("pt-BR");};
+  var dt=function(s,o){return new Date(s).toLocaleString("pt-BR",o);};
+  var d=window.ESTEIRA;
+  if(d&&d.commits&&d.commits.length){
+    var cs=d.commits.filter(function(c){return c.tipo!=="Base"&&c.tipo!=="Documentação";});
+    var soma=function(k){return cs.reduce(function(s,c){return s+c[k];},0);};
+    var mil=function(v){return v>=1000?(v/1000).toLocaleString("pt-BR",{maximumFractionDigits:1})+" mil":n(v);};
+    document.querySelector('[data-n="commits"]').textContent=cs.length;
+    document.querySelector('[data-n="linhas"]').textContent=mil(soma("adicionadas"));
+    document.querySelector('[data-n="arqs"]').textContent=n(soma("totalArquivos"))+" arquivos alterados";
+    document.getElementById("e-commits").textContent=cs.length;
+    document.getElementById("e-periodo").textContent="De "+dt(cs[cs.length-1].data,{dateStyle:"short"})+" a "+dt(cs[0].data,{dateStyle:"short"});
+    document.getElementById("e-arqs").textContent=n(soma("totalArquivos"));
+    document.getElementById("e-mais").textContent=n(soma("adicionadas"));
+    document.getElementById("e-menos").textContent=n(soma("removidas"))+" linhas removidas";
+    document.getElementById("e-ult").textContent=cs[0].curto;
+    document.getElementById("e-ult-t").textContent=cs[0].titulo;
+    document.getElementById("est-atual").textContent="Dados de "+dt(d.geradoEm,{dateStyle:"short",timeStyle:"short"});
+    var tipos={};cs.forEach(function(c){tipos[c.tipo]=(tipos[c.tipo]||0)+1;});
+    var ordem=Object.keys(tipos).sort(function(a,b){return tipos[b]-tipos[a];});
+    document.getElementById("e-barra").innerHTML=ordem.map(function(t){return '<span style="--cor:'+cor(t)+';flex:'+tipos[t]+'"></span>';}).join("");
+    document.getElementById("e-leg").innerHTML=ordem.map(function(t){return '<span style="--cor:'+cor(t)+'"><i></i>'+esc(t)+'<b>'+tipos[t]+'</b></span>';}).join("");
+    // linha do tempo: 13 commits por slide
+    var por=Math.ceil(cs.length/Math.ceil(cs.length/10)), alvo=document.getElementById("tl-alvo"), tpl=document.getElementById("tpl-tl");
+    for(var i=0;i<cs.length;i+=por){
+      var s=tpl.content.firstElementChild.cloneNode(true);
+      if(cs.length>por) s.querySelector("h2").textContent="Linha do tempo ("+(i/por+1)+"/"+Math.ceil(cs.length/por)+")";
+      s.querySelector(".tl").innerHTML=cs.slice(i,i+por).map(function(c){
+        return '<div class="tl-l" style="--cor:'+cor(c.tipo)+'"><span class="d">'+dt(c.data,{day:"2-digit",month:"2-digit"})+' '+dt(c.data,{timeStyle:"short"})+'</span>'+
+          '<span class="h">'+esc(c.curto)+'</span><span class="tp">'+esc(c.tipo)+'</span><span class="tt">'+esc(c.titulo)+'</span>'+
+          '<span class="dl"><span class="mais">+'+n(c.adicionadas)+'</span> <span class="menos">−'+n(c.removidas)+'</span></span></div>';
+      }).join("");
+      alvo.parentNode.insertBefore(s,alvo);
+    }
+    alvo.remove();
+  }
+  document.getElementById("capa-data").textContent=new Date().toLocaleDateString("pt-BR",{month:"long",year:"numeric"});
+  var sl=document.querySelectorAll(".slide");
+  sl.forEach(function(s,i){var p=s.querySelector(".pg");if(p)p.textContent=(i+1)+" / "+sl.length;});
+})();
+</script>
+</body>
+</html>

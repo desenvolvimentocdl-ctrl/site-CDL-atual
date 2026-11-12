@@ -1,6 +1,6 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T13:24:06+00:00",
+ "geradoEm": "2026-11-12T13:29:56+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
   {
@@ -10,7 +10,7 @@ window.ESTEIRA = {
    "autor": "Claude",
    "titulo": "Apresentação da reformulação: páginas de GEO, esteira e estrutura",
    "corpo": "- docs/apresentacao: visão geral, GEO (o que foi feito e o que melhora),\n  esteira de desenvolvimento e estrutura do projeto\n- gerar-esteira.py lê o git log e grava esteira-dados.js\n- Workflow esteira.yml refaz os dados a cada push no master",
-   "tipo": "GEO",
+   "tipo": "Documentação",
    "adicionadas": 2187,
    "removidas": 0,
    "totalArquivos": 8,

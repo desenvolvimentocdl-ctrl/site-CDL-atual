@@ -123,7 +123,7 @@
 <script>
 (function(){
   var d = window.ESTEIRA; if (!d) return;
-  var cs = d.commits.filter(function(c){ return c.tipo !== "Base"; });
+  var cs = d.commits.filter(function(c){ return c.tipo !== "Base" && c.tipo !== "Documentação"; });
   var linhas = cs.reduce(function(s,c){ return s + c.adicionadas; }, 0);
   var fmt = function(n){ return n >= 1000 ? (n/1000).toLocaleString("pt-BR",{maximumFractionDigits:1}) + " mil" : n.toLocaleString("pt-BR"); };
   document.querySelector('[data-n="commits"]').textContent = cs.length;

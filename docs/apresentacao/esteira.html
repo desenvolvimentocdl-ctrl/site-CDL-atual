@@ -101,7 +101,7 @@ details summary{cursor:pointer;color:var(--blue);font-weight:600;width:max-conte
 <script src="esteira-dados.js"></script>
 <script>
 (function(){
-  var CORES = {"GEO":"--t-geo","Visual":"--t-vis","Funcionalidade":"--t-fun","Correção":"--t-cor","Conteúdo":"--t-con","Infra":"--t-inf","Melhoria":"--t-inf","Base":"--t-base"};
+  var CORES = {"GEO":"--t-geo","Visual":"--t-vis","Funcionalidade":"--t-fun","Correção":"--t-cor","Conteúdo":"--t-con","Infra":"--t-inf","Melhoria":"--t-inf","Base":"--t-base","Documentação":"--t-base"};
   var cor = function(t){ return "var(" + (CORES[t] || "--t-inf") + ")"; };
   var d = window.ESTEIRA, linha = document.getElementById("linha");
   if (!d || !d.commits || !d.commits.length) {
