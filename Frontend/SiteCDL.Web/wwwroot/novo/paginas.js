@@ -9,17 +9,7 @@
   map.forEach((a,id)=>{const s=document.getElementById(id);if(s)io.observe(s)});
 })();
 
-// Galeria de fotos com visualizador (setas do teclado, Esc para fechar)
-(()=>{
-  const lb=document.getElementById('lb'),fotos=window.GALERIA;if(!lb||!fotos)return;
-  const img=lb.querySelector('img'),cap=lb.querySelector('figcaption');let i=0,last=null;
-  const show=n=>{i=(n+fotos.length)%fotos.length;img.src=fotos[i];cap.textContent=(i+1)+' de '+fotos.length};
-  const open=n=>{last=document.activeElement;show(n);lb.hidden=false;document.body.classList.add('lock');lb.querySelector('.lb-x').focus()};
-  const close=()=>{lb.hidden=true;document.body.classList.remove('lock');last&&last.focus()};
-  document.querySelectorAll('[data-gal] [data-i]').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.i)));
-  lb.addEventListener('click',e=>{const a=e.target.closest('[data-lb]');if(a)a.dataset.lb==='x'?close():show(i+ +a.dataset.lb);else if(e.target===lb)close()});
-  document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
-})();
+// Galeria de fotos dos espaços: agora aberta pelo visualizador geral (novo/visualizador.js)
 
 // Formulários do protótipo: não enviam, só mostram o aviso
 document.querySelectorAll('form[data-proto]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const ok=f.querySelector('.f-ok');if(ok)ok.hidden=false}));
@@ -75,4 +65,54 @@ document.querySelectorAll('[data-copiar]').forEach(b=>b.addEventListener('click'
     if(nores)nores.hidden=n>0};
   document.querySelectorAll('[data-chips] .chip').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-chips] .chip').forEach(x=>x.classList.toggle('on',x===b));cat=b.dataset.cat;aplicar()}));
   q&&q.addEventListener('input',aplicar);seg&&seg.addEventListener('change',aplicar);
+})();
+
+// Tour virtual 360° dos espaços (Views/Shared/_Tour360.cshtml). O visualizador (Pannellum) só é baixado ao iniciar o tour.
+(()=>{
+  const box=document.querySelector('[data-t360]');if(!box)return;
+  const stage=box.querySelector('.t360-stage'),view=box.querySelector('.t360-view'),
+        capa=box.querySelector('.t360-cover img'),nome=box.querySelector('.t360-nome'),go=box.querySelector('.t360-go'),
+        tabs=[...box.querySelectorAll('.t360-tab')];
+  const CDN='https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/';
+  let viewer=null,lib=null,atual=tabs.find(t=>t.classList.contains('on'))||tabs[0];
+
+  const carregarLib=()=>lib||(lib=new Promise((ok,erro)=>{
+    const css=document.createElement('link');css.rel='stylesheet';css.href=CDN+'pannellum.css';document.head.appendChild(css);
+    const s=document.createElement('script');s.src=CDN+'pannellum.js';s.onload=ok;s.onerror=erro;document.head.appendChild(s);
+  }));
+
+  const mostrar=t=>{
+    atual=t;
+    tabs.forEach(x=>{const on=x===t;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});
+    capa.src=t.dataset.capa;nome.textContent=t.dataset.nome;
+    stage.classList.toggle('sem',!t.dataset.pano);
+    box.querySelector('.t360-erro')?.remove();
+    if(viewer){viewer.destroy();viewer=null}
+    stage.classList.remove('ativo');
+    if(t.dataset.pano&&lib)iniciar(); // tour já em uso: troca direto para o novo espaço
+  };
+
+  const iniciar=async()=>{
+    if(!atual.dataset.pano)return;
+    go.disabled=true;
+    try{await carregarLib()}catch(e){go.disabled=false;return}
+    go.disabled=false;
+    if(viewer){viewer.destroy();viewer=null}
+    stage.classList.add('ativo');
+    viewer=pannellum.viewer(view,{
+      type:'equirectangular',panorama:atual.dataset.pano,title:atual.dataset.nome,
+      autoLoad:true,autoRotate:-2,autoRotateInactivityDelay:4000,hfov:100,minHfov:40,maxHfov:120,
+      showZoomCtrl:true,showFullscreenCtrl:true,compass:false,mouseZoom:'fullscreenonly',
+      strings:{loadButtonLabel:'Clique para<br>carregar',loadingLabel:'Carregando…',bylineLabel:'',
+        noPanoramaError:'Nenhuma imagem 360° foi informada.',fileAccessError:'Não foi possível abrir a imagem 360°.',
+        malformedURLError:'Endereço da imagem inválido.',iOS8WebGLError:'Seu navegador não suporta o tour 360°.',
+        genericWebGLError:'Seu navegador não suporta o tour 360° (WebGL).',
+        textureSizeError:'A imagem 360° é grande demais para este aparelho. Tente em um computador.',
+        unknownError:'Não foi possível carregar o tour 360°.'}
+    });
+  };
+
+  go.addEventListener('click',iniciar);
+  tabs.forEach(t=>t.addEventListener('click',()=>{if(t!==atual)mostrar(t)}));
+  stage.classList.toggle('sem',!atual.dataset.pano);
 })();

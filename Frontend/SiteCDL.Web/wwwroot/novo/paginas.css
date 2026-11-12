@@ -252,14 +252,6 @@ nav.crumb{display:block} /* style.css esconde <nav> abaixo de 1180px */
 .f-ok{font-size:14px;background:#e6f6ee;color:#0a6a41;padding:12px 14px;border-radius:12px}
 
 /* Visualizador de fotos */
-.lb{position:fixed;inset:0;z-index:200;background:rgba(6,24,51,.94);display:grid;grid-template-columns:72px 1fr 72px;align-items:center}
-.lb[hidden]{display:none}
-.lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
-.lb img{max-width:100%;max-height:82vh;border-radius:12px;object-fit:contain}
-.lb figcaption{color:#b8c8e6;font-size:13.5px}
-.lb-n,.lb-x{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:20px;cursor:pointer;justify-self:center;transition:background .2s}
-.lb-n:hover,.lb-x:hover{background:rgba(255,255,255,.22)}
-.lb-x{position:absolute;top:18px;right:18px;font-size:16px}
 
 @media (max-width:1100px){
   .spec-grid{grid-template-columns:repeat(2,1fr)}
@@ -854,3 +846,35 @@ blockquote.lei+blockquote.lei{margin-top:-8px}
 .share-row a:hover,.share-row button:hover{background:var(--ink);color:#fff!important}
 .share-row button.ok::after{content:" ✓"}
 .pp-box dd,.lhead h1,.parc-top h2,.art a,.ec-b h3,.pcard b{overflow-wrap:anywhere}.parc-top>div{min-width:0}
+
+/* ============ Tour virtual 360° (Views/Shared/_Tour360.cshtml) ============ */
+.t360{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-top:36px}
+.t360-stage{position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:var(--navy)}
+.t360-view{position:absolute;inset:0}
+.t360-cover{position:absolute;inset:0;z-index:2}
+.t360-cover img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);filter:saturate(.9)}
+.t360-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;color:#fff;background:radial-gradient(ellipse at center,rgba(6,24,51,.35),rgba(6,24,51,.78))}
+.t360-ico{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;letter-spacing:.06em;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset}
+.t360-ico svg{width:20px;height:20px;animation:t360gira 6s linear infinite}
+@keyframes t360gira{to{transform:rotate(360deg)}}
+.t360-nome{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.t360-soon{display:none;font-size:15px;color:#dbe6fb;max-width:340px}
+.t360-soon a{color:#fff;text-decoration:underline}
+.t360-stage.sem .t360-go{display:none}
+.t360-stage.sem .t360-soon{display:block}
+.t360-stage.ativo .t360-cover{display:none}
+.t360-tabs{display:flex;flex-direction:column;gap:8px;max-height:100%;overflow:auto}
+.t360-tab{display:flex;align-items:center;gap:12px;width:100%;padding:8px;border:0;border-radius:16px;background:#fff;box-shadow:0 0 0 1px var(--line) inset;text-align:left;font-family:inherit;color:var(--ink);cursor:pointer;transition:box-shadow .2s,background .2s}
+.t360-tab:hover{box-shadow:0 0 0 1px var(--blue-200) inset}
+.t360-tab.on{background:var(--blue-50);box-shadow:0 0 0 2px var(--blue) inset}
+.t360-tab img{width:64px;height:48px;border-radius:10px;object-fit:cover;flex:none}
+.t360-tab b{display:block;font-size:14px;font-weight:700;line-height:1.25}
+.t360-tab small{display:block;font-size:12px;color:var(--muted)}
+.t360-erro{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:#fff;background:var(--navy)}
+.t360 .pnlm-container{background:var(--navy);font-family:var(--sans)}
+@media (max-width:900px){
+  .t360{grid-template-columns:1fr}
+  .t360-stage{aspect-ratio:4/3}
+  .t360-tabs{flex-direction:row;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory}
+  .t360-tab{flex:none;width:240px;scroll-snap-align:start}
+}

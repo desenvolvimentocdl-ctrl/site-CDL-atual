@@ -643,3 +643,46 @@ a.selo:hover{transform:translateY(-2px);box-shadow:0 0 0 2px #fff,0 8px 20px rgb
 a.selo:focus-visible{outline:2px solid #fff;outline-offset:3px}
 @media (max-width:640px){.thermo{margin-bottom:36px}.flogos li{height:40px;padding:5px 10px}.flogos img{height:24px}}
 @media (max-width:359px){.hact>.btn-primary{display:none}.sys-logos{gap:10px}.sys-logos img{max-height:20px;width:auto}.ct-soc{gap:0}.ct-soc a{width:24px}} /* telas muito estreitas: "Associe-se" fica no menu do celular */
+
+/* ============ Visualizador de imagens (novo/visualizador.js) ============ */
+img.zv-ok{cursor:zoom-in}
+html.zv-aberto,html.zv-aberto body{overflow:hidden}
+.zv{position:fixed;inset:0;z-index:2147483000;background:rgba(6,16,36,.96);color:#fff;font-family:var(--sans);user-select:none;-webkit-user-select:none}
+.zv[hidden]{display:none}
+.zv-bar{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;padding:0 16px 0 22px;background:linear-gradient(rgba(6,16,36,.85),rgba(6,16,36,0))}
+.zv-cont{font-family:var(--mono);font-size:13px;color:#b8c8e6;letter-spacing:.04em}
+.zv-acts{display:flex;align-items:center;gap:6px;margin-left:auto}
+.zv-acts button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:42px;height:42px;padding:0 10px;border:0;border-radius:12px;background:rgba(255,255,255,.08);color:#fff;font:600 14px var(--sans);cursor:pointer;transition:background .2s}
+.zv-acts button:hover{background:rgba(255,255,255,.2)}
+.zv-acts button:focus-visible,.zv-nav:focus-visible{outline:2px solid var(--blue-2);outline-offset:2px}
+.zv-acts svg{width:20px;height:20px}
+.zv-acts .zv-dl{background:var(--blue);padding:0 16px}
+.zv-acts .zv-dl:hover{background:var(--blue-2)}
+.zv-pct{min-width:48px;text-align:center;font-family:var(--mono);font-size:12.5px;color:#b8c8e6}
+.zv-sep{width:1px;height:24px;background:rgba(255,255,255,.18);margin:0 4px}
+.zv-stage{position:absolute;inset:64px 76px 56px;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;cursor:default}
+.zv-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;transition:transform .22s var(--ease);transform-origin:center;cursor:zoom-in;will-change:transform;-webkit-user-drag:none}
+.zv.ampliada .zv-img{cursor:grab;border-radius:0}
+.zv.ampliada .zv-img:active{cursor:grabbing}
+.zv-load{position:absolute;width:38px;height:38px;border-radius:50%;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;animation:zvgira .8s linear infinite;display:none}
+.zv.carregando .zv-load{display:block}
+.zv.carregando .zv-img{opacity:.35}
+@keyframes zvgira{to{transform:rotate(360deg)}}
+.zv-nav{position:absolute;top:50%;z-index:3;width:52px;height:52px;margin-top:-26px;border:0;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.zv-nav:hover{background:rgba(255,255,255,.24)}
+.zv-nav svg{width:24px;height:24px}
+.zv-ant{left:12px}.zv-prox{right:12px}
+.zv.unica .zv-nav,.zv.unica .zv-cont{display:none}
+.zv-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;min-height:56px;display:flex;align-items:center;justify-content:center;padding:8px 24px;margin:0;text-align:center;font-size:14px;color:#c9d6ee;background:linear-gradient(rgba(6,16,36,0),rgba(6,16,36,.85))}
+.zv.ampliada .zv-cap{opacity:0;pointer-events:none}
+@media (max-width:700px){
+  .zv-bar{padding:0 8px 0 14px}
+  .zv-acts{gap:4px}
+  .zv-acts button{min-width:38px;height:38px;padding:0 8px}
+  .zv-acts .zv-dl span,.zv-pct,.zv-sep{display:none}
+  .zv-acts .zv-dl{padding:0 10px}
+  .zv-stage{inset:64px 0 64px}
+  .zv-nav{top:auto;bottom:8px;margin:0;width:44px;height:44px}
+  .zv-ant{left:10px}.zv-prox{right:10px}
+  .zv-cap{padding:8px 64px;font-size:13px}
+}

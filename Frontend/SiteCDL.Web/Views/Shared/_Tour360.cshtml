@@ -1,0 +1,70 @@
+@model string
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+@*
+    Tour virtual 360° dos espaços do CDL Convenções e Eventos.
+    Uso: <partial name="_Tour360" model="@("cdl-auditorio")" />  (o espaço informado aparece primeiro; "" = página geral)
+
+    COMO PUBLICAR AS FOTOS 360°:
+      Salve a foto panorâmica (equiretangular, proporção 2:1 — ex.: 6000x3000 ou 4096x2048) em
+      wwwroot/novo/img/360/{slug-da-página}.jpg   (ou .webp)
+      ex.: wwwroot/novo/img/360/cdl-auditorio.jpg, wwwroot/novo/img/360/sala-executiva.jpg
+      Enquanto a foto não existir, o espaço aparece como "Tour 360° em breve".
+*@
+@{
+    var espacos = new (string slug, string nome, string capa, string cap)[]
+    {
+        ("cdl-auditorio", "CDL Auditório", "auditorio-01", "até 448 pessoas"),
+        ("cdl-foyer", "CDL Foyer", "foyer-01", "até 350 pessoas"),
+        ("sala-espaco-mais", "Sala Espaço Mais", "espaco-mais-01", "até 120 lugares"),
+        ("sala-executiva", "Sala Executiva", "executiva-01", "até 100 lugares"),
+        ("sala-cecilia-meireles", "Sala Cecília Meireles", "cecilia-meireles-01", "até 60 lugares"),
+        ("sala-machado-de-assis", "Sala Machado de Assis", "machado-de-assis-01", "até 20 pessoas"),
+    };
+    string? Panorama(string slug)
+    {
+        foreach (var ext in new[] { ".jpg", ".jpeg", ".webp", ".png" })
+        {
+            var f = Env.WebRootFileProvider.GetFileInfo($"novo/img/360/{slug}{ext}");
+            if (f.Exists) return $"/novo/img/360/{slug}{ext}?v={f.LastModified.ToUnixTimeSeconds()}";
+        }
+        return null;
+    }
+    var atual = Model ?? "";
+    var lista = espacos.OrderBy(e => e.slug == atual ? 0 : 1).ToList();
+    var primeiro = lista[0];
+}
+<section class="sec t360-sec" id="tour-360">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Tour virtual 360°</span><h2>Visite o espaço <span class="serif">antes de reservar.</span></h2></div>
+      <p class="lead rv d1">Arraste a imagem para olhar em todas as direções, aproxime com os botões + e − e abra em tela cheia.</p>
+    </div>
+
+    <div class="t360 rv d1" data-t360>
+      <div class="t360-stage">
+        <div class="t360-view" aria-label="Visualizador 360°"></div>
+        <div class="t360-cover">
+          <img src="/novo/img/espacos/@(primeiro.capa).webp" alt="" decoding="async" loading="lazy">
+          <div class="t360-ov">
+            <span class="t360-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M12 2a4 10 0 0 1 0 20 4 10 0 0 1 0-20"/><path d="m17 5 2 1-1 2"/></svg>360°</span>
+            <h3 class="t360-nome">@primeiro.nome</h3>
+            <button type="button" class="btn btn-white t360-go">Iniciar tour 360° <span class="arr">→</span></button>
+            <span class="t360-soon">Tour 360° em breve. Enquanto isso, <a href="#orcamento">agende uma visita</a>.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t360-tabs" role="tablist" aria-label="Escolha o espaço">
+        @foreach (var e in lista)
+        {
+            var pano = Panorama(e.slug);
+            <button type="button" role="tab" class="t360-tab@(e.slug == primeiro.slug ? " on" : "")" aria-selected="@(e.slug == primeiro.slug ? "true" : "false")"
+                    data-nome="@e.nome" data-capa="/novo/img/espacos/@(e.capa).webp" data-pano="@(pano ?? "")" data-url="/@e.slug">
+              <img src="/novo/img/espacos/@(e.capa)-p.webp" alt="" loading="lazy" decoding="async">
+              <span><b>@e.nome</b><small>@e.cap · @(pano != null ? "360° disponível" : "em breve")</small></span>
+            </button>
+        }
+      </div>
+    </div>
+  </div>
+</section>

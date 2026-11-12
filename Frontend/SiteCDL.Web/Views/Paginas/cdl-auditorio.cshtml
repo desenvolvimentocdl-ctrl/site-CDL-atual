@@ -28,6 +28,7 @@
       <div class="ctas">
         <a href="#orcamento" class="btn btn-primary">Solicitar orçamento <span class="arr">→</span></a>
         <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener" class="btn btn-light">WhatsApp</a>
+        <a href="#tour-360" class="btn btn-light">Tour 360°</a>
       </div>
     </div>
 
@@ -47,6 +48,8 @@
     </ul>
   </div>
 </section>
+
+<partial name="_Tour360" model="@("cdl-auditorio")" />
 
 <section class="sec" id="ficha">
   <div class="wrap">
@@ -133,12 +136,6 @@
   </div>
 </section>
 
-<div class="lb" id="lb" hidden role="dialog" aria-label="Fotos do CDL Auditório">
-  <button class="lb-x" data-lb="x" aria-label="Fechar">✕</button>
-  <button class="lb-n lb-p" data-lb="-1" aria-label="Foto anterior">←</button>
-  <figure><img alt=""><figcaption></figcaption></figure>
-  <button class="lb-n lb-f" data-lb="1" aria-label="Próxima foto">→</button>
-</div>
 <script>
 window.GALERIA=[1,2,3,4,5,6,7,8,9,10,11].map(n=>'img/espacos/auditorio-'+String(n).padStart(2,'0')+'.webp');
 </script>
