@@ -118,7 +118,8 @@ body{font-size:26px;line-height:1.45}
 .ganho{font-size:25px}
 .entr .txt p{font-size:27px}
 .passo{padding:32px}.passo h3{font-size:32px}.passo p{font-size:25px}
-.tl-l{padding:20px 30px;font-size:26px;grid-template-columns:190px 140px 230px 1fr 230px}
+.tl-l{padding:20px 30px;font-size:26px;grid-template-columns:60px 140px 230px 1fr 230px}
+.tl-l .o{font:700 22px/1 var(--mono);color:var(--muted)}
 .tl-l .h,.tl-l .tp{font-size:22px}.tl-l .d,.tl-l .dl{font-size:21px}
 .leg{font-size:26px}.barra{height:30px}
 .slide .num{white-space:nowrap}
@@ -273,7 +274,7 @@ body{font-size:26px;line-height:1.45}
   <div class="n">02</div>
   <div class="eyebrow" id="est-atual">Gerado a partir do Git</div>
   <h2>Esteira de desenvolvimento</h2>
-  <p class="lead">Cada commit da reformulação, com o tipo de mudança e o tamanho da alteração. Os dados são refeitos a cada push no master.</p>
+  <p class="lead">Cada commit da reformulação, na ordem em que foi feito, com o tipo de mudança e o tamanho da alteração. Os dados são refeitos a cada push no master.</p>
   <div class="rod"><span>Esteira</span><span class="pg"></span></div>
 </section>
 
@@ -415,20 +416,6 @@ body{font-size:26px;line-height:1.45}
   <div class="rod"><span>Estrutura</span><span class="pg"></span></div>
 </section>
 
-<!-- 16 · pontos de atenção -->
-<section class="slide">
-  <div class="cab-s"><div class="eyebrow">Próximos passos</div><h2>Pontos de atenção</h2><p class="sub">Itens herdados do código original para tratar nas próximas etapas.</p></div>
-  <div class="g3">
-    <div class="bloco aviso"><span class="selo s-bad">Alta</span><h3>Credenciais no repositório</h3><p>Senhas do MySQL e token da Loja no código. Mover para variáveis de ambiente e trocar as senhas.</p></div>
-    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>Sem testes automatizados</h3><p>Começar pela API e pelas rotas de GEO.</p></div>
-    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>CORS aberto</h3><p>Restringir às origens do Portal e da Loja.</p></div>
-    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>Acesso duplicado ao banco</h3><p>Concentrar o acesso a dados na API.</p></div>
-    <div class="bloco aviso"><span class="selo s-warn">Média</span><h3>Publicação sem pipeline</h3><p>Dockerfile comentado e sem CI de build.</p></div>
-    <div class="bloco aviso"><span class="selo s-ok">Info</span><h3>Painel é demonstração</h3><p>Ligar a dados reais exige autenticação de verdade.</p></div>
-  </div>
-  <div class="rod"><span>Próximos passos</span><span class="pg"></span></div>
-</section>
-
 <!-- 17 · encerramento -->
 <section class="slide capa">
   <div class="grade-fundo"></div>
@@ -455,24 +442,24 @@ body{font-size:26px;line-height:1.45}
     document.querySelector('[data-n="linhas"]').textContent=mil(soma("adicionadas"));
     document.querySelector('[data-n="arqs"]').textContent=n(soma("totalArquivos"))+" arquivos alterados";
     document.getElementById("e-commits").textContent=cs.length;
-    document.getElementById("e-periodo").textContent="De "+dt(cs[cs.length-1].data,{dateStyle:"short"})+" a "+dt(cs[0].data,{dateStyle:"short"});
+    document.getElementById("e-periodo").textContent="Entregas da reformulação";
     document.getElementById("e-arqs").textContent=n(soma("totalArquivos"));
     document.getElementById("e-mais").textContent=n(soma("adicionadas"));
     document.getElementById("e-menos").textContent=n(soma("removidas"))+" linhas removidas";
     document.getElementById("e-ult").textContent=cs[0].curto;
     document.getElementById("e-ult-t").textContent=cs[0].titulo;
-    document.getElementById("est-atual").textContent="Dados de "+dt(d.geradoEm,{dateStyle:"short",timeStyle:"short"});
-    var tipos={};cs.forEach(function(c){tipos[c.tipo]=(tipos[c.tipo]||0)+1;});
+        var tipos={};cs.forEach(function(c){tipos[c.tipo]=(tipos[c.tipo]||0)+1;});
     var ordem=Object.keys(tipos).sort(function(a,b){return tipos[b]-tipos[a];});
     document.getElementById("e-barra").innerHTML=ordem.map(function(t){return '<span style="--cor:'+cor(t)+';flex:'+tipos[t]+'"></span>';}).join("");
     document.getElementById("e-leg").innerHTML=ordem.map(function(t){return '<span style="--cor:'+cor(t)+'"><i></i>'+esc(t)+'<b>'+tipos[t]+'</b></span>';}).join("");
     // linha do tempo: 13 commits por slide
+    var cron=cs.slice().reverse();
     var por=Math.ceil(cs.length/Math.ceil(cs.length/10)), alvo=document.getElementById("tl-alvo"), tpl=document.getElementById("tpl-tl");
     for(var i=0;i<cs.length;i+=por){
       var s=tpl.content.firstElementChild.cloneNode(true);
       if(cs.length>por) s.querySelector("h2").textContent="Linha do tempo ("+(i/por+1)+"/"+Math.ceil(cs.length/por)+")";
-      s.querySelector(".tl").innerHTML=cs.slice(i,i+por).map(function(c){
-        return '<div class="tl-l" style="--cor:'+cor(c.tipo)+'"><span class="d">'+dt(c.data,{day:"2-digit",month:"2-digit"})+' '+dt(c.data,{timeStyle:"short"})+'</span>'+
+      s.querySelector(".tl").innerHTML=cron.slice(i,i+por).map(function(c){
+        return '<div class="tl-l" style="--cor:'+cor(c.tipo)+'"><span class="o">'+(cron.indexOf(c)+1)+'</span>'+
           '<span class="h">'+esc(c.curto)+'</span><span class="tp">'+esc(c.tipo)+'</span><span class="tt">'+esc(c.titulo)+'</span>'+
           '<span class="dl"><span class="mais">+'+n(c.adicionadas)+'</span> <span class="menos">−'+n(c.removidas)+'</span></span></div>';
       }).join("");
