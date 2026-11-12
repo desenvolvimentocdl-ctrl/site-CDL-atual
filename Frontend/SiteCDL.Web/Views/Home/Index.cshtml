@@ -117,8 +117,9 @@
       <div class="thermo-bar">
         <b>Termômetro do Varejo de Uberlândia <em class="ed">Edição nov/2026</em></b>
         <span>Fontes: pesquisa CDL Uberlândia (Black Friday 2026) e CNDL/SPC Brasil (set/2026)</span>
+        <button type="button" class="th-tg" data-thermo-tg aria-expanded="true" aria-controls="th-grid"><span>Ocultar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
       </div>
-      <div class="th-grid">
+      <div class="th-grid" id="th-grid">
         <div class="tcard">
           <div class="lbl">Black Friday 2026 · intenção de gasto vs. 2025</div>
           <div class="big"><span data-count="46">0</span><small>%</small></div>
@@ -175,33 +176,6 @@
   </div>
 </section>
 
-<!-- ============ QUICK ACCESS ============ -->
-<section class="quick">
-  <div class="wrap">
-    <div class="qbox rv">
-      <h3>Acesso rápido<span>Os serviços mais procurados</span></h3>
-      <div class="chips">
-        <a href="https://www.itau.com.br/servicos/boletos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>2ª via de boleto</a>
-        <a href="/certificado-digital"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="12" rx="2"/><circle cx="12" cy="11" r="2.5"/></svg>Certificado digital</a>
-        <a href="/spc-consulta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg>Consulta CPF</a>
-        <a href="/spc-negociacao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4v16"/></svg>Negocie seus débitos</a>
-        <a href="https://jobs.quickin.io/cdludi/jobs?page=1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2"/></svg>Vagas de emprego</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ LOGOS ============ -->
-<section class="logos">
-  <p>Parte do Sistema CNDL — presente nas 27 unidades federativas</p>
-  <div class="mask">
-    <div class="track-x">
-      <span class="lg lgi"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="lg lgi"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="lg lgi"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><span class="lg lgi"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></span><span class="lg s">BDMG</span><span class="lg">CDL Saúde</span><span class="lg s">Rita Saúde</span><span class="lg">Varejo On</span>
-      <span class="lg lgi" aria-hidden="true"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></span><span class="lg s" aria-hidden="true">BDMG</span><span class="lg" aria-hidden="true">CDL Saúde</span><span class="lg s" aria-hidden="true">Rita Saúde</span><span class="lg" aria-hidden="true">Varejo On</span>
-    </div>
-  </div>
-</section>
-
 <!-- ============ CAMPANHAS (banners cadastrados no portal) ============ -->
 @if (bannersDesk.Count > 0 || bannersMob.Count > 0)
 {
@@ -219,6 +193,46 @@
   </div>
 </section>
 }
+
+<!-- ============ PUBLICAÇÕES (com imagens, como no site original) ============ -->
+<section class="sec" id="publicacoes" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Publicações</span><h2>Dados e notícias <span class="serif">do varejo.</span></h2></div>
+      <a href="/publicacoes" class="btn btn-light rv d1">Todas as publicações <span class="arr">→</span></a>
+    </div>
+    <nav class="ncats rv" aria-label="Categorias de publicações"><a href="/publicacoes/noticias">Notícias</a><a href="/publicacoes/cdldireto">Opinião</a><a href="/publicacoes/comunicados">Comunicados</a><a href="/publicacoes/cdlacao">CDL em Ação</a><a href="/publicacoes/pesquisas">Pesquisa</a><a href="/publicacoes/cae">CAE</a></nav>
+    <div class="nwrap">
+      @if (noticias.Count > 0)
+      {
+        var f = noticias[0];
+        <a class="nf rv" href="@UrlPost(f)"><div class="nimg">@if (ImgPost(f) != "") {<img src="@ImgPost(f)" alt="" loading="lazy" decoding="async" onerror="this.remove()">}<span class="nph" aria-hidden="true"><img src="/novo/img/logo-branco.png" alt=""></span></div><div class="nf-b"><div class="nmeta"><span class="ncat">@(f.PostCategoria?.Nome)</span><time>@DataCurta(f.Data)</time></div><h3>@Html.Raw(f.Titulo)</h3><span class="nmore">Ler matéria <i>→</i></span></div></a>
+        <div class="nlist rv d1">
+        @foreach (var n in noticias.Skip(1).Take(4))
+        {
+          <a class="ni" href="@UrlPost(n)"><div class="nimg">@if (ImgPost(n) != "") {<img src="@ImgPost(n)" alt="" loading="lazy" decoding="async" onerror="this.remove()">}<span class="nph" aria-hidden="true"><img src="/novo/img/logo-branco.png" alt=""></span></div><div><div class="nmeta"><span class="ncat">@(n.PostCategoria?.Nome)</span><time>@DataCurta(n.Data)</time></div><b>@Html.Raw(n.Titulo)</b></div></a>
+        }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK ACCESS ============ -->
+<section class="quick">
+  <div class="wrap">
+    <div class="qbox rv">
+      <h3>Acesso rápido<span>Os serviços mais procurados</span></h3>
+      <div class="chips">
+        <a href="https://www.itau.com.br/servicos/boletos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>2ª via de boleto</a>
+        <a href="/certificado-digital"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="12" rx="2"/><circle cx="12" cy="11" r="2.5"/></svg>Certificado digital</a>
+        <a href="/spc-consulta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg>Consulta CPF</a>
+        <a href="/spc-negociacao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4v16"/></svg>Negocie seus débitos</a>
+        <a href="https://jobs.quickin.io/cdludi/jobs?page=1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2"/></svg>Vagas de emprego</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ SOLUÇÕES (BENTO) ============ -->
 <section class="sec" id="solucoes">
@@ -379,30 +393,6 @@
   </div>
 </section>
 
-<!-- ============ PUBLICAÇÕES (com imagens, como no site original) ============ -->
-<section class="sec" id="publicacoes" style="padding-top:40px">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="rv"><span class="eyebrow">Publicações</span><h2>Dados e notícias <span class="serif">do varejo.</span></h2></div>
-      <a href="/publicacoes" class="btn btn-light rv d1">Todas as publicações <span class="arr">→</span></a>
-    </div>
-    <nav class="ncats rv" aria-label="Categorias de publicações"><a href="/publicacoes/noticias">Notícias</a><a href="/publicacoes/cdldireto">Opinião</a><a href="/publicacoes/comunicados">Comunicados</a><a href="/publicacoes/cdlacao">CDL em Ação</a><a href="/publicacoes/pesquisas">Pesquisa</a><a href="/publicacoes/cae">CAE</a></nav>
-    <div class="nwrap">
-      @if (noticias.Count > 0)
-      {
-        var f = noticias[0];
-        <a class="nf rv" href="@UrlPost(f)"><div class="nimg">@if (ImgPost(f) != "") {<img src="@ImgPost(f)" alt="" loading="lazy" decoding="async" onerror="this.remove()">}<span class="nph" aria-hidden="true"><img src="/novo/img/logo-branco.png" alt=""></span></div><div class="nf-b"><div class="nmeta"><span class="ncat">@(f.PostCategoria?.Nome)</span><time>@DataCurta(f.Data)</time></div><h3>@Html.Raw(f.Titulo)</h3><span class="nmore">Ler matéria <i>→</i></span></div></a>
-        <div class="nlist rv d1">
-        @foreach (var n in noticias.Skip(1).Take(4))
-        {
-          <a class="ni" href="@UrlPost(n)"><div class="nimg">@if (ImgPost(n) != "") {<img src="@ImgPost(n)" alt="" loading="lazy" decoding="async" onerror="this.remove()">}<span class="nph" aria-hidden="true"><img src="/novo/img/logo-branco.png" alt=""></span></div><div><div class="nmeta"><span class="ncat">@(n.PostCategoria?.Nome)</span><time>@DataCurta(n.Data)</time></div><b>@Html.Raw(n.Titulo)</b></div></a>
-        }
-        </div>
-      }
-    </div>
-  </div>
-</section>
-
 <!-- ============ DEPOIMENTOS ============ -->
 <section class="sec" style="padding-top:40px">
   <div class="wrap">
@@ -430,6 +420,17 @@
       <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Moção de Aplausos</b><span>Câmara Municipal · 2022</span></div></div>
       <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Selo Empresa Amiga</b><span>Observatório Social de Uberlândia</span></div></div>
       <div class="aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><div><b>Comenda Alexandrino Garcia</b><span>Câmara Municipal de Uberlândia</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGOS ============ -->
+<section class="logos">
+  <p>Parte do Sistema CNDL — presente nas 27 unidades federativas</p>
+  <div class="mask">
+    <div class="track-x">
+      <span class="lg lgi"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="lg lgi"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="lg lgi"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><span class="lg lgi"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></span><span class="lg s">BDMG</span><span class="lg">CDL Saúde</span><span class="lg s">Rita Saúde</span><span class="lg">Varejo On</span>
+      <span class="lg lgi" aria-hidden="true"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><span class="lg lgi" aria-hidden="true"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></span><span class="lg s" aria-hidden="true">BDMG</span><span class="lg" aria-hidden="true">CDL Saúde</span><span class="lg s" aria-hidden="true">Rita Saúde</span><span class="lg" aria-hidden="true">Varejo On</span>
     </div>
   </div>
 </section>
