@@ -696,3 +696,6 @@ html.zv-aberto,html.zv-aberto body{overflow:hidden}
 .thermo.min .th-grid{display:none}
 .thermo.min .thermo-bar{padding-bottom:0}
 @media (max-width:640px){.thermo-bar>span{flex-basis:100%;order:3}}
+
+/* Home: notícias seguidas de Soluções — evita o vão duplo entre as seções */
+#publicacoes{padding-bottom:0}

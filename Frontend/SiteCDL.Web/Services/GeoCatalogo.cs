@@ -66,6 +66,7 @@ namespace SiteCDL.Services
                 new("/cdl-aprendiz", "CDL Aprendiz", "Programa Jovem Aprendiz da CDL Uberlândia."),
                 new("/cdl-estagio", "CDL Estágio", "Programa de estágio e intermediação entre empresas e estudantes."),
                 new("/treinamento", "Treinamento in company", "Treinamentos personalizados realizados dentro da empresa."),
+                new("/reforma-tributaria", "Reforma Tributária", "Guia da Reforma Tributária do Consumo para o comércio: IBS, CBS e Imposto Seletivo, novidades, cronograma 2026–2033, Simples Nacional, split payment e links oficiais."),
                 new("/giro-mercado", "Giro de Mercado", "Evento gratuito em parceria com o SEBRAE, com mesas temáticas e consultores, para gerar negócios entre empresários."),
                 new("/legislacao", "Legislação em pauta", "Orientações jurídicas para empresas, como as principais dúvidas sobre atestado médico."),
             }),
