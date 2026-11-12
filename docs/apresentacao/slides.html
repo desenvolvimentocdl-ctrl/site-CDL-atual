@@ -129,9 +129,9 @@ body{font-size:26px;line-height:1.45}
 .slide .g3,.slide .g4,.slide .g5,.slide .g2{gap:30px}
 
 .entregas6{gap:22px!important}
-.entregas6 .bloco{padding:26px 30px;gap:10px}
-.entregas6 .bloco h3{font-size:30px}
-.entregas6 .bloco li{font-size:23px}
+.entregas6 .bloco{padding:24px 26px;gap:10px}
+.entregas6 .bloco h3{font-size:28px}
+.entregas6 .bloco li{font-size:21px}
 .entregas6 .bloco ul{gap:6px}
 .destaque-novo{border-color:var(--blue)!important;box-shadow:0 0 0 2px var(--blue) inset}
 .destaque-novo .rotulo{color:var(--blue)}
@@ -168,6 +168,29 @@ body{font-size:26px;line-height:1.45}
 .pa-tres .bloco h3{font-size:26px}
 .pa-tres .bloco p,.pa-tres .bloco li{font-size:20px;line-height:1.45}
 .pa-tres .bloco ul{gap:6px}
+
+/* reforma tributária */
+.rt-dupla{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
+.rt-dupla .col{display:grid;gap:16px}
+.rt-dupla .bloco{padding:22px 26px;gap:6px}
+.rt-dupla .bloco h3{font-size:25px}
+.rt-dupla .bloco p,.rt-dupla .bloco li{font-size:19.5px;line-height:1.42}
+.rt-8{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.rt-8 .bloco{padding:22px 24px;gap:6px}
+.rt-8 .bloco h3{font-size:24px}
+.rt-8 .bloco p{font-size:18.5px;line-height:1.42}
+.faixa-extra{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.faixa-extra .bloco{padding:20px 24px;gap:6px;background:var(--blue-soft);border-color:transparent}
+.faixa-extra .bloco h3{font-size:22px}.faixa-extra .bloco p{font-size:18px;line-height:1.4}
+.bol-stack{display:grid;gap:18px}
+.fontes{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.fontes .bloco{padding:20px 22px;gap:6px}
+.fontes .bloco h3{font-size:22px}
+.fontes .bloco p{font-size:17.5px;line-height:1.45}
+.regras{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.regras .bloco{padding:20px 22px;gap:6px;background:var(--navy);border-color:var(--navy)}
+.regras .bloco h3{font-size:21px;color:#fff}.regras .bloco p{font-size:17.5px;color:#b8c7e3;line-height:1.42}
+.regras .bloco .rotulo{color:#7fb0ff}
 </style>
 </head>
 <body>
@@ -177,8 +200,8 @@ body{font-size:26px;line-height:1.45}
   <div class="grade-fundo"></div>
   <div class="eyebrow">Apresentação · cdludi.org.br</div>
   <h1>Reformulação do site da CDL Uberlândia</h1>
-  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e IAs, tour 360° dos espaços e correções de celular e conteúdo.</p>
-  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Tour 360°</span><span>Ajustes</span></div>
+  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e IAs, tour 360° dos espaços, guia da Reforma Tributária com boletim diário e correções.</p>
+  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Tour 360°</span><span>Reforma Tributária</span><span>Ajustes</span></div>
   <div class="rod"><span>CDL Uberlândia · Reformulação do site</span><span id="capa-data"></span></div>
 </section>
 
@@ -202,13 +225,15 @@ body{font-size:26px;line-height:1.45}
 <!-- 3 · entregas -->
 <section class="slide">
   <div class="cab-s"><div class="eyebrow">Visão geral</div><h2>O que foi entregue</h2></div>
-  <div class="g3 entregas6">
+  <div class="g4 entregas6">
     <div class="bloco"><span class="rotulo">1 · Visual</span><h3>Novo layout</h3><ul><li>Cabeçalho, menu, busca e rodapé novos</li><li>Home, publicações, matéria e busca refeitas</li><li>46 páginas institucionais</li><li>Fontes Manrope e JetBrains Mono</li></ul></div>
     <div class="bloco"><span class="rotulo">2 · Loja</span><h3>Vitrine no site</h3><ul><li>Rota <code>/loja</code> com eventos, cursos e EAD</li><li>Dados ao vivo da API da Loja</li><li>“Inscreva-se” direto no checkout</li><li>Imagens servidas pelo próprio site</li></ul></div>
     <div class="bloco"><span class="rotulo">3 · GEO</span><h3>Pronto para IAs</h3><ul><li><code>llms.txt</code>, <code>robots.txt</code> e <code>sitemap.xml</code></li><li>Dados estruturados em todas as páginas</li><li>Open Graph e canonical</li></ul></div>
     <div class="bloco"><span class="rotulo">4 · Associado</span><h3>Painel (demo)</h3><ul><li>Login, benefícios, boletos, SPC e cursos</li><li>Dados fictícios, nada gravado</li><li>“Mais lidas” nas publicações</li></ul></div>
     <div class="bloco"><span class="rotulo">5 · Ajustes</span><h3>Correções</h3><ul><li>Título sobre a foto e paginação no F5</li><li>Matérias longas que sumiam</li><li>Botões cortados no celular</li><li>Solução volta a compilar</li></ul></div>
     <div class="bloco destaque-novo"><span class="rotulo">6 · Espaços · novo</span><h3>Tour 360°</h3><ul><li>Tour virtual nos 6 espaços de locação</li><li>Visualizador de imagens com zoom</li><li>Links das campanhas corrigidos</li></ul></div>
+    <div class="bloco destaque-novo"><span class="rotulo">7 · Reforma · novo</span><h3>Reforma Tributária</h3><ul><li>Guia completo para o comércio</li><li>Boletim diário de segunda a sábado</li><li>Novidades e prazos em ordem</li></ul></div>
+    <div class="bloco"><span class="rotulo">8 · Home</span><h3>Home e avisos</h3><ul><li>Nova ordem das seções</li><li>Termômetro do Varejo com “Ocultar”</li><li>Aviso do topo automático</li></ul></div>
   </div>
   <div class="rod"><span>Visão geral</span><span class="pg"></span></div>
 </section>
@@ -286,6 +311,67 @@ body{font-size:26px;line-height:1.45}
     </div>
   </div>
   <div class="rod"><span>Painel do Associado</span><span class="pg"></span></div>
+</section>
+
+<!-- 3d · reforma tributária -->
+<section class="slide">
+  <div class="cab-s"><span class="novo-selo">Novo · Para empresa › Legislação e Orientação</span><h2>Reforma Tributária: guia para o comércio</h2></div>
+  <div class="shot shot-full"><img src="img/rt-hero.jpg" alt="Topo da página Reforma Tributária"></div>
+  <div class="rod"><span>Reforma Tributária</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Reforma Tributária · /reforma-tributaria</div><h2>O que a página entrega ao lojista</h2></div>
+  <div class="rt-8">
+    <div class="bloco"><span class="rotulo">1</span><h3>Boletim diário</h3><p>O resumo do dia: tributos, Congresso, Justiça e prazos, sempre com fonte.</p></div>
+    <div class="bloco"><span class="rotulo">2</span><h3>Novidades</h3><p>“Já aconteceu” e “Próximas datas”, em ordem de calendário (ex.: NF-e de 16/11, Simples até 30/11).</p></div>
+    <div class="bloco"><span class="rotulo">3</span><h3>Entenda em 1 minuto</h3><p>Saem PIS, Cofins, IPI, ICMS e ISS; entram CBS, IBS e Imposto Seletivo. Crédito amplo, cobrança no destino, cashback.</p></div>
+    <div class="bloco"><span class="rotulo">4</span><h3>Cronograma 2026–2033</h3><p>Do ano de teste (0,9% CBS + 0,1% IBS) ao fim do ICMS e do ISS em 2033.</p></div>
+    <div class="bloco"><span class="rotulo">5</span><h3>O que fazer agora</h3><p>8 passos: contador, sistema de notas, cadastro de produtos, caixa de 2027, contratos, fornecedores, testes e equipe.</p></div>
+    <div class="bloco"><span class="rotulo">6</span><h3>Simples Nacional</h3><p>As duas opções para IBS/CBS (dentro ou fora do DAS) e os prazos de escolha.</p></div>
+    <div class="bloco"><span class="rotulo">7</span><h3>Split payment</h3><p>Imposto separado na hora do pagamento: facultativo em 2027, obrigatório previsto para 2028.</p></div>
+    <div class="bloco"><span class="rotulo">8</span><h3>Links oficiais</h3><p>EC 132, LC 214 e 227, regulamentos, notas técnicas, portais, manuais e curso gratuito do CFC.</p></div>
+  </div>
+  <div class="faixa-extra">
+    <div class="bloco"><span class="rotulo">Encontrável</span><h3>Busca, sitemap e llms.txt</h3><p>A página entrou na busca do site e nos arquivos de GEO.</p></div>
+    <div class="bloco"><span class="rotulo">Também nesta entrega</span><h3>Home reorganizada</h3><p>Campanhas, Notícias e Acesso rápido após o Termômetro, que agora pode ser ocultado.</p></div>
+    <div class="bloco"><span class="rotulo">Também nesta entrega</span><h3>Aviso do topo automático</h3><p>Mostra sozinho o próximo curso ou evento da Loja; sem resposta em 2 s, leva à agenda.</p></div>
+  </div>
+  <div class="rod"><span>Reforma Tributária</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><span class="novo-selo">Novo · publicado de segunda a sábado</span><h2>Boletim diário da Reforma</h2></div>
+  <div class="rt-dupla">
+    <div class="bol-stack">
+      <div class="shot"><img src="img/rt-boletim.jpg" alt="Boletim CDL de 12/11/2026" style="height:430px;width:100%;object-fit:cover;object-position:top"></div>
+      <div class="shot"><img src="img/rt-prazos.jpg" alt="Prazos do boletim" style="height:250px;width:100%;object-fit:cover;object-position:top"></div>
+    </div>
+    <div class="col">
+      <div class="bloco"><span class="rotulo">O que traz</span><h3>4 blocos fixos</h3><p>Comércio e tributos (até 5), PECs e legislação (até 3), Jurídico (até 3) e Prazos. Cada fato vem com o impacto para o lojista, a fonte e a data.</p></div>
+      <div class="bloco"><span class="rotulo">Como publica</span><h3>Um arquivo, sem recompilar</h3><p>Os boletins ficam em <code>dados/boletim-reforma.json</code>, o mais recente primeiro. Basta editar o arquivo para a página mudar.</p></div>
+      <div class="bloco"><span class="rotulo">Histórico</span><h3>Boletins anteriores</h3><p>A página mostra o do dia e guarda os 14 anteriores. Dia sem novidade aparece como “Sem novidades hoje”.</p></div>
+    </div>
+  </div>
+  <div class="rod"><span>Reforma Tributária</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Boletim diário · docs/boletim-diario-cdl.md</div><h2>Como o boletim é montado</h2><p class="sub">Janela das últimas 24 a 48 horas e só o que afeta o comércio: caixa, nota fiscal, Simples/MEI, IBS/CBS, crédito, prazos e decisões que pesam no varejo.</p></div>
+  <div class="fontes">
+    <div class="bloco"><span class="rotulo">Oficiais</span><h3>Governo</h3><p>Comitê Gestor do IBS, Receita Federal, Ministério da Fazenda, Planalto e Agência Brasil.</p></div>
+    <div class="bloco"><span class="rotulo">Especializadas</span><h3>Tributário</h3><p>Consultor Tributário, Portal Tributário e Jornal Contábil.</p></div>
+    <div class="bloco"><span class="rotulo">Recorte lojista</span><h3>Comércio</h3><p>CNDL e Sebrae.</p></div>
+    <div class="bloco"><span class="rotulo">Legislativo</span><h3>Congresso</h3><p>Dados abertos da Câmara (PECs da semana) e Agência Senado.</p></div>
+    <div class="bloco"><span class="rotulo">Jurídico</span><h3>Tribunais</h3><p>Conjur, Migalhas e notícias do STF e do STJ.</p></div>
+  </div>
+  <div class="regras">
+    <div class="bloco"><span class="rotulo">Regra</span><h3>Nada inventado</h3><p>Só fatos, números, prazos e links que vieram das fontes.</p></div>
+    <div class="bloco"><span class="rotulo">Regra</span><h3>Números confirmados</h3><p>Valores da reforma só depois de conferidos na Receita ou no CGIBS.</p></div>
+    <div class="bloco"><span class="rotulo">Regra</span><h3>Linguagem de lojista</h3><p>Siglas explicadas na primeira vez; tom neutro, sem alarmismo.</p></div>
+    <div class="bloco"><span class="rotulo">Regra</span><h3>Status exato</h3><p>Toda PEC com a etapa real: comissão, plenário ou arquivada.</p></div>
+  </div>
+  <div class="rod"><span>Reforma Tributária</span><span class="pg"></span></div>
 </section>
 
 <!-- 4 · seção GEO -->

@@ -1,8 +1,197 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T17:29:40+00:00",
+ "geradoEm": "2026-11-12T20:09:52+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "469224fa6ceed68f0fe1a27fbd071839d2e33855",
+   "curto": "469224f",
+   "data": "2026-11-12T16:32:40-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Boletim diário da Reforma Tributária e aviso do topo automático",
+   "corpo": "- /reforma-tributaria: seção \"Boletim diário\" lida de wwwroot/novo/dados/boletim-reforma.json\n  (mais recente primeiro; até 14 anteriores em \"Boletins anteriores\"); boletim de 12/11/2026\n- docs/boletim-diario-cdl.md: fontes, regras e formato do boletim\n- Novidades: adiamento de 11/11 para março de 2027 (documentos do Simples)\n- Aviso do topo: mostra sozinho o próximo curso/evento da Loja (a partir de amanhã);\n  sem resposta da Loja em 2 s, mostra link para a agenda",
+   "tipo": "Melhoria",
+   "adicionadas": 335,
+   "removidas": 3,
+   "totalArquivos": 7,
+   "areas": {
+    "Telas (Razor)": 3,
+    "Imagens e arquivos": 1,
+    "Estilos e scripts": 2,
+    "Documentação": 1
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_BoletimReforma.cshtml",
+     "a": 137,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/dados/boletim-reforma.json",
+     "a": 81,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/boletim-diario-cdl.md",
+     "a": 51,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/paginas.css",
+     "a": 25,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_Layout.cshtml",
+     "a": 23,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/reforma-tributaria.cshtml",
+     "a": 15,
+     "r": 2,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/style.css",
+     "a": 3,
+     "r": 0,
+     "bin": false
+    }
+   ]
+  },
+  {
+   "hash": "939e175d833e3208fceb8dc853bf149cc3d16650",
+   "curto": "939e175",
+   "data": "2026-11-12T15:08:40-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Reforma Tributária: novidades em ordem cronológica",
+   "corpo": "- Seção dividida em \"Já aconteceu\" e \"Próximas datas\", ambas em ordem de calendário\n- Regras da NF-e/NFC-e de 16/11 passam a constar como próxima data (ainda não vigentes)",
+   "tipo": "Melhoria",
+   "adicionadas": 37,
+   "removidas": 14,
+   "totalArquivos": 2,
+   "areas": {
+    "Telas (Razor)": 1,
+    "Estilos e scripts": 1
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/reforma-tributaria.cshtml",
+     "a": 33,
+     "r": 13,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/paginas.css",
+     "a": 4,
+     "r": 1,
+     "bin": false
+    }
+   ]
+  },
+  {
+   "hash": "63dfe49076df93e1211b4306e9e54b7f6f5c1f6f",
+   "curto": "63dfe49",
+   "data": "2026-11-12T14:56:53-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Página Reforma Tributária e ajustes na home",
+   "corpo": "- Nova página /reforma-tributaria (Para empresa): novidades de nov/2026,\n  IBS/CBS/IS, cronograma 2026–2033, checklist, Simples, split payment e links oficiais\n- Menu Para empresa: grupo \"Legislação e Orientação\" (Legislação, Licitações, Reforma Tributária)\n- Página incluída na busca do site, no llms.txt e no sitemap\n- Home: Acesso rápido volta para antes das campanhas; menos espaço abaixo das notícias",
+   "tipo": "Melhoria",
+   "adicionadas": 296,
+   "removidas": 19,
+   "totalArquivos": 7,
+   "areas": {
+    "Front-end (C#)": 1,
+    "Telas (Razor)": 3,
+    "Estilos e scripts": 3
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/reforma-tributaria.cshtml",
+     "a": 206,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/paginas.css",
+     "a": 67,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Home/Index.cshtml",
+     "a": 16,
+     "r": 16,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_Layout.cshtml",
+     "a": 2,
+     "r": 2,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/style.css",
+     "a": 3,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/script.js",
+     "a": 1,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Services/GeoCatalogo.cs",
+     "a": 1,
+     "r": 0,
+     "bin": false
+    }
+   ]
+  },
+  {
+   "hash": "527cd1f414e72e4bfd8979ab3f447e71f0a71da6",
+   "curto": "527cd1f",
+   "data": "2026-11-12T14:35:27-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Home: nova ordem das seções e botão para ocultar o Termômetro",
+   "corpo": "- Após o termômetro: Campanhas, Notícias e Acesso rápido\n- Faixa \"Parte do Sistema CNDL\" passa para depois dos depoimentos\n- Botão Ocultar/Mostrar no Termômetro do Varejo (escolha salva no navegador)",
+   "tipo": "Funcionalidade",
+   "adicionadas": 72,
+   "removidas": 52,
+   "totalArquivos": 3,
+   "areas": {
+    "Telas (Razor)": 1,
+    "Estilos e scripts": 2
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Home/Index.cshtml",
+     "a": 53,
+     "r": 52,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/style.css",
+     "a": 10,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/site-cdl.js",
+     "a": 9,
+     "r": 0,
+     "bin": false
+    }
+   ]
+  },
   {
    "hash": "3e28960cf3e603d566e16d7c3391a4e280b116ff",
    "curto": "3e28960",
