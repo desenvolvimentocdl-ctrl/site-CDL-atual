@@ -1,8 +1,61 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T20:09:52+00:00",
+ "geradoEm": "2026-11-12T20:10:25+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "c24ef9f0a87530f2acea2829a2fc50bd4c4a3a6e",
+   "curto": "c24ef9f",
+   "data": "2026-11-12T20:10:25+00:00",
+   "autor": "Claude",
+   "titulo": "Slides: Reforma Tributária e Boletim diário (commits 527cd1f a 469224f)",
+   "corpo": "- 4 slides novos: página da Reforma, o que ela entrega, boletim diário\n  e como o boletim é montado (fontes e regras de docs/boletim-diario-cdl.md)\n- \"O que foi entregue\" passa a 8 frentes (Reforma Tributária e Home/avisos)\n- Capturas montadas com o HTML/CSS reais e o boletim-reforma.json",
+   "tipo": "Documentação",
+   "adicionadas": 282,
+   "removidas": 7,
+   "totalArquivos": 6,
+   "areas": {
+    "Documentação": 6
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/esteira-dados.js",
+     "a": 190,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/slides.html",
+     "a": 92,
+     "r": 6,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/rt-boletim.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/rt-hero.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/rt-prazos.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "469224fa6ceed68f0fe1a27fbd071839d2e33855",
    "curto": "469224f",
