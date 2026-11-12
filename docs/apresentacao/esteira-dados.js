@@ -1,8 +1,61 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T17:29:10+00:00",
+ "geradoEm": "2026-11-12T17:29:40+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "3e28960cf3e603d566e16d7c3391a4e280b116ff",
+   "curto": "3e28960",
+   "data": "2026-11-12T17:29:40+00:00",
+   "autor": "Claude",
+   "titulo": "Slides: Painel do Associado (o que é, visão geral, 7 seções, como funciona)",
+   "corpo": "Capturas montadas com o HTML/CSS reais do painel e os dados de\ndemonstração do PainelDemoService; esteira inclui o commit ead51d6.",
+   "tipo": "Documentação",
+   "adicionadas": 100,
+   "removidas": 1,
+   "totalArquivos": 6,
+   "areas": {
+    "Documentação": 6
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/slides.html",
+     "a": 76,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/esteira-dados.js",
+     "a": 24,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/pa-inicio.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/pa-login.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/pa-spc.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "ead51d602dea94f6532fd5aec4ef7adf90087fd3",
    "curto": "ead51d6",
