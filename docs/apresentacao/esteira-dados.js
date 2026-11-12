@@ -1,8 +1,73 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T13:23:30+00:00",
+ "geradoEm": "2026-11-12T13:24:06+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "4e78c386d2745ada905a6253cd739323c16bbf78",
+   "curto": "4e78c38",
+   "data": "2026-11-12T13:24:05+00:00",
+   "autor": "Claude",
+   "titulo": "Apresentação da reformulação: páginas de GEO, esteira e estrutura",
+   "corpo": "- docs/apresentacao: visão geral, GEO (o que foi feito e o que melhora),\n  esteira de desenvolvimento e estrutura do projeto\n- gerar-esteira.py lê o git log e grava esteira-dados.js\n- Workflow esteira.yml refaz os dados a cada push no master",
+   "tipo": "GEO",
+   "adicionadas": 2187,
+   "removidas": 0,
+   "totalArquivos": 8,
+   "areas": {
+    "Documentação": 8
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/esteira-dados.js",
+     "a": 1067,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/geo.html",
+     "a": 295,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/estrutura.html",
+     "a": 242,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/esteira.html",
+     "a": 197,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/index.html",
+     "a": 138,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/gerar-esteira.py",
+     "a": 104,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/estilo.css",
+     "a": 102,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": ".github/workflows/esteira.yml",
+     "a": 42,
+     "r": 0,
+     "bin": false
+    }
+   ]
+  },
   {
    "hash": "dd4f381e986645734a69ba7bb6696610f0622a97",
    "curto": "dd4f381",
