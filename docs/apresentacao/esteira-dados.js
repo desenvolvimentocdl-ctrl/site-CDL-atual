@@ -1,8 +1,67 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T13:29:56+00:00",
+ "geradoEm": "2026-11-12T13:30:23+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "1cedb08c358ad0d356ebf14d89c96679ebe8f08c",
+   "curto": "1cedb08",
+   "data": "2026-11-12T13:30:23+00:00",
+   "autor": "Claude",
+   "titulo": "Apresentação em slides (PDF 16:9) com o mesmo visual das páginas",
+   "corpo": "- slides.html: 18 slides (visão geral, GEO, esteira, estrutura)\n- gerar-pdf.js gera apresentacao-reformulacao.pdf via Playwright\n- Esteira: commits só de docs/.github viram \"Documentação\" e ficam\n  fora dos números da reformulação",
+   "tipo": "Documentação",
+   "adicionadas": 512,
+   "removidas": 5,
+   "totalArquivos": 7,
+   "areas": {
+    "Documentação": 7
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/slides.html",
+     "a": 489,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/gerar-pdf.js",
+     "a": 15,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/gerar-esteira.py",
+     "a": 4,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/esteira-dados.js",
+     "a": 2,
+     "r": 2,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/esteira.html",
+     "a": 1,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/index.html",
+     "a": 1,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "4e78c386d2745ada905a6253cd739323c16bbf78",
    "curto": "4e78c38",
