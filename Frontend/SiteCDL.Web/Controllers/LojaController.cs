@@ -65,6 +65,46 @@ namespace SiteCDL.Web.Controllers
         }
 
         // ------------------------------------------------------------------
+        // Imagens da Loja/Portal repassadas pelo próprio site.
+        // Na rede interna, loja.cdludi.org.br e portal.cdludi.org.br apontam para um IP privado (192.168.1.8);
+        // quem abre o site pelo IP da rede (http://134.x...) tem essas imagens bloqueadas pelo Chrome
+        // ("Private/Local Network Access"). Passando pelo site, o navegador só fala com o servidor do site.
+        private static readonly HttpClient _imgHttp = new(new HttpClientHandler { AllowAutoRedirect = true }) { Timeout = TimeSpan.FromSeconds(20) };
+        private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, (byte[] dados, string tipo)> _imgCache = new();
+
+        public static string ImagemServico(string codigo, string arquivo) =>
+            string.IsNullOrWhiteSpace(arquivo) ? "" : $"/loja/imagem/servicos/{Uri.EscapeDataString(codigo)}/{Uri.EscapeDataString(arquivo)}";
+
+        [HttpGet("loja/imagem/{origem}/{codigo}/{arquivo}")]
+        [ResponseCache(Duration = 86400, Location = ResponseCacheLocation.Any)]
+        public async Task<IActionResult> Imagem(string origem, string codigo, string arquivo)
+        {
+            var baseUrl = origem switch
+            {
+                "servicos" => $"{LojaUrl}/Anexos/servicos/",
+                "ead" => "https://portal.cdludi.org.br/Anexos/ImagensCursosEAD/",
+                _ => null
+            };
+            if (baseUrl == null || !Regex.IsMatch(codigo ?? "", @"^\d{1,9}$") || !Regex.IsMatch(arquivo ?? "", @"^[\w\-. ]{1,200}$") || arquivo!.Contains(".."))
+                return NotFound();
+
+            var chave = $"{origem}/{codigo}/{arquivo}";
+            if (!_imgCache.TryGetValue(chave, out var img))
+            {
+                try
+                {
+                    using var resp = await _imgHttp.GetAsync(baseUrl + codigo + "/" + Uri.EscapeDataString(arquivo));
+                    var tipo = resp.Content.Headers.ContentType?.MediaType ?? "";
+                    if (!resp.IsSuccessStatusCode || !tipo.StartsWith("image/")) return NotFound();
+                    img = (await resp.Content.ReadAsByteArrayAsync(), tipo);
+                    if (_imgCache.Count > 500) _imgCache.Clear(); // limite simples de memória
+                    _imgCache[chave] = img;
+                }
+                catch { return NotFound(); }
+            }
+            return File(img.dados, img.tipo);
+        }
+
         private bool Existe(string nome) =>
             Regex.IsMatch(nome, "^[a-z0-9-]+$") && _viewEngine.GetView(null, $"~/Views/Loja/Paginas/{nome}.cshtml", true).Success;
 
@@ -106,7 +146,7 @@ namespace SiteCDL.Web.Controllers
                 Gratuito = S("gratuito") == "S" || S("valorunitario") is "" or "0,00",
             };
             var img = S("imagem");
-            i.Imagem = img == "" ? "" : $"{LojaController.LojaUrl}/Anexos/servicos/{i.Codigo}/{img}";
+            i.Imagem = LojaController.ImagemServico(i.Codigo, img);
             return i;
         }
 

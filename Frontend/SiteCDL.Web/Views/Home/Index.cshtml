@@ -32,7 +32,7 @@
             {
                 Tipo = tipo, Titulo = Convert.ToString(x.titulo) ?? "", Url = url, Dia = dia, Mes = mes,
                 Detalhe = string.Join(" · ", new[] { horario, tipo == "Curso" ? "Presencial" : "" }.Where(s => s != "")),
-                Imagem = "https://loja.cdludi.org.br/Anexos/servicos/" + Convert.ToString(x.codigo) + "/" + Convert.ToString(x.imagem)
+                Imagem = SiteCDL.Web.Controllers.LojaController.ImagemServico(Convert.ToString(x.codigo) ?? "", Convert.ToString(x.imagem) ?? "")
             });
         }
     }

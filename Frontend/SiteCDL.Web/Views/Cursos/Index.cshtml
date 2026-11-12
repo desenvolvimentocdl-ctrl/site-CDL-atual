@@ -33,7 +33,7 @@
         string valor = Convert.ToString(curso.gratuito) == "N" && !string.IsNullOrWhiteSpace(Convert.ToString(curso.valorunitario)) ? "R$ " + Convert.ToString(curso.valorunitario) : "";
         string imagem = Convert.ToString(curso.imagem) ?? "";
         <a class="ccard rv d@(k++ % 2)" href="@url" target="_blank" rel="noopener">
-          <span class="cc-img">@if (imagem != "") {<img src="https://loja.cdludi.org.br/Anexos/servicos/@Convert.ToString(curso.codigo)/@imagem" alt="@Convert.ToString(curso.titulo)" loading="lazy">}</span>
+          <span class="cc-img">@if (imagem != "") {<img src="@SiteCDL.Web.Controllers.LojaController.ImagemServico(Convert.ToString(curso.codigo) ?? "", imagem)" alt="@Convert.ToString(curso.titulo)" loading="lazy">}</span>
           <span class="cc-b"><h3>@Convert.ToString(curso.titulo)</h3>
             <dl>@if (data != "") {<div><dt>Data</dt><dd>@data@if (hora != "") {<br>@hora}</dd></div>}@if (instrutor != "") {<div><dt>Instrutor</dt><dd>@instrutor</dd></div>}@if (valor != "") {<div><dt>Investimento</dt><dd><b>@valor</b></dd></div>}</dl>
             <span class="cc-go">Saiba mais! <i>→</i></span></span>
