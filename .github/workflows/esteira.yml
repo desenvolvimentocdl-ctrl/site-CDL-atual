@@ -1,0 +1,42 @@
+# Refaz a página "Esteira de desenvolvimento" (docs/apresentacao/esteira.html)
+# a cada push no master: lê o histórico do Git e grava docs/apresentacao/esteira-dados.js.
+name: Esteira de desenvolvimento
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: esteira
+  cancel-in-progress: true
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar dados da esteira
+        run: python docs/apresentacao/gerar-esteira.py
+
+      - name: Gravar no repositório
+        run: |
+          if git diff --quiet -- docs/apresentacao/esteira-dados.js; then
+            echo "Nada mudou."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/apresentacao/esteira-dados.js
+          git commit -m "docs: atualiza esteira de desenvolvimento [skip ci]"
+          git push

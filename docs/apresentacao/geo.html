@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEO no Site CDL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+.fluxo{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));counter-reset:passo}
+.passo{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:6px;align-content:start;counter-increment:passo}
+.passo::before{content:"Passo " counter(passo);font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.passo p{color:var(--muted);font-size:14px}
+.entrega{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.entrega > div{display:grid;gap:10px;align-content:start;min-width:0}
+.entrega p{color:var(--muted);font-size:15px}
+.entrega ul{margin:0;padding-left:18px;display:grid;gap:4px;color:var(--muted);font-size:15px}
+.melhora{display:grid;gap:8px}
+@media (max-width:820px){.entrega{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<header class="topo"><div class="topo-in">
+  <a class="marca" href="index.html">CDL Uberlândia <span>· Reformulação</span></a>
+  <nav aria-label="Páginas da apresentação">
+    <a href="index.html">Visão geral</a>
+    <a href="geo.html" aria-current="page">GEO</a>
+    <a href="esteira.html">Esteira</a>
+    <a href="estrutura.html">Estrutura</a>
+  </nav>
+</div></header>
+
+<main class="pag">
+  <section>
+    <div>
+      <div class="eyebrow">Commit b104daf · 12/11/2026</div>
+      <h1>GEO: o site preparado para ser citado por IAs</h1>
+      <p class="lead">GEO (Generative Engine Optimization) é preparar o site para que ChatGPT, Claude, Perplexity, Gemini, Copilot e as respostas com IA do Google encontrem, entendam e citem a CDL com os dados certos. Complementa o SEO tradicional: o SEO disputa a posição na lista de links, o GEO disputa a resposta que a IA escreve.</p>
+    </div>
+    <div class="grade-4">
+      <div class="bloco"><span class="rotulo">Robôs liberados por nome</span><div class="num">16</div><p>OpenAI, Anthropic, Perplexity, Google, Bing, Apple, DuckDuckGo, Meta e Common Crawl.</p></div>
+      <div class="bloco"><span class="rotulo">Páginas descritas para IA</span><div class="num">60</div><p>Em 7 grupos, cada uma com título e descrição de uma linha.</p></div>
+      <div class="bloco"><span class="rotulo">Publicações no sitemap</span><div class="num">Todas</div><p>Lidas da API página a página, com data de publicação. Cache de 1 hora.</p></div>
+      <div class="bloco"><span class="rotulo">Código novo</span><div class="num">523 <small>linhas</small></div><p>5 arquivos: 3 novos e 2 ajustados. Nenhuma mudança no banco.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Antes e depois</h2>
+      <p class="sub">Situação do site no commit anterior (26a752c) comparada com a atual.</p>
+    </div>
+    <div class="tab"><table>
+      <thead><tr><th>Item</th><th>Antes</th><th>Agora</th></tr></thead>
+      <tbody>
+        <tr><td><code>/robots.txt</code></td><td class="antes">Não existia</td><td>Gerado pelo site: libera buscadores e IAs, bloqueia áreas privadas e aponta o sitemap</td></tr>
+        <tr><td><code>/sitemap.xml</code></td><td class="antes">Não existia</td><td>Páginas fixas + todas as publicações, com <code>lastmod</code>, frequência e prioridade</td></tr>
+        <tr><td><code>/llms.txt</code></td><td class="antes">Não existia</td><td>Resumo do site em Markdown no padrão llmstxt.org</td></tr>
+        <tr><td>Dados estruturados</td><td class="antes">Um bloco fixo <code>Organization</code>, com logo em endereço relativo</td><td>Grafo schema.org por página: Organization + LocalBusiness, WebSite com busca, WebPage, BreadcrumbList e NewsArticle nas matérias</td></tr>
+        <tr><td>Endereço canônico</td><td class="antes">Ausente</td><td><code>&lt;link rel="canonical"&gt;</code> sempre apontando para https://cdludi.org.br</td></tr>
+        <tr><td>Compartilhamento</td><td class="antes">Sem Open Graph nem Twitter Card</td><td>Título, descrição e imagem corretos no WhatsApp, LinkedIn, Facebook e X</td></tr>
+        <tr><td>Indexação</td><td class="antes">Sem regra: busca interna e painel podiam ser indexados</td><td><code>meta robots</code> com <code>noindex</code> na busca e no painel; <code>max-snippet:-1</code> e imagem grande no restante</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>O que foi implementado</h2>
+      <p class="sub">Cada entrega com o arquivo responsável, um trecho real do que o site gera e o ganho para o projeto.</p>
+    </div>
+
+    <div class="entrega">
+      <div>
+        <span class="rotulo">Entrega 1 · GeoController.cs</span>
+        <h3>/llms.txt: o “cartão de visitas” para assistentes de IA</h3>
+        <p>Arquivo em Markdown que a IA lê de uma vez, sem precisar interpretar o HTML de 60 páginas. Contém:</p>
+        <ul>
+          <li>Dados da entidade: nome, natureza, fundação, endereço, telefones, horário e redes.</li>
+          <li>Perguntas frequentes já respondidas (SPC, associação, certificado digital, locação de espaços).</li>
+          <li>As 60 páginas por grupo, cada uma com link e descrição.</li>
+          <li>As 15 publicações mais recentes, puxadas da API.</li>
+        </ul>
+        <div class="melhora">
+          <span class="ganho">A IA responde “como consultar o SPC em Uberlândia” com o endereço e o link certos da CDL.</span>
+          <span class="ganho">Diminui o risco de a IA inventar telefone, endereço ou serviço.</span>
+        </div>
+      </div>
+<pre><span class="k"># CDL Uberlândia</span>
+
+&gt; A CDL Uberlândia (Câmara de Dirigentes Lojistas
+&gt; de Uberlândia) é uma associação privada sem fins
+&gt; lucrativos, fundada em 1977 e integrante do
+&gt; Sistema CNDL…
+
+<span class="k">## Dados da entidade</span>
+- Endereço: Av. Belo Horizonte, 1290 - Osvaldo
+  Rezende, Uberlândia - MG, CEP 38400-454
+- Telefone: (34) 3239-3400 · WhatsApp: (34) 3239-3457
+- Atendimento: segunda a sexta, das 8h às 18h
+
+<span class="k">## Perguntas frequentes</span>
+- **Como consultar se meu nome está no SPC em
+  Uberlândia?** A consulta para pessoa física é
+  gratuita na sede da CDL Uberlândia…
+
+<span class="k">## SPC Brasil e crédito</span>
+- [SPC Avisa](https://cdludi.org.br/spc-avisa):
+  Monitoramento do CPF ou CNPJ…</pre>
+    </div>
+
+    <div class="entrega">
+      <div>
+        <span class="rotulo">Entrega 2 · GeoController.cs</span>
+        <h3>/robots.txt: permissão explícita para buscadores e IAs</h3>
+        <p>Cada robô recebe <code>Allow: /</code> e os mesmos bloqueios: <code>/painel-associado</code>, <code>/api/</code>, <code>/buscar</code>, <code>/Home/Error</code> e <code>/Analise</code>. No fim, o endereço do sitemap.</p>
+        <div class="melhora">
+          <span class="ganho">Deixa claro para cada IA que o conteúdo público pode ser lido e citado.</span>
+          <span class="ganho">Área do associado, API e página de busca ficam fora dos resultados.</span>
+        </div>
+      </div>
+<pre><span class="c"># CDL Uberlândia — robots.txt</span>
+<span class="c"># Resumo para IA: https://cdludi.org.br/llms.txt</span>
+
+<span class="k">User-agent:</span> GPTBot
+<span class="k">Allow:</span> /
+<span class="k">Disallow:</span> /painel-associado
+<span class="k">Disallow:</span> /api/
+<span class="k">Disallow:</span> /buscar
+<span class="k">Disallow:</span> /Home/Error
+<span class="k">Disallow:</span> /Analise
+
+<span class="k">User-agent:</span> ClaudeBot
+<span class="k">Allow:</span> /
+<span class="c">…  (16 robôs + "*")</span>
+
+<span class="k">Sitemap:</span> https://cdludi.org.br/sitemap.xml</pre>
+    </div>
+
+    <div class="entrega">
+      <div>
+        <span class="rotulo">Entrega 3 · GeoController.cs</span>
+        <h3>/sitemap.xml: o mapa completo do site</h3>
+        <p>Home com prioridade 1.0 e frequência diária, páginas de primeiro nível com 0.8, demais com 0.7 e cada publicação com a própria data em <code>lastmod</code>. Publicações e Loja marcadas como diárias.</p>
+        <div class="melhora">
+          <span class="ganho">Matéria nova entra no mapa em até 1 hora, sem ninguém editar arquivo.</span>
+          <span class="ganho">Google e Bing descobrem notícias antigas que não tinham link interno.</span>
+        </div>
+      </div>
+<pre>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://cdludi.org.br/&lt;/loc&gt;
+    &lt;changefreq&gt;daily&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://cdludi.org.br/spc-consulta&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://cdludi.org.br/publicacoes/noticias/…&lt;/loc&gt;
+    &lt;lastmod&gt;<span class="s">AAAA-MM-DD</span>&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.5&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</pre>
+    </div>
+
+    <div class="entrega">
+      <div>
+        <span class="rotulo">Entrega 4 · GeoJsonLd.cs + _Layout.cshtml</span>
+        <h3>Dados estruturados (JSON-LD) em todas as páginas</h3>
+        <p>O layout monta um grafo schema.org para cada página:</p>
+        <ul>
+          <li><code>Organization</code> + <code>LocalBusiness</code>: razão social, apelidos (CDL UDI), endereço, telefones, horário, CNDL como organização-mãe, assuntos que domina e redes sociais.</li>
+          <li><code>WebSite</code> com <code>SearchAction</code> apontando para a busca do site.</li>
+          <li><code>WebPage</code> e <code>BreadcrumbList</code> (trilha Início › seção › página).</li>
+        </ul>
+        <div class="melhora">
+          <span class="ganho">Google pode exibir caixa de busca, trilha de navegação e o painel da empresa.</span>
+          <span class="ganho">IAs ligam “CDL UDI”, “CDL Uberlandia” e o nome completo à mesma entidade.</span>
+        </div>
+      </div>
+<pre>{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "https://cdludi.org.br/#organizacao",
+      "name": "CDL Uberlândia",
+      "legalName": "Câmara de Dirigentes Lojistas de Uberlândia",
+      "alternateName": ["CDL UDI", "CDL Uberlandia"],
+      "foundingDate": "1977",
+      "telephone": "+55 34 3239-3400",
+      "parentOrganization": { "name": "CNDL …" },
+      "knowsAbout": ["SPC Brasil", "certificado digital", …]
+    },
+    { "@type": "WebSite", "potentialAction": { "@type": "SearchAction", … } },
+    { "@type": "WebPage", … },
+    { "@type": "BreadcrumbList", … }
+  ]
+}</pre>
+    </div>
+
+    <div class="entrega">
+      <div>
+        <span class="rotulo">Entrega 5 · Post/Detail.cshtml</span>
+        <h3>Matérias como NewsArticle</h3>
+        <p>Cada publicação ganha título, resumo (gerado do texto quando falta), imagem, data de publicação com fuso -03:00, seção, contagem de palavras, autor e editor (a CDL). Também recebe <code>og:type article</code> e <code>article:published_time</code>.</p>
+        <div class="melhora">
+          <span class="ganho">Notícias da CDL podem aparecer em resultados de notícias e ser citadas com data.</span>
+          <span class="ganho">Link compartilhado no WhatsApp mostra a foto e o título da matéria.</span>
+        </div>
+      </div>
+<pre>{
+  "@type": "NewsArticle",
+  "@id": "https://cdludi.org.br/publicacoes/…#materia",
+  "headline": "Título da matéria (até 110 caracteres)",
+  "description": "Resumo de até 160 caracteres…",
+  "image": ["https://cdludi.org.br/…/foto.webp"],
+  "datePublished": "AAAA-MM-DDTHH:MM:SS-03:00",
+  "articleSection": "Notícias",
+  "inLanguage": "pt-BR",
+  "author":    { "@id": "https://cdludi.org.br/#organizacao" },
+  "publisher": { "@id": "https://cdludi.org.br/#organizacao" },
+  "wordCount": 412
+}</pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Como uma IA usa isso</h2>
+      <p class="sub">Caminho de um assistente desde a pergunta do usuário até a resposta que cita a CDL.</p>
+    </div>
+    <div class="fluxo">
+      <div class="passo"><h3>Pergunta</h3><p>“Onde consulto meu CPF no SPC em Uberlândia?”</p></div>
+      <div class="passo"><h3>Permissão</h3><p>O robô lê <code>/robots.txt</code> e vê que pode acessar o site.</p></div>
+      <div class="passo"><h3>Mapa</h3><p>Lê <code>/llms.txt</code> e <code>/sitemap.xml</code> e encontra <code>/spc-consulta</code>.</p></div>
+      <div class="passo"><h3>Confirmação</h3><p>Na página, o JSON-LD confirma endereço, telefone e horário da entidade.</p></div>
+      <div class="passo"><h3>Resposta</h3><p>A IA responde com os dados da CDL e o link da página como fonte.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Como validar na apresentação</h2></div>
+    <div class="grade">
+      <div class="bloco">
+        <span class="rotulo">Abrir no navegador</span>
+        <span class="rota">cdludi.org.br/llms.txt</span>
+        <span class="rota">cdludi.org.br/robots.txt</span>
+        <span class="rota">cdludi.org.br/sitemap.xml</span>
+        <p>Em ambiente local, troque o domínio pelo endereço do servidor de teste.</p>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">Ferramentas gratuitas</span>
+        <p><a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener">Teste de pesquisa aprimorada do Google</a>: cole a URL de uma matéria e veja o NewsArticle e a trilha.</p>
+        <p><a href="https://validator.schema.org/" target="_blank" rel="noopener">Validador schema.org</a>: mostra o grafo completo da página.</p>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">Depois de publicado</span>
+        <p>Enviar <code>/sitemap.xml</code> no Google Search Console e no Bing Webmaster Tools para acelerar a indexação.</p>
+        <p>Acompanhar em algumas semanas as consultas e a página da empresa no Google.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Manutenção e limites</h2></div>
+    <div class="grade">
+      <div class="bloco">
+        <span class="rotulo">Rotina</span>
+        <h3>Página nova? Atualize o catálogo</h3>
+        <p>Ao criar ou remover uma página em <code>Views/Paginas</code> ou na Loja, inclua ou retire a linha em <code>Services/GeoCatalogo.cs</code>. Publicações não precisam de nada: entram sozinhas.</p>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">Configuração</span>
+        <h3>Domínio em um só lugar</h3>
+        <p>Os links usam <code>SiteUrl</code> do appsettings; sem ele, <code>https://cdludi.org.br</code>. Assim o canonical aponta para o site oficial mesmo quando acessado por IP.</p>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">Expectativa</span>
+        <h3>O que GEO não garante</h3>
+        <p>Aumenta a chance de citação correta, mas nenhuma técnica garante posição ou menção. O efeito depende de os robôs revisitarem o site, o que leva de dias a semanas. Matérias com imagem só em base64 ficam sem <code>og:image</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="rodape">Arquivos: Frontend/SiteCDL.Web/Controllers/GeoController.cs · Services/GeoCatalogo.cs · Services/GeoJsonLd.cs · Views/Shared/_Layout.cshtml · Views/Post/Detail.cshtml</p>
+</main>
+</body>
+</html>

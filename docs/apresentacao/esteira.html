@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Esteira de Desenvolvimento CDL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+.filtros{display:flex;flex-wrap:wrap;gap:8px}
+.filtros button{font:600 13px/1 var(--sans);padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.filtros button .bola{width:8px;height:8px;border-radius:50%;background:var(--cor,var(--muted))}
+.filtros button .qt{font-family:var(--mono);font-weight:500;color:var(--muted)}
+.filtros button[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.barra{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--line);gap:2px}
+.barra span{background:var(--cor);min-width:4px}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted)}
+.legenda i{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--cor);margin-right:6px;vertical-align:-1px}
+
+.linha{display:grid;gap:28px}
+.dia{display:grid;gap:12px}
+.dia-tit{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center}
+.dia-tit::after{content:"";flex:1;height:1px;background:var(--line)}
+.commits{display:grid;gap:10px;border-left:2px solid var(--line);margin-left:6px;padding-left:22px}
+.commit{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:10px;min-width:0}
+.commit::before{content:"";position:absolute;left:-30px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--cor);box-shadow:0 0 0 4px var(--bg)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13px;color:var(--muted)}
+.meta .hash{font-family:var(--mono);color:var(--ink)}
+.tipo{color:var(--cor);font:600 12px/1 var(--sans);display:inline-flex;gap:6px;align-items:center}
+.tipo::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--cor)}
+.commit h3{font-size:17px;margin:0}
+.delta{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.delta .mais{color:var(--ok)} .delta .menos{color:var(--bad)}
+.areas{display:flex;flex-wrap:wrap;gap:6px}
+.areas span{font-size:12px;padding:3px 9px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+details{font-size:14px}
+details summary{cursor:pointer;color:var(--blue);font-weight:600;width:max-content;max-width:100%}
+.corpo{white-space:pre-wrap;color:var(--muted);margin-top:10px;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+.arqs{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:2px;font-family:var(--mono);font-size:12px}
+.arqs li{display:flex;gap:10px;justify-content:space-between;color:var(--muted);min-width:0}
+.arqs li span:first-child{overflow-wrap:anywhere;min-width:0}
+.arqs li span:last-child{white-space:nowrap}
+.vazio{color:var(--muted)}
+.base .commit{border-style:dashed}
+</style>
+</head>
+<body>
+<header class="topo"><div class="topo-in">
+  <a class="marca" href="index.html">CDL Uberlândia <span>· Reformulação</span></a>
+  <nav aria-label="Páginas da apresentação">
+    <a href="index.html">Visão geral</a>
+    <a href="geo.html">GEO</a>
+    <a href="esteira.html" aria-current="page">Esteira</a>
+    <a href="estrutura.html">Estrutura</a>
+  </nav>
+</div></header>
+
+<main class="pag">
+  <section>
+    <div>
+      <div class="eyebrow" id="gerado">Gerado a partir do Git</div>
+      <h1>Esteira de desenvolvimento</h1>
+      <p class="lead">Cada commit da reformulação, do mais recente ao ponto de partida, com o tipo de mudança, o que foi alterado e o tamanho da alteração. A página é refeita sozinha a cada push no <code>master</code>.</p>
+    </div>
+    <div class="grade-4">
+      <div class="bloco"><span class="rotulo">Commits</span><div class="num" id="k-commits">–</div><p id="k-periodo"></p></div>
+      <div class="bloco"><span class="rotulo">Arquivos alterados</span><div class="num" id="k-arqs">–</div><p>Soma por commit</p></div>
+      <div class="bloco"><span class="rotulo">Linhas adicionadas</span><div class="num" id="k-mais">–</div><p id="k-menos"></p></div>
+      <div class="bloco"><span class="rotulo">Último commit</span><div class="num mono" id="k-ult" style="font-size:28px">–</div><p id="k-ult-t"></p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Por tipo de mudança</h2>
+      <p class="sub">Quantidade de commits de cada tipo. Clique para filtrar a linha do tempo.</p>
+    </div>
+    <div class="barra" id="barra" aria-hidden="true"></div>
+    <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Linha do tempo</h2></div>
+    <div class="linha" id="linha"><p class="vazio">Carregando dados do arquivo esteira-dados.js…</p></div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Como a esteira se atualiza</h2></div>
+    <div class="grade">
+      <div class="bloco"><span class="rotulo">Automático</span><h3>A cada push no master</h3><p>O GitHub Actions (<code>.github/workflows/esteira.yml</code>) roda o gerador e grava o novo <code>esteira-dados.js</code> no repositório. O commit do robô leva <code>[skip ci]</code> e não aparece na lista.</p></div>
+      <div class="bloco"><span class="rotulo">Manual</span><h3>Na máquina do desenvolvedor</h3><p>Na raiz do repositório:</p><pre>python docs/apresentacao/gerar-esteira.py</pre></div>
+      <div class="bloco"><span class="rotulo">Classificação</span><h3>Tipo deduzido do título</h3><p>Palavras como “Corrige”, “GEO”, “Novo”, “visual” definem o tipo. Para forçar, escreva <code>[tipo: Correção]</code> no corpo do commit.</p></div>
+    </div>
+  </section>
+
+  <p class="rodape" id="rodape"></p>
+</main>
+
+<script src="esteira-dados.js"></script>
+<script>
+(function(){
+  var CORES = {"GEO":"--t-geo","Visual":"--t-vis","Funcionalidade":"--t-fun","Correção":"--t-cor","Conteúdo":"--t-con","Infra":"--t-inf","Melhoria":"--t-inf","Base":"--t-base"};
+  var cor = function(t){ return "var(" + (CORES[t] || "--t-inf") + ")"; };
+  var d = window.ESTEIRA, linha = document.getElementById("linha");
+  if (!d || !d.commits || !d.commits.length) {
+    linha.innerHTML = '<p class="vazio">Sem dados. Rode <code>python docs/apresentacao/gerar-esteira.py</code> na raiz do repositório.</p>';
+    return;
+  }
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var n = function(x){ return x.toLocaleString("pt-BR"); };
+  var dt = function(s, o){ return new Date(s).toLocaleString("pt-BR", o); };
+
+  var trab = d.commits.filter(function(c){ return c.tipo !== "Base"; });
+  var base = d.commits.filter(function(c){ return c.tipo === "Base"; });
+  var soma = function(k){ return trab.reduce(function(s,c){ return s + c[k]; }, 0); };
+
+  document.getElementById("k-commits").textContent = trab.length;
+  if (trab.length) {
+    var ini = trab[trab.length-1].data, fim = trab[0].data;
+    document.getElementById("k-periodo").textContent = "De " + dt(ini,{dateStyle:"short"}) + " a " + dt(fim,{dateStyle:"short"});
+  }
+  document.getElementById("k-arqs").textContent = n(soma("totalArquivos"));
+  document.getElementById("k-mais").textContent = n(soma("adicionadas"));
+  document.getElementById("k-menos").textContent = n(soma("removidas")) + " linhas removidas";
+  document.getElementById("k-ult").textContent = d.commits[0].curto;
+  document.getElementById("k-ult-t").textContent = d.commits[0].titulo;
+  document.getElementById("gerado").textContent = "Atualizado em " + dt(d.geradoEm,{dateStyle:"short",timeStyle:"short"}) + " · ramo " + d.ramo;
+  document.getElementById("rodape").textContent = "Dados: esteira-dados.js, gerado por gerar-esteira.py a partir de git log. Inclui " + d.commits.length + " commits (sem merges).";
+
+  // contagem por tipo
+  var tipos = {};
+  trab.forEach(function(c){ tipos[c.tipo] = (tipos[c.tipo]||0) + 1; });
+  var ordem = Object.keys(tipos).sort(function(a,b){ return tipos[b]-tipos[a]; });
+  document.getElementById("barra").innerHTML = ordem.map(function(t){
+    return '<span style="--cor:' + cor(t) + ';flex:' + tipos[t] + '" title="' + esc(t) + '"></span>';
+  }).join("");
+
+  var filtro = null;
+  try { filtro = localStorage.getItem("esteira-filtro"); if (filtro && !tipos[filtro]) filtro = null; } catch(e){}
+  var fbox = document.getElementById("filtros");
+  function desenhaFiltros(){
+    var b = '<button type="button" aria-pressed="' + (!filtro) + '" data-t="">Todos <span class="qt">' + trab.length + '</span></button>';
+    b += ordem.map(function(t){
+      return '<button type="button" style="--cor:' + cor(t) + '" aria-pressed="' + (filtro===t) + '" data-t="' + esc(t) + '"><span class="bola"></span>' + esc(t) + ' <span class="qt">' + tipos[t] + '</span></button>';
+    }).join("");
+    fbox.innerHTML = b;
+  }
+  fbox.addEventListener("click", function(e){
+    var bt = e.target.closest("button"); if (!bt) return;
+    filtro = bt.dataset.t || null;
+    try { filtro ? localStorage.setItem("esteira-filtro", filtro) : localStorage.removeItem("esteira-filtro"); } catch(e){}
+    desenhaFiltros(); desenhaLinha();
+  });
+
+  function card(c){
+    var areas = Object.keys(c.areas).map(function(a){ return '<span>' + esc(a) + ' · ' + c.areas[a] + '</span>'; }).join("");
+    var arqs = c.arquivos.map(function(f){
+      return '<li><span>' + esc(f.p) + '</span><span>' + (f.bin ? "binário" : '<span class="mais">+' + f.a + '</span> <span class="menos">−' + f.r + '</span>') + '</span></li>';
+    }).join("");
+    var resto = c.totalArquivos - c.arquivos.length;
+    return '<article class="commit" style="--cor:' + cor(c.tipo) + '">' +
+      '<div class="meta"><span class="tipo">' + esc(c.tipo) + '</span><span class="hash">' + esc(c.curto) + '</span>' +
+      '<span>' + dt(c.data,{timeStyle:"short"}) + '</span><span>' + esc(c.autor) + '</span>' +
+      '<span class="delta"><span class="mais">+' + n(c.adicionadas) + '</span> <span class="menos">−' + n(c.removidas) + '</span> · ' + n(c.totalArquivos) + ' arq.</span></div>' +
+      '<h3>' + esc(c.titulo) + '</h3>' +
+      (areas ? '<div class="areas">' + areas + '</div>' : '') +
+      '<details><summary>Ver detalhes e arquivos</summary>' +
+        (c.corpo ? '<div class="corpo">' + esc(c.corpo) + '</div>' : '') +
+        '<ul class="arqs">' + arqs + (resto > 0 ? '<li><span>… e mais ' + n(resto) + ' arquivos</span><span></span></li>' : '') + '</ul>' +
+      '</details></article>';
+  }
+
+  function desenhaLinha(){
+    var lista = trab.filter(function(c){ return !filtro || c.tipo === filtro; });
+    var dias = [], porDia = {};
+    lista.forEach(function(c){
+      var k = c.data.slice(0,10);
+      if (!porDia[k]) { porDia[k] = []; dias.push(k); }
+      porDia[k].push(c);
+    });
+    var h = dias.map(function(k){
+      var rot = new Date(k + "T12:00:00").toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+      return '<div class="dia"><div class="dia-tit">' + esc(rot) + ' · ' + porDia[k].length + ' commit' + (porDia[k].length>1?'s':'') + '</div><div class="commits">' + porDia[k].map(card).join("") + '</div></div>';
+    }).join("");
+    if (!filtro && base.length) {
+      h += '<div class="dia base"><div class="dia-tit">Ponto de partida · código original importado</div><div class="commits">' + base.map(card).join("") + '</div></div>';
+    }
+    linha.innerHTML = h || '<p class="vazio">Nenhum commit deste tipo.</p>';
+  }
+
+  desenhaFiltros(); desenhaLinha();
+})();
+</script>
+</body>
+</html>

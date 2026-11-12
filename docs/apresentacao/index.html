@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reformulação Site CDL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="topo"><div class="topo-in">
+  <a class="marca" href="index.html">CDL Uberlândia <span>· Reformulação</span></a>
+  <nav aria-label="Páginas da apresentação">
+    <a href="index.html" aria-current="page">Visão geral</a>
+    <a href="geo.html">GEO</a>
+    <a href="esteira.html">Esteira</a>
+    <a href="estrutura.html">Estrutura</a>
+  </nav>
+</div></header>
+
+<main class="pag">
+  <section>
+    <div>
+      <div class="eyebrow">Apresentação · site cdludi.org.br</div>
+      <h1>Reformulação do site da CDL Uberlândia</h1>
+      <p class="lead">Novo visual em todo o front-end, vitrine da Loja integrada, preparação do site para buscadores e assistentes de IA (GEO) e uma série de correções de celular e conteúdo. Tudo já está versionado no Git, no repositório <code>site-CDL-atual</code>.</p>
+    </div>
+    <div class="grade-4" id="numeros">
+      <div class="bloco"><span class="rotulo">Commits da reformulação</span><div class="num" data-n="commits">14</div></div>
+      <div class="bloco"><span class="rotulo">Páginas institucionais novas</span><div class="num">46</div></div>
+      <div class="bloco"><span class="rotulo">Páginas da Loja</span><div class="num">161 <small>views</small></div></div>
+      <div class="bloco"><span class="rotulo">Linhas adicionadas</span><div class="num" data-n="linhas">11,9 mil</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>O que foi entregue</h2>
+      <p class="sub">Cinco frentes, na ordem em que entraram no repositório.</p>
+    </div>
+    <div class="grade">
+      <div class="bloco">
+        <span class="rotulo">1 · Visual</span>
+        <h3>Novo layout do site</h3>
+        <ul>
+          <li>Cabeçalho, menu, busca e rodapé novos, com tipografia Manrope e JetBrains Mono.</li>
+          <li>Home, publicações, matéria, busca, cursos e página de erro refeitas.</li>
+          <li>46 páginas institucionais em <code>Views/Paginas</code>. Se a página não existir ali, o site continua usando o conteúdo do banco.</li>
+          <li>Rastreadores mantidos: Google Analytics, Facebook Pixel, Clarity, RD Station e selo GoDaddy.</li>
+        </ul>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">2 · Loja</span>
+        <h3>Vitrine da Loja dentro do site</h3>
+        <ul>
+          <li>Rota <code>/loja</code> com eventos, cursos presenciais, EAD, descontos, parceiros e Menor Preço.</li>
+          <li>Eventos e cursos lidos ao vivo da API da Loja.</li>
+          <li>“Inscreva-se” leva direto ao checkout, também nos itens gratuitos.</li>
+          <li>Imagens dos cursos passam pelo próprio site (<code>/loja/imagem/…</code>), com cache de 1 dia, para funcionar pelo IP da rede interna.</li>
+        </ul>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">3 · GEO</span>
+        <h3>Site legível por buscadores e IAs</h3>
+        <ul>
+          <li><code>/llms.txt</code>, <code>/robots.txt</code> e <code>/sitemap.xml</code> gerados pelo próprio site.</li>
+          <li>Dados estruturados schema.org (JSON-LD) em todas as páginas e <code>NewsArticle</code> nas matérias.</li>
+          <li>Canonical, Open Graph e Twitter Card para compartilhamento.</li>
+        </ul>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">4 · Associado</span>
+        <h3>Painel do Associado (demonstração)</h3>
+        <ul>
+          <li><code>/painel-associado</code> com login por cookie e seções de benefícios, boletos, consultas SPC, cursos e atendimento.</li>
+          <li>Dados fictícios: nada é gravado no banco. Cursos e comunicados vêm das APIs reais.</li>
+          <li>“Mais lidas” nas publicações, com contagem que ignora robôs e repetições do mesmo IP em 30 min.</li>
+        </ul>
+      </div>
+      <div class="bloco">
+        <span class="rotulo">5 · Ajustes</span>
+        <h3>Correções de celular e conteúdo</h3>
+        <ul>
+          <li>Título da notícia sobre a foto, paginação perdida no F5 e matérias longas que não apareciam.</li>
+          <li>Botões do “Acesso rápido” cortados no celular; topo cabe em telas de 320 px.</li>
+          <li>Fotos de notícias e banners também pelo IP da rede.</li>
+          <li>Solução voltou a compilar: removida a referência ao projeto de testes inexistente.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Detalhes da apresentação</h2></div>
+    <div class="grade">
+      <a class="ir" href="geo.html">
+        <span class="rotulo">Página 1</span>
+        <h3>GEO: o que foi feito e o que melhora</h3>
+        <p>Os arquivos para IAs, os dados estruturados, exemplos reais da saída e como validar.</p>
+        <span class="seta">Abrir GEO →</span>
+      </a>
+      <a class="ir" href="esteira.html">
+        <span class="rotulo">Página 2</span>
+        <h3>Esteira de desenvolvimento</h3>
+        <p>Linha do tempo de cada commit, gerada a partir do Git e atualizada a cada push.</p>
+        <span class="seta">Abrir esteira →</span>
+      </a>
+      <a class="ir" href="estrutura.html">
+        <span class="rotulo">Página 3</span>
+        <h3>Estrutura do projeto</h3>
+        <p>Linguagem, arquitetura em camadas, banco de dados, integrações e pontos de atenção.</p>
+        <span class="seta">Abrir estrutura →</span>
+      </a>
+    </div>
+  </section>
+
+  <p class="rodape" id="rodape">Fonte: histórico do repositório site-CDL-atual.</p>
+</main>
+
+<script src="esteira-dados.js"></script>
+<script>
+(function(){
+  var d = window.ESTEIRA; if (!d) return;
+  var cs = d.commits.filter(function(c){ return c.tipo !== "Base"; });
+  var linhas = cs.reduce(function(s,c){ return s + c.adicionadas; }, 0);
+  var fmt = function(n){ return n >= 1000 ? (n/1000).toLocaleString("pt-BR",{maximumFractionDigits:1}) + " mil" : n.toLocaleString("pt-BR"); };
+  document.querySelector('[data-n="commits"]').textContent = cs.length;
+  document.querySelector('[data-n="linhas"]').textContent = fmt(linhas);
+  var ult = d.commits[0];
+  if (ult) document.getElementById("rodape").textContent =
+    "Fonte: histórico do repositório site-CDL-atual. Último commit: " + ult.curto + " em " +
+    new Date(ult.data).toLocaleString("pt-BR",{dateStyle:"short",timeStyle:"short"}) + ".";
+})();
+</script>
+</body>
+</html>

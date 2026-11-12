@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estrutura do Site CDL</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="estilo.css">
+<style>
+.diag{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.diag svg{display:block;min-width:880px;width:100%;height:auto}
+.diag .cx{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+.diag .cx-p{fill:var(--blue-soft);stroke:var(--blue);stroke-width:1.5}
+.diag .cx-db{fill:var(--ok-soft);stroke:var(--ok);stroke-width:1.5}
+.diag .cx-ext{fill:var(--surface);stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4}
+.diag .t{fill:var(--ink);font:700 14px var(--sans)}
+.diag .t2{fill:var(--muted);font:500 11.5px var(--mono)}
+.diag .t3{fill:var(--muted);font:500 12px var(--sans)}
+.diag .seta{stroke:var(--muted);stroke-width:1.5;fill:none}
+.diag .seta-p{stroke:var(--blue);stroke-width:1.8;fill:none}
+.diag .ponta{fill:var(--muted)} .diag .ponta-p{fill:var(--blue)}
+.camadas{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.arvore{font-size:12.5px}
+.tab td:first-child{white-space:nowrap;font-weight:600}
+.tab td code{white-space:nowrap}
+.aviso{display:grid;gap:8px;grid-template-columns:auto minmax(0,1fr);align-items:start}
+.aviso p{color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+<header class="topo"><div class="topo-in">
+  <a class="marca" href="index.html">CDL Uberlândia <span>· Reformulação</span></a>
+  <nav aria-label="Páginas da apresentação">
+    <a href="index.html">Visão geral</a>
+    <a href="geo.html">GEO</a>
+    <a href="esteira.html">Esteira</a>
+    <a href="estrutura.html" aria-current="page">Estrutura</a>
+  </nav>
+</div></header>
+
+<main class="pag">
+  <section>
+    <div>
+      <div class="eyebrow">Arquitetura · SiteCDL.sln</div>
+      <h1>Estrutura do projeto</h1>
+      <p class="lead">Site em C# sobre .NET 8, dividido em um front-end ASP.NET Core MVC e uma API REST em camadas (Clean Architecture), com banco MySQL 8 acessado pelo Entity Framework Core.</p>
+    </div>
+    <div class="grade-4">
+      <div class="bloco"><span class="rotulo">Linguagem</span><div class="num">C#</div><p>.NET 8 · SDK 8.0.420 (global.json)</p></div>
+      <div class="bloco"><span class="rotulo">Projetos na solução</span><div class="num">5</div><p>1 front-end e 4 do back-end</p></div>
+      <div class="bloco"><span class="rotulo">Banco de dados</span><div class="num">MySQL 8</div><p>Base <code>SiteCDL</code>, 5 tabelas</p></div>
+      <div class="bloco"><span class="rotulo">Telas Razor</span><div class="num">228</div><p>46 institucionais e 161 da Loja</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Como as partes conversam</h2>
+      <p class="sub">O navegador fala só com o SiteCDL.Web. O Web busca conteúdo na API, que lê o MySQL. Cursos e eventos vêm da Loja, um sistema separado.</p>
+    </div>
+    <div class="diag">
+      <svg viewBox="0 0 960 440" role="img" aria-label="Diagrama: Navegador acessa SiteCDL.Web, que chama a SiteCDL.API e as APIs da Loja e do Portal; a API usa as camadas Application, Domain e Infrastructure para ler o MySQL; o Web também grava no MySQL diretamente.">
+        <defs>
+          <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ponta" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="mp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ponta-p" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+
+        <!-- navegador -->
+        <rect class="cx" x="20" y="40" width="150" height="72" rx="10"/>
+        <text class="t" x="95" y="70" text-anchor="middle">Navegador</text>
+        <text class="t2" x="95" y="92" text-anchor="middle">visitante · robôs IA</text>
+
+        <!-- web -->
+        <rect class="cx-p" x="230" y="20" width="250" height="250" rx="12"/>
+        <text class="t" x="355" y="48" text-anchor="middle">SiteCDL.Web</text>
+        <text class="t2" x="355" y="68" text-anchor="middle">ASP.NET Core MVC · :5151</text>
+        <text class="t3" x="250" y="100">9 controllers + 4 de API · Razor</text>
+        <text class="t3" x="250" y="124">Layout novo · wwwroot/novo</text>
+        <text class="t3" x="250" y="148">GEO: llms · robots · sitemap</text>
+        <text class="t3" x="250" y="172">Loja, Cursos, Busca</text>
+        <text class="t3" x="250" y="196">Painel do Associado (demo)</text>
+        <text class="t3" x="250" y="220">/portal/* e /kommo/Leads</text>
+        <text class="t2" x="250" y="250">HttpClient "ApiHttpClient"</text>
+
+        <!-- api -->
+        <rect class="cx-p" x="560" y="20" width="200" height="72" rx="12"/>
+        <text class="t" x="660" y="50" text-anchor="middle">SiteCDL.API</text>
+        <text class="t2" x="660" y="72" text-anchor="middle">Web API · :7110/api</text>
+
+        <rect class="cx" x="560" y="120" width="200" height="44" rx="10"/>
+        <text class="t" x="660" y="147" text-anchor="middle">Application</text>
+        <rect class="cx" x="560" y="184" width="200" height="44" rx="10"/>
+        <text class="t" x="660" y="211" text-anchor="middle">Infrastructure</text>
+        <rect class="cx" x="790" y="150" width="150" height="44" rx="10"/>
+        <text class="t" x="865" y="177" text-anchor="middle">Domain</text>
+
+        <!-- banco -->
+        <rect class="cx-db" x="560" y="300" width="200" height="110" rx="12"/>
+        <text class="t" x="660" y="330" text-anchor="middle">MySQL 8 · SiteCDL</text>
+        <text class="t2" x="660" y="354" text-anchor="middle">Post · PostCategoria</text>
+        <text class="t2" x="660" y="374" text-anchor="middle">Paginas · Banners · Lead</text>
+        <text class="t2" x="660" y="394" text-anchor="middle">EF Core + Pomelo</text>
+
+        <!-- externos -->
+        <rect class="cx-ext" x="230" y="320" width="250" height="90" rx="12"/>
+        <text class="t" x="355" y="348" text-anchor="middle">Sistemas externos</text>
+        <text class="t2" x="355" y="372" text-anchor="middle">loja.cdludi.org.br (API)</text>
+        <text class="t2" x="355" y="392" text-anchor="middle">portal.cdludi.org.br (imagens)</text>
+
+        <!-- setas -->
+        <path class="seta-p" d="M170 76 H226" marker-end="url(#mp)"/>
+        <path class="seta-p" d="M480 56 H556" marker-end="url(#mp)"/>
+        <text class="t2" x="518" y="48" text-anchor="middle">REST</text>
+        <path class="seta" d="M660 92 V116" marker-end="url(#m)"/>
+        <path class="seta" d="M660 164 V180" marker-end="url(#m)"/>
+        <path class="seta" d="M760 142 H820 V146" marker-end="url(#m)"/>
+        <path class="seta" d="M760 206 H820 V198" marker-end="url(#m)"/>
+        <path class="seta" d="M660 228 V296" marker-end="url(#m)"/>
+        <path class="seta" d="M355 270 V316" marker-end="url(#m)"/>
+        <path class="seta" d="M480 230 H520 V355 H556" marker-end="url(#m)"/>
+        <text class="t2" x="508" y="290" transform="rotate(-90 508 290)" text-anchor="middle">grava leads, portal</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Camadas do back-end</h2>
+      <p class="sub">Clean Architecture: as dependências apontam para dentro. O Domain não conhece banco nem web.</p>
+    </div>
+    <div class="camadas">
+      <div class="bloco"><span class="rotulo">SiteCDL.Domain</span><h3>Regras e entidades</h3><p>Entidades <code>Post</code>, <code>PostCategoria</code>, <code>Paginas</code>, <code>Banner</code>, <code>Home</code>, <code>Search</code> e as interfaces dos repositórios. Sem pacotes externos.</p></div>
+      <div class="bloco"><span class="rotulo">SiteCDL.Application</span><h3>Casos de uso</h3><p>Serviços <code>HomeService</code>, <code>PageService</code>, <code>PostService</code>, DTOs, perfil do AutoMapper 13 e utilitários de paginação.</p></div>
+      <div class="bloco"><span class="rotulo">SiteCDL.Infrastructure</span><h3>Acesso a dados</h3><p><code>DataContext</code> e <code>BannerDbContext</code> (EF Core 8.0.10 + Pomelo MySQL 8.0.2), repositórios e 11 migrations do EF.</p></div>
+      <div class="bloco"><span class="rotulo">SiteCDL.API</span><h3>Entrada HTTP</h3><p>Controllers <code>Banner</code>, <code>Home</code>, <code>Page</code> e <code>Post</code>, JSON sem conversão de nomes, Swagger em desenvolvimento.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Tecnologias</h2></div>
+    <div class="tab"><table>
+      <thead><tr><th>Área</th><th>Tecnologia</th><th>Uso no projeto</th></tr></thead>
+      <tbody>
+        <tr><td>Linguagem</td><td>C# · .NET 8</td><td>Todos os 5 projetos (<code>net8.0</code>, nullable e implicit usings ligados)</td></tr>
+        <tr><td>Front-end</td><td>ASP.NET Core MVC + Razor</td><td>Páginas renderizadas no servidor (<code>.cshtml</code>), boas para SEO e GEO</td></tr>
+        <tr><td>Estilo e scripts</td><td>CSS e JavaScript puros</td><td>Visual novo em <code>wwwroot/novo</code> (style, paginas, painel, script), sem framework nem build de front</td></tr>
+        <tr><td>Tipografia</td><td>Manrope · JetBrains Mono</td><td>Google Fonts, pesos 400 a 800</td></tr>
+        <tr><td>API</td><td>ASP.NET Core Web API</td><td>REST em <code>/api</code>, documentada com Swashbuckle 6.9 (Swagger)</td></tr>
+        <tr><td>ORM</td><td>Entity Framework Core 8.0.10</td><td>Provedor Pomelo MySQL 8.0.2, migrations versionadas</td></tr>
+        <tr><td>Banco</td><td>MySQL 8</td><td>Sobe com <code>docker-compose.yml</code> (volume <code>db_data</code>, porta 3306)</td></tr>
+        <tr><td>Bibliotecas</td><td>AutoMapper · Magick.NET · Newtonsoft.Json · TimeZoneConverter</td><td>Mapeamento de DTOs, conversão de imagens, JSON e fuso America/Sao_Paulo</td></tr>
+        <tr><td>Autenticação</td><td>Cookie do ASP.NET Core</td><td>Cookie <code>cdl.associado</code> (HttpOnly, SameSite Lax) no Painel do Associado</td></tr>
+        <tr><td>Medição</td><td>GA4 · Facebook Pixel · Clarity · RD Station</td><td>Mantidos no layout novo; formulários de contato são os do RD Station</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Banco de dados</h2>
+      <p class="sub">MySQL 8, base <code>SiteCDL</code>. As tabelas de conteúdo são alimentadas pelo Portal da CDL; o site só lê, exceto leads.</p>
+    </div>
+    <div class="tab"><table>
+      <thead><tr><th>Tabela</th><th>Principais campos</th><th>Quem usa</th></tr></thead>
+      <tbody>
+        <tr><td>Post</td><td>Titulo, Slug, Subtitulo, Conteudo, Imagem / ImagemBase64, Data, DataInicio, DataFim, Status, PostCategoriaCodigo</td><td>Publicações, busca, sitemap, llms.txt</td></tr>
+        <tr><td>PostCategoria</td><td>Nome, Controller, Route (ex.: <code>noticias</code>)</td><td>Rotas <code>/publicacoes/{rota}</code></td></tr>
+        <tr><td>Paginas</td><td>Titulo, Conteudo, Slug, Seo, Controller, Status</td><td>Páginas que ainda não têm tela nova</td></tr>
+        <tr><td>Banners</td><td>Nome, CaminhoDesktop, CaminhoMobile, Link, DataInicio, DataFim, Status</td><td>Carrossel da home</td></tr>
+        <tr><td>Lead</td><td>Dados do contato recebido</td><td>Integração <code>/kommo/Leads</code> (grava)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="sub">Fora do banco: a contagem de “Mais lidas” fica em <code>App_Data/visualizacoes.json</code> (ignorado pelo Git) e as listas da Loja e do sitemap ficam em cache de memória.</p>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Rotas principais do site</h2></div>
+    <div class="tab"><table>
+      <thead><tr><th>Rota</th><th>Controller</th><th>O que faz</th></tr></thead>
+      <tbody>
+        <tr><td><code>/</code></td><td>HomeController</td><td>Home com banners, agenda da Loja e últimas publicações</td></tr>
+        <tr><td><code>/{slug}</code></td><td>PageController</td><td>Usa a tela de <code>Views/Paginas</code> se existir; senão, o conteúdo do banco</td></tr>
+        <tr><td><code>/publicacoes/…</code></td><td>PostController</td><td>Lista (destaque + 15 cards), categoria, matéria e <code>mais-lidas</code></td></tr>
+        <tr><td><code>/loja/…</code></td><td>LojaController</td><td>Vitrine de eventos, cursos, EAD, descontos, parceiros, Menor Preço e proxy de imagens</td></tr>
+        <tr><td><code>/cursos</code> · <code>/buscar</code></td><td>Cursos / Search</td><td>Cursos da API da Loja e busca no site</td></tr>
+        <tr><td><code>/painel-associado</code></td><td>PainelAssociadoController</td><td>Demonstração com login por cookie e dados fictícios</td></tr>
+        <tr><td><code>/llms.txt</code> · <code>/robots.txt</code> · <code>/sitemap.xml</code></td><td>GeoController</td><td>Arquivos de GEO e SEO técnico</td></tr>
+        <tr><td><code>/portal/*</code> · <code>/kommo/Leads</code></td><td>Controllers/Api</td><td>Endpoints com token para o Portal (posts, páginas, banners) e recebimento de leads</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Pastas</h2></div>
+<pre class="arvore">site-CDL-atual/
+├── SiteCDL.sln                 <span class="c">solução com os 5 projetos</span>
+├── global.json                 <span class="c">fixa o SDK .NET 8.0.420</span>
+├── docker-compose.yml          <span class="c">MySQL 8 para desenvolvimento</span>
+├── Backend/
+│   ├── SiteCDL.Domain/         <span class="c">entidades e interfaces</span>
+│   ├── SiteCDL.Application/    <span class="c">serviços, DTOs, AutoMapper</span>
+│   ├── SiteCDL.Infrastructure/ <span class="c">DbContexts, repositórios, migrations</span>
+│   └── SiteCDL.API/            <span class="c">controllers REST (porta 7110)</span>
+├── Frontend/
+│   └── SiteCDL.Web/            <span class="c">site MVC (porta 5151)</span>
+│       ├── Controllers/        <span class="c">Home, Page, Post, Loja, Geo, PainelAssociado…</span>
+│       ├── Services/           <span class="c">GeoCatalogo, GeoJsonLd, MaisLidas, PainelDemo…</span>
+│       ├── Views/              <span class="c">Paginas (46), Loja/Paginas (161), Shared/_Layout</span>
+│       └── wwwroot/novo/       <span class="c">CSS, JS e imagens do visual novo</span>
+└── docs/apresentacao/          <span class="c">estas páginas e o gerador da esteira</span></pre>
+  </section>
+
+  <section>
+    <div class="cab"><h2>Como rodar localmente</h2></div>
+    <div class="grade">
+      <div class="bloco"><span class="rotulo">1 · Banco</span><pre>docker compose up -d</pre></div>
+      <div class="bloco"><span class="rotulo">2 · API</span><pre>dotnet run --project Backend/SiteCDL.API</pre></div>
+      <div class="bloco"><span class="rotulo">3 · Site</span><pre>dotnet run --project Frontend/SiteCDL.Web</pre><p>Endereço da API configurável por <code>ApiBaseUrl</code>; padrão <code>http://127.0.0.1:7110/api/</code>.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cab">
+      <h2>Pontos de atenção</h2>
+      <p class="sub">Itens herdados do código original que convém tratar nas próximas etapas.</p>
+    </div>
+    <div class="grade">
+      <div class="bloco aviso"><span class="selo s-bad">Alta</span><div><h3>Credenciais no repositório</h3><p>Senhas do MySQL no <code>docker-compose.yml</code> e token da API da Loja escrito nos controllers. Mover para variáveis de ambiente ou User Secrets e trocar as senhas.</p></div></div>
+      <div class="bloco aviso"><span class="selo s-warn">Média</span><div><h3>Sem testes automatizados</h3><p>O projeto de testes nunca foi versionado e saiu da solução. Vale começar por testes da API e das rotas de GEO.</p></div></div>
+      <div class="bloco aviso"><span class="selo s-warn">Média</span><div><h3>CORS aberto</h3><p>O site aceita qualquer origem (<code>AllowAnyOrigin</code>). Restringir ao Portal e à Loja.</p></div></div>
+      <div class="bloco aviso"><span class="selo s-warn">Média</span><div><h3>Acesso duplicado ao banco</h3><p>O Web tem <code>DataContext</code> e repositórios próprios além da API. O ideal é concentrar o acesso na API.</p></div></div>
+      <div class="bloco aviso"><span class="selo s-warn">Média</span><div><h3>Publicação sem pipeline</h3><p>O Dockerfile do Web está comentado e não há CI de build. A esteira desta apresentação é o primeiro workflow do repositório.</p></div></div>
+      <div class="bloco aviso"><span class="selo s-ok">Info</span><div><h3>Painel é demonstração</h3><p>Login e dados do Painel do Associado são fictícios. Ligar a uma base real exige autenticação de verdade.</p></div></div>
+    </div>
+  </section>
+
+  <p class="rodape">Fonte: arquivos .csproj, Program.cs, DbContexts e controllers do repositório site-CDL-atual.</p>
+</main>
+</body>
+</html>
