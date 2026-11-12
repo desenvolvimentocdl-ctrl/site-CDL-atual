@@ -699,3 +699,6 @@ html.zv-aberto,html.zv-aberto body{overflow:hidden}
 
 /* Home: notícias seguidas de Soluções — evita o vão duplo entre as seções */
 #publicacoes{padding-bottom:0}
+
+/* Aviso do topo com título longo vindo da Loja: corta com reticências */
+.sys-news{max-width:min(600px,58vw)}

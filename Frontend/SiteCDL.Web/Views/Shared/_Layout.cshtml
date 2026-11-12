@@ -140,7 +140,29 @@ el.style.display='none';var f=el.nextElementSibling;if(f&&f.classList.contains('
 <!-- ============ TOPO: Sistema CNDL + contatos ============ -->
 <div class="sysbar">
   <div class="wrap sysbar-in">
-    <a class="sys-news" href="/loja/produto/feira-de-oportunidades-2-edicao-931"><b>Novo</b><span>Feira de Oportunidades — 2ª edição · 12/11, às 17h</span><i>→</i></a>
+    @* Aviso do topo: próximo evento ou curso da Loja CDL que ainda não aconteceu (a partir de amanhã), atualizado sozinho.
+       Se a Loja não responder em 2 s, mostra o link para a agenda. *@
+    @{
+        SiteCDL.Web.Controllers.LojaItem? proxAviso = null;
+        try
+        {
+            var tarefaAviso = Task.WhenAll(SiteCDL.Web.Controllers.LojaController.Buscar("eventos"), SiteCDL.Web.Controllers.LojaController.Buscar("cursos"));
+            if (await Task.WhenAny(tarefaAviso, Task.Delay(2000)) == tarefaAviso)
+                proxAviso = tarefaAviso.Result.SelectMany(l => l)
+                    .Where(i => i.Inicio is DateTime d && d.Date > DateTime.Today && i.Slug != "")
+                    .OrderBy(i => i.Inicio).ThenBy(i => i.HoraIni).FirstOrDefault();
+        }
+        catch { proxAviso = null; }
+        string horaAviso = proxAviso == null || proxAviso.HoraIni.Length < 5 ? "" : ", às " + proxAviso.HoraIni[..2].TrimStart('0') + "h" + (proxAviso.HoraIni.Substring(3, 2) == "00" ? "" : proxAviso.HoraIni.Substring(3, 2));
+    }
+    @if (proxAviso != null)
+    {
+    <a class="sys-news" href="@proxAviso.UrlPagina" title="@proxAviso.Titulo"><b>@(proxAviso.Tipo == "Curso" ? "Curso" : "Evento")</b><span>@proxAviso.Titulo · @proxAviso.Inicio!.Value.ToString("dd/MM")@horaAviso</span><i>→</i></a>
+    }
+    else
+    {
+    <a class="sys-news" href="/loja/eventos"><b>Agenda</b><span>Confira os próximos cursos e eventos da CDL</span><i>→</i></a>
+    }
     <div class="sys-logos"><span class="sys-lbl">Sistema CNDL</span><span class="sl"><img src="/novo/img/cndl.png" data-remote="/img/cndl.png" alt="CNDL" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">CNDL</span></span><span class="sl"><img src="/novo/img/fcdl.png" data-remote="/img/fcdl.png" alt="FCDL" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">FCDL</span></span><span class="sl"><img src="/novo/img/fundacao-cdl.png" data-remote="/img/logofundacaoCDL.png" alt="Fundação CDL" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">Fundação CDL</span></span><a href="https://sistema.spc.org.br/spc/controleacesso/autenticacao/entry.action" target="_blank" rel="noopener" class="sl"><img src="/novo/img/spc.png" data-remote="/img/spc.png" alt="SPC Brasil" decoding="async" onerror="imgFb(this)"><span class="fb" style="display:none">SPC Brasil</span></a></div>
   </div>
 </div>

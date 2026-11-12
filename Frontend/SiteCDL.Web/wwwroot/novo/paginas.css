@@ -948,3 +948,28 @@ blockquote.lei+blockquote.lei{margin-top:-8px}
 .rt h3.rt-gt{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:30px 0 0}
 .rt-prox>li::before{background:#fff!important}
 .rt-news time small{display:block;font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted);margin-top:2px;white-space:normal}
+
+/* Boletim diário CDL (Views/Shared/_BoletimReforma.cshtml) */
+.bol{margin-top:22px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px var(--line),0 18px 40px -24px rgba(6,24,51,.25);padding:22px 26px 20px}
+.bol-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.bol-tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:var(--blue-50);padding:4px 10px;border-radius:999px}
+.bol-top b{font-size:18px;color:var(--ink);letter-spacing:-.01em}
+.bol-hora{font-size:13px;color:var(--muted)}
+.legal .bol-sec h4{font-size:15px;margin:20px 0 8px;color:var(--ink)}
+.legal .bol-sec ul{list-style:none;margin:0!important;display:grid;gap:10px}
+.legal .bol-sec li{margin:0!important;font-size:15px;line-height:1.6;padding-left:14px;border-left:2px solid var(--blue-100,#dbe7ff)}
+.bol-sec li b{color:var(--ink);font-weight:600}
+.bol-imp{display:block;color:#33425c}
+.bol-src{display:inline-block;font-size:13px;color:var(--muted)}
+.legal .bol-src a{color:var(--muted)}
+.legal .bol-pz li{display:grid;grid-template-columns:64px 1fr;gap:10px;border-left:0;padding-left:0}
+.bol-pz time{font-weight:700;color:var(--blue);font-variant-numeric:tabular-nums}
+.legal .bol-fontes{margin-top:18px!important;padding-top:12px;border-top:1px solid var(--line);font-size:13px;line-height:1.7;color:var(--muted)}
+.legal .bol-fontes a{color:var(--muted)}
+.bol-vazio{color:var(--muted);font-style:italic}
+.bol-arq{margin-top:14px;border-radius:16px;background:#f6f8fb;padding:4px 18px}
+.bol-arq>summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--ink);list-style:none}
+.bol-arq>summary::-webkit-details-marker{display:none}
+.bol-old>summary{cursor:pointer;padding:8px 0;color:var(--blue)}
+.bol-old .bol{margin:6px 0 14px}
+@media (max-width:600px){.bol{padding:18px 16px}}

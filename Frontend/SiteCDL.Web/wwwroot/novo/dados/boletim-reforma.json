@@ -1,0 +1,81 @@
+{
+  "boletins": [
+    {
+      "data": "2026-11-12",
+      "atualizadoAs": "16:00",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Receita Federal adia para 1º/3/2027 a exigência de documentos fiscais da reforma em situações específicas, entre elas as notas de venda de mercadorias por empresas do Simples Nacional.",
+          "impacto": "Quem é do Simples ganha mais tempo para adaptar o sistema de notas; a NFS-e nacional (nota de serviço) continua no calendário normal.",
+          "fonte": "Ministério da Fazenda",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-e-orgaos-parceiros-detalham-proximos-passos-da-reforma-tributaria",
+          "quando": "11/11, 12:26"
+        },
+        {
+          "fato": "Receita apresenta o Programa de Conformidade da Reforma para 2027 e mantém o início em janeiro de 2027: ambiente piloto aberto a todas as empresas ainda em novembro, regulamento revisado (\"Regulamento 2.0\") nesta semana e normas complementares até o início de dezembro.",
+          "impacto": "O calendário de 2027 está confirmado; é hora de testar o sistema emissor e a apuração com o contador.",
+          "fonte": "Ministério da Fazenda",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-e-orgaos-parceiros-detalham-proximos-passos-da-reforma-tributaria",
+          "quando": "11/11, 12:26"
+        },
+        {
+          "fato": "Governo vai enviar proposta de lei complementar para ajustar a transição do pagamento da CBS (Contribuição sobre Bens e Serviços, que substitui PIS e Cofins) ao modelo em que o crédito só vale depois que o fornecedor paga o imposto.",
+          "impacto": "Pode aliviar o caixa no primeiro ano da CBS, mas nada muda até o Congresso aprovar.",
+          "fonte": "Ministério da Fazenda",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-e-orgaos-parceiros-detalham-proximos-passos-da-reforma-tributaria",
+          "quando": "11/11, 12:26"
+        },
+        {
+          "fato": "Pacote fiscal do governo propõe reduzir em 20% os benefícios tributários e aumentar em 20% os percentuais usados para calcular os tributos no Lucro Presumido.",
+          "impacto": "Empresa no Lucro Presumido ou com incentivo fiscal pode pagar mais imposto se a proposta for aprovada; vale simular com o contador.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pacote-fiscal-preve-120-dias-para-congresso-discutir-supersalarios",
+          "quando": "11/11, 19:40"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PEC 22/2026",
+          "ementa": "Proposta do Poder Executivo que altera as disposições transitórias da Constituição para disciplinar a transição para a cobrança do Imposto Seletivo (IS, tributo sobre produtos prejudiciais à saúde e ao meio ambiente).",
+          "tramitacao": "Apresentada na Câmara em 05/11/2026; está na Mesa Diretora, ainda sem despacho para comissão.",
+          "fonte": "Câmara dos Deputados",
+          "url": "https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2651102"
+        },
+        {
+          "sigla": "Projeto no Senado (nº não informado na fonte)",
+          "ementa": "Estende os incentivos fiscais da Lei do Bem a empresas do Simples Nacional que investem em pesquisa e desenvolvimento.",
+          "tramitacao": "Aprovado na Comissão de Ciência e Tecnologia (CCT) do Senado em 11/11/2026; próximos passos não informados.",
+          "fonte": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/videos/2026/11/cct-aprova-incentivos-fiscais-para-empresas-do-simples-nacional"
+        }
+      ],
+      "juridico": [
+        {
+          "fato": "STF: o ministro Flávio Dino negou o pedido da CNC (ADIs 8.041 e 8.042) para adiar o fim da jornada 6x1 previsto na Emenda Constitucional 141/2026.",
+          "efeito": "Em 16/12/2026 a jornada máxima cai para 42 horas semanais com duas folgas obrigatórias. Sem acordo coletivo até 15/12, as 42 horas podem ser distribuídas em 5 dias (até 8h24 por dia) por um ano. Sindicatos e empresas terão 90 dias, a partir de 16/12, para renegociar acordos. Em 16/12/2027 o limite passa a 40 horas.",
+          "fonte": "Conjur",
+          "url": "https://conjur.com.br/2026-nov-12/flavio-dino-nega-adiamento-e-mantem-cronograma-de-extincao-da-jornada-6x1/",
+          "quando": "12/11/2026"
+        }
+      ],
+      "prazos": [
+        { "obrigacao": "EFD-Reinf de outubro (empresas obrigadas)", "data": "16/11" },
+        { "obrigacao": "Novas regras da NF-e e da NFC-e entram em produção", "data": "16/11" },
+        { "obrigacao": "DAS do Simples, PGDAS-D e DAS-MEI de outubro (20/11 é feriado)", "data": "23/11" },
+        { "obrigacao": "Contestação do FAP 2027 (fator que pode aumentar a contribuição previdenciária da empresa)", "data": "30/11" },
+        { "obrigacao": "Acordo coletivo para a nova jornada sem 6x1", "data": "15/12" }
+      ],
+      "fontes": [
+        { "nome": "Ministério da Fazenda", "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-e-orgaos-parceiros-detalham-proximos-passos-da-reforma-tributaria" },
+        { "nome": "Agência Brasil", "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pacote-fiscal-preve-120-dias-para-congresso-discutir-supersalarios" },
+        { "nome": "Câmara dos Deputados (Dados Abertos)", "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes/2651102" },
+        { "nome": "Agência Senado", "url": "https://www12.senado.leg.br/noticias/videos/2026/11/cct-aprova-incentivos-fiscais-para-empresas-do-simples-nacional" },
+        { "nome": "Conjur", "url": "https://conjur.com.br/2026-nov-12/flavio-dino-nega-adiamento-e-mantem-cronograma-de-extincao-da-jornada-6x1/" },
+        { "nome": "Jornal Contábil — adiamento para março de 2027", "url": "https://jornalcontabil.com.br/noticia/simples-nacional-receita-adia-emissao-de-notas-fiscais-para-marco-de-2027/" },
+        { "nome": "Jornal Contábil — vencimentos de novembro", "url": "https://jornalcontabil.com.br/noticia/simples-nacional-pagamentos-e-declaracoes-que-vencem-em-novembro/" },
+        { "nome": "Jornal Contábil — FAP 2027", "url": "https://jornalcontabil.com.br/noticia/fap-2027-pode-aumentar-contribuicao-das-empresas-prazo-para-contestar-termina-dia-30/" }
+      ]
+    }
+  ]
+}

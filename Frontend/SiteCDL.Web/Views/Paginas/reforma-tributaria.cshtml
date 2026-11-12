@@ -30,7 +30,7 @@
       <div class="rt-kpi"><span class="k">Em 2033</span><b>Fim do ICMS e do ISS</b><p>Conclusão da transição: o IBS substitui totalmente os dois impostos.</p></div>
     </div>
     <nav class="lgjump rv d2" aria-label="Partes da página">
-      <a href="#novidades">Novidades</a><a href="#entenda">Entenda a reforma</a><a href="#cronograma">Cronograma</a><a href="#o-que-fazer">O que fazer agora</a><a href="#simples">Simples Nacional</a><a href="#links-oficiais">Links oficiais</a>
+      <a href="#boletim">Boletim do dia</a><a href="#novidades">Novidades</a><a href="#entenda">Entenda a reforma</a><a href="#cronograma">Cronograma</a><a href="#o-que-fazer">O que fazer agora</a><a href="#simples">Simples Nacional</a><a href="#links-oficiais">Links oficiais</a>
     </nav>
   </div>
 </section>
@@ -39,6 +39,7 @@
   <div class="wrap pdoc">
     <aside class="toc" aria-label="Sumário">
       <span class="toc-t">Nesta página</span>
+      <a href="#boletim">Boletim diário</a>
       <a href="#novidades">Novidades recentes</a>
       <a href="#entenda">Entenda a reforma</a>
       <a href="#cronograma">Cronograma 2026–2033</a>
@@ -49,6 +50,11 @@
     </aside>
 
     <article class="legal rt">
+
+      <!-- ===== BOLETIM DIÁRIO (wwwroot/novo/dados/boletim-reforma.json) ===== -->
+      <h2 id="boletim">Boletim diário</h2>
+      <p>O resumo do dia para o lojista: tributos e reforma, projetos no Congresso, decisões da Justiça e prazos. Publicado de segunda a sábado, sempre com a fonte de cada informação.</p>
+      <partial name="_BoletimReforma" />
 
       <!-- ===== NOVIDADES ===== -->
       <h2 id="novidades">Novidades recentes</h2>
@@ -68,6 +74,13 @@
           <div>
             <b>Liberadas as APIs de consulta da CBS (versão 2.0)</b>
             <p>Empresas e escritórios de contabilidade já podem consultar débitos e créditos por integração, com credencial gerada pelo contribuinte ou pelo procurador.</p>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-11">11 nov 2026</time>
+          <div>
+            <b>Receita confirma início em janeiro de 2027 e adia algumas exigências para março</b>
+            <p>Em coletiva, a Receita apresentou o Programa de Conformidade da Reforma para 2027 e adiou para 1º/3/2027 a exigência de documentos fiscais em situações específicas, entre elas as notas de venda de mercadorias por empresas do Simples Nacional. A NFS-e nacional segue no calendário.</p>
           </div>
         </li>
         <li>
@@ -167,7 +180,7 @@
         <div><span class="k">Opção 1</span><b>Dentro do DAS</b><p>Tudo continua na guia única. É mais simples, mas o cliente empresa recebe crédito menor de IBS e CBS na compra.</p></div>
         <div><span class="k">Opção 2</span><b>Regime regular de IBS/CBS</b><p>Os demais tributos seguem no Simples, mas IBS e CBS são pagos fora do DAS. Gera crédito integral para o cliente empresa, o que pode ser decisivo para quem vende para outras empresas (B2B).</p></div>
       </div>
-      <p>Para o 1º semestre de 2027, a opção foi feita até 30/09/2026 e pode ser cancelada até 30/11/2026. A próxima janela, para o 2º semestre, está prevista para março de 2027. A partir de 16/11/2026 as notas das empresas do Simples também passam a ter campos próprios para IBS e CBS (NT 2026.005).</p>
+      <p>Para o 1º semestre de 2027, a opção foi feita até 30/09/2026 e pode ser cancelada até 30/11/2026. A próxima janela, para o 2º semestre, está prevista para março de 2027. Os campos próprios para IBS e CBS nas notas do Simples (NT 2026.005) entram no leiaute em 16/11/2026, mas a Receita adiou para 1º/3/2027 a exigência dos novos documentos nas vendas de mercadorias por empresas do Simples.</p>
 
       <!-- ===== SPLIT ===== -->
       <h2 id="split-payment">Split payment: o imposto separado na hora do pagamento</h2>

@@ -1,0 +1,137 @@
+@using System.Text.Json
+@using System.Globalization
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+@*
+    Boletim diário CDL (Comércio & Reforma Tributária) — usado em Views/Paginas/reforma-tributaria.cshtml.
+    Os boletins ficam em wwwroot/novo/dados/boletim-reforma.json (o mais recente primeiro).
+    Regras de redação e fontes: docs/boletim-diario-cdl.md. Editar o JSON não exige recompilar o site.
+*@
+@{
+    var arq = Env.WebRootFileProvider.GetFileInfo("novo/dados/boletim-reforma.json");
+    var boletins = new List<JsonElement>();
+    if (arq.Exists)
+    {
+        try
+        {
+            using var st = arq.CreateReadStream();
+            using var doc = JsonDocument.Parse(st);
+            foreach (var b in doc.RootElement.GetProperty("boletins").EnumerateArray()) boletins.Add(b.Clone());
+        }
+        catch (Exception) { boletins.Clear(); }
+    }
+    var ptBR = new CultureInfo("pt-BR");
+    string S(JsonElement e, string p) => e.TryGetProperty(p, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() ?? "" : "";
+    string Dia(JsonElement b)
+    {
+        if (!DateTime.TryParse(S(b, "data"), CultureInfo.InvariantCulture, DateTimeStyles.None, out var d)) return S(b, "data");
+        var t = d.ToString("dddd, dd/MM/yyyy", ptBR);
+        return char.ToUpper(t[0]) + t[1..];
+    }
+}
+@functions {
+    // Link externo só com http(s) — o JSON é editado à mão.
+    static string LinkSeguro(string u) => Uri.TryCreate(u, UriKind.Absolute, out var x) && (x.Scheme == "https" || x.Scheme == "http") ? x.ToString() : "";
+}
+@if (boletins.Count > 0)
+{
+    var hoje = boletins[0];
+    <div class="bol" id="boletim-do-dia">
+      <div class="bol-top">
+        <span class="bol-tag">📰 Boletim CDL</span>
+        <b>@Dia(hoje)</b>
+        @if (S(hoje, "atualizadoAs") != "") { <span class="bol-hora">atualizado às @S(hoje, "atualizadoAs")</span> }
+      </div>
+      @if (hoje.TryGetProperty("semNovidades", out var sn) && sn.ValueKind == JsonValueKind.True)
+      {
+        <p class="bol-vazio">Sem novidades hoje.</p>
+      }
+      else
+      {
+        @BlocoBoletim(hoje)
+      }
+    </div>
+
+    @if (boletins.Count > 1)
+    {
+      <details class="bol-arq">
+        <summary>Boletins anteriores<i></i></summary>
+        @foreach (var b in boletins.Skip(1).Take(14))
+        {
+          <details class="bol-old">
+            <summary>@Dia(b)</summary>
+            <div class="bol">@if (b.TryGetProperty("semNovidades", out var s2) && s2.ValueKind == JsonValueKind.True) { <p class="bol-vazio">Sem novidades neste dia.</p> } else { @BlocoBoletim(b) }</div>
+          </details>
+        }
+      </details>
+    }
+}
+
+@functions {
+    private Microsoft.AspNetCore.Html.IHtmlContent BlocoBoletim(JsonElement b)
+    {
+        string S(JsonElement e, string p) => e.TryGetProperty(p, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() ?? "" : "";
+        List<JsonElement> L(string p) => b.TryGetProperty(p, out var v) && v.ValueKind == JsonValueKind.Array ? v.EnumerateArray().ToList() : new();
+        var enc = System.Text.Encodings.Web.HtmlEncoder.Default;
+        string E(string t) => enc.Encode(t);
+        string Fonte(JsonElement i, string extra)
+        {
+            var u = LinkSeguro(S(i, "url")); var f = E(S(i, "fonte"));
+            var nome = u != "" ? $"<a href=\"{E(u)}\" target=\"_blank\" rel=\"noopener\">{f}</a>" : f;
+            return $"<span class=\"bol-src\">({nome}{(extra != "" ? ", " + E(extra) : "")})</span>";
+        }
+        var sb = new System.Text.StringBuilder();
+
+        var com = L("comercio");
+        sb.Append("<section class=\"bol-sec\"><h4>🏪 Comércio e tributos</h4>");
+        if (com.Count == 0) sb.Append("<p class=\"bol-vazio\">—</p>");
+        else
+        {
+            sb.Append("<ul>");
+            foreach (var i in com) sb.Append($"<li><b>{E(S(i, "fato"))}</b> <span class=\"bol-imp\">{E(S(i, "impacto"))}</span> {Fonte(i, S(i, "quando"))}</li>");
+            sb.Append("</ul>");
+        }
+        sb.Append("</section>");
+
+        var leg = L("legislacao");
+        sb.Append("<section class=\"bol-sec\"><h4>⚖️ PECs e legislação</h4>");
+        if (leg.Count == 0) sb.Append("<p class=\"bol-vazio\">—</p>");
+        else
+        {
+            sb.Append("<ul>");
+            foreach (var i in leg) sb.Append($"<li><b>{E(S(i, "sigla"))}</b> — {E(S(i, "ementa"))} <span class=\"bol-imp\">{E(S(i, "tramitacao"))}</span> {Fonte(i, "")}</li>");
+            sb.Append("</ul>");
+        }
+        sb.Append("</section>");
+
+        var jur = L("juridico");
+        sb.Append("<section class=\"bol-sec\"><h4>⚖️ Jurídico</h4>");
+        if (jur.Count == 0) sb.Append("<p class=\"bol-vazio\">—</p>");
+        else
+        {
+            sb.Append("<ul>");
+            foreach (var i in jur) sb.Append($"<li><b>{E(S(i, "fato"))}</b> <span class=\"bol-imp\">{E(S(i, "efeito"))}</span> {Fonte(i, S(i, "quando"))}</li>");
+            sb.Append("</ul>");
+        }
+        sb.Append("</section>");
+
+        var pz = L("prazos");
+        sb.Append("<section class=\"bol-sec bol-pz\"><h4>⚡ Prazos</h4>");
+        if (pz.Count == 0) sb.Append("<p class=\"bol-vazio\">—</p>");
+        else
+        {
+            sb.Append("<ul>");
+            foreach (var i in pz) sb.Append($"<li><time>{E(S(i, "data"))}</time><span>{E(S(i, "obrigacao"))}</span></li>");
+            sb.Append("</ul>");
+        }
+        sb.Append("</section>");
+
+        var fts = L("fontes");
+        if (fts.Count > 0)
+        {
+            sb.Append("<p class=\"bol-fontes\">📎 Fontes: ");
+            sb.Append(string.Join(" · ", fts.Select(f => { var u = LinkSeguro(S(f, "url")); var n = E(S(f, "nome")); return u != "" ? $"<a href=\"{E(u)}\" target=\"_blank\" rel=\"noopener\">{n}</a>" : n; })));
+            sb.Append("</p>");
+        }
+        return new Microsoft.AspNetCore.Html.HtmlString(sb.ToString());
+    }
+}
