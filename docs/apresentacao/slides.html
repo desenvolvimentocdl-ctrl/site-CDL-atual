@@ -144,6 +144,30 @@ body{font-size:26px;line-height:1.45}
 .tour-extra .bloco{padding:24px 28px;gap:8px}.tour-extra .bloco p{font-size:20px;line-height:1.45}
 .tour-slide{gap:30px}
 .novo-selo{display:inline-flex;align-items:center;gap:10px;font:700 16px/1 var(--sans);color:#fff;background:var(--blue);padding:10px 16px;border-radius:999px;width:max-content}
+
+/* painel do associado */
+.pa-dupla{display:grid;grid-template-columns:.75fr 1.25fr;gap:48px;align-items:center;flex:1;min-height:0}
+.pa-dupla .txt{display:grid;gap:22px}
+.slide .pa-dupla .lead{font-size:30px;color:var(--ink)}
+.pa-lista-s{list-style:none;display:grid;gap:14px;font-size:25px;padding:0;margin:0}
+.pa-lista-s li{display:flex;gap:14px;align-items:baseline}
+.pa-lista-s li::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--blue);transform:translateY(-2px)}
+.shot{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px rgba(10,23,48,.12);background:#fff}
+.shot img{display:block;width:100%}
+.shot-full{align-self:center;width:max-content;max-width:100%}
+.shot-full img{height:730px;width:auto;max-width:100%}
+.secoes7{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.secoes7 .bloco{padding:24px 26px;gap:8px}
+.secoes7 .bloco h3{font-size:26px}
+.secoes7 .bloco p{font-size:19.5px;line-height:1.42}
+.secoes7 .bloco.fim{background:var(--navy);border-color:var(--navy)}
+.secoes7 .bloco.fim h3{color:#fff}.secoes7 .bloco.fim p{color:#b8c7e3}.secoes7 .bloco.fim .rotulo{color:#7fb0ff}
+.pa-tres{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:start}
+.pa-tres .col{display:grid;gap:18px}
+.pa-tres .bloco{padding:24px 28px;gap:8px}
+.pa-tres .bloco h3{font-size:26px}
+.pa-tres .bloco p,.pa-tres .bloco li{font-size:20px;line-height:1.45}
+.pa-tres .bloco ul{gap:6px}
 </style>
 </head>
 <body>
@@ -210,6 +234,58 @@ body{font-size:26px;line-height:1.45}
     <div class="bloco"><span class="rotulo">Também nesta entrega</span><h3>Links das campanhas</h3><p>Campanha com link leva ao destino cadastrado no Portal (externos em nova aba). Sem link, fica só como imagem.</p></div>
   </div>
   <div class="rod"><span>Tour 360°</span><span class="pg"></span></div>
+</section>
+
+<!-- 3c · painel do associado -->
+<section class="slide">
+  <div class="cab-s"><span class="novo-selo">Área do associado · demonstração</span><h2>Painel do Associado</h2></div>
+  <div class="pa-dupla">
+    <div class="txt">
+      <p class="lead">Um espaço único onde a empresa associada resolve sozinha o que hoje depende de ligação, e-mail ou ida à sede.</p>
+      <ul class="pa-lista-s">
+        <li>Entra com e-mail ou CNPJ e senha</li>
+        <li>Vê boletos, saldo de consultas SPC e inscrições</li>
+        <li>Usa benefícios, atualiza dados e abre chamados</li>
+        <li>Acesso pelo botão “Área do associado” no topo do site</li>
+      </ul>
+    </div>
+    <div class="shot"><img src="img/pa-login.jpg" alt="Tela de login do Painel do Associado"></div>
+  </div>
+  <div class="rod"><span>Painel do Associado</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Painel do Associado</div><h2>Visão geral: tudo da empresa na primeira tela</h2></div>
+  <div class="shot shot-full"><img src="img/pa-inicio.jpg" alt="Visão geral do Painel do Associado"></div>
+  <div class="rod"><span>Painel do Associado</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Painel do Associado</div><h2>As 7 seções do painel</h2></div>
+  <div class="secoes7">
+    <div class="bloco"><span class="rotulo">1</span><h3>Visão geral</h3><p>Boletos em aberto, consultas SPC restantes, inscrições ativas, atalhos e próximos cursos e eventos.</p></div>
+    <div class="bloco"><span class="rotulo">2</span><h3>Benefícios</h3><p>Os 8 benefícios do plano (jurídico, SPC, descontos, cursos, certificado, salas, saúde, mídia), cada um com link para usar.</p></div>
+    <div class="bloco"><span class="rotulo">3</span><h3>2ª via de boletos</h3><p>Mensalidades com vencimento, valor e situação. Botão para copiar a linha digitável.</p></div>
+    <div class="bloco"><span class="rotulo">4</span><h3>Consultas SPC</h3><p>Medidor do pacote do mês, data de renovação, últimas consultas com o resultado e acesso direto ao SPC.</p></div>
+    <div class="bloco"><span class="rotulo">5</span><h3>Cursos e eventos</h3><p>Inscrições, certificados dos cursos concluídos e agenda aberta, lida ao vivo da Loja CDL.</p></div>
+    <div class="bloco"><span class="rotulo">6</span><h3>Dados da empresa</h3><p>Cadastro da empresa e usuários com acesso ao painel (administrador, financeiro, SPC).</p></div>
+    <div class="bloco"><span class="rotulo">7</span><h3>Atendimento</h3><p>Abrir solicitação, ver protocolos anteriores, comunicados e falar no WhatsApp com o relacionamento.</p></div>
+    <div class="bloco fim"><span class="rotulo">Ganho</span><h3>Menos atendimento manual</h3><p>Boleto, saldo SPC e certificado deixam de exigir contato com a equipe.</p></div>
+  </div>
+  <div class="rod"><span>Painel do Associado</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Painel do Associado</div><h2>Como funciona hoje e o que falta para produção</h2></div>
+  <div class="pa-tres">
+    <div class="shot"><img src="img/pa-spc.jpg" alt="Seção Consultas SPC do painel"></div>
+    <div class="col">
+      <div class="bloco"><span class="rotulo">Hoje · demonstração</span><h3>Dados fictícios, telas reais</h3><p>Uma empresa de teste (“Loja Exemplo”) com dados de exemplo. Cursos, eventos e comunicados já vêm das APIs reais. Formulários confirmam o envio, mas nada é gravado.</p></div>
+      <div class="bloco"><span class="rotulo">Segurança já aplicada</span><h3>Pronto para crescer</h3><p>Login por cookie protegido (HttpOnly), proteção contra envio forjado de formulário, páginas fora do Google e dos robôs de IA.</p></div>
+      <div class="bloco"><span class="rotulo">Para produção</span><h3>Ligar aos sistemas da CDL</h3><p>Trocar o serviço de demonstração pela base de associados, boletos do financeiro e saldo do SPC; criar cadastro e recuperação de senha.</p></div>
+    </div>
+  </div>
+  <div class="rod"><span>Painel do Associado</span><span class="pg"></span></div>
 </section>
 
 <!-- 4 · seção GEO -->

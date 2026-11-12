@@ -1,8 +1,31 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T15:35:02+00:00",
+ "geradoEm": "2026-11-12T17:29:10+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "ead51d602dea94f6532fd5aec4ef7adf90087fd3",
+   "curto": "ead51d6",
+   "data": "2026-11-12T12:40:52-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Rodapé: \"CDL Uberlândia\" grande aparece inteiro, sem corte embaixo",
+   "corpo": "",
+   "tipo": "Melhoria",
+   "adicionadas": 1,
+   "removidas": 1,
+   "totalArquivos": 1,
+   "areas": {
+    "Estilos e scripts": 1
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/style.css",
+     "a": 1,
+     "r": 1,
+     "bin": false
+    }
+   ]
+  },
   {
    "hash": "995803ef0c7a1c3b277efa75cc7d94487a2a6031",
    "curto": "995803e",
