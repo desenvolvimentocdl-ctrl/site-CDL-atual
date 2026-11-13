@@ -191,6 +191,22 @@ body{font-size:26px;line-height:1.45}
 .regras .bloco{padding:20px 22px;gap:6px;background:var(--navy);border-color:var(--navy)}
 .regras .bloco h3{font-size:21px;color:#fff}.regras .bloco p{font-size:17.5px;color:#b8c7e3;line-height:1.42}
 .regras .bloco .rotulo{color:#7fb0ff}
+
+/* navegação (commit f557a25) */
+.mapa{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.mapa .aba{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 18px 20px;display:grid;gap:10px;align-content:start}
+.mapa .aba > b{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.mapa .g{display:grid;gap:4px}
+.mapa .g span{font:600 13px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.mapa .g small{font-size:15.5px;color:var(--muted);line-height:1.35}
+.mapa .ver{font-size:14px;font-weight:700;color:var(--ink);border-top:1px solid var(--line);padding-top:8px}
+.home-ordem{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;counter-reset:h}
+.home-ordem div{counter-increment:h;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:18px;font-weight:700;line-height:1.25;display:grid;gap:4px}
+.home-ordem div::before{content:counter(h, decimal-leading-zero);font:500 13px/1 var(--mono);color:var(--blue)}
+.home-ordem div small{font-size:14.5px;font-weight:500;color:var(--muted)}
+.nav-pts .bloco{padding:20px 24px;gap:6px}
+.nav-pts .bloco h3{font-size:23px}
+.nav-pts .bloco p{font-size:18px;line-height:1.42}
 </style>
 </head>
 <body>
@@ -200,8 +216,8 @@ body{font-size:26px;line-height:1.45}
   <div class="grade-fundo"></div>
   <div class="eyebrow">Apresentação · cdludi.org.br</div>
   <h1>Reformulação do site da CDL Uberlândia</h1>
-  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e IAs, tour 360° dos espaços, guia da Reforma Tributária com boletim diário e correções.</p>
-  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Tour 360°</span><span>Reforma Tributária</span><span>Ajustes</span></div>
+  <p class="lead">Novo visual, vitrine da Loja integrada, preparação para buscadores e IAs, tour 360° dos espaços, guia da Reforma Tributária com boletim diário, menu reorganizado e Fundação CDL.</p>
+  <div class="chips"><span>Visual</span><span>Loja</span><span>GEO</span><span>Painel do Associado</span><span>Tour 360°</span><span>Reforma Tributária</span><span>Fundação CDL</span><span>Ajustes</span></div>
   <div class="rod"><span>CDL Uberlândia · Reformulação do site</span><span id="capa-data"></span></div>
 </section>
 
@@ -233,7 +249,7 @@ body{font-size:26px;line-height:1.45}
     <div class="bloco"><span class="rotulo">5 · Ajustes</span><h3>Correções</h3><ul><li>Título sobre a foto e paginação no F5</li><li>Matérias longas que sumiam</li><li>Botões cortados no celular</li><li>Solução volta a compilar</li></ul></div>
     <div class="bloco destaque-novo"><span class="rotulo">6 · Espaços · novo</span><h3>Tour 360°</h3><ul><li>Tour virtual nos 6 espaços de locação</li><li>Visualizador de imagens com zoom</li><li>Links das campanhas corrigidos</li></ul></div>
     <div class="bloco destaque-novo"><span class="rotulo">7 · Reforma · novo</span><h3>Reforma Tributária</h3><ul><li>Guia completo para o comércio</li><li>Boletim diário de segunda a sábado</li><li>Novidades e prazos em ordem</li></ul></div>
-    <div class="bloco"><span class="rotulo">8 · Home</span><h3>Home e avisos</h3><ul><li>Nova ordem das seções</li><li>Termômetro do Varejo com “Ocultar”</li><li>Aviso do topo automático</li></ul></div>
+    <div class="bloco destaque-novo"><span class="rotulo">8 · Navegação · novo</span><h3>Menu, home e Fundação</h3><ul><li>Menu em 6 abas e botão Entrar</li><li>Fundação CDL com aba própria</li><li>Home nova e busca com sinônimos</li></ul></div>
   </div>
   <div class="rod"><span>Visão geral</span><span class="pg"></span></div>
 </section>
@@ -372,6 +388,51 @@ body{font-size:26px;line-height:1.45}
     <div class="bloco"><span class="rotulo">Regra</span><h3>Status exato</h3><p>Toda PEC com a etapa real: comissão, plenário ou arquivada.</p></div>
   </div>
   <div class="rod"><span>Reforma Tributária</span><span class="pg"></span></div>
+</section>
+
+<!-- 3e · navegação, fundação e home (commit f557a25) -->
+<section class="slide">
+  <div class="cab-s"><span class="novo-selo">Novo · commit f557a25 · 13/11</span><h2>Menu reorganizado em 6 abas</h2></div>
+  <div class="shot"><img src="img/menu.jpg" alt="Menu Soluções aberto"></div>
+  <div class="nav-pts g3">
+    <div class="bloco"><span class="rotulo">Abas</span><h3>Por assunto, não por público</h3><p>Soluções, SPC, Cursos e Eventos, Conteúdo, A CDL e A Fundação. Cada aba tem um atalho em destaque à direita.</p></div>
+    <div class="bloco"><span class="rotulo">Botão Entrar</span><h3>Dois acessos num lugar</h3><p>Área do associado (Painel) e Acesse o SPC ficam juntos no topo.</p></div>
+    <div class="bloco"><span class="rotulo">Limpeza</span><h3>Menos itens soltos</h3><p>Redes sociais foi para Conteúdo; Rita Saúde e CDL IA saíram do menu.</p></div>
+  </div>
+  <div class="rod"><span>Navegação</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Navegação · Services/HubTemas.cs</div><h2>Cada grupo do menu virou uma página</h2>
+    <p class="sub">Os títulos azuis do menu levam a páginas de tema (ex.: /vender-mais, /pessoas, /spc-para-voce) e cada aba tem uma página de visão geral, com cards que explicam cada serviço usando o texto da própria página.</p></div>
+  <div class="mapa"><div class="aba"><b>Soluções</b><div class="g"><span>Espaços para eventos</span><small>Auditório, foyer e 5 salas</small></div><div class="g"><span>Vender mais</span><small>CDL Mídia, SPC Dados, Rede de Descontos</small></div><div class="g"><span>Gestão e economia</span><small>Certificado, NF-e, Saúde, BDMG, Combo, Consultoria</small></div><div class="g"><span>Pessoas</span><small>Recrutamento, Estágio, Aprendiz</small></div><span class="ver">/solucoes</span></div><div class="aba"><b>SPC</b><div class="g"><span>Para sua empresa</span><small>Consultas e Registro, SPC Avisa, SPC Dados, Cadastro Positivo</small></div><div class="g"><span>Para você (CPF)</span><small>Consulta CPF, Negociação de Débito, Alerta de Documentos</small></div><span class="ver">/spc-brasil</span></div><div class="aba"><b>Cursos e Eventos</b><div class="g"><span>Aprender</span><small>Eventos, Cursos, Cursos EAD, In company</small></div><div class="g"><span>Economizar</span><small>Descontos, Parceiros, CDL MenorPreço</small></div><span class="ver">/cursos-e-eventos</span></div><div class="aba"><b>Conteúdo</b><div class="g"><span>Publicações</span><small>Notícias, Opinião, Comunicados, CDL em Ação, Pesquisas, CAE</small></div><div class="g"><span>Também</span><small>Redes sociais, Legislação, Reforma Tributária</small></div><span class="ver">/publicacoes</span></div><div class="aba"><b>A CDL</b><div class="g"><span>Institucional</span><small>Quem somos, História, Reconhecimento, Corporativo, Diretoria</small></div><div class="g"><span>Também</span><small>Sustentabilidade, Selo Empresa Cidadã, Licitações</small></div><span class="ver">/a-cdl</span></div><div class="aba"><b>A Fundação</b><div class="g"><span>Fundação CDL</span><small>Página e Diretoria da Fundação</small></div><div class="g"><span>Serviços</span><small>Jovem Aprendiz, Estágio, Talentos, In company, Consultorias, Vagas</small></div><span class="ver">/fundacao-cdl</span></div></div>
+  <div class="rod"><span>Navegação</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><span class="novo-selo">Novo · aba própria no menu</span><h2>Fundação CDL com espaço próprio</h2></div>
+  <div class="rt-dupla">
+    <div class="shot"><img src="img/fundacao.jpg" alt="Topo da página da Fundação CDL"></div>
+    <div class="col">
+      <div class="bloco"><span class="rotulo">Home nova</span><h3>/fundacao-cdl</h3><p>Apresenta a Fundação (desde 1991), os números e dois caminhos: para empresas (aprendiz, estágio, talentos, in company) e para jovens (formação e vagas).</p></div>
+      <div class="bloco"><span class="rotulo">Conteúdo</span><h3>Compromissos e quem somos</h3><p>Aprendizagem, empregabilidade, cidadania e qualificação; missão, visão e valores.</p></div>
+      <div class="bloco"><span class="rotulo">Organização</span><h3>Diretoria separada</h3><p>A diretoria da Fundação tem página própria, separada da diretoria da CDL.</p></div>
+    </div>
+  </div>
+  <div class="rod"><span>Navegação</span><span class="pg"></span></div>
+</section>
+
+<section class="slide">
+  <div class="cab-s"><div class="eyebrow">Home e páginas · commit f557a25</div><h2>Home nova e páginas refeitas</h2>
+    <p class="sub">Ordem da home inspirada na CDL BH, com fundos alternados entre as seções:</p></div>
+  <div class="home-ordem"><div>Destaque<small>banner e Termômetro do Varejo</small></div><div>Acesso rápido<small>6 atalhos em destaque</small></div><div>Campanhas<small>banners do Portal</small></div><div>Soluções<small>prévia dos grupos do menu</small></div><div>Publicações<small>notícias com imagem</small></div><div>Agenda<small>cursos e eventos da Loja</small></div><div>Por que se associar<small>vantagens</small></div><div>Números e história<small>desde 1977</small></div><div>Depoimentos<small>associados</small></div><div>Sistema CNDL<small>logos</small></div><div>Dúvidas<small>perguntas frequentes</small></div><div>Chamada final<small>associe-se</small></div></div>
+  <div class="nav-pts g4">
+    <div class="bloco"><span class="rotulo">Páginas refeitas</span><h3>5 páginas</h3><p>Vantagens para Associados, SPC Brasil, Jovem Aprendiz (empresa e jovem), CDL Mídia e Redes sociais.</p></div>
+    <div class="bloco"><span class="rotulo">Redes</span><h3>Vídeos e Instagram</h3><p>Redes sociais mostra vídeos do YouTube e do Facebook; CDL Mídia destaca o @cdlmidiaudi.</p></div>
+    <div class="bloco"><span class="rotulo">Busca</span><h3>Fala a língua do lojista</h3><p>“Mais procurados” ao abrir e sinônimos: “nome sujo” leva à Consulta CPF; “negativar cliente”, ao SPC.</p></div>
+    <div class="bloco"><span class="rotulo">Reforma Tributária</span><h3>5 boletins</h3><p>Boletins de 9 a 13/11 e uma seção própria de Prazos na página.</p></div>
+  </div>
+  <div class="rod"><span>Navegação</span><span class="pg"></span></div>
 </section>
 
 <!-- 4 · seção GEO -->

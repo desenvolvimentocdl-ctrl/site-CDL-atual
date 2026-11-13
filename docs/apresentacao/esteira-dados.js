@@ -1,8 +1,257 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-12T20:10:25+00:00",
+ "geradoEm": "2026-11-13T18:39:42+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "f557a250da8ba3a28aa8e421c96a50bab2022c81",
+   "curto": "f557a25",
+   "data": "2026-11-13T15:29:32-03:00",
+   "autor": "joaopedrosampaio",
+   "titulo": "Menu reorganizado, Fundação CDL, páginas de soluções e melhorias na home",
+   "corpo": "- Menu novo: Soluções, SPC, Cursos e Eventos, Conteúdo, A CDL e A Fundação; botão Entrar\n  (Área do associado / Acesse o SPC); Redes sociais dentro de Conteúdo; Rita Saúde e CDL IA removidos\n- Páginas de tema e de visão geral das abas (/solucoes, /cursos-e-eventos, /a-cdl, /vender-mais etc.)\n  com cards explicados (Services/HubTemas.cs e ResumosServicos.cs)\n- Fundação CDL: aba própria, home nova (/fundacao-cdl) e diretoria separada da CDL\n- Home: ordem inspirada na CDL BH, Acesso rápido em destaque (6 atalhos), prévia das Soluções,\n  fundos alternados; banner do CDL MenorPreço movido para a página da plataforma\n- Páginas refeitas: Vantagens para Associados, SPC Brasil, Jovem Aprendiz (empresa / jovem),\n  CDL Mídia (destaque do Instagram @cdlmidiaudi), Redes sociais (vídeos do YouTube e Facebook)\n- Busca: \"Mais procurados\" ao abrir e sinônimos do dia a dia\n- Reforma Tributária: seção Prazos, boletins de 9 a 13/11 sem prazos; título \"Conteúdo\" nas publicações\n- Formulários RD Station: bandeira do telefone proporcional\n- Botão temporário da apresentação no rodapé",
+   "tipo": "Melhoria",
+   "adicionadas": 1614,
+   "removidas": 267,
+   "totalArquivos": 38,
+   "areas": {
+    "Front-end (C#)": 6,
+    "Telas (Razor)": 22,
+    "Imagens e arquivos": 4,
+    "Estilos e scripts": 5,
+    "Documentação": 1
+   },
+   "arquivos": [
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/paginas.css",
+     "a": 263,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Home/Index.cshtml",
+     "a": 86,
+     "r": 135,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/dados/boletim-reforma.json",
+     "a": 166,
+     "r": 14,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Services/HubTemas.cs",
+     "a": 174,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/fundacao-cdl.cshtml",
+     "a": 100,
+     "r": 18,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/cdl-aprendiz.cshtml",
+     "a": 84,
+     "r": 20,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/cdl-midia.cshtml",
+     "a": 88,
+     "r": 15,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/redes-sociais.cshtml",
+     "a": 101,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/style.css",
+     "a": 85,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/script.js",
+     "a": 56,
+     "r": 3,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Services/ResumosServicos.cs",
+     "a": 47,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Services/YoutubeFeed.cs",
+     "a": 46,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/vantagens-associado.cshtml",
+     "a": 28,
+     "r": 16,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/_Tema.cshtml",
+     "a": 42,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_VisaoAba.cshtml",
+     "a": 41,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/reforma-tributaria.cshtml",
+     "a": 30,
+     "r": 2,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_GruposMenu.cshtml",
+     "a": 28,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_CardsTema.cshtml",
+     "a": 24,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_Layout.cshtml",
+     "a": 11,
+     "r": 10,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Services/GeoCatalogo.cs",
+     "a": 15,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/site-cdl.js",
+     "a": 16,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/cursos-e-eventos.cshtml",
+     "a": 14,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/solucoes.cshtml",
+     "a": 14,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Shared/_BoletimReforma.cshtml",
+     "a": 2,
+     "r": 11,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/site-cdl.css",
+     "a": 12,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Post/Index.cshtml",
+     "a": 6,
+     "r": 3,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/spc-brasil.cshtml",
+     "a": 4,
+     "r": 4,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Post/Detail.cshtml",
+     "a": 4,
+     "r": 4,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/dados/cdl-midia.json",
+     "a": 7,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/diretoria-fundacao.cshtml",
+     "a": 3,
+     "r": 3,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Paginas/diretoria.cshtml",
+     "a": 3,
+     "r": 3,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Controllers/PageController.cs",
+     "a": 4,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/dados/redes-sociais.json",
+     "a": 4,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Loja/Paginas/loja.cshtml",
+     "a": 1,
+     "r": 2,
+     "bin": false
+    },
+    {
+     "p": "docs/boletim-diario-cdl.md",
+     "a": 2,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Controllers/PostController.cs",
+     "a": 1,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/Views/Loja/Paginas/loja-menorpreco.cshtml",
+     "a": 2,
+     "r": 0,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "c24ef9f0a87530f2acea2829a2fc50bd4c4a3a6e",
    "curto": "c24ef9f",
