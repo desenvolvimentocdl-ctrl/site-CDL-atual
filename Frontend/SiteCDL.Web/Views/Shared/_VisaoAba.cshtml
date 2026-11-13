@@ -1,0 +1,41 @@
+@*
+    Página de visão geral de uma aba do menu (ex.: /solucoes): mostra todos os grupos da aba, com resumo de cada item.
+    ViewData: "Aba", "Titulo", "Serif", "Intro", "Temas" (string[] de slugs de Services/HubTemas.cs),
+              "Destaque" ((string Url, string Titulo, string Texto, string Botao, bool Externo)?) — o card escuro da aba no menu.
+*@
+@{
+    var temas = (string[])ViewData["Temas"]!;
+    var dest = ((string Url, string Titulo, string Texto, string Botao, bool Externo)?)ViewData["Destaque"];
+    var total = temas.Sum(s => SiteCDL.Services.HubTemas.Temas.TryGetValue(s, out var t) ? t.Itens.Length : 0);
+}
+<section class="phero" id="hero">
+  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="glow"></div>
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li aria-current="page">@ViewData["Aba"]</li></ol></nav>
+    <div class="phero-grid solo">
+      <div class="phero-txt rv">
+        <span class="badge"><b>@ViewData["Aba"]</b> @temas.Length grupos · @total serviços</span>
+        <h1>@ViewData["Titulo"] <span class="serif">@ViewData["Serif"]</span></h1>
+        <p class="lead">@ViewData["Intro"]</p>
+        <nav class="va-atalhos" aria-label="Grupos desta página">
+          @foreach (var s in temas)
+          {
+              if (SiteCDL.Services.HubTemas.Temas.TryGetValue(s, out var t)) { <a href="#g-@s">@t.Titulo @t.TituloSerif.TrimEnd('.')</a> }
+          }
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec">
+  <div class="wrap">
+    @if (dest is var d && d.HasValue)
+    {
+      <a class="va-dest rv" href="@d.Value.Url" @(d.Value.Externo ? Html.Raw("target=\"_blank\" rel=\"noopener\"") : Html.Raw(""))>
+        <span class="serif">@d.Value.Titulo</span><p>@d.Value.Texto</p><b>@d.Value.Botao</b>
+      </a>
+    }
+    <partial name="_GruposMenu" model="temas" />
+  </div>
+</section>

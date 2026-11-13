@@ -1,40 +1,113 @@
+@using System.Text.Json
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
 @*
-    cdl-midia — visual novo. Textos copiados do site oficial (protótipo testesitecdl.netlify.app).
-    Gerado por C:\Projetos\prototipo-ferramentas\gerar_paginas.py — para voltar a usar o conteúdo do banco nesta página, apague este arquivo.
+    CDL Mídia — referências Mobbin: Fiasco (cards coloridos por serviço) e Miro (faixa escura com vídeo).
+    Destaque do Instagram @@cdlmidiaudi: links dos vídeos em wwwroot/novo/dados/cdl-midia.json (incorporação oficial do Instagram).
+    Textos, condições e valores dos planos mantidos da página anterior.
 *@
 @{
     ViewData["Title"] = "CDL Mídia";
-    ViewBag.metaDescription = "CDL Mídia — CDL Uberlândia.";
+    ViewBag.metaDescription = "CDL Mídia: divulgação da sua empresa nas redes sociais da CDL, no App CDL Uberlândia com cashback, cupons de desconto e webpage. Planos a partir de R$ 105,05.";
+    var insta = "https://www.instagram.com/cdlmidiaudi/";
+    var posts = new List<string>();
+    var arq = Env.WebRootFileProvider.GetFileInfo("novo/dados/cdl-midia.json");
+    if (arq.Exists)
+    {
+        try
+        {
+            using var st = arq.CreateReadStream();
+            using var doc = JsonDocument.Parse(st);
+            if (doc.RootElement.TryGetProperty("posts", out var ps) && ps.ValueKind == JsonValueKind.Array)
+                foreach (var x in ps.EnumerateArray())
+                {
+                    var m = System.Text.RegularExpressions.Regex.Match(x.GetString() ?? "", @"^https://www\.instagram\.com/(p|reel)/([A-Za-z0-9_-]+)");
+                    if (m.Success) posts.Add($"https://www.instagram.com/{m.Groups[1].Value}/{m.Groups[2].Value}/");
+                }
+        }
+        catch (Exception) { posts.Clear(); }
+    }
 }
 
-<section class="phero" id="hero">
+<section class="phero md-hero" id="hero">
   <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="glow"></div>
   <div class="wrap">
-    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><span>Para empresa</span></li><li aria-current="page">CDL Mídia</li></ol></nav>
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><a href="/vender-mais">Vender mais</a></li><li aria-current="page">CDL Mídia</li></ol></nav>
     <div class="phero-grid">
       <div class="phero-txt rv">
-        <span class="badge"><b>Soluções CDL</b> CDL Mídia</span>
+        <span class="badge"><b>Vender mais</b> CDL Mídia</span>
         <h1>CDL Mídia: uma solução que reúne diferentes canais <span class="serif">para divulgar a sua empresa, produtos ou serviços!</span></h1>
         <p class="lead">A sua empresa pode muito mais com o CDL Mídia! Vamos juntos conquistar mais clientes para o seu negócio?</p>
         <div class="ctas"><a href="#formulario" class="btn btn-primary">Quero divulgar minha empresa <span class="arr">→</span></a><a href="#precos" class="btn btn-light">Ver planos <span class="arr">→</span></a></div>
       </div>
-      <aside class="pmock plist rv d1" aria-label="O plano inclui:"><div class="pm-top"><span class="pm-dot"></span><span class="pm-dot"></span><span class="pm-dot"></span><em>CDL Mídia</em></div><div class="pm-body"><p class="pl-t">O plano inclui:</p><ul class="pl-list"><li>Divulgação nas redes sociais;</li><li>Divulgação no App da CDL + Cashback;</li><li>Rede de Desconto;</li><li>Webpage.</li></ul></div></aside>
+      <a class="md-ig-card rv d1" href="@insta" target="_blank" rel="noopener" aria-label="Instagram do CDL Mídia: @@cdlmidiaudi">
+        <span class="md-ig-top"><span class="md-ig-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x='3' y='3' width='18' height='18' rx='5'/><circle cx='12' cy='12' r='4'/><circle cx='17.5' cy='6.5' r='.6' fill='currentColor'/></svg></span><span><b>@@cdlmidiaudi</b><small>Instagram do CDL Mídia</small></span></span>
+        <span class="md-ig-lista"><span>Divulgação nas redes sociais</span><span>Divulgação no App da CDL + Cashback</span><span>Rede de Desconto</span><span>Webpage</span></span>
+        <span class="md-ig-go">Seguir no Instagram <i>↗</i></span>
+      </a>
     </div>
   </div>
 </section>
-<section class="sec">
+
+<section class="sec" id="canais">
   <div class="wrap">
     <div class="sec-head"><div class="rv"><span class="eyebrow">CDL Mídia</span><h2>Diferentes canais <span class="serif">para a sua empresa.</span></h2></div></div>
-    <div class="feat-grid c2"><div class="ft rv d0"><h3>Divulgação Mensal nas Redes sociais</h3><p>Com o CDL Mídia você pode garantir uma presença marcante e consistente nas redes sociais! Através da Divulgação mensal, sua empresa terá destaque regularmente em nossas páginas do Instagram e Facebook. Seja através de imagens impactantes ou vídeos envolventes, seu conteúdo será apresentado tanto no Feed quanto nos Stories do Instagram, maximizando sua exposição online.<br><small>*O envio da arte ou vídeo é de inteira responsabilidade do contratante.</small></p></div><div class="ft rv d1"><h3>Divulgação no App!</h3><p>Tenha uma presença de destaque no aplicativo CDL Uberlândia com espaço exclusivo para promover seus produtos e serviços. <b>Banner na Home Inicial:</b> para divulgar promoções, produtos e eventos garantindo que sua marca ganha visibilidade. <b>Guia Comercial:</b> um guia completo com as principais informações do seu negócio, incluindo links clicáveis, facilitando a conexão direta com seus clientes. <b>Notificações:</b> envie notificações sobre ofertas e novidades mantendo sua empresa em destaque.</p></div><div class="ft rv d2"><h3>Cashback</h3><p>Com nosso aplicativo, você também pode configurar ofertas de cashback exclusivas, definir valores de reembolso e estabelecer critérios claros para que seus clientes possam aproveitar as vantagens. Dê adeus aos cupons em papel e aumente a fidelidade do seu cliente oferecendo uma experiência única, moderna e atrativa.</p></div><div class="ft rv d0"><h3>Cupons de desconto</h3><p>Com o CDL Mídia você pode conceder descontos através do cadastro de cupons em nosso site ou através do App. Os descontos podem ser oferecidos para o público em geral ou exclusivos para associados à CDL, colaboradores e familiares.</p></div><div class="ft rv d1"><h3>Webpage</h3><p>Um espaço exclusivo para divulgar informações do seu negócio! Além das divulgações em redes sociais e no App, o CDL Mídia também disponibiliza para você um ambiente exclusivo em nossa loja para anunciar as principais informações da sua empresa.</p></div></div>
+    <div class="md-grid">
+      <article class="md-c rv d0" style="--ac:#d62976"><span class="md-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x='3' y='3' width='18' height='18' rx='5'/><circle cx='12' cy='12' r='4'/><circle cx='17.5' cy='6.5' r='.6' fill='currentColor'/></svg></span><h3>Divulgação Mensal nas Redes sociais</h3><p>Com o CDL Mídia você pode garantir uma presença marcante e consistente nas redes sociais! Através da Divulgação mensal, sua empresa terá destaque regularmente em nossas páginas do Instagram e Facebook. Seja através de imagens impactantes ou vídeos envolventes, seu conteúdo será apresentado tanto no Feed quanto nos Stories do Instagram, maximizando sua exposição online.<br><small>*O envio da arte ou vídeo é de inteira responsabilidade do contratante.</small></p></article>
+      <article class="md-c rv d1" style="--ac:#0b5cd5"><span class="md-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x='7' y='2' width='10' height='20' rx='2'/><path d='M11 18h2'/></svg></span><h3>Divulgação no App!</h3><p>Tenha uma presença de destaque no aplicativo CDL Uberlândia com espaço exclusivo para promover seus produtos e serviços. <b>Banner na Home Inicial:</b> para divulgar promoções, produtos e eventos garantindo que sua marca ganha visibilidade. <b>Guia Comercial:</b> um guia completo com as principais informações do seu negócio, incluindo links clicáveis, facilitando a conexão direta com seus clientes. <b>Notificações:</b> envie notificações sobre ofertas e novidades mantendo sua empresa em destaque.</p></article>
+      <article class="md-c rv d2" style="--ac:#119a5a"><span class="md-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M21 12a9 9 0 1 1-3-6.7L21 8'/><path d='M21 3v5h-5M9 12h6M12 9v6'/></svg></span><h3>Cashback</h3><p>Com nosso aplicativo, você também pode configurar ofertas de cashback exclusivas, definir valores de reembolso e estabelecer critérios claros para que seus clientes possam aproveitar as vantagens. Dê adeus aos cupons em papel e aumente a fidelidade do seu cliente oferecendo uma experiência única, moderna e atrativa.</p></article>
+      <article class="md-c rv d0" style="--ac:#f2711c"><span class="md-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M20 12 12 20l-9-9V4h7z'/><circle cx='7.5' cy='7.5' r='1.5'/></svg></span><h3>Cupons de desconto</h3><p>Com o CDL Mídia você pode conceder descontos através do cadastro de cupons em nosso site ou através do App. Os descontos podem ser oferecidos para o público em geral ou exclusivos para associados à CDL, colaboradores e familiares.</p></article>
+      <article class="md-c rv d1" style="--ac:#7a4dff"><span class="md-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x='3' y='4' width='18' height='16' rx='2'/><path d='M3 9h18M7 6.5h.01M10 6.5h.01'/></svg></span><h3>Webpage</h3><p>Um espaço exclusivo para divulgar informações do seu negócio! Além das divulgações em redes sociais e no App, o CDL Mídia também disponibiliza para você um ambiente exclusivo em nossa loja para anunciar as principais informações da sua empresa.</p></article>
+    </div>
   </div>
-</section><section class="sec" id="precos">
+</section>
+
+<!-- ===== DESTAQUE: Instagram @@cdlmidiaudi ===== -->
+<section class="md-insta" id="instagram">
+  <div class="wrap">
+    <div class="md-insta-in rv">
+      <div class="md-insta-txt">
+        <span class="md-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x='3' y='3' width='18' height='18' rx='5'/><circle cx='12' cy='12' r='4'/><circle cx='17.5' cy='6.5' r='.6' fill='currentColor'/></svg> Instagram</span>
+        <h2>Veja o CDL Mídia <span class="serif">na prática.</span></h2>
+        <p>Exemplos de divulgações publicadas no Instagram <b>@@cdlmidiaudi</b>. Sua empresa pode aparecer assim no Feed e nos Stories.</p>
+        <a class="btn btn-white" href="@insta" target="_blank" rel="noopener">Seguir @@cdlmidiaudi <span class="arr">↗</span></a>
+      </div>
+      <div class="md-reels @(posts.Count == 1 ? "um" : "")">
+        @foreach (var u in posts.Take(6))
+        {
+          <div class="md-reel"><blockquote class="instagram-media" data-instgrm-permalink="@(u)?utm_source=ig_embed" data-instgrm-version="14"><a href="@u" target="_blank" rel="noopener">Ver este vídeo no Instagram</a></blockquote></div>
+        }
+        @if (posts.Count == 0)
+        {
+          <a class="md-reel-vazio" href="@insta" target="_blank" rel="noopener">Ver os vídeos no Instagram ↗</a>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+@if (posts.Count > 0) { <script async src="https://www.instagram.com/embed.js"></script> }
+
+<section class="sec" id="precos">
   <div class="wrap">
     <div class="sec-head"><div class="rv"><span class="eyebrow">Planos 2026</span><h2>Planos <span class="serif">CDL Mídia.</span></h2></div></div>
-    <div class="plans n2"><div class="plan rv"><h3>CDL Mídia</h3><p class="plan-sub">Pacote completo:</p><p class="plan-p"><small>R$</small><b>105</b><small>,05</small></p><ul class="pl-list"><li>Posts Mensais</li><li>Guia comercial</li><li>Rede de Desconto</li><li>Webpage</li></ul></div><div class="plan rv"><h3>CDL Mídia Plus</h3><p class="plan-sub">Pacote completo:</p><p class="plan-p"><small>R$</small><b>173</b><small>,84</small></p><ul class="pl-list"><li>4 posts mensais</li><li>Divulgação no App</li><li>Cashback</li><li>Rede de Desconto</li><li>Webpage</li></ul></div></div>
-    
+    <div class="md-planos">
+      <div class="md-plano rv">
+        <h3>CDL Mídia</h3><p class="md-sub">Pacote completo:</p>
+        <p class="md-preco"><small>R$</small><b>105</b><small>,05</small></p>
+        <ul><li>Posts Mensais</li><li>Guia comercial</li><li>Rede de Desconto</li><li>Webpage</li></ul>
+        <a class="btn btn-light" href="#formulario">Quero este plano <span class="arr">→</span></a>
+      </div>
+      <div class="md-plano plus rv d1">
+        <span class="md-selo">Inclui App + Cashback</span>
+        <h3>CDL Mídia Plus</h3><p class="md-sub">Pacote completo:</p>
+        <p class="md-preco"><small>R$</small><b>173</b><small>,84</small></p>
+        <ul><li>4 posts mensais</li><li>Divulgação no App</li><li>Cashback</li><li>Rede de Desconto</li><li>Webpage</li></ul>
+        <a class="btn btn-primary" href="#formulario">Quero este plano <span class="arr">→</span></a>
+      </div>
+    </div>
   </div>
-</section><section class="sec" id="formulario">
+</section>
+<section class="sec" id="formulario">
   <div class="wrap">
     <div class="quote rv">
       <div class="q-side">
@@ -53,7 +126,7 @@
 </section>
 <section class="sec" id="relacionados">
   <div class="wrap">
-    <div class="sec-head"><div class="rv"><span class="eyebrow">Soluções CDL</span><h2>Outras <span class="serif">soluções.</span></h2></div></div>
-    <div class="rel-grid c4t"><a class="rel rv" href="/certificado-digital"><h3>Certificado Digital</h3><i>→</i></a><a class="rel rv" href="/cdl-saude"><h3>CDL Saúde</h3><i>→</i></a><a class="rel rv" href="/treinamento"><h3>Treinamento in company</h3><i>→</i></a><a class="rel rv" href="/cdl-talentos"><h3>Recrutamento e Seleção</h3><i>→</i></a><a class="rel rv" href="/cdl-estagio"><h3>CDL Estágio</h3><i>→</i></a><a class="rel rv" href="/cdl-aprendiz"><h3>CDL Aprendiz</h3><i>→</i></a><a class="rel rv" href="/cdl-gestao"><h3>CDL Gestão e NF-e</h3><i>→</i></a><a class="rel rv" href="/bdmg"><h3>Parceria BDMG</h3><i>→</i></a><a class="rel rv" href="/combo-solucoes"><h3>Combo de Soluções</h3><i>→</i></a><a class="rel rv" href="/vantagens-associado"><h3>Vantagens para Associados</h3><i>→</i></a><a class="rel rv" href="/jornada-empresarial"><h3>Jornada Empresarial</h3><i>→</i></a></div>
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Vender mais</span><h2>Outras soluções <span class="serif">para vender mais.</span></h2></div><a href="/solucoes" class="btn btn-light rv d1">Todas as soluções <span class="arr">→</span></a></div>
+    <div class="rel-grid c4t"><a class="rel rv" href="/spc-dados"><h3>SPC Dados</h3><i>→</i></a><a class="rel rv" href="/loja/descontos" target="_blank" rel="noopener"><h3>Rede de Descontos</h3><i>→</i></a><a class="rel rv" href="/combo-solucoes"><h3>Combo de Soluções</h3><i>→</i></a><a class="rel rv" href="/vantagens-associado"><h3>Vantagens para Associados</h3><i>→</i></a></div>
   </div>
 </section>

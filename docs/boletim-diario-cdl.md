@@ -12,11 +12,12 @@ Editar o JSON não exige recompilar o site.
   "comercio":   [{ "fato": "", "impacto": "", "fonte": "", "url": "", "quando": "dd/mm, hh:mm" }],   // máx 5
   "legislacao": [{ "sigla": "", "ementa": "", "tramitacao": "", "fonte": "", "url": "" }],          // máx 3
   "juridico":   [{ "fato": "", "efeito": "", "fonte": "", "url": "", "quando": "dd/mm/aaaa" }],     // máx 3
-  "prazos":     [{ "obrigacao": "", "data": "dd/mm" }],
   "fontes":     [{ "nome": "", "url": "" }]
 }
 ```
 Sem novidades: `"semNovidades": true` (a página mostra "Sem novidades hoje").
+Não incluir prazos no boletim: eles ficam na seção "Próximas datas" da página /reforma-tributaria.
+Para a hora de Brasília use `TZ=America/Sao_Paulo date` só se o sistema tiver tzdata; senão, `date -u` menos 3 horas.
 
 ## Papel
 Analista da CDL Uberlândia montando o boletim diário (seg–sáb) dos comerciantes associados: o que mudou em

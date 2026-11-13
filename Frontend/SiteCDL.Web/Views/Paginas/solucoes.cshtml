@@ -1,0 +1,14 @@
+@*
+    Soluções — tudo o que está na aba "Soluções" do menu, com resumo de cada serviço (grupos em Services/HubTemas.cs).
+*@
+@{
+    ViewData["Title"] = "Soluções";
+    ViewBag.metaDescription = "Soluções da CDL Uberlândia para empresas: espaços para eventos, vender mais, gestão e economia e pessoas.";
+    ViewData["Aba"] = "Soluções";
+    ViewData["Titulo"] = "Soluções";
+    ViewData["Serif"] = "para sua empresa.";
+    ViewData["Intro"] = "Tudo o que a CDL Uberlândia oferece para a sua empresa realizar eventos, vender mais, organizar a gestão e cuidar da equipe.";
+    ViewData["Temas"] = new[] { "espacos-para-eventos", "vender-mais", "gestao-e-economia", "pessoas" };
+    ViewData["Destaque"] = ((string, string, string, string, bool)?)("/vantagens-associado", "Vantagens para Associados", "Benefícios, descontos e serviços exclusivos para empresas associadas.", "Conhecer as vantagens →", false);
+}
+<partial name="_VisaoAba" />

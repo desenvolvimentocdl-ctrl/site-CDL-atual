@@ -1,41 +1,105 @@
 @*
-    cdl-aprendiz — visual novo. Textos copiados do site oficial (protótipo testesitecdl.netlify.app).
-    Gerado por C:\Projetos\prototipo-ferramentas\gerar_paginas.py — para voltar a usar o conteúdo do banco nesta página, apague este arquivo.
+    CDL Aprendiz (Jovem Aprendiz) — dividida em "Para a sua empresa" e "Para você, jovem".
+    Textos e valores mantidos da página anterior; trechos para o jovem vêm da página Responsabilidade Social
+    e do aviso de vagas da Fundação. Valores de 2026: atualizar aqui quando mudarem.
 *@
 @{
-    ViewData["Title"] = "CDL Aprendiz";
-    ViewBag.metaDescription = "CDL Aprendiz — CDL Uberlândia.";
+    ViewData["Title"] = "Jovem Aprendiz";
+    ViewBag.metaDescription = "Jovem Aprendiz da Fundação CDL: para empresas, cumpra a cota com apoio em todas as etapas (a partir de R$ 153,96); para jovens de 15 a 18 anos, formação e primeira experiência profissional.";
+    const string Zap = "https://wa.me/553432393413?text=Ol%C3%A1,%20quero%20contratar%20um%20Jovem%20Aprendiz%20para%20minha%20empresa";
+    const string Cota = "https://docs.google.com/spreadsheets/d/1L2TG3XY8V-cLWCv56wF2mH6pcrSGLvB1/edit?usp=sharing";
+    const string Vagas = "https://fundacaocdl.abler.com.br/";
+    string Ic(string d) => "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">" + d + "</svg>";
 }
 
-<section class="phero" id="hero">
+<section class="phero ja-hero" id="hero">
   <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="glow"></div>
   <div class="wrap">
-    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><span>Para empresa</span></li><li aria-current="page">CDL Aprendiz</li></ol></nav>
-    <div class="phero-grid">
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><a href="/fundacao-cdl">A Fundação</a></li><li aria-current="page">Jovem Aprendiz</li></ol></nav>
+    <div class="phero-grid solo">
       <div class="phero-txt rv">
-        <span class="badge"><b>Soluções CDL</b> CDL Aprendiz</span>
+        <span class="badge"><b>Fundação CDL</b> Lei da Aprendizagem nº 10.097/2000</span>
         <h1>Jovem Aprendiz: <span class="serif">programa de socioaprendizagem da Fundação CDL.</span></h1>
         <p class="lead">O JOVEM APRENDIZ é o programa de socioaprendizagem da Fundação CDL, que promove a formação profissional e a inserção de jovens no mercado de trabalho através da Lei da Aprendizagem (10.097/2000).</p>
-        <div class="ctas"><a href="https://wa.me/553432393413?text=Ol%C3%A1,%20quero%20contratar%20um%20Jovem%20Aprendiz%20para%20minha%20empresa" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp Comercial <span class="arr">→</span></a><a href="https://docs.google.com/spreadsheets/d/1L2TG3XY8V-cLWCv56wF2mH6pcrSGLvB1/edit?usp=sharing" class="btn btn-light" target="_blank" rel="noopener">Calcular minha cota <span class="arr">→</span></a></div>
       </div>
-      <aside class="pmock plist rv d1" aria-label="Diferenciais:"><div class="pm-top"><span class="pm-dot"></span><span class="pm-dot"></span><span class="pm-dot"></span><em>CDL Aprendiz</em></div><div class="pm-body"><p class="pl-t">Diferenciais:</p><ul class="pl-list"><li>Mais de 10 anos de experiência no processo de formação e contratação de jovens;</li><li>Apoio integral da Fundação CDL em todas as etapas do programa: seleção e recrutamento, programa de aprendizagem, acompanhamento pedagógico, adequação à lei e acompanhamento das atividades dentro da empresa.</li><li>Diversas empresas parceiras e jovens contratados.</li><li>Cursos ministrados por especialistas, voltados para competências comportamentais e específicas para o currículo.</li><li>Programas de inclusão social.</li><li>Projetos extracurriculares, oficinas pedagógicas e atividades culturais com temas transversais.</li><li>Ampla divulgação de vagas em plataformas digitais.</li></ul></div></aside>
+    </div>
+    <div class="ja-escolha rv d1" role="navigation" aria-label="Escolha o seu perfil">
+      <a class="ja-op emp" href="#empresa"><span class="ja-op-ic">@Html.Raw(Ic("<path d='M3 21h18M5 21V7l7-4 7 4v14'/><path d='M9 9h.01M15 9h.01M9 13h.01M15 13h.01M10 21v-4h4v4'/>"))</span><span><small>Sou</small><b>empresa</b><em>Quero contratar um aprendiz</em></span><i>↓</i></a>
+      <a class="ja-op jov" href="#jovem"><span class="ja-op-ic">@Html.Raw(Ic("<path d='M12 22V12M12 12C12 7 8 5 4 5c0 5 3 7 8 7zM12 14c0-4 3-6 8-6 0 4-3 6-8 6z'/>"))</span><span><small>Sou</small><b>jovem</b><em>Quero ser jovem aprendiz</em></span><i>↓</i></a>
     </div>
   </div>
 </section>
-<section class="sec" id="precos">
+
+<!-- ===================== PARA A SUA EMPRESA ===================== -->
+<section class="sec ja-sec" id="empresa" style="--ac:#0b5cd5">
   <div class="wrap">
-    <div class="sec-head"><div class="rv"><span class="eyebrow">Jovem Aprendiz 2026</span><h2>Investimento <span class="serif">por carga horária.</span></h2></div></div>
-    <div class="plans n2"><div class="plan rv"><h3>Carga Horária 4h</h3><p class="plan-sub">Jovem Aprendiz</p><p class="plan-p"><small>R$</small><b>153</b><small>,96</small></p><ul class="pl-list"></ul></div><div class="plan rv"><h3>Carga Horária 6h</h3><p class="plan-sub">Jovem Aprendiz</p><p class="plan-p"><small>R$</small><b>237</b><small>,36</small></p><ul class="pl-list"></ul></div></div>
-    
+    <div class="ja-head rv">
+      <span class="ja-tag">Para a sua empresa</span>
+      <h2>Cumpra a cota de aprendizes <span class="serif">com apoio em todas as etapas.</span></h2>
+      <div class="ctas"><a href="@Zap" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp Comercial <span class="arr">→</span></a><a href="@Cota" class="btn btn-light" target="_blank" rel="noopener">Calcular minha cota <span class="arr">↗</span></a></div>
+    </div>
+
+    <h3 class="ja-sub rv">Como a Fundação CDL apoia a sua empresa</h3>
+    <ol class="ja-steps rv">
+      <li><span>01</span><b>Seleção e recrutamento</b></li>
+      <li><span>02</span><b>Programa de aprendizagem</b></li>
+      <li><span>03</span><b>Acompanhamento pedagógico</b></li>
+      <li><span>04</span><b>Adequação à lei</b></li>
+      <li><span>05</span><b>Acompanhamento das atividades dentro da empresa</b></li>
+    </ol>
+
+    <h3 class="ja-sub rv">Diferenciais</h3>
+    <div class="ja-dif">
+      <div class="ja-d rv"><span class="ja-d-ic">@Html.Raw(Ic("<circle cx='12' cy='12' r='9'/><path d='M12 7v5l3 2'/>"))</span><p>Mais de 10 anos de experiência no processo de formação e contratação de jovens.</p></div>
+      <div class="ja-d rv d1"><span class="ja-d-ic">@Html.Raw(Ic("<path d='M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z'/><path d='m9 12 2 2 4-4'/>"))</span><p>Apoio integral da Fundação CDL em todas as etapas do programa.</p></div>
+      <div class="ja-d rv d2"><span class="ja-d-ic">@Html.Raw(Ic("<circle cx='9' cy='8' r='3.5'/><circle cx='17' cy='9' r='2.5'/><path d='M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5M16 14.5c3 0 6 1.5 6 4.5'/>"))</span><p>Diversas empresas parceiras e jovens contratados.</p></div>
+      <div class="ja-d rv d3"><span class="ja-d-ic">@Html.Raw(Ic("<path d='M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z'/><path d='M15 9a3 3 0 0 1 0 6M18 6a7 7 0 0 1 0 12'/>"))</span><p>Ampla divulgação de vagas em plataformas digitais.</p></div>
+    </div>
+
+    <div class="ja-inv rv" id="precos">
+      <div class="ja-inv-txt">
+        <span class="ja-tag">Jovem Aprendiz 2026</span>
+        <h3>Investimento <span class="serif">por carga horária.</span></h3>
+        <p><b>Regra para contratação:</b> estar associado à CDL Uberlândia e assinar o contrato de Jovem Aprendiz.</p>
+        <p><b>Faça o cálculo da cota de Jovens Aprendizes que a sua empresa pode ter:</b> <a href="@Cota" target="_blank" rel="noopener">clique aqui e faça o cálculo</a>.</p>
+      </div>
+      <div class="ja-planos">
+        <div class="ja-plano"><span>Carga horária</span><b>4h</b><p class="plan-p"><small>R$</small><strong>153</strong><small>,96</small></p><em>Jovem Aprendiz</em></div>
+        <div class="ja-plano"><span>Carga horária</span><b>6h</b><p class="plan-p"><small>R$</small><strong>237</strong><small>,36</small></p><em>Jovem Aprendiz</em></div>
+      </div>
+    </div>
   </div>
-</section><section class="sec" style="padding-top:0"><div class="wrap"><div class="callout rv" style="max-width:860px">
-  <p><b>Regra para contratação:</b> Estar associado à CDL Uberlândia e assinar o contrato de Jovem Aprendiz.</p>
-  <p><b>Faça o cálculo da cota de Jovens Aprendizes que a sua empresa pode ter:</b> <a href="https://docs.google.com/spreadsheets/d/1L2TG3XY8V-cLWCv56wF2mH6pcrSGLvB1/edit?usp=sharing" target="_blank" rel="noopener">clique aqui e faça o cálculo</a>.</p>
-</div></div></section>
+</section>
+
+<!-- ===================== PARA VOCÊ, JOVEM ===================== -->
+<section class="sec ja-sec alt-f" id="jovem" style="--ac:#d6336c">
+  <div class="wrap">
+    <div class="ja-head rv">
+      <span class="ja-tag">Para você, jovem</span>
+      <h2>Sua primeira experiência <span class="serif">no mercado de trabalho.</span></h2>
+      <p class="lead">O programa fomenta a formação técnico-profissional de adolescentes entre 15 e 18 anos e os conduz à primeira experiência no mercado de trabalho com o apoio de empresas socialmente responsáveis.</p>
+      <div class="ctas"><a href="@Vagas" class="btn btn-primary ja-btn-jov" target="_blank" rel="noopener">Ver vagas e cadastrar currículo <span class="arr">↗</span></a></div>
+    </div>
+
+    <h3 class="ja-sub rv">O que você encontra no programa</h3>
+    <div class="ja-dif">
+      <div class="ja-d rv"><span class="ja-d-ic">@Html.Raw(Ic("<path d='M22 9 12 4 2 9l10 5zM6 11v5c3 2 9 2 12 0v-5'/>"))</span><p>Cursos ministrados por especialistas, voltados para competências comportamentais e específicas para o currículo.</p></div>
+      <div class="ja-d rv d1"><span class="ja-d-ic">@Html.Raw(Ic("<path d='M9 18V5l12-2v13'/><circle cx='6' cy='18' r='3'/><circle cx='18' cy='16' r='3'/>"))</span><p>Projetos extracurriculares, oficinas pedagógicas e atividades culturais com temas transversais.</p></div>
+      <div class="ja-d rv d2"><span class="ja-d-ic">@Html.Raw(Ic("<path d='M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z'/>"))</span><p>Programas de inclusão social.</p></div>
+      <div class="ja-d rv d3"><span class="ja-d-ic">@Html.Raw(Ic("<rect x='3' y='7' width='18' height='13' rx='2'/><path d='M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18'/>"))</span><p>Primeira experiência no mercado de trabalho, com o apoio de empresas socialmente responsáveis.</p></div>
+    </div>
+
+    <a class="ja-vagas rv" href="@Vagas" target="_blank" rel="noopener">
+      <span><b>Confira as vagas de emprego e estágio disponíveis.</b> Cadastre seu currículo na plataforma da Fundação CDL.</span>
+      <i>Cadastrar currículo ↗</i>
+    </a>
+  </div>
+</section>
+
 <section class="sec" id="relacionados">
   <div class="wrap">
-    <div class="sec-head"><div class="rv"><span class="eyebrow">Soluções CDL</span><h2>Outras <span class="serif">soluções.</span></h2></div></div>
-    <div class="rel-grid c4t"><a class="rel rv" href="/certificado-digital"><h3>Certificado Digital</h3><i>→</i></a><a class="rel rv" href="/cdl-saude"><h3>CDL Saúde</h3><i>→</i></a><a class="rel rv" href="/treinamento"><h3>Treinamento in company</h3><i>→</i></a><a class="rel rv" href="/cdl-midia"><h3>CDL Mídia</h3><i>→</i></a><a class="rel rv" href="/cdl-talentos"><h3>Recrutamento e Seleção</h3><i>→</i></a><a class="rel rv" href="/cdl-estagio"><h3>CDL Estágio</h3><i>→</i></a><a class="rel rv" href="/cdl-gestao"><h3>CDL Gestão e NF-e</h3><i>→</i></a><a class="rel rv" href="/bdmg"><h3>Parceria BDMG</h3><i>→</i></a><a class="rel rv" href="/combo-solucoes"><h3>Combo de Soluções</h3><i>→</i></a><a class="rel rv" href="/vantagens-associado"><h3>Vantagens para Associados</h3><i>→</i></a><a class="rel rv" href="/jornada-empresarial"><h3>Jornada Empresarial</h3><i>→</i></a></div>
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Fundação CDL</span><h2>Outros serviços <span class="serif">da Fundação.</span></h2></div><a href="/fundacao-cdl" class="btn btn-light rv d1">Conhecer a Fundação <span class="arr">→</span></a></div>
+    <div class="rel-grid c4t"><a class="rel rv" href="/cdl-estagio"><h3>CDL Estágio</h3><i>→</i></a><a class="rel rv" href="/cdl-talentos"><h3>CDL Talentos</h3><i>→</i></a><a class="rel rv" href="/treinamento"><h3>Treinamento In Company</h3><i>→</i></a><a class="rel rv" href="/diretoria-fundacao"><h3>Diretoria da Fundação</h3><i>→</i></a></div>
   </div>
 </section>

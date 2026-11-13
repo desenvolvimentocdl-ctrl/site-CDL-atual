@@ -176,17 +176,22 @@
   </div>
 </section>
 
-<!-- ============ QUICK ACCESS ============ -->
+<!-- ============ QUICK ACCESS (ref. Mobbin: Shopify.dev e Coda) ============ -->
 <section class="quick">
   <div class="wrap">
-    <div class="qbox rv">
-      <h3>Acesso rápido<span>Os serviços mais procurados</span></h3>
-      <div class="chips">
-        <a href="https://www.itau.com.br/servicos/boletos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>2ª via de boleto</a>
-        <a href="/certificado-digital"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="12" rx="2"/><circle cx="12" cy="11" r="2.5"/></svg>Certificado digital</a>
-        <a href="/spc-consulta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg>Consulta CPF</a>
-        <a href="/spc-negociacao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4v16"/></svg>Negocie seus débitos</a>
-        <a href="https://jobs.quickin.io/cdludi/jobs?page=1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2"/></svg>Vagas de emprego</a>
+    <div class="qpanel rv">
+      <div class="qhead">
+        <span class="qbadge"><i></i>Acesso rápido</span>
+        <h2>Os serviços <span class="serif">mais procurados.</span></h2>
+        <p>Resolva em um clique, sem precisar procurar no menu.</p>
+      </div>
+      <div class="qtiles">
+        <a class="qt" href="/spc-consulta" style="--qc:#0e8f9b"><span class="qt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.5-1.5 1.7-2 3-2s2.5.5 3 2M14 10h4M14 13h3"/></svg></span><b>Consulta CPF <i>→</i></b><small>Saiba se o seu nome está no SPC.</small></a>
+        <a class="qt" href="https://jobs.quickin.io/cdludi/jobs?page=1" target="_blank" rel="noopener" style="--qc:#7a4dff"><span class="qt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><b>Vagas de emprego <i>↗</i></b><small>Candidate-se às vagas da CDL Uberlândia.</small></a>
+        <a class="qt" href="/cdl-aprendiz" style="--qc:#d6336c"><span class="qt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22V12M12 12C12 7 8 5 4 5c0 5 3 7 8 7zM12 14c0-4 3-6 8-6 0 4-3 6-8 6z"/></svg></span><b>Vagas Jovem Aprendiz <i>→</i></b><small>Programa da Fundação CDL para jovens de 15 a 18 anos.</small></a>
+        <a class="qt" href="https://www.itau.com.br/servicos/boletos" target="_blank" rel="noopener" style="--qc:#119a5a"><span class="qt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h9l4 4v16l-3-2-3 2-3-2-3 2-1-1z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><b>2ª via de boleto <i>↗</i></b><small>Emita a segunda via do seu boleto.</small></a>
+        <a class="qt" href="/certificado-digital" style="--qc:#0b5cd5"><span class="qt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="12" cy="10" r="2.5"/><path d="m10 15-1 6 3-2 3 2-1-6"/></svg></span><b>Certificado digital <i>→</i></b><small>e-CPF e e-CNPJ emitidos pela CDL.</small></a>
+        <a class="qt" href="/spc-negociacao" style="--qc:#f2711c"><span class="qt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13 3 8l4-4 5 5M16 11l5 5-4 4-5-5M7 12l5 5M12 7l5 5"/></svg></span><b>Negocie seus débitos <i>→</i></b><small>Negocie online e emita o boleto quando quiser.</small></a>
       </div>
     </div>
   </div>
@@ -210,11 +215,40 @@
 </section>
 }
 
-<!-- ============ PUBLICAÇÕES (com imagens, como no site original) ============ -->
-<section class="sec" id="publicacoes" style="padding-top:40px">
+<!-- ============ SOLUÇÕES (prévia da página /solucoes — grupos em Services/HubTemas.cs) ============ -->
+<section class="sec sol-prev" id="solucoes">
+  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="sec-head">
-      <div class="rv"><span class="eyebrow">Publicações</span><h2>Dados e notícias <span class="serif">do varejo.</span></h2></div>
+      <div class="rv"><span class="eyebrow">Soluções</span><h2>Ferramentas para a sua empresa <span class="serif">crescer.</span></h2></div>
+      <a href="/solucoes" class="btn btn-primary rv d1">Ver todas as soluções <span class="arr">→</span></a>
+    </div>
+    <div class="sp-grid">
+      @{ var spN = 0; }
+      @foreach (var slug in new[] { "espacos-para-eventos", "vender-mais", "gestao-e-economia", "pessoas" })
+      {
+          if (!SiteCDL.Services.HubTemas.Temas.TryGetValue(slug, out var tm)) { continue; }
+          spN++;
+          var mostra = tm.Itens.Select(x => x.Titulo).ToList();
+          <a class="sp-card rv d@(spN - 1)" href="/solucoes#g-@slug" style="--ac:@SiteCDL.Services.HubTemas.Cor(slug)">
+            <span class="sp-top"><span class="sp-n">@spN.ToString("00")</span><span class="sp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">@Html.Raw(SiteCDL.Services.HubTemas.Icone(tm.Itens[0].Url))</svg></span></span>
+            <h3>@tm.Titulo @tm.TituloSerif.TrimEnd('.')</h3>
+            <p>@tm.Intro</p>
+            <ul>@foreach (var m in mostra) { <li>@m</li> }</ul>
+            <span class="sp-go">Ver @tm.Itens.Length @(tm.Itens.Length == 1 ? "solução" : "soluções") <i>→</i></span>
+          </a>
+      }
+    </div>
+
+    @* Banner do CDL MenorPreço saiu da home e foi para Views/Loja/Paginas/loja-menorpreco.cshtml *@
+  </div>
+</section>
+
+<!-- ============ PUBLICAÇÕES (com imagens, como no site original) ============ -->
+<section class="sec" id="publicacoes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Conteúdo</span><h2>Dados e notícias <span class="serif">do varejo.</span></h2></div>
       <a href="/publicacoes" class="btn btn-light rv d1">Todas as publicações <span class="arr">→</span></a>
     </div>
     <nav class="ncats rv" aria-label="Categorias de publicações"><a href="/publicacoes/noticias">Notícias</a><a href="/publicacoes/cdldireto">Opinião</a><a href="/publicacoes/comunicados">Comunicados</a><a href="/publicacoes/cdlacao">CDL em Ação</a><a href="/publicacoes/pesquisas">Pesquisa</a><a href="/publicacoes/cae">CAE</a></nav>
@@ -234,135 +268,8 @@
   </div>
 </section>
 
-<!-- ============ SOLUÇÕES (BENTO) ============ -->
-<section class="sec" id="solucoes">
-  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="rv"><span class="eyebrow">Soluções</span><h2>Ferramentas para vender mais, <span class="serif">com segurança.</span></h2></div>
-      <a href="/vantagens-associado" class="btn btn-light rv d1">Todas as soluções <span class="arr">→</span></a>
-    </div>
-
-    <div class="bento">
-      <a class="bx dark c2 r2 rv" href="/spc-brasil">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/><path d="M12 8.2c-.4-.5-1-.7-1.6-.7-.9 0-1.6.5-1.6 1.3 0 1.7 3.3 1 3.3 2.7 0 .8-.7 1.3-1.7 1.3-.7 0-1.3-.3-1.7-.8M10.5 6.5v1M10.5 12.8v1"/></svg></span>
-        <span class="k">SPC Brasil</span>
-        <h3>Venda a prazo sabendo exatamente para quem.</h3>
-        <p>Consultas, registros e monitoramento de documentos com a maior base de crédito do varejo brasileiro.</p>
-        <div class="spc-list">
-          <span class="row">Consultas e registro <span>→</span></span>
-          <span class="row">SPC Avisa — monitoramento <span>→</span></span>
-          <span class="row">Consulta CPF <span>→</span></span>
-        </div>
-        <div class="go">Acessar o SPC <i>→</i></div>
-      </a>
-
-      <a class="bx blue c2 rv d1" href="/combo-solucoes">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-        <span class="k">Mais vantajoso</span>
-        <h3>Combo de Soluções</h3>
-        <p>Os principais benefícios da CDL reunidos em um só pacote para sua empresa.</p>
-        <div class="go">Montar meu combo <i>→</i></div>
-      </a>
-
-      <a class="bx rv d2" href="/certificado-digital">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7.5" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6 1.2 0 2.3.3 3.2.9"/><rect x="14" y="14" width="7" height="6" rx="1.2"/><path d="M15.7 14v-1.5a1.8 1.8 0 0 1 3.6 0V14"/></svg></span>
-        <span class="k">Digital</span>
-        <h3>Certificado Digital</h3>
-        <p>Transações pela internet com validade jurídica.</p>
-        <div class="go">Emitir <i>→</i></div>
-      </a>
-
-      <a class="bx rv d3" href="/cdl-gestao">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><rect x="3" y="11.5" width="11" height="5.5" rx="1"/><path d="M5.3 15.5v-2.5l2 2.5v-2.5M9.4 15.5v-2.5h2M9.4 14.2h1.5"/></svg></span>
-        <span class="k">Gestão</span>
-        <h3>CDL Gestão e NFe</h3>
-        <p>Notas fiscais eletrônicas com agilidade e segurança.</p>
-        <div class="go">Saiba mais <i>→</i></div>
-      </a>
-
-      <a class="bx rv" href="/bdmg">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M7.6 9.5c-.3-.4-.8-.6-1.3-.6-.7 0-1.3.4-1.3 1 0 1.4 2.7.8 2.7 2.2 0 .6-.6 1-1.4 1-.6 0-1.1-.2-1.4-.6M6.3 8.3v.6M6.3 13.1v.6M11 11h7M11 14h5"/></svg></span>
-        <span class="k">Crédito</span>
-        <h3>Crédito BDMG</h3>
-        <p>Simule crédito para investir no seu negócio.</p>
-        <div class="go">Simular <i>→</i></div>
-      </a>
-
-      <a class="bx rv d1" href="https://www.presentedasortecdludi.com/varejoon">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></span>
-        <span class="k">Vendas</span>
-        <h3>Varejo On</h3>
-        <p>Campanhas promocionais gratuitas para o comércio.</p>
-        <div class="go">Participar <i>→</i></div>
-      </a>
-
-      <a class="bx rv d2" href="/loja/descontos">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v8a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2z"/><rect x="7.5" y="9.5" width="9" height="5" rx="1"/></svg></span>
-        <span class="k">Benefícios</span>
-        <h3>Rede de Descontos</h3>
-        <p>Descontos exclusivos em parceiros.</p>
-        <div class="go">Ver parceiros <i>→</i></div>
-      </a>
-
-      <a class="bx rv d3" href="https://jobs.quickin.io/cdludi/jobs?page=1">
-        <span class="bx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18.5c1.2-2 3.2-3 5.5-3s4.3 1 5.5 3"/></svg></span>
-        <span class="k">Pessoas</span>
-        <h3>Vagas de emprego</h3>
-        <p>Candidate-se às vagas divulgadas pela CDL.</p>
-        <div class="go">Ver vagas <i>→</i></div>
-      </a>
-    </div>
-    <a class="mp rv" href="/loja/menor-preco"><img src="/novo/img/cdl-menor-preco.webp" data-remote="/img/Home/cdl_menor_preco.webp" alt="CDL MenorPreço" loading="lazy" decoding="async" onerror="imgFb(this)"><span class="fb mp-fb" style="display:none"><b>CDL MenorPreço</b> Compare preços no comércio associado →</span></a>
-  </div>
-</section>
-
-<!-- ============ NÚMEROS + HISTÓRIA ============ -->
-<section class="sec nums" id="numeros">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="rv"><span class="eyebrow">Institucional</span><h2>Quase cinco décadas <span class="serif">defendendo o comércio local.</span></h2></div>
-      <a href="/nossa-historia" class="btn btn-light rv d1">Nossa história <span class="arr">→</span></a>
-    </div>
-    <div class="num-grid">
-      <div class="num rv"><div class="v"><span data-count="49">0</span></div><p>anos de atuação em Uberlândia, desde 1977</p></div>
-      <div class="num rv d1"><div class="v"><span class="serif">Top</span> 5</div><p>entre as maiores CDLs do Sistema CNDL</p></div>
-      <div class="num rv d2"><div class="v"><span data-count="27">0</span></div><p>unidades federativas com presença do Sistema CNDL</p></div>
-      <div class="num rv d3"><div class="v">~<span data-count="2000" data-sep="1">0</span></div><p>Câmaras de Dirigentes Lojistas no Brasil</p></div>
-    </div>
-
-    <div class="timeline rv" id="tl">
-      <div class="tl-line"><i></i></div>
-      <div class="tl">
-        <div><b>1977</b><span>Fundação, com 18 associados, no Senac</span></div>
-        <div><b>SPC</b><span>Traz o serviço de proteção ao crédito para a cidade</span></div>
-        <div><b>1989</b><span>Inauguração da sede atual</span></div>
-        <div><b>1991</b><span>Criação da Fundação CDL</span></div>
-        <div><b>2024</b><span>Selo “Juntos pelos ODS” — Movimento Nacional ODS de Minas Gerais</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ POR QUE SE ASSOCIAR (ref.: Mews / Attio) ============ -->
-<section class="sec assoc" id="associe">
-  <div class="wrap assoc-grid">
-    <div class="assoc-side">
-      <div class="rv"><span class="eyebrow">Para associados</span><h2>O que sua empresa <span class="serif">passa a ter.</span></h2>
-      <p class="lead" style="margin-top:18px">A CDL recebe empresários, lojistas, prestadores de serviços e profissionais autônomos de Uberlândia.</p></div>
-      <div class="mvv rv d1">
-        <div><span>Missão</span><p>Fomentar o associativismo, influenciar o ambiente político-institucional e apoiar o desenvolvimento de nossos associados, compartilhando informações e soluções com credibilidade.</p></div>
-        <div><span>Visão</span><p>Ser uma associação empresarial reconhecida pela excelência e representatividade, sendo referência para os associados, parceiros e comunidade.</p></div>
-        <div><span>Valores</span><ul class="vals"><li>Coragem</li><li>Credibilidade</li><li>Determinação</li><li>Envolvimento</li><li>Ética</li><li>Inovação</li><li>Lisura</li><li>Sustentabilidade</li></ul></div>
-      </div>
-      <a href="/associe-se" class="btn btn-primary rv d2">Quero me associar <span class="arr">→</span></a>
-    </div>
-    <ol class="bn-list"><li class="bn rv"><span class="bn-n">/01</span><h3>Orientações gratuitas</h3><p>Jurídica, segurança digital, captação e retenção de clientes, recuperação de inadimplência, gestão de processos e análise de política de crédito.</p></li><li class="bn rv"><span class="bn-n">/02</span><h3>Soluções SPC</h3><p>SPC Consultas e Registro, SPC Avisa, SPC Conciliador, Certificado Digital e Cadastro Positivo.</p></li><li class="bn rv"><span class="bn-n">/03</span><h3>Gestão de pessoas e processos</h3><p>CDL Saúde, CDL Talentos, CDL Estágio, CDL Aprendiz, cursos, treinamento in company e consultoria em gestão e inovação.</p></li><li class="bn rv"><span class="bn-n">/04</span><h3>Relacionamento e capacitação</h3><p>Café Empreendedor, Feira de Oportunidades, HSM Online, Giro de Mercado, Jornada Empresarial e CDL Convenções e Eventos.</p></li><li class="bn rv"><span class="bn-n">/05</span><h3>Saúde financeira</h3><p>CDL Gestão e NF-e, cobrança e recuperação de crédito, parceria BDMG e parceria Sicredi.</p></li><li class="bn rv"><span class="bn-n">/06</span><h3>Marketing e vendas</h3><p>CDL Mídia, rede de descontos, pesquisas de mercado e campanhas promocionais.</p></li><li class="bn rv"><span class="bn-n">/07</span><h3>Representatividade</h3><p>Assessoria de imprensa e político-institucional, comunicados sobre deliberações municipais e CDL Direto.</p></li></ol>
-  </div>
-</section>
-
 <!-- ============ AGENDA ============ -->
-<section class="sec" id="agenda">
+<section class="sec alt" id="agenda">
   <div class="wrap">
     <div class="sec-head">
       <div class="rv"><span class="eyebrow">Agenda</span><h2>Aprenda, conecte-se <span class="serif">e cresça.</span></h2></div>
@@ -390,6 +297,50 @@
     <a class="ag-ead rv" href="/loja/cursos-ead">
       <span class="chip">EAD</span><b>Cursos online da CDL</b><span class="ead-t">Estude no seu ritmo, com certificado</span><i>→</i>
     </a>
+  </div>
+</section>
+
+<!-- ============ POR QUE SE ASSOCIAR (ref.: Mews / Attio) ============ -->
+<section class="sec assoc" id="associe">
+  <div class="wrap assoc-grid">
+    <div class="assoc-side">
+      <div class="rv"><span class="eyebrow">Para associados</span><h2>O que sua empresa <span class="serif">passa a ter.</span></h2>
+      <p class="lead" style="margin-top:18px">A CDL recebe empresários, lojistas, prestadores de serviços e profissionais autônomos de Uberlândia.</p></div>
+      <div class="mvv rv d1">
+        <div><span>Missão</span><p>Fomentar o associativismo, influenciar o ambiente político-institucional e apoiar o desenvolvimento de nossos associados, compartilhando informações e soluções com credibilidade.</p></div>
+        <div><span>Visão</span><p>Ser uma associação empresarial reconhecida pela excelência e representatividade, sendo referência para os associados, parceiros e comunidade.</p></div>
+        <div><span>Valores</span><ul class="vals"><li>Coragem</li><li>Credibilidade</li><li>Determinação</li><li>Envolvimento</li><li>Ética</li><li>Inovação</li><li>Lisura</li><li>Sustentabilidade</li></ul></div>
+      </div>
+      <a href="/associe-se" class="btn btn-primary rv d2">Quero me associar <span class="arr">→</span></a>
+    </div>
+    <ol class="bn-list"><li class="bn rv"><span class="bn-n">/01</span><h3>Orientações gratuitas</h3><p>Jurídica, segurança digital, captação e retenção de clientes, recuperação de inadimplência, gestão de processos e análise de política de crédito.</p></li><li class="bn rv"><span class="bn-n">/02</span><h3>Soluções SPC</h3><p>SPC Consultas e Registro, SPC Avisa, SPC Conciliador, Certificado Digital e Cadastro Positivo.</p></li><li class="bn rv"><span class="bn-n">/03</span><h3>Gestão de pessoas e processos</h3><p>CDL Saúde, CDL Talentos, CDL Estágio, CDL Aprendiz, cursos, treinamento in company e consultoria em gestão e inovação.</p></li><li class="bn rv"><span class="bn-n">/04</span><h3>Relacionamento e capacitação</h3><p>Café Empreendedor, Feira de Oportunidades, HSM Online, Giro de Mercado, Jornada Empresarial e CDL Convenções e Eventos.</p></li><li class="bn rv"><span class="bn-n">/05</span><h3>Saúde financeira</h3><p>CDL Gestão e NF-e, cobrança e recuperação de crédito, parceria BDMG e parceria Sicredi.</p></li><li class="bn rv"><span class="bn-n">/06</span><h3>Marketing e vendas</h3><p>CDL Mídia, rede de descontos, pesquisas de mercado e campanhas promocionais.</p></li><li class="bn rv"><span class="bn-n">/07</span><h3>Representatividade</h3><p>Assessoria de imprensa e político-institucional, comunicados sobre deliberações municipais e CDL Direto.</p></li></ol>
+  </div>
+</section>
+
+<!-- ============ NÚMEROS + HISTÓRIA ============ -->
+<section class="sec nums" id="numeros">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rv"><span class="eyebrow">Institucional</span><h2>Quase cinco décadas <span class="serif">defendendo o comércio local.</span></h2></div>
+      <a href="/nossa-historia" class="btn btn-light rv d1">Nossa história <span class="arr">→</span></a>
+    </div>
+    <div class="num-grid">
+      <div class="num rv"><div class="v"><span data-count="49">0</span></div><p>anos de atuação em Uberlândia, desde 1977</p></div>
+      <div class="num rv d1"><div class="v"><span class="serif">Top</span> 5</div><p>entre as maiores CDLs do Sistema CNDL</p></div>
+      <div class="num rv d2"><div class="v"><span data-count="27">0</span></div><p>unidades federativas com presença do Sistema CNDL</p></div>
+      <div class="num rv d3"><div class="v">~<span data-count="2000" data-sep="1">0</span></div><p>Câmaras de Dirigentes Lojistas no Brasil</p></div>
+    </div>
+
+    <div class="timeline rv" id="tl">
+      <div class="tl-line"><i></i></div>
+      <div class="tl">
+        <div><b>1977</b><span>Fundação, com 18 associados, no Senac</span></div>
+        <div><b>SPC</b><span>Traz o serviço de proteção ao crédito para a cidade</span></div>
+        <div><b>1989</b><span>Inauguração da sede atual</span></div>
+        <div><b>1991</b><span>Criação da Fundação CDL</span></div>
+        <div><b>2024</b><span>Selo “Juntos pelos ODS” — Movimento Nacional ODS de Minas Gerais</span></div>
+      </div>
+    </div>
   </div>
 </section>
 

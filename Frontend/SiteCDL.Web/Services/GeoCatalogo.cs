@@ -93,7 +93,21 @@ namespace SiteCDL.Services
                 new("/loja/parceiros", "Parceiros", "Empresas parceiras da CDL Uberlândia."),
                 new("/loja/menor-preco", "CDL Menor Preço", "Plataforma CDL MenorPreço: solicitações de orçamento abertas para fornecedores associados."),
             }),
-            new("Publicações", new Pagina[]
+            new("Temas e redes sociais", new Pagina[]
+            {
+                new("/vender-mais", "Vender mais", "Soluções para divulgar a empresa e atrair clientes: CDL Mídia, SPC Dados e Rede de Descontos."),
+                new("/gestao-e-economia", "Gestão e economia", "Certificado Digital, CDL Gestão e NF-e, CDL Saúde, Parceria BDMG, Combo de Soluções e Consultoria."),
+                new("/pessoas", "Pessoas", "Recrutamento e Seleção, CDL Estágio e CDL Aprendiz."),
+                new("/spc-para-empresas", "SPC para sua empresa", "SPC Consultas e Registro, SPC Avisa, SPC Dados e Cadastro Positivo."),
+                new("/spc-para-voce", "SPC para você", "SPC Consulta CPF, SPC Negociação de Débito e Alerta de Documentos."),
+                new("/aprender", "Aprender", "Eventos, cursos presenciais, cursos EAD e treinamento in company."),
+                new("/economizar", "Economizar", "Descontos, parceiros e a plataforma CDL MenorPreço."),
+                new("/solucoes", "Soluções", "Todas as soluções da CDL Uberlândia para empresas, por grupo: vender mais, gestão e economia, pessoas e espaços para eventos."),
+                new("/cursos-e-eventos", "Cursos e Eventos", "Cursos, eventos, treinamentos, descontos, parceiros e CDL MenorPreço."),
+                new("/a-cdl", "A CDL", "Páginas institucionais da CDL Uberlândia: quem somos, história, Fundação CDL, diretoria, sustentabilidade e licitações."),
+                new("/redes-sociais", "Redes sociais", "Instagram, Facebook, YouTube, LinkedIn, X e WhatsApp da CDL Uberlândia, com os vídeos mais recentes do canal."),
+            }),
+            new("Conteúdo", new Pagina[]
             {
                 new("/publicacoes", "Todas as publicações", "Notícias, comunicados e pesquisas mais recentes da CDL Uberlândia."),
                 new("/publicacoes/noticias", "Notícias", "Notícias sobre o comércio de Uberlândia e a atuação da CDL."),

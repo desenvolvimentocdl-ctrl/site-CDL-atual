@@ -40,3 +40,19 @@ document.querySelectorAll('.cms [data-toggle="tab"], .cms [data-bs-toggle="tab"]
   try{if(localStorage.getItem(K)==='1')set(true)}catch(e){}
   b.addEventListener('click',()=>{const min=!box.classList.contains('min');set(min);try{min?localStorage.setItem(K,'1'):localStorage.removeItem(K)}catch(e){}});
 })();
+
+/* Botão "Entrar" do topo: abre/fecha o menu com Área do associado e Acesse o SPC */
+(function () {
+  var box = document.querySelector('.entrar');
+  if (!box) return;
+  var btn = box.querySelector('button'), menu = box.querySelector('.entrar-menu');
+  function fechar() { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var abrir = menu.hidden;
+    menu.hidden = !abrir;
+    btn.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) { if (!box.contains(e.target)) fechar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
+})();

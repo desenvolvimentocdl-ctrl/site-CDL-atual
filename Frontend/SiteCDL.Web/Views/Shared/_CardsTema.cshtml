@@ -1,0 +1,24 @@
+@model SiteCDL.Services.HubTemas.Tema
+@using SiteCDL.Services
+@*
+    Cards dos serviços de um tema: ícone, nome, resumo curto (GeoCatalogo), apresentação da própria página (ResumosServicos)
+    e "Saiba mais". Usado em _GruposMenu (páginas de visão geral e SPC Brasil) e em Views/Paginas/_Tema.cshtml.
+*@
+<div class="sv-grid @(Model.Itens.Length == 4 ? "n4" : "")" style="--ac:@HubTemas.Cor(Model.Slug)">
+  @for (var k = 0; k < Model.Itens.Length; k++)
+  {
+      var i = Model.Itens[k];
+      // Quando sobraria um card sozinho na última linha, o primeiro vira destaque e ocupa a linha inteira.
+      var largo = k == 0 && Model.Itens.Length > 3 && Model.Itens.Length % 3 == 1 && Model.Itens.Length != 4;
+      var resumo = HubTemas.Descricao(i);
+      var expl = HubTemas.Explicacao(i);
+      var fora = i.Url.StartsWith("http");
+      <a class="sv-card@(largo ? " sv-largo" : "")" href="@i.Url" @(i.Externo ? Html.Raw("target=\"_blank\" rel=\"noopener\"") : Html.Raw(""))>
+        <span class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">@Html.Raw(HubTemas.Icone(i.Url))</svg></span>
+        <h3>@i.Titulo</h3>
+        @if (resumo != "") { <p class="sv-res">@resumo</p> }
+        @if (expl != "" && expl != resumo) { <p class="sv-exp">@expl</p> }
+        <span class="sv-mais">@(fora ? "Abrir site" : "Saiba mais") <i>@(fora ? "↗" : "→")</i></span>
+      </a>
+  }
+</div>

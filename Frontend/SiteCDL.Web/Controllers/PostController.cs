@@ -89,7 +89,7 @@ namespace SiteCDL.Web.Controllers
             var responseData = await response.Content.ReadAsStringAsync();
 
             var pageData = JsonSerializer.Deserialize<List<Post>>(responseData);
-            ViewBag.categoria = "Publicações";
+            ViewBag.categoria = "Conteúdo";
 
             return View("Index", pageData);
         }

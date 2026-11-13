@@ -5,7 +5,7 @@
 *@
 @{
     var n = Model?.Noticia;
-    string categoria = n?.PostCategoria?.Nome ?? "Publicações";
+    string categoria = n?.PostCategoria?.Nome ?? "Conteúdo";
     string route = n?.PostCategoria?.Route ?? "";
     ViewBag.Route = route;
     ViewData["Title"] = n?.Titulo != null ? System.Text.RegularExpressions.Regex.Replace(n.Titulo, "<[^>]+>", "") : categoria;
@@ -47,7 +47,7 @@
         if (geoImg != null) ViewData["OgImage"] = geoImg;
         ViewData["Breadcrumb"] = new List<(string nome, string caminho)>
         {
-            ("Publicações", "/publicacoes"),
+            ("Conteúdo", "/publicacoes"),
             (categoria, "/publicacoes/" + route),
             (tituloTxt, geoUrl),
         };
@@ -64,7 +64,7 @@
 
 @if (n == null)
 {
-    <section class="sec"><div class="wrap"><p class="nores">Publicação não encontrada. <a href="/publicacoes">Ver todas as publicações</a>.</p></div></section>
+    <section class="sec"><div class="wrap"><p class="nores">Publicação não encontrada. <a href="/publicacoes">Ver todo o conteúdo</a>.</p></div></section>
 }
 else
 {
@@ -73,7 +73,7 @@ else
         <nav class="crumb" aria-label="Você está em">
             <ol>
                 <li><a href="/">Início</a></li>
-                <li><a href="/publicacoes">Publicações</a></li>
+                <li><a href="/publicacoes">Conteúdo</a></li>
                 <li><a href="/publicacoes/@route">@categoria</a></li>
                 <li aria-current="page">@tituloCurto</li>
             </ol>
