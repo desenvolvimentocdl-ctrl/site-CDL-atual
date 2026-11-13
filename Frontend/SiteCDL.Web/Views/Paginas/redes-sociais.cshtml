@@ -3,28 +3,46 @@
 @*
     Redes sociais da CDL Uberlândia (aba "Redes sociais" do menu).
     - YouTube: últimos vídeos lidos sozinhos do feed oficial do canal (Services/YoutubeFeed.cs).
-    - Instagram: posts incorporados pelo método oficial do Instagram; os links ficam em wwwroot/novo/dados/redes-sociais.json.
-    - Facebook: plugin de página oficial do Facebook (mostra os posts da página).
+    - Instagram: contas da CDL (principal, Eventos, Mídia) com posts incorporados pelo método oficial; links em wwwroot/novo/dados/redes-sociais.json.
 *@
 @{
     ViewData["Title"] = "Redes sociais";
     ViewBag.metaDescription = "Acompanhe a CDL Uberlândia no Instagram, Facebook, YouTube, LinkedIn e X: vídeos, notícias e eventos para o comércio de Uberlândia.";
     var videos = await SiteCDL.Services.YoutubeFeed.Ultimos(6);
-    var posts = new List<string>();
+    // Contas do Instagram e seus posts (wwwroot/novo/dados/redes-sociais.json)
+    var contas = new List<(string Nome, string Usuario, string Desc, List<string> Posts)>();
+    var outras = new List<(string Nome, string Usuario)>();
     var arq = Env.WebRootFileProvider.GetFileInfo("novo/dados/redes-sociais.json");
+    var reUser = new System.Text.RegularExpressions.Regex("^[A-Za-z0-9._]{1,30}$");
+    var rePost = new System.Text.RegularExpressions.Regex(@"^https://www\.instagram\.com/(p|reel)/([A-Za-z0-9_-]+)");
+    string Txt(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() ?? "" : "";
     if (arq.Exists)
     {
         try
         {
             using var st = arq.CreateReadStream();
             using var doc = JsonDocument.Parse(st);
-            if (doc.RootElement.TryGetProperty("instagramPosts", out var ps) && ps.ValueKind == JsonValueKind.Array)
-                foreach (var p in ps.EnumerateArray())
-                    if (p.ValueKind == JsonValueKind.String && System.Text.RegularExpressions.Regex.IsMatch(p.GetString() ?? "", @"^https://www\.instagram\.com/(p|reel)/[A-Za-z0-9_-]+/?$"))
-                        posts.Add(p.GetString()!.TrimEnd('/') + "/");
+            if (doc.RootElement.TryGetProperty("contas", out var cs) && cs.ValueKind == JsonValueKind.Array)
+                foreach (var c in cs.EnumerateArray())
+                {
+                    var u = Txt(c, "usuario");
+                    if (!reUser.IsMatch(u)) continue;
+                    var lista = new List<string>();
+                    if (c.TryGetProperty("posts", out var ps) && ps.ValueKind == JsonValueKind.Array)
+                        foreach (var x in ps.EnumerateArray())
+                        {
+                            var m = rePost.Match(x.ValueKind == JsonValueKind.String ? x.GetString() ?? "" : "");
+                            if (m.Success) lista.Add($"https://www.instagram.com/{m.Groups[1].Value}/{m.Groups[2].Value}/");
+                        }
+                    contas.Add((Txt(c, "nome"), u, Txt(c, "descricao"), lista));
+                }
+            if (doc.RootElement.TryGetProperty("outrasContas", out var os) && os.ValueKind == JsonValueKind.Array)
+                foreach (var o in os.EnumerateArray())
+                    if (reUser.IsMatch(Txt(o, "usuario"))) outras.Add((Txt(o, "nome"), Txt(o, "usuario")));
         }
-        catch (Exception) { posts.Clear(); }
+        catch (Exception) { contas.Clear(); outras.Clear(); }
     }
+    var temPosts = contas.Any(c => c.Posts.Count > 0);
     var ptBR = new System.Globalization.CultureInfo("pt-BR");
 }
 
@@ -56,20 +74,37 @@
   </div>
 </section>
 
-@if (posts.Count > 0)
+@if (contas.Count > 0)
 {
 <section class="sec" id="instagram" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head rv"><div><span class="eyebrow">Instagram</span><h2>Últimos posts <span class="serif">no Instagram.</span></h2></div><a class="btn btn-light" href="https://www.instagram.com/cdluberlandia/" target="_blank" rel="noopener">Ver perfil ↗</a></div>
-    <div class="rs-ig">
-      @foreach (var p in posts.Take(9))
-      {
-        <blockquote class="instagram-media" data-instgrm-permalink="@(p)?utm_source=ig_embed" data-instgrm-version="14"><a href="@p" target="_blank" rel="noopener">Ver este post no Instagram</a></blockquote>
-      }
-    </div>
+    <div class="sec-head rv"><div><span class="eyebrow">Instagram</span><h2>A CDL <span class="serif">no Instagram.</span></h2></div></div>
+    <nav class="ig-contas rv" aria-label="Perfis da CDL no Instagram">
+      @foreach (var c in contas) { <a href="#ig-@(c.Usuario.Replace(".", "-"))"><span class="ig-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span><span><b>@c.Nome</b><small>@@@c.Usuario</small></span></a> }
+      @foreach (var o in outras) { <a href="https://www.instagram.com/@o.Usuario/" target="_blank" rel="noopener"><span class="ig-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span><span><b>@o.Nome</b><small>@@@o.Usuario ↗</small></span></a> }
+    </nav>
+    @foreach (var c in contas)
+    {
+      <div class="ig-bloco rv" id="ig-@(c.Usuario.Replace(".", "-"))">
+        <div class="ig-head">
+          <span class="ig-av lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></span>
+          <div><h3>@c.Nome</h3><p>@@@c.Usuario@(c.Desc != "" ? " · " + c.Desc : "")</p></div>
+          <a class="btn btn-light" href="https://www.instagram.com/@c.Usuario/" target="_blank" rel="noopener">Seguir @@@c.Usuario <span class="arr">↗</span></a>
+        </div>
+        @if (c.Posts.Count > 0)
+        {
+          <div class="rs-ig">
+            @foreach (var u in c.Posts.Take(6))
+            {
+              <div class="ig-post"><blockquote class="instagram-media" data-instgrm-permalink="@(u)?utm_source=ig_embed" data-instgrm-version="14"><a href="@u" target="_blank" rel="noopener">Ver este post no Instagram</a></blockquote></div>
+            }
+          </div>
+        }
+      </div>
+    }
   </div>
 </section>
-<script async src="https://www.instagram.com/embed.js"></script>
+@if (temPosts) { <script async src="https://www.instagram.com/embed.js"></script> }
 }
 
 @if (videos.Count > 0)
@@ -91,11 +126,3 @@
 </section>
 }
 
-<section class="sec" id="facebook" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv"><div><span class="eyebrow">Facebook</span><h2>Publicações <span class="serif">no Facebook.</span></h2></div><a class="btn btn-light" href="https://www.facebook.com/cdluberlandia" target="_blank" rel="noopener">Ver página ↗</a></div>
-    <div class="rs-fb rv">
-      <iframe title="Publicações da CDL Uberlândia no Facebook" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcdluberlandia&amp;tabs=timeline&amp;width=500&amp;height=720&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=false" width="500" height="720" style="border:none;overflow:hidden" scrolling="no" frameborder="0" loading="lazy" allow="encrypted-media; picture-in-picture; web-share"></iframe>
-    </div>
-  </div>
-</section>

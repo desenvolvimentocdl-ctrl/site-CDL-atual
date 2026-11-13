@@ -1,4 +1,38 @@
 {
-  "_comoUsar": "Cole em instagramPosts os links dos posts do Instagram da CDL que devem aparecer na página /redes-sociais (o mais recente primeiro), no formato https://www.instagram.com/p/CODIGO/ ou https://www.instagram.com/reel/CODIGO/. Não precisa recompilar o site.",
-  "instagramPosts": []
+  "_comoUsar": "Contas do Instagram mostradas na página /redes-sociais, na ordem abaixo. Em cada conta, cole em 'posts' os links dos posts ou reels (do mais recente para o mais antigo), como vêm do Instagram; o que vier depois do '?' é ignorado. Até 6 por conta (3 fica melhor). Não precisa recompilar o site.",
+  "contas": [
+    {
+      "nome": "CDL Uberlândia",
+      "usuario": "cdluberlandia",
+      "descricao": "Perfil oficial da CDL Uberlândia.",
+      "posts": [
+        "https://www.instagram.com/p/Dfo7u79lY0r/",
+        "https://www.instagram.com/reel/DfaS0CBDIcv/",
+        "https://www.instagram.com/p/DfVZ4iIjfsm/"
+      ]
+    },
+    {
+      "nome": "CDL Eventos",
+      "usuario": "cdl.eventos",
+      "descricao": "Eventos e espaços da CDL Uberlândia.",
+      "posts": [
+        "https://www.instagram.com/reel/DdsBYnPsdWv/",
+        "https://www.instagram.com/p/DKjvaKHOv4G/",
+        "https://www.instagram.com/p/DBRuQ3NJNO-/"
+      ]
+    },
+    {
+      "nome": "CDL Mídia",
+      "usuario": "cdlmidiaudi",
+      "descricao": "Divulgação de empresas com o CDL Mídia.",
+      "posts": [
+        "https://www.instagram.com/reel/DcMgZuLNIn0/",
+        "https://www.instagram.com/reel/Dcei50Qvtjv/",
+        "https://www.instagram.com/reel/DfkuetcB8-q/"
+      ]
+    }
+  ],
+  "outrasContas": [
+    { "nome": "Fundação CDL", "usuario": "fundacaocdludi" }
+  ]
 }
