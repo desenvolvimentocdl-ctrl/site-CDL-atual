@@ -1,6 +1,51 @@
 {
   "boletins": [
     {
+      "data": "2026-11-13",
+      "atualizadoAs": "08:01",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "INPC (inflação usada para corrigir salários, medida pelo IBGE) subiu 0,22% em outubro e acumula 4,49% em 12 meses. O IPCA, inflação oficial, ficou em 0,14% no mês e 4,63% em 12 meses.",
+          "impacto": "O INPC acumulado é referência para o reajuste salarial de várias categorias. Use-o para se planejar para a próxima negociação da convenção coletiva.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/inpc-inflacao-que-corrige-salarios-acumula-449-em-12-meses",
+          "quando": "12/11, 10:11"
+        },
+        {
+          "fato": "Pesquisa do Thomson Reuters Institute com 577 profissionais contábeis e tributários: 52,9% dizem que seus escritórios estão em fase inicial de preparação para a reforma tributária, e 70% ainda não calcularam o custo de adaptação.",
+          "impacto": "Não espere o contador chamar: pergunte agora como ficam o sistema de notas, a apuração da CBS e o caixa em 2027.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/reforma-tributaria-avanca-mas-contadores-seguem-despreparados/",
+          "quando": "12/11, 12:17"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PLP 299/2026 (ajuste fiscal)",
+          "ementa": "Projeto de lei complementar do governo que reduz benefícios tributários (isenções, créditos e regimes especiais) e permite novas restrições à compensação de tributos, além de mudar regras de gastos públicos a partir de 2027.",
+          "tramitacao": "Texto principal aprovado no Plenário do Senado em 12/11/2026, por 45 votos a 31. Quatro destaques ficam para terça, 17/11; depois o projeto vai à Câmara dos Deputados. Ainda não é lei.",
+          "fonte": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/texto-principal-do-ajuste-fiscal-e-aprovado-pelo-senado"
+        }
+      ],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/12/texto-principal-do-ajuste-fiscal-e-aprovado-pelo-senado"
+        },
+        {
+          "nome": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/inpc-inflacao-que-corrige-salarios-acumula-449-em-12-meses"
+        },
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/reforma-tributaria-avanca-mas-contadores-seguem-despreparados/"
+        }
+      ]
+    },
+    {
       "data": "2026-11-12",
       "atualizadoAs": "16:00",
       "semNovidades": false,
@@ -59,22 +104,129 @@
           "quando": "12/11/2026"
         }
       ],
-      "prazos": [
-        { "obrigacao": "EFD-Reinf de outubro (empresas obrigadas)", "data": "16/11" },
-        { "obrigacao": "Novas regras da NF-e e da NFC-e entram em produção", "data": "16/11" },
-        { "obrigacao": "DAS do Simples, PGDAS-D e DAS-MEI de outubro (20/11 é feriado)", "data": "23/11" },
-        { "obrigacao": "Contestação do FAP 2027 (fator que pode aumentar a contribuição previdenciária da empresa)", "data": "30/11" },
-        { "obrigacao": "Acordo coletivo para a nova jornada sem 6x1", "data": "15/12" }
+      "fontes": [
+        {
+          "nome": "Ministério da Fazenda",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-e-orgaos-parceiros-detalham-proximos-passos-da-reforma-tributaria"
+        },
+        {
+          "nome": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pacote-fiscal-preve-120-dias-para-congresso-discutir-supersalarios"
+        },
+        {
+          "nome": "Câmara dos Deputados (Dados Abertos)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes/2651102"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/videos/2026/11/cct-aprova-incentivos-fiscais-para-empresas-do-simples-nacional"
+        },
+        {
+          "nome": "Conjur",
+          "url": "https://conjur.com.br/2026-nov-12/flavio-dino-nega-adiamento-e-mantem-cronograma-de-extincao-da-jornada-6x1/"
+        },
+        {
+          "nome": "Jornal Contábil — adiamento para março de 2027",
+          "url": "https://jornalcontabil.com.br/noticia/simples-nacional-receita-adia-emissao-de-notas-fiscais-para-marco-de-2027/"
+        },
+        {
+          "nome": "Jornal Contábil — vencimentos de novembro",
+          "url": "https://jornalcontabil.com.br/noticia/simples-nacional-pagamentos-e-declaracoes-que-vencem-em-novembro/"
+        },
+        {
+          "nome": "Jornal Contábil — FAP 2027",
+          "url": "https://jornalcontabil.com.br/noticia/fap-2027-pode-aumentar-contribuicao-das-empresas-prazo-para-contestar-termina-dia-30/"
+        }
+      ]
+    },
+    {
+      "data": "2026-11-11",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Em reunião com o ministro da Fazenda, deputados admitiram rever benefícios fiscais da reforma caso a alíquota de referência do IVA (CBS + IBS, os dois novos tributos sobre o consumo) passe do limite de 26,5% previsto em lei. A preocupação vem de uma estimativa do TCU para a CBS maior que a usada antes pelo Comitê Gestor do IBS.",
+          "impacto": "Não há proposta formal: a revisão só aconteceria se a alíquota passar do limite. O início da CBS em 1º/1/2027 está mantido, e a alíquota final ainda não está definida.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/deputados-admitem-rever-isencoes-se-iva-superar-265",
+          "quando": "10/11, 18:20"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/deputados-admitem-rever-isencoes-se-iva-superar-265"
+        }
+      ]
+    },
+    {
+      "data": "2026-11-10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Receita liberou a versão 2.0 das APIs (conexões entre sistemas) de apuração da CBS (Contribuição sobre Bens e Serviços, que substitui PIS e Cofins), que mostram os débitos e créditos apurados da empresa, em ambiente de testes e de produção beta.",
+          "impacto": "É por aí que o sistema da empresa ou do contador vai conferir a CBS. Quem já tinha chave de acesso precisa cancelá-la e gerar uma nova em \"Gerar Credencial de Acesso\".",
+          "fonte": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-libera-acesso-as-novas-apis-de-apuracao-da-cbs",
+          "quando": "09/11, 16:57"
+        },
+        {
+          "fato": "Receita lançou a Calculadora da Transação Tributária, que compara as opções de negociação de dívidas com a União dos editais nº 9 e nº 10/2026 da Receita e nº 6/2026 da PGFN. Vale para MEI, microempresa, empresa de pequeno porte e demais empresas.",
+          "impacto": "Quem tem débito federal em atraso pode simular a melhor forma de regularizar. A simulação é só orientativa; o prazo de adesão de cada modalidade aparece no quadro-resumo.",
+          "fonte": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-disponibiliza-calculadora-para-apoiar-contribuintes-na-analise-de-opcoes-de-transacao-tributaria",
+          "quando": "09/11, 14:30"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Receita Federal — APIs da CBS",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-libera-acesso-as-novas-apis-de-apuracao-da-cbs"
+        },
+        {
+          "nome": "Receita Federal — calculadora da transação",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-disponibiliza-calculadora-para-apoiar-contribuintes-na-analise-de-opcoes-de-transacao-tributaria"
+        }
+      ]
+    },
+    {
+      "data": "2026-11-09",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Governo publicou a Medida Provisória 1.399/2026 com as alíquotas do Imposto Seletivo (IS, tributo sobre produtos prejudiciais à saúde e ao meio ambiente) para 2027. A cobrança começa em 2/2/2027. Até 31/12/2027, para veículos, cigarros e outros fumígenos, bebidas alcoólicas e bebidas açucaradas, as alíquotas equivalem às atuais do IPI, após fatores de conversão.",
+          "impacto": "Quem vende bebidas, cigarros ou veículos deve conferir com o fornecedor e o contador como ficam os preços a partir de fevereiro de 2027. A MP ainda será analisada pelo Congresso.",
+          "fonte": "Ministério da Fazenda",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/governo-federal-define-aliquotas-do-imposto-seletivo-para-2027-por-meio-de-medida-provisoria",
+          "quando": "05/11"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [
+        {
+          "fato": "STF decidiu, por 6 votos a 5 (Tema 118, RE 592.616), que o ISS não entra na base de cálculo do PIS e da Cofins.",
+          "efeito": "Interessa a quem presta serviço fora do Simples. Ainda falta definir a partir de quando a decisão vale (modulação), o que pode ocorrer em embargos; quem já tem ação na Justiça tende a ser mais beneficiado. Converse com o contador antes de pedir créditos.",
+          "fonte": "Conjur",
+          "url": "https://conjur.com.br/2026-nov-08/iss-sai-da-base-do-pis-cofins-e-o-valor-da-vitoria-agora-depende-da-modulacao/",
+          "quando": "08/11/2026 (decisão de 21/10)"
+        }
       ],
       "fontes": [
-        { "nome": "Ministério da Fazenda", "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-e-orgaos-parceiros-detalham-proximos-passos-da-reforma-tributaria" },
-        { "nome": "Agência Brasil", "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pacote-fiscal-preve-120-dias-para-congresso-discutir-supersalarios" },
-        { "nome": "Câmara dos Deputados (Dados Abertos)", "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes/2651102" },
-        { "nome": "Agência Senado", "url": "https://www12.senado.leg.br/noticias/videos/2026/11/cct-aprova-incentivos-fiscais-para-empresas-do-simples-nacional" },
-        { "nome": "Conjur", "url": "https://conjur.com.br/2026-nov-12/flavio-dino-nega-adiamento-e-mantem-cronograma-de-extincao-da-jornada-6x1/" },
-        { "nome": "Jornal Contábil — adiamento para março de 2027", "url": "https://jornalcontabil.com.br/noticia/simples-nacional-receita-adia-emissao-de-notas-fiscais-para-marco-de-2027/" },
-        { "nome": "Jornal Contábil — vencimentos de novembro", "url": "https://jornalcontabil.com.br/noticia/simples-nacional-pagamentos-e-declaracoes-que-vencem-em-novembro/" },
-        { "nome": "Jornal Contábil — FAP 2027", "url": "https://jornalcontabil.com.br/noticia/fap-2027-pode-aumentar-contribuicao-das-empresas-prazo-para-contestar-termina-dia-30/" }
+        {
+          "nome": "Ministério da Fazenda",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/governo-federal-define-aliquotas-do-imposto-seletivo-para-2027-por-meio-de-medida-provisoria"
+        },
+        {
+          "nome": "Agência Brasil — MP do Imposto Seletivo",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-publica-mp-das-aliquotas-do-imposto-seletivo-para-2027"
+        },
+        {
+          "nome": "Conjur",
+          "url": "https://conjur.com.br/2026-nov-08/iss-sai-da-base-do-pis-cofins-e-o-valor-da-vitoria-agora-depende-da-modulacao/"
+        }
       ]
     }
   ]

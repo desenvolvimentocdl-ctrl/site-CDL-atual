@@ -4,7 +4,7 @@
 *@
 @{
     ViewData["Title"] = "SPC Brasil";
-    ViewBag.metaDescription = "SPC Brasil — CDL Uberlândia.";
+    ViewBag.metaDescription = "SPC Brasil na CDL Uberlândia: serviços para empresas (consultas e registro, SPC Avisa, SPC Dados, Cadastro Positivo) e para o consumidor (consulta de CPF, negociação de débitos, alerta de documentos).";
 }
 
 <section class="phero" id="hero">
@@ -44,10 +44,10 @@
     </ul>
   </div>
 </section>
-<section class="sec" id="relacionados">
+<section class="sec" id="servicos">
   <div class="wrap">
-    <div class="sec-head"><div class="rv"><span class="eyebrow">SPC</span><h2>Outras soluções <span class="serif">SPC.</span></h2></div></div>
-    <div class="rel-grid c4t"><a class="rel rv" href="/spc-consulta"><h3>SPC Consulta CPF</h3><i>→</i></a><a class="rel rv" href="/spc-negociacao"><h3>SPC Negociação de Débito</h3><i>→</i></a><a class="rel rv" href="/spc-avisa"><h3>SPC Avisa</h3><i>→</i></a><a class="rel rv" href="/spc-dados"><h3>SPC Dados</h3><i>→</i></a><a class="rel rv" href="/spc-consulta-registro"><h3>SPC Consultas e Registro</h3><i>→</i></a><a class="rel rv" href="/alerta-documento"><h3>Alerta de Documentos</h3><i>→</i></a><a class="rel rv" href="/cadastro-positivo"><h3>Cadastro Positivo</h3><i>→</i></a></div>
+    <div class="sec-head"><div class="rv"><span class="eyebrow">SPC na CDL Uberlândia</span><h2>Serviços SPC <span class="serif">para empresas e para você.</span></h2></div></div>
+    <partial name="_GruposMenu" model='new[] { "spc-para-empresas", "spc-para-voce" }' />
   </div>
 </section>
 <section>

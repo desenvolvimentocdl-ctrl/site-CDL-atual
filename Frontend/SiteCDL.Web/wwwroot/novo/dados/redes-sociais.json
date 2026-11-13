@@ -1,0 +1,4 @@
+{
+  "_comoUsar": "Cole em instagramPosts os links dos posts do Instagram da CDL que devem aparecer na página /redes-sociais (o mais recente primeiro), no formato https://www.instagram.com/p/CODIGO/ ou https://www.instagram.com/reel/CODIGO/. Não precisa recompilar o site.",
+  "instagramPosts": []
+}

@@ -53,7 +53,7 @@
 
     @if (boletins.Count > 1)
     {
-      <details class="bol-arq">
+      <details class="bol-arq" open>
         <summary>Boletins anteriores<i></i></summary>
         @foreach (var b in boletins.Skip(1).Take(14))
         {
@@ -114,16 +114,7 @@
         }
         sb.Append("</section>");
 
-        var pz = L("prazos");
-        sb.Append("<section class=\"bol-sec bol-pz\"><h4>⚡ Prazos</h4>");
-        if (pz.Count == 0) sb.Append("<p class=\"bol-vazio\">—</p>");
-        else
-        {
-            sb.Append("<ul>");
-            foreach (var i in pz) sb.Append($"<li><time>{E(S(i, "data"))}</time><span>{E(S(i, "obrigacao"))}</span></li>");
-            sb.Append("</ul>");
-        }
-        sb.Append("</section>");
+        // Prazos não entram no boletim: ficam na seção "Próximas datas" da página.
 
         var fts = L("fontes");
         if (fts.Count > 0)

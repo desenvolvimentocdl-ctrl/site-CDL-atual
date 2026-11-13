@@ -1,0 +1,14 @@
+@*
+    Cursos e Eventos — tudo o que está na aba "Cursos e Eventos" do menu, com resumo de cada item (grupos em Services/HubTemas.cs).
+*@
+@{
+    ViewData["Title"] = "Cursos e Eventos";
+    ViewBag.metaDescription = "Cursos, eventos, treinamentos, descontos, parceiros e a plataforma CDL MenorPreço da CDL Uberlândia.";
+    ViewData["Aba"] = "Cursos e Eventos";
+    ViewData["Titulo"] = "Cursos";
+    ViewData["Serif"] = "e eventos.";
+    ViewData["Intro"] = "Para aprender e para economizar: cursos presenciais e EAD, eventos, treinamentos, descontos de parceiros e a plataforma CDL MenorPreço.";
+    ViewData["Temas"] = new[] { "aprender", "economizar" };
+    ViewData["Destaque"] = ((string, string, string, string, bool)?)("/loja", "Loja CDL", "Cursos, eventos e descontos em um só lugar.", "Ir para a loja →", true);
+}
+<partial name="_VisaoAba" />

@@ -1,34 +1,116 @@
 @*
-    fundacao-cdl — visual novo. Textos copiados do site oficial (protótipo testesitecdl.netlify.app).
-    Gerado por C:\Projetos\prototipo-ferramentas\gerar_paginas.py — para voltar a usar o conteúdo do banco nesta página, apague este arquivo.
+    Fundação CDL — home da Fundação (aba "A Fundação" do menu).
+    Referências Mobbin: monday.com e Canva (páginas para ONGs), Descript (programas por público).
+    Todos os textos e números vêm do site: página anterior da Fundação, CDL Aprendiz, CDL Estágio e Responsabilidade Social.
+    Serviços em Services/HubTemas.cs (tema "fundacao").
 *@
 @{
     ViewData["Title"] = "Fundação CDL";
-    ViewBag.metaDescription = "Fundação CDL — CDL Uberlândia.";
+    ViewBag.metaDescription = "Fundação CDL: criada em 1991 pela CDL Uberlândia. Jovem Aprendiz, CDL Estágio, CDL Talentos, treinamentos, consultorias e vagas de emprego e estágio.";
 }
 
-<section class="phero ihero" id="hero">
+<!-- ===== ABERTURA ===== -->
+<section class="phero fh-hero" id="hero">
   <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="glow"></div>
   <div class="wrap">
-    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><span>Institucional</span></li><li aria-current="page">Fundação CDL</li></ol></nav>
-    <div class="ihead rv">
-      <span class="badge"><b>Institucional</b> CDL Uberlândia</span>
-      <h1>Fundação <span class="serif">CDL.</span></h1>
-      <p class="lead">A Fundação CDL foi criada em 1991 pela CDL Uberlândia para contribuir com o desenvolvimento socioeconômico e cultural da cidade por meio de ações educacionais, promovendo melhores condições de empregabilidade e competitividade empresarial.</p>
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li aria-current="page">A Fundação</li></ol></nav>
+    <div class="fh-grid">
+      <div class="phero-txt rv">
+        <span class="badge"><b>Fundação CDL</b> Desde 1991</span>
+        <h1>Formando pessoas, <span class="serif">fortalecendo empresas.</span></h1>
+        <p class="lead">A Fundação CDL foi criada em 1991 pela CDL Uberlândia para contribuir com o desenvolvimento socioeconômico e cultural da cidade por meio de ações educacionais, promovendo melhores condições de empregabilidade e competitividade empresarial.</p>
+        <div class="ctas"><a href="#para-quem" class="btn btn-primary">Como podemos ajudar <span class="arr">→</span></a><a href="https://fundacaocdl.abler.com.br/" target="_blank" rel="noopener" class="btn btn-light">Cadastre seu currículo <span class="arr">↗</span></a></div>
+      </div>
+      <aside class="fh-stats rv d1" aria-label="A Fundação em números">
+        <div class="fh-logo"><img src="/novo/img/fundacao-cdl.png" alt="Fundação CDL" decoding="async"></div>
+        <ul>
+          <li><b>1991</b><span>ano de criação da Fundação CDL</span></li>
+          <li><b>+30 anos</b><span>trabalhando pela cidadania e pela qualificação profissional</span></li>
+          <li><b>+10 anos</b><span>de experiência na formação e contratação de jovens aprendizes</span></li>
+          <li><b>15 a 18</b><span>anos: idade dos jovens no programa CDL Aprendiz</span></li>
+        </ul>
+      </aside>
     </div>
   </div>
 </section>
-<section class="sec"><div class="wrap"><div class="sec-head"><div class="rv"><h2>Quem <span class="serif">somos.</span></h2></div></div><div class="prose prose-w rv"><p class=big>Há mais de três décadas, a instituição sem fins lucrativos trabalha pela construção de um futuro melhor para todos, por meio de ações que fomentam a cidadania, a igualdade de oportunidades, a qualificação profissional e a responsabilidade social.</p></div><div class="mv-grid rv"><div class="mv"><span class="k">Missão</span><p>Contribuir para o desenvolvimento e o sucesso de pessoas e organizações.</p></div><div class="mv dark"><span class="k">Visão</span><p>Ser uma agente de desenvolvimento socioeconômico, educacional, cultural e social em Uberlândia, na região e no país, em todas atividades que possam refletir no aprimoramento profissional e empresarial.</p></div></div><h3 class="mini-h rv">Valores</h3><ol class="val-grid v5 rv"><li><span>01</span>Satisfação dos nossos clientes</li><li><span>02</span>Honestidade</li><li><span>03</span>Integridade</li><li><span>04</span>Transparência</li><li><span>05</span>Busca pela excelência</li></ol></div></section><section class="sec steps-sec"><div class="wrap"><div class="sec-head"><div class="rv"><span class="eyebrow">Fundação CDL</span><h2>Soluções da <span class="serif">Fundação CDL.</span></h2></div></div><div class="rel-grid">
-      <a class="rel rv" href="/cdl-aprendiz"><h3>Jovem Aprendiz</h3><p>Fique em dia com sua cota de jovem aprendiz.</p><i>→</i></a>
-      <a class="rel rv d1" href="/cdl-talentos"><h3>CDL Talentos</h3><p>Encontre o talento que a sua empresa precisa.</p><i>→</i></a>
-      <a class="rel rv d2" href="/treinamento"><h3>Treinamento In Company</h3><p>Prepare a sua equipe!</p><i>→</i></a>
-      <a class="rel rv d3" href="https://cdluberlandia.cdludi.org.br/mentoria-de-negocios" target="_blank" rel="noopener"><h3>Consultorias em Gestão e Inovação</h3><p>Impulsionar o crescimento.</p><i>→</i></a>
-    </div>
-    <div class="callout rv" style="margin-top:28px;max-width:860px"><p><b>Confira as vagas de emprego e estágio disponíveis.</b> <a href="https://fundacaocdl.abler.com.br/" target="_blank" rel="noopener">Cadastre seu currículo</a>.</p></div></div></section>
-<section class="sec" id="relacionados">
+
+<!-- ===== PARA QUEM (ref. Descript: programas por público) ===== -->
+<section class="sec" id="para-quem">
   <div class="wrap">
-    <div class="sec-head"><div class="rv"><h2>Institucional</h2></div></div>
-    <div class="rel-grid c4t"><a class="rel rv" href="/quem-somos"><h3>Quem somos</h3><i>→</i></a><a class="rel rv" href="/nossa-historia"><h3>Nossa História</h3><i>→</i></a><a class="rel rv" href="/corporativo"><h3>Corporativo</h3><i>→</i></a><a class="rel rv" href="/reconhecimento"><h3>Reconhecimento</h3><i>→</i></a><a class="rel rv" href="/politica-de-sustentabilidade"><h3>Política de Sustentabilidade</h3><i>→</i></a><a class="rel rv" href="/responsabilidade-ambiental"><h3>Responsabilidade Ambiental</h3><i>→</i></a><a class="rel rv" href="/responsabilidade-social"><h3>Responsabilidade Social</h3><i>→</i></a><a class="rel rv" href="/governanca"><h3>Governança</h3><i>→</i></a><a class="rel rv" href="/representatividade"><h3>Representatividade</h3><i>→</i></a><a class="rel rv" href="/diretoria"><h3>Diretoria CDL</h3><i>→</i></a><a class="rel rv" href="/diretoria-fundacao"><h3>Diretoria Fundação</h3><i>→</i></a><a class="rel rv" href="/lgpd"><h3>Área LGPD</h3><i>→</i></a></div>
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Como podemos ajudar</span><h2>Um caminho para cada <span class="serif">necessidade.</span></h2></div></div>
+    <div class="fh-dois">
+      <div class="fh-path emp rv">
+        <div class="fh-art" aria-hidden="true"><span>Para</span><b>empresas</b></div>
+        <h3>Para a sua empresa</h3>
+        <p>Cumpra a cota de aprendizes, contrate estagiários e encontre os profissionais certos, com apoio integral da Fundação CDL em todas as etapas.</p>
+        <ul>
+          <li><a href="/cdl-aprendiz">Jovem Aprendiz: fique em dia com sua cota</a></li>
+          <li><a href="/cdl-estagio">CDL Estágio: estudantes do ensino médio, técnico e graduação</a></li>
+          <li><a href="/cdl-talentos">CDL Talentos: recrutamento e seleção</a></li>
+          <li><a href="/treinamento">Treinamento In Company para a sua equipe</a></li>
+        </ul>
+        <div class="fh-btns"><a class="btn btn-primary" href="https://wa.me/553432393413?text=Ol%C3%A1,%20quero%20contratar%20um%20Jovem%20Aprendiz%20para%20minha%20empresa" target="_blank" rel="noopener">Falar com o comercial <span class="arr">→</span></a><a class="btn btn-light" href="https://docs.google.com/spreadsheets/d/1L2TG3XY8V-cLWCv56wF2mH6pcrSGLvB1/edit?usp=sharing" target="_blank" rel="noopener">Calcular minha cota ↗</a></div>
+      </div>
+      <div class="fh-path jov rv d1">
+        <div class="fh-art" aria-hidden="true"><span>Para</span><b>jovens</b></div>
+        <h3>Para jovens e candidatos</h3>
+        <p>Primeira experiência no mercado de trabalho, estágio para colocar o aprendizado em prática e vagas de emprego na região.</p>
+        <ul>
+          <li><a href="/cdl-aprendiz">Jovem Aprendiz: formação técnico-profissional de 15 a 18 anos</a></li>
+          <li><a href="/cdl-estagio">Estágio: coloque em prática o que aprendeu</a></li>
+          <li><a href="https://fundacaocdl.abler.com.br/" target="_blank" rel="noopener">Vagas de emprego e estágio disponíveis</a></li>
+        </ul>
+        <div class="fh-btns"><a class="btn btn-primary" href="https://fundacaocdl.abler.com.br/" target="_blank" rel="noopener">Cadastre seu currículo <span class="arr">↗</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVIÇOS ===== -->
+<section class="sec alt-f" id="servicos">
+  <div class="wrap">
+    <partial name="_GruposMenu" model='new[] { "fundacao" }' />
+  </div>
+</section>
+
+<!-- ===== COMPROMISSOS (texto da página Responsabilidade Social) ===== -->
+<section class="sec" id="compromissos">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Impacto</span><h2>Nossos <span class="serif">compromissos.</span></h2></div><a href="/responsabilidade-social" class="btn btn-light rv d1">Responsabilidade social <span class="arr">→</span></a></div>
+    <div class="fh-comp">
+      <a class="fh-c rv" href="/cdl-aprendiz"><span class="fh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M12 22V12M12 12C12 7 8 5 4 5c0 5 3 7 8 7zM12 14c0-4 3-6 8-6 0 4-3 6-8 6z'/></svg></span><h3>Aprendizagem</h3><p>Por meio do programa CDL Aprendiz, a Fundação CDL transforma a realidade de milhares de jovens de baixa renda na nossa cidade, conduzindo adolescentes de 15 a 18 anos à primeira experiência no mercado de trabalho.</p><span>Saiba mais →</span></a>
+      <a class="fh-c rv d1" href="/cdl-estagio"><span class="fh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M22 9 12 4 2 9l10 5zM6 11v5c3 2 9 2 12 0v-5'/></svg></span><h3>Empregabilidade</h3><p>O CDL Estágio integra empresas que buscam novos talentos a estudantes do ensino médio, técnico ou graduação que precisam colocar em prática o aprendizado.</p><span>Saiba mais →</span></a>
+      <a class="fh-c rv d2" href="https://empresacidada.cdludi.org.br/" target="_blank" rel="noopener"><span class="fh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx='12' cy='9' r='6'/><path d='m9 14-2 8 5-3 5 3-2-8'/></svg></span><h3>Cidadania</h3><p>O Selo Empresa Cidadã reconhece empresas que contribuem para a qualidade de vida, a equidade e o desenvolvimento humano da comunidade. É chancelado pela CDL, pela Fundação CDL e pela Câmara Municipal de Uberlândia.</p><span>Conhecer o selo ↗</span></a>
+      <a class="fh-c rv d3" href="/loja/eventos" target="_blank" rel="noopener"><span class="fh-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d='M3 4h18M5 4v10h14V4M12 14v4M8 21l4-3 4 3'/></svg></span><h3>Qualificação profissional</h3><p>Durante todo o ano, treinamentos, palestras e eventos gratuitos para promover inclusão social, qualificar profissionais e aumentar a competitividade da região.</p><span>Ver a agenda ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt-f" id="quem-somos"><div class="wrap"><div class="sec-head"><div class="rv"><h2>Quem <span class="serif">somos.</span></h2></div></div><div class="prose prose-w rv"><p class=big>Há mais de três décadas, a instituição sem fins lucrativos trabalha pela construção de um futuro melhor para todos, por meio de ações que fomentam a cidadania, a igualdade de oportunidades, a qualificação profissional e a responsabilidade social.</p></div><div class="mv-grid rv"><div class="mv"><span class="k">Missão</span><p>Contribuir para o desenvolvimento e o sucesso de pessoas e organizações.</p></div><div class="mv dark"><span class="k">Visão</span><p>Ser uma agente de desenvolvimento socioeconômico, educacional, cultural e social em Uberlândia, na região e no país, em todas atividades que possam refletir no aprimoramento profissional e empresarial.</p></div></div><h3 class="mini-h rv">Valores</h3><ol class="val-grid v5 rv"><li><span>01</span>Satisfação dos nossos clientes</li><li><span>02</span>Honestidade</li><li><span>03</span>Integridade</li><li><span>04</span>Transparência</li><li><span>05</span>Busca pela excelência</li></ol></div></section>
+
+<!-- ===== DIRETORIA ===== -->
+<section class="sec" id="diretoria">
+  <div class="wrap">
+    <a class="va-dest rv" href="/diretoria-fundacao">
+      <span class="serif">Diretoria da Fundação CDL</span>
+      <p>Presidência, Conselho Curador, diretores e Conselho Fiscal da Fundação CDL.</p>
+      <b>Conhecer a diretoria →</b>
+    </a>
+  </div>
+</section>
+
+<!-- ===== CHAMADA FINAL (ref. Canva para ONGs) ===== -->
+<section>
+  <div class="wrap">
+    <div class="cta rv" id="cta">
+      <div class="grid-bg"></div>
+      <h2>Fale com a <span class="serif">Fundação CDL.</span></h2>
+      <p>Atendimento de segunda a sexta, das 8h às 18h, pelo telefone (34) 3239-3400 ou pelo WhatsApp (34) 3239-3457.</p>
+      <div class="ctas">
+        <a href="https://api.whatsapp.com/send?phone=553432393457" target="_blank" rel="noopener" class="btn btn-white">Falar no WhatsApp <span class="arr">→</span></a>
+        <a href="https://fundacaocdl.abler.com.br/" target="_blank" rel="noopener" class="btn btn-ghost-w">Cadastre seu currículo ↗</a>
+      </div>
+    </div>
   </div>
 </section>

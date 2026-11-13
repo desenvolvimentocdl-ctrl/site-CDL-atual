@@ -1,0 +1,28 @@
+@model string[]
+@using SiteCDL.Services
+@*
+    Grupos do menu novo em painéis numerados, cada um com sua cor e seus cards (ex.: Soluções, SPC Brasil).
+    Recebe os slugs dos temas de Services/HubTemas.cs, na ordem em que devem aparecer.
+    Uso: <partial name="_GruposMenu" model='new[] { "spc-para-empresas", "spc-para-voce" }' />
+*@
+@{ var n = 0; }
+@foreach (var slug in Model)
+{
+    if (!HubTemas.Temas.TryGetValue(slug, out var t)) { continue; }
+    n++;
+    <div class="gm rv" id="g-@slug" style="--ac:@HubTemas.Cor(slug)">
+      <div class="gm-head">
+        <div class="gm-tit">
+          @if (Model.Length > 1) { <span class="gm-n">@n.ToString("00")</span> }
+          <div>
+            <h3>@t.Titulo <span class="serif">@t.TituloSerif</span></h3>
+            <p class="gm-intro">@t.Intro</p>
+          </div>
+        </div>
+        @if (t.Link.Split('#')[0] != Context.Request.Path.Value) {
+        <a class="gm-link" href="@t.Link">@(t.Pagina != null ? "Ver a página" : "Ver página do tema") <span>→</span></a>
+        }
+      </div>
+      <partial name="_CardsTema" model="t" />
+    </div>
+}

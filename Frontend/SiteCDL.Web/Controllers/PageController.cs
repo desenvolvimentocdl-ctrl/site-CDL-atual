@@ -24,6 +24,10 @@ namespace SiteCDL.Web.Controllers
             var nome = (slug ?? "").ToLowerInvariant();
             if (Regex.IsMatch(nome, "^[a-z0-9-]+$"))
             {
+                // Páginas de tema do menu (ex.: /vender-mais), montadas a partir de Services/HubTemas.cs.
+                if (SiteCDL.Services.HubTemas.Temas.TryGetValue(nome, out var tema))
+                    return tema.Pagina != null ? Redirect(tema.Pagina) : View("~/Views/Paginas/_Tema.cshtml", tema);
+
                 var caminho = $"~/Views/Paginas/{nome}.cshtml";
                 if (_viewEngine.GetView(null, caminho, isMainPage: true).Success)
                     return View(caminho);
