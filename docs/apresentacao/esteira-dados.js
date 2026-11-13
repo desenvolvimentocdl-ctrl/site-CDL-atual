@@ -1,8 +1,68 @@
 // Arquivo gerado por gerar-esteira.py. Não edite à mão.
 window.ESTEIRA = {
- "geradoEm": "2026-11-13T18:39:42+00:00",
+ "geradoEm": "2026-11-13T18:40:01+00:00",
  "ramo": "claude/elegant-turing-2rsq6n",
  "commits": [
+  {
+   "hash": "7cae99b5a30a2df9e1baaa2170eeca654938f910",
+   "curto": "7cae99b",
+   "data": "2026-11-13T18:40:00+00:00",
+   "autor": "Claude",
+   "titulo": "Slides: menu em 6 abas, páginas de tema, Fundação CDL e home nova (commit f557a25)",
+   "corpo": "- 4 slides novos: menu reorganizado (captura), mapa das abas e páginas de tema,\n  Fundação CDL com espaço próprio (captura) e home nova/páginas refeitas/busca\n- \"O que foi entregue\": frente 8 passa a ser Menu, home e Fundação\n- PDF copiado para wwwroot/novo/apresentacao (link temporário do rodapé)",
+   "tipo": "Funcionalidade",
+   "adicionadas": 314,
+   "removidas": 4,
+   "totalArquivos": 7,
+   "areas": {
+    "Imagens e arquivos": 1,
+    "Documentação": 6
+   },
+   "arquivos": [
+    {
+     "p": "docs/apresentacao/esteira-dados.js",
+     "a": 250,
+     "r": 1,
+     "bin": false
+    },
+    {
+     "p": "docs/apresentacao/slides.html",
+     "a": 64,
+     "r": 3,
+     "bin": false
+    },
+    {
+     "p": "Frontend/SiteCDL.Web/wwwroot/novo/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/apresentacao-reformulacao.pdf",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/fundacao-caminhos.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/fundacao.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    },
+    {
+     "p": "docs/apresentacao/img/menu.jpg",
+     "a": 0,
+     "r": 0,
+     "bin": true
+    }
+   ]
+  },
   {
    "hash": "f557a250da8ba3a28aa8e421c96a50bab2022c81",
    "curto": "f557a25",
