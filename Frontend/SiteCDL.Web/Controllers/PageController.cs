@@ -28,8 +28,10 @@ namespace SiteCDL.Web.Controllers
                 if (SiteCDL.Services.HubTemas.Temas.TryGetValue(nome, out var tema))
                     return tema.Pagina != null ? Redirect(tema.Pagina) : View("~/Views/Paginas/_Tema.cshtml", tema);
 
+                // ?fonte=banco mostra a versão gravada no banco mesmo quando existe o .cshtml (para validar a migração).
+                var forcarBanco = string.Equals(Request.Query["fonte"], "banco", StringComparison.OrdinalIgnoreCase);
                 var caminho = $"~/Views/Paginas/{nome}.cshtml";
-                if (_viewEngine.GetView(null, caminho, isMainPage: true).Success)
+                if (!forcarBanco && _viewEngine.GetView(null, caminho, isMainPage: true).Success)
                     return View(caminho);
             }
 

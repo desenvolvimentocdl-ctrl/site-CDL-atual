@@ -11,6 +11,13 @@
     {
         ViewBag.metaDescription = Model.Seo;
     }
+    // Conteúdo já no visual novo (traz o próprio hero .phero): exibe inteiro, sem o cabeçalho e a moldura .cms abaixo.
+    var visualNovo = (Model.Conteudo ?? "").Contains("class=\"phero");
+}
+@if (visualNovo)
+{
+    @Html.Raw(Model.Conteudo)
+    return;
 }
 
 <section class="phero ihero pg-hero" id="hero">
