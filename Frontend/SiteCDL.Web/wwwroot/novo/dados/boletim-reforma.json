@@ -1,6 +1,85 @@
 {
   "boletins": [
     {
+      "data": "2026-11-17",
+      "atualizadoAs": "07:10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "O limite de faturamento anual do MEI (Microempreendedor Individual) passa de R$ 81 mil para R$ 110 mil em 2027, conforme a Lei Complementar nº 238/2026, publicada em 21 de outubro. Em 2028, o teto chegará a R$ 140 mil.",
+          "impacto": "Quem está perto do teto atual ganha mais folga para vender sem ser desenquadrado. Continuam valendo as demais regras de enquadramento (atividade e natureza jurídica).",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/mei-podera-faturar-r-110-mil-em-2027-e-contratar-mais-funcionarios/",
+          "quando": "16/11, 15:21"
+        },
+        {
+          "fato": "Parte das mudanças técnicas da NF-e (nota fiscal eletrônica) ligadas à reforma tributária, previstas para 16/11, foi adiada pela Sefaz Virtual do RS para 14/12. Seguem em vigor desde 16/11 as alterações em notas de devolução e na emissão por contribuintes sem inscrição estadual.",
+          "impacto": "Confirme com o fornecedor do sistema emissor e com o contador se o programa já está atualizado, para evitar rejeição de notas.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/nf-e-5-mudancas-entram-em-vigor-hoje-e-exigem-atencao-dos-contadores/",
+          "quando": "16/11, 16:33"
+        },
+        {
+          "fato": "CFC (Conselho Federal de Contabilidade), Fenacon e Receita Federal colocaram em funcionamento uma sala de situação para receber problemas da transição da reforma; a primeira reunião foi em 12/11, em Brasília. Simples Nacional, CBS e ajustes nas normas estão entre as prioridades.",
+          "impacto": "Dúvidas e travas que o contador encontrar na adaptação para a CBS (Contribuição sobre Bens e Serviços, prevista para janeiro de 2027) passam a ter um canal direto com a Receita.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/reforma-tributaria-cfc-fenacon-e-receita-criam-grupo-para-resolver-problemas-da-transicao/",
+          "quando": "16/11, 12:09"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PLP 299/2026 (ajuste fiscal)",
+          "ementa": "Projeto de lei complementar do governo que reduz benefícios tributários de empresas e muda regras de gastos públicos. Entre os pontos em discussão nos destaques está o adiamento de repasses a estados e municípios previstos na Lei Kandir.",
+          "tramitacao": "Texto principal aprovado pelo Plenário do Senado em 12/11/2026. Os destaques (votações separadas de trechos) devem ser votados nesta semana; depois o projeto segue para a Câmara dos Deputados. Ainda não é lei.",
+          "fonte": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/audios/2026/11/plenario-analisa-destaques-da-oposicao-ao-projeto-de-ajuste-fiscal"
+        }
+      ],
+      "juridico": [
+        {
+          "fato": "STJ (Superior Tribunal de Justiça): a Primeira Seção decidiu por unanimidade, em 11/11/2026 (Tema Repetitivo 1.334), que o vale-transporte pago em dinheiro ao empregado entra, em regra, na base de cálculo do FGTS.",
+          "efeito": "Empresa que deposita o vale-transporte na conta ou paga em espécie pode ter de recolher FGTS sobre o valor; vale revisar com o contador a forma de concessão. Há ressalva para casos em que a lei permite o pagamento em dinheiro, como o trabalho doméstico.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/fgts-decisao-do-stj-afeta-vale-transporte-pago-em-dinheiro/",
+          "quando": "16/11/2026"
+        },
+        {
+          "fato": "STF (Supremo Tribunal Federal): o ministro Luiz Fux pediu destaque em 14/11, o que tirou do plenário virtual o julgamento sobre a transição do fim da escala 6x1; os quatro votos já dados (pela manutenção da decisão de Flávio Dino) perdem efeito e o julgamento recomeça em sessão presencial, sem data. A decisão liminar de Dino segue valendo.",
+          "efeito": "O calendário de transição da jornada continua o já decidido por Dino, mas o julgamento ainda pode mudar; acompanhe antes de fechar escalas para dezembro.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/escala-5x2-stf-interrompe-julgamento-mas-decisao-de-dino-permanece/",
+          "quando": "16/11/2026"
+        }
+      ],
+      "fontes": [
+        {
+          "nome": "Jornal Contábil — MEI",
+          "url": "https://jornalcontabil.com.br/noticia/mei-podera-faturar-r-110-mil-em-2027-e-contratar-mais-funcionarios/"
+        },
+        {
+          "nome": "Jornal Contábil — NF-e",
+          "url": "https://jornalcontabil.com.br/noticia/nf-e-5-mudancas-entram-em-vigor-hoje-e-exigem-atencao-dos-contadores/"
+        },
+        {
+          "nome": "Jornal Contábil — sala de situação",
+          "url": "https://jornalcontabil.com.br/noticia/reforma-tributaria-cfc-fenacon-e-receita-criam-grupo-para-resolver-problemas-da-transicao/"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/audios/2026/11/plenario-analisa-destaques-da-oposicao-ao-projeto-de-ajuste-fiscal"
+        },
+        {
+          "nome": "Jornal Contábil — STJ e FGTS",
+          "url": "https://jornalcontabil.com.br/noticia/fgts-decisao-do-stj-afeta-vale-transporte-pago-em-dinheiro/"
+        },
+        {
+          "nome": "Jornal Contábil — STF e jornada 6x1",
+          "url": "https://jornalcontabil.com.br/noticia/escala-5x2-stf-interrompe-julgamento-mas-decisao-de-dino-permanece/"
+        }
+      ]
+    },
+    {
       "data": "2026-11-13",
       "atualizadoAs": "08:01",
       "semNovidades": false,
