@@ -80,6 +80,84 @@
       ]
     },
     {
+      "data": "2026-11-16",
+      "atualizadoAs": "16:53",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "O perdão (remissão) das dívidas do INSS do MEI (Microempreendedor Individual), previsto na Lei Complementar 238/2026, será automático, sem precisar de pedido. Vale para a parte do INSS do DAS-MEI vencida até 13/10/2026, com juros e multas. O ICMS e o ISS do mesmo DAS continuam devidos. O perdão passa a valer em 1º/1/2027.",
+          "impacto": "Para manter o perdão, quem continuar MEI precisa pagar em dia o DAS-MEI de janeiro a junho de 2027. A DASN-Simei (declaração anual do MEI) continua obrigatória.",
+          "fonte": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/perdao-das-dividas-do-mei-sera-automatico-nao-e-preciso-fazer-pedido",
+          "quando": "16/11, 09:06"
+        },
+        {
+          "fato": "O PGDAS-D (sistema onde a empresa do Simples Nacional calcula o imposto do mês) foi atualizado para a reforma tributária. Nas apurações de novembro e dezembro de 2026 é preciso informar a folha de salários dos últimos 12 meses para todas as atividades. A partir de 2027, todas as apurações serão pelo regime de competência.",
+          "impacto": "Confira com o contador se a folha dos últimos 12 meses está pronta para a apuração de novembro. O que for declarado no PGDAS-D também vai definir as alíquotas de IBS e CBS que aparecem na nota fiscal.",
+          "fonte": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/pgdas-d-e-atualizado-para-atender-a-reforma-tributaria-a-partir-de-novembro-de-2026",
+          "quando": "13/11, 11:44"
+        },
+        {
+          "fato": "O Portal Nacional da NF-e adiou de 16/11 para 14/12 a entrada em produção de notas técnicas da reforma: a do Simples Nacional (NT 2026.005), a que liga a nota ao pagamento (NT 2026.006, base para o split payment, o recolhimento do imposto no momento do pagamento) e a do valor líquido do produto (NT 2026.008).",
+          "impacto": "Quem é do Simples ganha um mês a mais para atualizar o emissor de notas. Pergunte ao fornecedor do sistema quando a versão nova estará disponível.",
+          "fonte": "Portal Nacional da NF-e",
+          "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false",
+          "quando": "13/11"
+        },
+        {
+          "fato": "Quem pediu para entrar no Simples Nacional em 2027 e regularizou pendências nos últimos dias do prazo (até 30/10) pode estar aparecendo temporariamente como indeferido. A Receita fará o processamento final, e o resultado definitivo poderá ser consultado no Portal do Simples Nacional a partir de 20/11.",
+          "impacto": "Se a sua empresa pediu o Simples para 2027, consulte em \"Acompanhamento da Solicitação da Opção pelo Simples Nacional\" a partir de 20/11.",
+          "fonte": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/processamento-final-das-solicitacoes-de-opcao-pelo-simples-nacional-para-2027",
+          "quando": "13/11, 09:20"
+        },
+        {
+          "fato": "O CFC (Conselho Federal de Contabilidade), a Fenacon, a Receita Federal e o Sebrae criaram uma sala de situação, com reuniões semanais, para receber e resolver problemas da transição da reforma. Entre as prioridades estão o Simples Nacional e a passagem do PIS/Cofins para a CBS (Contribuição sobre Bens e Serviços).",
+          "impacto": "Dúvidas do dia a dia sobre a reforma podem chegar à Receita por meio do seu contador e das entidades contábeis.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/reforma-tributaria-cfc-fenacon-e-receita-criam-grupo-para-resolver-problemas-da-transicao/",
+          "quando": "16/11, 12:09"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [
+        {
+          "fato": "STJ (Superior Tribunal de Justiça), no Tema Repetitivo 1.334, decidiu por unanimidade que o vale-transporte pago em dinheiro ao funcionário entra, em regra, na base de cálculo do FGTS. Fica de fora só o vale concedido na forma da Lei 7.418/1985, com a compra dos vales pela empresa, e os casos em que a lei permite pagar em dinheiro, como o do empregado doméstico.",
+          "efeito": "Quem deposita o vale-transporte na conta do funcionário pode ter custo maior de FGTS. Revise com o contador a forma de pagar o benefício e o fechamento da folha.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/fgts-decisao-do-stj-afeta-vale-transporte-pago-em-dinheiro/",
+          "quando": "11/11/2026"
+        }
+      ],
+      "fontes": [
+        {
+          "nome": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/perdao-das-dividas-do-mei-sera-automatico-nao-e-preciso-fazer-pedido"
+        },
+        {
+          "nome": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/pgdas-d-e-atualizado-para-atender-a-reforma-tributaria-a-partir-de-novembro-de-2026"
+        },
+        {
+          "nome": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/processamento-final-das-solicitacoes-de-opcao-pelo-simples-nacional-para-2027"
+        },
+        {
+          "nome": "Portal Nacional da NF-e",
+          "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false"
+        },
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/reforma-tributaria-cfc-fenacon-e-receita-criam-grupo-para-resolver-problemas-da-transicao/"
+        },
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/fgts-decisao-do-stj-afeta-vale-transporte-pago-em-dinheiro/"
+        }
+      ]
+    },
+    {
       "data": "2026-11-13",
       "atualizadoAs": "08:01",
       "semNovidades": false,
