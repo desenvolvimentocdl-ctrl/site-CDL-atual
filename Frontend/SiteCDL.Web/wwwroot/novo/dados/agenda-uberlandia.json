@@ -1,0 +1,569 @@
+{
+  "_comoUsar": "Dados da página /agenda-uberlandia. Para incluir um evento, copie um item de 'eventos' e troque os campos: data (AAAA-MM-DD), fim (opcional, último dia), hora, titulo, local, categoria (negocios, cultura, educacao, natal, comunidade), descricao (curta), imagem (opcional: link da imagem de divulgação do evento, na própria fonte), fonte (nome) e url (link da fonte ou da inscrição). Use \"secundario\": true para eventos que não devem aparecer nos destaques do topo. Eventos passados somem sozinhos da lista de próximos. Não precisa recompilar o site.",
+  "atualizadoEm": "2026-11-17",
+  "feriados": [
+    {
+      "data": "2026-11-20",
+      "nome": "Dia Nacional de Zumbi e da Consciência Negra",
+      "tipo": "nacional",
+      "base": "Lei 14.759/2023"
+    },
+    {
+      "data": "2026-12-25",
+      "nome": "Natal",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-01-01",
+      "nome": "Confraternização Universal",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-02-08",
+      "nome": "Carnaval",
+      "tipo": "facultativo"
+    },
+    {
+      "data": "2027-02-09",
+      "nome": "Carnaval",
+      "tipo": "facultativo"
+    },
+    {
+      "data": "2027-02-10",
+      "nome": "Quarta-feira de Cinzas (até as 14h)",
+      "tipo": "facultativo"
+    },
+    {
+      "data": "2027-03-26",
+      "nome": "Paixão de Cristo (Sexta-feira Santa)",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-04-21",
+      "nome": "Tiradentes",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-05-01",
+      "nome": "Dia do Trabalho",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-05-27",
+      "nome": "Corpus Christi",
+      "tipo": "municipal",
+      "base": "Decreto 2.035/2022"
+    },
+    {
+      "data": "2027-08-15",
+      "nome": "Nossa Senhora da Abadia",
+      "tipo": "municipal",
+      "base": "Lei 6.892/1996"
+    },
+    {
+      "data": "2027-08-31",
+      "nome": "São Raimundo – Aniversário de Uberlândia",
+      "tipo": "municipal",
+      "base": "Lei 6.892/1996"
+    },
+    {
+      "data": "2027-09-07",
+      "nome": "Independência do Brasil",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-10-12",
+      "nome": "Nossa Senhora Aparecida",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-11-02",
+      "nome": "Finados",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-11-15",
+      "nome": "Proclamação da República",
+      "tipo": "nacional"
+    },
+    {
+      "data": "2027-11-20",
+      "nome": "Dia Nacional de Zumbi e da Consciência Negra",
+      "tipo": "nacional",
+      "base": "Lei 14.759/2023"
+    },
+    {
+      "data": "2027-12-25",
+      "nome": "Natal",
+      "tipo": "nacional"
+    }
+  ],
+  "fixos": [
+    {
+      "titulo": "Feira Novo Agro",
+      "quando": "Toda terça-feira (exceto feriados), das 16h às 20h30",
+      "local": "Ponte do Parque do Sabiá – acesso pelo estacionamento da av. Anselmo Alves dos Santos, Santa Mônica",
+      "descricao": "Produtores e artesãos do programa Novo Agro, da Prefeitura: hortaliças, frutas, queijos, doces e mel. Entrada gratuita.",
+      "fonte": "Regionalzão",
+      "url": "https://regionalzao.com.br/agro/uberlandia-feira-novo-agro-tem-entrada-gratuita-no-parque-do-sabia-nesta-terca-17-1a680ba8/",
+      "imagem": "https://regionalzao.com.br/wp-content/uploads/2026/11/redacao-foto-1a680ba8-f171-41a1-bf2c-c425715d8eff-60e39a48-5c01-4f96-87d2-5a4adf77d31f.jpg"
+    }
+  ],
+  "eventos": [
+    {
+      "data": "2026-11-17",
+      "fim": "2026-11-20",
+      "hora": "09:00",
+      "titulo": "Planejamento Estratégico na Prática",
+      "local": "Center Convention Uberlândia",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/planejamento-estrategico-na-pratica/3648296",
+      "imagem": "https://images.sympla.com.br/6af1c67428a8d-lg.jpg"
+    },
+    {
+      "data": "2026-11-17",
+      "hora": "13:00",
+      "titulo": "MKTPLACE DAY 2026 · Uberlândia",
+      "local": "Uberlândia Shopping – Loja MSU-3, piso 1",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/mktplace-day-2026-uberlandia/3228898",
+      "imagem": "https://images.sympla.com.br/6957f66fda52a-lg.png"
+    },
+    {
+      "data": "2026-11-18",
+      "hora": "17:00",
+      "titulo": "NEXO – Uma marca que representa União",
+      "local": "CDL Convenções e Eventos",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/nexo-uma-marca-que-representa-uniao/3573019",
+      "imagem": "https://images.sympla.com.br/6ab6c8603ad4c-lg.png"
+    },
+    {
+      "data": "2026-11-18",
+      "fim": "2026-11-19",
+      "hora": "18:00",
+      "titulo": "Simpósio: A Reforma Tributária em tempo real",
+      "local": "OAB Uberlândia (13ª Subseção)",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/simposio-a-reforma-tributaria-em-tempo-real/3617024",
+      "imagem": "https://images.sympla.com.br/6ace8ed1a922e-lg.png"
+    },
+    {
+      "data": "2026-11-18",
+      "fim": "2026-11-19",
+      "hora": "20:00",
+      "titulo": "Espetáculo \"Velocidade\" – Grupo Quatroloscinco",
+      "local": "Teatro da UFU",
+      "categoria": "cultura",
+      "descricao": "Peça vencedora do Prêmio Shell, com apresentações gratuitas. No dia 19 há também a oficina \"Práticas de um Teatro do Comum\", das 13h às 17h.",
+      "fonte": "Diário de Uberlândia",
+      "url": "https://diariodeuberlandia.com.br/noticia/41891/grupo-quatroloscinco-apresenta-espetaculo-teatral-gratuito-em-uberlandia",
+      "imagem": "https://diariodeuberlandia.com.br/images/noticias/41891/17112301_TEATRO_2.jpg"
+    },
+    {
+      "data": "2026-11-19",
+      "fim": "2026-11-21",
+      "hora": "08:00",
+      "titulo": "Congresso Viva Conexões",
+      "local": "Hotel Intercity",
+      "categoria": "comunidade",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/congresso-viva-conexoes/3521694",
+      "imagem": "https://images.sympla.com.br/6a6a66a0897f2-lg.jpg"
+    },
+    {
+      "data": "2026-11-19",
+      "hora": "15:00",
+      "titulo": "Lançamento do Papai Noel dos Correios",
+      "local": "EMEI Professora Cornélia Yara Castanheira – bairro Segismundo Pereira",
+      "categoria": "natal",
+      "descricao": "Abertura da campanha em Uberlândia: as cartinhas podem ser adotadas nos pontos da campanha ou pelo Blog Noel.",
+      "fonte": "Diário de Uberlândia",
+      "url": "https://diariodeuberlandia.com.br/noticia/41872/uberlandia-participa-de-mais-uma-edicao-da-campanha-papai-noel-dos-correios-veja-como",
+      "imagem": "https://diariodeuberlandia.com.br/images/noticias/41872/13114730_5_PAPAI_NO.webp"
+    },
+    {
+      "data": "2026-11-19",
+      "hora": "19:00",
+      "titulo": "Arte & Vinho: Tomie Ohtake",
+      "local": "R. Vigário Dantas, 56",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/arte-vinho-tomie-ohtake/3568275",
+      "imagem": "https://images.sympla.com.br/6a9b2a7866a81-lg.png"
+    },
+    {
+      "data": "2026-11-19",
+      "hora": "20:00",
+      "titulo": "Música Clássica? Uai, por que não? Saxofone e piano",
+      "local": "Cineteatro Nininha Rocha",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/musica-classica-uai-por-que-nao-grandes-catedrais-sonoras-um-encontro-entre-o-saxofone-e-o-piano/3652555",
+      "imagem": "https://images.sympla.com.br/6af4d934b8a27-lg.png"
+    },
+    {
+      "data": "2026-11-20",
+      "hora": "21:00",
+      "titulo": "Camila Cardoso: Antes e Depois do Plantão (humor)",
+      "local": "Sociedade Médica de Uberlândia",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/camila-cardoso-em-uberlandia-mg-antes-e-depois-do-plantao/3471060",
+      "imagem": "https://images.sympla.com.br/6a3476e8e653b-lg.png"
+    },
+    {
+      "data": "2026-11-21",
+      "hora": "08:00",
+      "titulo": "3º SUCTEC – Simpósio Uberlandense de Cerveja e Tecnologia",
+      "local": "R. Marieta de Castro Santos, 135",
+      "categoria": "educacao",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/3o-suctec-simposio-uberlandense-de-cerveja-e-tecnologia/3628220",
+      "imagem": "https://images.sympla.com.br/6adf3dd4179a2-lg.png"
+    },
+    {
+      "data": "2026-11-21",
+      "hora": "09:00",
+      "titulo": "Febracis: Treinamento de Colaboradores",
+      "local": "Mercure Uberlândia Plaza Shopping",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/febracis-uberlandia-treinamento-de-colaboradores-21-11-2026/3606611",
+      "imagem": "https://images.sympla.com.br/6a6e0185f395b-lg.jpg"
+    },
+    {
+      "data": "2026-11-22",
+      "fim": "2026-11-29",
+      "hora": "10:00",
+      "titulo": "Recital de Primavera Musicar 2026",
+      "local": "Gabarito – Unidade Rondon Pacheco",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/recital-de-primavera-musicar-2026/3632618",
+      "imagem": "https://images.sympla.com.br/6ae8ed49eee81-lg.jpg"
+    },
+    {
+      "data": "2026-11-24",
+      "fim": "2026-11-28",
+      "hora": "20:00",
+      "titulo": "33ª MIT – Mostra de Investigações Teatrais",
+      "local": "Av. Ana Godoy de Sousa, 381",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/33a-mit-mostra-de-investigacoes-teatrais/3653539",
+      "imagem": "https://images.sympla.com.br/6af5ee0f3f35b-lg.jpg"
+    },
+    {
+      "data": "2026-11-26",
+      "hora": "08:00",
+      "titulo": "2º Encontro Nacional dos Produtores Rurais (ENPR26)",
+      "local": "Mercure Uberlândia Plaza Shopping",
+      "categoria": "negocios",
+      "descricao": "Encontro do agronegócio.",
+      "fonte": "Calendário Uberlândia (ACIUB)",
+      "url": "https://aciub.com.br/eventos?tipo=calendario",
+      "imagem": "https://wrffhizenimggkkujvfh.supabase.co/storage/v1/object/public/eventos-imagens/1785255708124_7z5e7o.jpg",
+      "secundario": true
+    },
+    {
+      "data": "2026-11-26",
+      "hora": "09:00",
+      "titulo": "X TUR – 10º Torneio Universitário de Robótica",
+      "local": "UFU",
+      "categoria": "educacao",
+      "descricao": "Torneio de robótica universitária.",
+      "fonte": "Calendário Uberlândia (ACIUB)",
+      "url": "https://aciub.com.br/eventos?tipo=calendario",
+      "imagem": "https://wrffhizenimggkkujvfh.supabase.co/storage/v1/object/public/eventos-imagens/1785156306829_bt2fl.jpg",
+      "secundario": true
+    },
+    {
+      "data": "2026-11-26",
+      "hora": "18:00",
+      "titulo": "Literatura à Mesa: Narrativas do Rosa",
+      "local": "R. Vigário Dantas, 56",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/literatura-a-mesa-quem-conta-um-conto-aumenta-um-ponto-narrativas-do-rosa/3568279",
+      "imagem": "https://images.sympla.com.br/6a9b2ab562ab1-lg.png"
+    },
+    {
+      "data": "2026-11-26",
+      "hora": "18:30",
+      "titulo": "Noite Mineira de Museus e Bibliotecas – Sarau Literário Consciência Negra",
+      "local": "Programação da Prefeitura (local a confirmar)",
+      "categoria": "cultura",
+      "descricao": "Atividade da 18ª Noite Mineira de Museus e Bibliotecas em Uberlândia.",
+      "fonte": "Prefeitura de Uberlândia",
+      "url": "https://www.uberlandia.mg.gov.br/2026/11/09/agenda-cultural-da-prefeitura-tem-encontro-multicultural-oficinas-de-danca-exposicoes-e-feira-afroempreendedora/"
+    },
+    {
+      "data": "2026-11-27",
+      "hora": "09:00",
+      "titulo": "EGEN – Encontro de Gestão e Negócios UFU",
+      "local": "UFU",
+      "categoria": "educacao",
+      "descricao": "Encontro de gestão e negócios.",
+      "fonte": "Calendário Uberlândia (ACIUB)",
+      "url": "https://aciub.com.br/eventos?tipo=calendario",
+      "imagem": "https://wrffhizenimggkkujvfh.supabase.co/storage/v1/object/public/eventos-imagens/1785156365053_bfxgf.jpg",
+      "secundario": true
+    },
+    {
+      "data": "2026-11-27",
+      "hora": "18:30",
+      "titulo": "Do improviso à gestão profissional",
+      "local": "Auditório Anexo 2",
+      "categoria": "negocios",
+      "descricao": "Evento do Calendário Uberlândia.",
+      "fonte": "Calendário Uberlândia (ACIUB)",
+      "url": "https://aciub.com.br/eventos?tipo=calendario",
+      "imagem": "https://wrffhizenimggkkujvfh.supabase.co/storage/v1/object/public/eventos-imagens/1793737763882_h8oqf8.png",
+      "secundario": true
+    },
+    {
+      "data": "2026-11-27",
+      "hora": "20:00",
+      "titulo": "Seita do Humor em Toque Cômico",
+      "local": "Restaurante Talharim",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/seita-do-humor-em-toque-comico/3621815",
+      "imagem": "https://images.sympla.com.br/6afb066348b3e-lg.png"
+    },
+    {
+      "data": "2026-11-27",
+      "hora": "20:00",
+      "titulo": "Histórias de nós – espetáculo de Tiago Pimentel",
+      "local": "Cineteatro Nininha Rocha",
+      "categoria": "cultura",
+      "descricao": "Sessões nos dias 27 e 28, às 20h. Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/historias-de-nos-espetaculo-teatral-de-tiago-pimentel/3611148",
+      "imagem": "https://images.sympla.com.br/6ac6b03d914f9-lg.jpg",
+      "fim": "2026-11-28"
+    },
+    {
+      "data": "2026-11-27",
+      "hora": "20:30",
+      "titulo": "Cotidianas – Coletivo Borogodó",
+      "local": "UAI Q Dança – Palco de Arte",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/cotidianas-coletivo-borogodo/3631917",
+      "imagem": "https://images.sympla.com.br/6adf83515cf20-lg.png"
+    },
+    {
+      "data": "2026-11-29",
+      "hora": "09:00",
+      "titulo": "Renalmoço 2026: Girassóis da Esperança",
+      "local": "Clube Caixa",
+      "categoria": "comunidade",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/renalmoco-2026-girassois-da-esperanca/3614483",
+      "imagem": "https://images.sympla.com.br/6add08556e0c6-lg.jpg"
+    },
+    {
+      "data": "2026-12-02",
+      "hora": "19:00",
+      "titulo": "Virada Empresarial",
+      "local": "Auditório da sede ACIUB",
+      "categoria": "negocios",
+      "descricao": "Evento do Calendário Uberlândia.",
+      "fonte": "Calendário Uberlândia (ACIUB)",
+      "url": "https://aciub.com.br/eventos?tipo=calendario",
+      "imagem": "https://wrffhizenimggkkujvfh.supabase.co/storage/v1/object/public/eventos-imagens/1794592705281_m249eg.jpeg",
+      "secundario": true
+    },
+    {
+      "data": "2026-12-02",
+      "hora": "20:00",
+      "titulo": "Concerto inaugural da Orquestra Clássica de Minas Gerais",
+      "local": "Sociedade Médica de Uberlândia",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/concerto-inaugural-da-orquestra-classica-de-minas-gerais-em-uberlandia/3611558",
+      "imagem": "https://images.sympla.com.br/6ac7601b55ec7-lg.png"
+    },
+    {
+      "data": "2026-12-05",
+      "hora": "",
+      "titulo": "Caravana Iluminada de Natal",
+      "local": "Parque do Sabiá",
+      "categoria": "natal",
+      "descricao": "Passagem da caravana de Natal da Coca-Cola com a Uberlândia Refrescos. Horário a confirmar nas redes da caravana.",
+      "fonte": "Regionalzão",
+      "url": "https://regionalzao.com.br/colunas/o-que-fazer-uberlandia/luzes-papai-noel-e-emocao-comeca-a-temporada-de-natal-na-regiao/"
+    },
+    {
+      "data": "2026-12-05",
+      "hora": "17:00",
+      "titulo": "The Black Parade",
+      "local": "Cervejaria Benedith – av. Getúlio Vargas",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/the-black-parade-uberlandia-mg/3630445",
+      "imagem": "https://images.sympla.com.br/6adbc4ce27c84-lg.jpg"
+    },
+    {
+      "data": "2026-12-05",
+      "hora": "21:30",
+      "titulo": "Tango Conexión",
+      "local": "R. Duque de Caxias",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/tango-conexion/3639716",
+      "imagem": "https://images.sympla.com.br/6ae6c9fea2785-lg.jpg"
+    },
+    {
+      "data": "2026-12-08",
+      "hora": "08:00",
+      "titulo": "Mesa de Negócios NOUS",
+      "local": "CDE - Centro de Desenvolvimento Empresarial Aciub",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/mesa-de-negocios-nous/3634452",
+      "imagem": "https://images.sympla.com.br/6aee7ccd2fe30-lg.png"
+    },
+    {
+      "data": "2026-12-08",
+      "hora": "20:00",
+      "titulo": "Chicago Flamenca",
+      "local": "Teatro Municipal de Uberlândia",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/chicago-flamenca/3650730",
+      "imagem": "https://images.sympla.com.br/6af35c2fb80ef-lg.jpg"
+    },
+    {
+      "data": "2026-12-09",
+      "hora": "08:00",
+      "titulo": "AI Festival Uberlândia – Inteligência Artificial para Todos",
+      "local": "Brain – Centro de Inovação em Negócios Digitais",
+      "categoria": "negocios",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/ai-festival-uberlandia-inteligencia-artificial-para-todos/3636353",
+      "imagem": "https://images.sympla.com.br/6aec76f026e17-lg.png"
+    },
+    {
+      "data": "2026-12-13",
+      "hora": "17:00",
+      "titulo": "Recital no Cineteatro Nininha Rocha",
+      "local": "Cineteatro Nininha Rocha",
+      "categoria": "cultura",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/recital-nininha-rocha-13-12-26/3639615",
+      "imagem": "https://images.sympla.com.br/6aecb37b689fe-lg.jpg"
+    },
+    {
+      "data": "2026-12-24",
+      "hora": "21:00",
+      "titulo": "Natal no Palácio Júnior Gouvea",
+      "local": "Palácio Júnior Gouvea – R. Presidente Costa e Silva",
+      "categoria": "natal",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/natal-no-palacio-junior-gouvea/3653464",
+      "imagem": "https://images.sympla.com.br/6af5e9ec523dc-lg.jpg"
+    },
+    {
+      "data": "2026-12-31",
+      "hora": "22:00",
+      "titulo": "Réveillon Garage Pub 2027",
+      "local": "Garage Pub & Lounge",
+      "categoria": "comunidade",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/reveillon-garage-pub-2027/3653581",
+      "imagem": "https://images.sympla.com.br/6af6032b214aa-lg.jpg"
+    },
+    {
+      "data": "2027-01-29",
+      "fim": "2027-01-31",
+      "hora": "16:00",
+      "titulo": "10º Congresso Espírita de Uberlândia",
+      "local": "Center Convention Uberlândia",
+      "categoria": "comunidade",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/10o-congresso-espirita-de-uberlandia-2027-18-anos-de-web-radio-fraternidade/3278562",
+      "imagem": "https://images.sympla.com.br/6af7020b23b2a-lg.png"
+    },
+    {
+      "data": "2027-02-28",
+      "hora": "17:00",
+      "titulo": "Encontro do Gay Nerd em Uberlândia",
+      "local": "Mestre dos Jogos LudoBar",
+      "categoria": "comunidade",
+      "descricao": "Ingressos e informações no Sympla.",
+      "fonte": "Sympla",
+      "url": "https://www.sympla.com.br/evento/encontro-do-gay-nerd-em-uberlandia-estreia/3655440",
+      "imagem": "https://images.sympla.com.br/6af8cdf36379a-lg.jpg"
+    }
+  ],
+  "fontes": [
+    {
+      "nome": "Prefeitura de Uberlândia",
+      "url": "https://www.uberlandia.mg.gov.br/",
+      "desc": "Agenda cultural, feiras e programação oficial da cidade."
+    },
+    {
+      "nome": "Sympla",
+      "url": "https://www.sympla.com.br/eventos/uberlandia-mg",
+      "desc": "Shows, teatro, cursos e eventos com ingresso em Uberlândia."
+    },
+    {
+      "nome": "g1 Triângulo Mineiro",
+      "url": "https://g1.globo.com/mg/triangulo-mineiro/",
+      "desc": "Cobertura regional da TV Integração."
+    },
+    {
+      "nome": "Diário de Uberlândia",
+      "url": "https://diariodeuberlandia.com.br/noticias",
+      "desc": "Cultura, cidade e serviços."
+    },
+    {
+      "nome": "Regionalzão",
+      "url": "https://regionalzao.com.br/uberlandia/",
+      "desc": "Coluna \"O que fazer em Uberlândia\" com a agenda do fim de semana."
+    },
+    {
+      "nome": "TRT-3 – feriados locais 2027",
+      "url": "https://portal.trt3.jus.br/internet/institucional/calendario/feriados-locais-1/feriados-locais-2027-1",
+      "desc": "Fonte dos feriados municipais de Uberlândia."
+    },
+    {
+      "nome": "ACIUB",
+      "url": "https://aciub.com.br/eventos?tipo=calendario",
+      "desc": "Calendário Uberlândia de eventos empresariais."
+    }
+  ]
+}

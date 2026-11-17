@@ -38,6 +38,7 @@ namespace SiteCDL.Services
             ["/reconhecimento"] = "Um dos maiores compromissos da CDL é implementar uma cultura organizacional que integre práticas de sustentabilidade ambiental, inclusão social e governança. Conheça algumas das certificações que comprovam e reforçam esse propósito.",
             ["/corporativo"] = "A CDL Uberlândia integra o sistema CNDL, formado pela União de empresários que atuam desde 1955 em nível nacional e que tem entre seus princípios fundamentais a representação do varejo por meio do desenvolvimento de diretrizes nas atividades econômicas, políticas e sociais.",
             ["/politica-de-sustentabilidade"] = "Um dos maiores compromissos da CDL é implementar uma cultura organizacional que incorpore práticas de sustentabilidade ambiental, inclusão social e governança. Para alcançar esse objetivo, estamos cada vez mais engajados em ações que geram impactos positivos na vida de nossos colaboradores, associados, prestadores de serviços, comunidade local e sociedade.",
+            ["/agenda-uberlandia"] = "Eventos empresariais, culturais e de Natal de Uberlândia, com os feriados nacionais, municipais e pontos facultativos de 2027.",
             ["/loja/eventos"] = "Feiras, encontros e eventos da CDL.",
             ["/loja/cursos"] = "Cursos presenciais com certificado.",
             ["/loja/parceiros"] = "Empresas associadas por segmento.",

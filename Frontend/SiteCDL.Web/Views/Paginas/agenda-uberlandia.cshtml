@@ -1,0 +1,183 @@
+@using System.Text.Json
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+@*
+    Agenda de Uberlândia: eventos da cidade + feriados (nacionais, municipais e pontos facultativos) num só calendário.
+    Dados em wwwroot/novo/dados/agenda-uberlandia.json (editar o JSON não exige recompilar).
+    O calendário e as listas são montados por wwwroot/novo/agenda.js; os feriados também saem aqui no HTML (para buscadores e sem JavaScript).
+*@
+@{
+    ViewData["Title"] = "Agenda de Uberlândia: eventos e feriados";
+    ViewBag.metaDescription = "Calendário de eventos de Uberlândia e feriados de 2027 (nacionais, municipais e pontos facultativos), reunidos pela CDL Uberlândia.";
+    var json = "{}";
+    var feriados = new List<(DateTime Data, string Nome, string Tipo, string Base)>();
+    var fontes = new List<(string Nome, string Url, string Desc)>();
+    var atualizado = "";
+    string Txt(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() ?? "" : "";
+    var arq = Env.WebRootFileProvider.GetFileInfo("novo/dados/agenda-uberlandia.json");
+    if (arq.Exists)
+    {
+        try
+        {
+            using (var sr = new StreamReader(arq.CreateReadStream())) json = await sr.ReadToEndAsync();
+            using var doc = JsonDocument.Parse(json);
+            atualizado = Txt(doc.RootElement, "atualizadoEm");
+            if (doc.RootElement.TryGetProperty("feriados", out var fs))
+                foreach (var f in fs.EnumerateArray())
+                    if (DateTime.TryParse(Txt(f, "data"), out var d) && d.Year == 2027) feriados.Add((d, Txt(f, "nome"), Txt(f, "tipo"), Txt(f, "base")));
+            if (doc.RootElement.TryGetProperty("fontes", out var fo))
+                foreach (var f in fo.EnumerateArray()) fontes.Add((Txt(f, "nome"), Txt(f, "url"), Txt(f, "desc")));
+            json = JsonSerializer.Serialize(JsonSerializer.Deserialize<JsonElement>(json)); // compacta e garante JSON válido
+        }
+        catch (Exception) { json = "{}"; feriados.Clear(); fontes.Clear(); }
+    }
+    var pt = new System.Globalization.CultureInfo("pt-BR");
+    string Dia(DateTime d) => pt.DateTimeFormat.GetAbbreviatedDayName(d.DayOfWeek).TrimEnd('.');
+    string Tipo(string t) => t == "municipal" ? "Feriado municipal" : t == "facultativo" ? "Ponto facultativo" : "Feriado nacional";
+    string Dica(DateTime d, string t)
+    {
+        if (t == "facultativo") return "";
+        return d.DayOfWeek switch
+        {
+            DayOfWeek.Monday or DayOfWeek.Friday => "Fim de semana prolongado",
+            DayOfWeek.Tuesday or DayOfWeek.Thursday => "Possível emenda",
+            DayOfWeek.Saturday or DayOfWeek.Sunday => "Cai no fim de semana",
+            _ => "No meio da semana"
+        };
+    }
+    var uteis = feriados.Count(f => f.Tipo != "facultativo" && f.Data.DayOfWeek != DayOfWeek.Saturday && f.Data.DayOfWeek != DayOfWeek.Sunday);
+    var prolong = feriados.Count(f => f.Tipo != "facultativo" && (f.Data.DayOfWeek == DayOfWeek.Monday || f.Data.DayOfWeek == DayOfWeek.Friday));
+    var dataAtual = DateTime.TryParse(atualizado, out var da) ? da.ToString("dd/MM/yyyy") : "";
+}
+
+<section class="phero ag-hero" id="hero">
+  <div class="gridlines"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="glow"></div>
+  <div class="wrap">
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="/">Início</a></li><li><a href="/cursos-e-eventos">Cursos e Eventos</a></li><li aria-current="page">Agenda de Uberlândia</li></ol></nav>
+    <div class="phero-grid">
+      <div class="phero-txt rv">
+        <span class="badge"><b>Agenda da cidade</b> Eventos e feriados</span>
+        <h1>O que acontece em Uberlândia, <span class="serif">num só calendário.</span></h1>
+        <p class="lead">Eventos empresariais, culturais e de Natal da cidade, junto com os feriados nacionais, municipais e pontos facultativos de 2027. Tudo para você planejar a loja, a equipe e as promoções.</p>
+        <div class="ctas"><a href="#calendario" class="btn btn-primary">Abrir o calendário <span class="arr">→</span></a><a href="#feriados" class="btn btn-light">Feriados de 2027 <span class="arr">→</span></a></div>
+      </div>
+      <aside class="ag-now rv d1" aria-label="Resumo da agenda">
+        <div class="ag-now-card ag-now-ev" id="ag-prox-evento">
+          <small>Próximo evento</small>
+          <b>Carregando…</b>
+        </div>
+        <div class="ag-now-card ag-now-fe" id="ag-prox-feriado">
+          <small>Próximo feriado</small>
+          <b>Carregando…</b>
+        </div>
+        <div class="ag-now-stats">
+          <div><b>@feriados.Count(f => f.Tipo != "facultativo")</b><span>feriados em 2027</span></div>
+          <div><b>@uteis</b><span>em dia útil</span></div>
+          <div><b>@prolong</b><span>fins de semana prolongados</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESTAQUES ===== -->
+<section class="sec ag-dest-sec" id="destaques">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Em breve</span><h2>Próximos eventos <span class="serif">na cidade.</span></h2></div><a class="btn btn-light rv" href="#calendario">Ver todos no calendário <span class="arr">→</span></a></div>
+    <div class="ag-dest" id="ag-destaques"><p class="ag-vazio">Carregando eventos…</p></div>
+  </div>
+</section>
+
+<!-- ===== CALENDÁRIO ===== -->
+<section class="sec alt" id="calendario">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Calendário</span><h2>Eventos e feriados <span class="serif">mês a mês.</span></h2></div></div>
+
+    <div class="ag-bar rv">
+      <div class="ag-mes">
+        <button type="button" class="ag-nav" id="ag-ant" aria-label="Mês anterior">‹</button>
+        <h3 id="ag-titulo" aria-live="polite">—</h3>
+        <button type="button" class="ag-nav" id="ag-prox" aria-label="Próximo mês">›</button>
+        <button type="button" class="ag-hoje" id="ag-hoje">Hoje</button>
+      </div>
+      <div class="ag-vis" role="tablist" aria-label="Forma de ver">
+        <button type="button" role="tab" aria-selected="true" data-vis="cal">Calendário</button>
+        <button type="button" role="tab" aria-selected="false" data-vis="lista">Lista</button>
+      </div>
+    </div>
+    <div class="ag-filtros rv" id="ag-filtros" aria-label="Filtrar por tipo"></div>
+
+    <div class="ag-corpo" id="ag-corpo" data-vis="cal">
+      <div class="ag-cal">
+        <div class="ag-sem" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+        <div class="ag-grade" id="ag-grade" role="grid" aria-label="Dias do mês"></div>
+        <div class="ag-leg"><span><i class="c-fe"></i>Feriado</span><span><i class="c-pf"></i>Ponto facultativo</span><span><i class="c-ev"></i>Evento</span></div>
+      </div>
+      <div class="ag-lado">
+        <div class="ag-lado-h"><b id="ag-lado-t">—</b><button type="button" id="ag-lado-limpa" hidden>Ver o mês todo</button></div>
+        <div class="ag-tl" id="ag-lista"></div>
+      </div>
+    </div>
+    <p class="ag-nota">Datas, horários e locais vêm das fontes indicadas em cada evento e podem mudar. Confirme com o organizador antes de ir.@(dataAtual != "" ? " Agenda atualizada em " + dataAtual + "." : "")</p>
+  </div>
+</section>
+
+<!-- ===== PROGRAMAÇÃO FIXA ===== -->
+<section class="sec" id="toda-semana" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="ag-fixos" id="ag-fixos"></div>
+  </div>
+</section>
+
+<!-- ===== FERIADOS 2027 ===== -->
+<section class="sec" id="feriados">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Feriados 2027</span><h2>Feriados em Uberlândia <span class="serif">em 2027.</span></h2><p class="ag-sub">Nacionais, municipais e pontos facultativos. O funcionamento do comércio nos feriados segue a convenção coletiva da categoria.</p></div></div>
+    <div class="ag-fer-leg"><span><i style="background:#fdecec;box-shadow:0 0 0 1px #f3b4b6 inset"></i>Feriado nacional</span><span><i style="background:#f2f6ff;box-shadow:0 0 0 1px #c7d8ff inset"></i>Feriado municipal</span><span><i style="background:#fff4e0;box-shadow:0 0 0 1px #f4cf8f inset"></i>Ponto facultativo</span></div>
+    <div class="ag-fer">
+      @foreach (var g in feriados.OrderBy(f => f.Data).GroupBy(f => f.Data.Month))
+      {
+        <div class="ag-fer-mes rv">
+          <h3>@pt.DateTimeFormat.GetMonthName(g.Key)</h3>
+          <ul>
+            @foreach (var f in g)
+            {
+              var dica = Dica(f.Data, f.Tipo);
+              <li class="t-@f.Tipo">
+                <span class="ag-fer-d" title="@pt.DateTimeFormat.GetDayName(f.Data.DayOfWeek)"><b>@f.Data.Day.ToString("00")</b><small>@Dia(f.Data)</small></span>
+                <span class="ag-fer-n"><b>@f.Nome</b><small>@Tipo(f.Tipo)@(f.Base != "" ? " · " + f.Base : "")</small>@if (dica != "") {<em>@dica</em>}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+    <p class="ag-nota">Feriados municipais conforme a lista de feriados locais de 2027 do TRT-3 (Tribunal Regional do Trabalho de Minas Gerais). Carnaval e Quarta-feira de Cinzas são pontos facultativos, e não feriados.</p>
+  </div>
+</section>
+
+<!-- ===== FONTES ===== -->
+<section class="sec alt" id="fontes">
+  <div class="wrap">
+    <div class="sec-head"><div class="rv"><span class="eyebrow">Onde acompanhar</span><h2>As fontes <span class="serif">desta agenda.</span></h2></div></div>
+    <div class="ag-fontes">
+      @foreach (var f in fontes)
+      {
+        <a class="ag-fonte rv" href="@f.Url" target="_blank" rel="noopener"><b>@f.Nome</b><span>@f.Desc</span><i>↗</i></a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="sec" id="seu-evento">
+  <div class="wrap">
+    <a class="ag-cta rv" href="/cdl-convencoes-e-eventos">
+      <span><small>Vai realizar um evento em Uberlândia?</small><b>Conheça o auditório e as salas da CDL.</b></span>
+      <span class="ag-cta-go">Ver espaços para eventos →</span>
+    </a>
+  </div>
+</section>
+
+<script type="application/json" id="agenda-dados">@Html.Raw(json.Replace("</", "<\\/"))</script>
+<script src="~/novo/agenda.js" asp-append-version="true" defer></script>

@@ -104,6 +104,7 @@ namespace SiteCDL.Services
                 new("/economizar", "Economizar", "Descontos, parceiros e a plataforma CDL MenorPreço."),
                 new("/solucoes", "Soluções", "Todas as soluções da CDL Uberlândia para empresas, por grupo: vender mais, gestão e economia, pessoas e espaços para eventos."),
                 new("/cursos-e-eventos", "Cursos e Eventos", "Cursos, eventos, treinamentos, descontos, parceiros e CDL MenorPreço."),
+                new("/agenda-uberlandia", "Agenda de Uberlândia", "Eventos da cidade e feriados de 2027 (nacionais, municipais e pontos facultativos) num só calendário."),
                 new("/a-cdl", "A CDL", "Páginas institucionais da CDL Uberlândia: quem somos, história, Fundação CDL, diretoria, sustentabilidade e licitações."),
                 new("/redes-sociais", "Redes sociais", "Instagram, Facebook, YouTube, LinkedIn, X e WhatsApp da CDL Uberlândia, com os vídeos mais recentes do canal."),
             }),

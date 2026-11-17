@@ -59,6 +59,7 @@ namespace SiteCDL.Services
             new("aprender", "Cursos e Eventos", "Aprender", "com a CDL.",
                 "Cursos presenciais e a distância, eventos e treinamentos feitos sob medida para a sua equipe.",
                 new Item[] {
+                    new("Agenda de Uberlândia", "/agenda-uberlandia", "Eventos da cidade e feriados de 2027 num só calendário."),
                     new("Eventos", "/loja/eventos", Externo: true),
                     new("Cursos", "/loja/cursos", Externo: true),
                     new("Cursos EAD", "/loja/cursos-ead", Externo: true),
@@ -148,6 +149,7 @@ namespace SiteCDL.Services
             "/spc-consulta" => "<rect x='3' y='5' width='18' height='14' rx='2'/><circle cx='9' cy='11' r='2'/><path d='M6 16c.5-1.5 1.7-2 3-2s2.5.5 3 2M14 10h4M14 13h3'/>",
             "/spc-negociacao" => "<path d='M8 13 3 8l4-4 5 5M16 11l5 5-4 4-5-5M7 12l5 5M12 7l5 5'/>",
             "/alerta-documento" => "<path d='M12 3 2 21h20zM12 10v5M12 18h.01'/>",
+            "/agenda-uberlandia" => "<rect x='3' y='5' width='18' height='16' rx='2'/><path d='M3 10h18M8 3v4M16 3v4'/><path d='m9 15 2 2 4-4'/>",
             "/loja/eventos" => "<rect x='3' y='5' width='18' height='16' rx='2'/><path d='M3 10h18M8 3v4M16 3v4'/>",
             "/loja/cursos" => "<path d='M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3'/><path d='M20 4v14h-7'/>",
             "/loja/cursos-ead" => "<rect x='3' y='4' width='18' height='12' rx='2'/><path d='M8 20h8M12 16v4M10 8l4 2-4 2z'/>",
