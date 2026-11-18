@@ -1,6 +1,62 @@
 {
   "boletins": [
     {
+      "data": "2026-11-18",
+      "atualizadoAs": "07:15",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "O secretário da Receita Federal, Robinson Barreirinhas, disse em audiência na Comissão de Assuntos Econômicos (CAE) do Senado que a Receita defende não punir quem agir de boa-fé em erros cometidos na adaptação à reforma, desde que não haja ocultação de informação nem fraude. Segundo ele, a orientação será corrigir procedimentos antes de aplicar multas. Ele também citou a \"apuração assistida\" (informações pré-organizadas pelo fisco, para o contribuinte conferir e corrigir), com piloto de um módulo simplificado de correção previsto para dezembro.",
+          "impacto": "É uma sinalização de tolerância na fase de adaptação, não uma regra publicada. Mantenha o contador e o fornecedor do sistema de notas fiscais acompanhando as orientações oficiais.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/reforma-tributaria-receita-descarta-punicao-erros-de-boa-fe",
+          "quando": "17/11, 12:30"
+        },
+        {
+          "fato": "O Tribunal de Contas da União (TCU) recomendou uma alíquota de referência da CBS (Contribuição sobre Bens e Serviços) maior que a estimada antes pelo governo, o que gerou questionamentos no Senado. Em audiência na CAE, o ministro da Fazenda, Dario Durigan, explicou que a alíquota de referência é um parâmetro de neutralidade da arrecadação, e que a carga efetiva varia conforme o setor e o produto. O Senado tem até 15/12 para definir a alíquota por resolução.",
+          "impacto": "A alíquota final da CBS ainda não está definida. Evite repassar a clientes ou fornecedores números não oficiais; acompanhe a decisão do Senado antes de revisar preços.",
+          "fonte": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/no-senado-ministro-da-fazenda-defende-novo-tributo-sobre-o-consumo",
+          "quando": "17/11, 17:01"
+        },
+        {
+          "fato": "A Receita Federal publicou, por meio da Portaria Cotec nº 342/2026 (Diário Oficial de 13/11), o código-fonte da Calculadora de Tributos da reforma em repositório público no GitHub, com memória de cálculo e fundamentação legal.",
+          "impacto": "Empresas de software poderão usar a mesma lógica oficial nos sistemas de nota fiscal e gestão. Pergunte ao seu fornecedor como ele está se preparando.",
+          "fonte": "Receita Federal",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-publica-primeiro-codigo-fonte-aberto-no-github-e-amplia-transparencia-da-reforma-tributaria",
+          "quando": "13/11"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PLP 299/2026 (ajuste fiscal)",
+          "ementa": "Projeto de lei complementar do governo que reduz benefícios tributários de empresas e muda regras de gastos públicos. Entre os destaques pendentes estão o adiamento de repasses a estados e municípios da Lei Kandir e o limite anual para pagamentos federais de compensação previdenciária.",
+          "tramitacao": "Texto principal aprovado pelo Plenário do Senado em 12/11/2026. A votação dos destaques, prevista para 17/11, foi remarcada para quarta-feira (18/11) a pedido do relator, para tentar acordo. Depois, segue para a Câmara dos Deputados. Ainda não é lei.",
+          "fonte": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/votacao-de-destaques-ao-ajuste-fiscal-e-remarcada-na-quarta-feira"
+        }
+      ],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Brasil — Receita e boa-fé",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/reforma-tributaria-receita-descarta-punicao-erros-de-boa-fe"
+        },
+        {
+          "nome": "Agência Senado — CBS",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/no-senado-ministro-da-fazenda-defende-novo-tributo-sobre-o-consumo"
+        },
+        {
+          "nome": "Receita Federal — Calculadora de Tributos",
+          "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-publica-primeiro-codigo-fonte-aberto-no-github-e-amplia-transparencia-da-reforma-tributaria"
+        },
+        {
+          "nome": "Agência Senado — PLP 299/2026",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/17/votacao-de-destaques-ao-ajuste-fiscal-e-remarcada-na-quarta-feira"
+        }
+      ]
+    },
+    {
       "data": "2026-11-17",
       "atualizadoAs": "07:10",
       "semNovidades": false,
