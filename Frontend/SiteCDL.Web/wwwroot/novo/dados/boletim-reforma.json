@@ -1,6 +1,66 @@
 {
   "boletins": [
     {
+      "data": "2026-11-19",
+      "atualizadoAs": "07:10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "A Comissão de Assuntos Econômicos (CAE) do Senado aprovou, na quarta-feira (18), um requerimento do relator da reforma tributária, senador Eduardo Braga, pedindo ao Tribunal de Contas da União (TCU) e ao Ministério da Fazenda os estudos, metodologias e atas que embasaram a recomendação da alíquota de referência da CBS (Contribuição sobre Bens e Serviços) para 2027. Braga também pediu à consultoria do Senado simulações com diferentes hipóteses. Segundo a reportagem, a CAE deve aprofundar a análise antes de definir a alíquota, e o Senado tem até 15/12 para decidir.",
+          "impacto": "A alíquota da CBS segue sem definição final. Entidades contábeis alertaram que empresas já formam preços para 2027 sem ela; evite fechar reajustes com base em números não oficiais e acompanhe a decisão do Senado.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/senado-pede-explicacoes-tcu-sobre-aliquota-de-113-da-cbs",
+          "quando": "18/11, 17:07"
+        },
+        {
+          "fato": "Reportagem do Jornal Contábil resume como funciona o saldo credor de IBS (Imposto sobre Bens e Serviços) e CBS: quando os créditos das compras superam os débitos das vendas, a empresa pode compensar o saldo com débitos futuros ou pedir ressarcimento em dinheiro, nas regras da Lei Complementar 214/2025. A matéria diz ainda que o saldo existente ao fim de 2026, ano de testes, terá caráter informativo e não poderá ser pedido em dinheiro em 2027.",
+          "impacto": "É um resumo jornalístico das regras, não um ato novo. Quem vende com crédito acumulado deve combinar com o contador como controlar esses saldos e confirmar prazos e condições na legislação oficial.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/saldo-credor-de-ibs-e-cbs-pode-virar-dinheiro-no-caixa-das-empresas/",
+          "quando": "18/11, 13:14"
+        },
+        {
+          "fato": "A Receita Federal disponibilizou uma API (interface para sistemas se conectarem) do Recolhimento como Adquirente (RAD) da CBS, mecanismo em que o comprador recolhe a CBS de certas aquisições. Pela API, sistemas de gestão podem consultar recolhimentos, gerar o DARF e acompanhar créditos, conforme a documentação técnica da Apuração Assistida da CBS.",
+          "impacto": "Interessa sobretudo a contadores e a empresas de software. Pergunte ao fornecedor do seu sistema se ele pretende integrar esse serviço.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/cbs-nova-api-da-receita-muda-rotina-de-empresas-e-contadores/",
+          "quando": "18/11, 10:30"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PLP 299/2026 (ajuste fiscal)",
+          "ementa": "Projeto de lei complementar do governo que reduz benefícios tributários de empresas e muda regras de gastos públicos. No Plenário, o Senado rejeitou o destaque que tentava derrubar o dispositivo que permite ao Executivo restringir, por ato próprio, a compensação de créditos tributários já reconhecidos. A redução de compensações não alcança créditos de PIS/Pasep e Cofins. O repasse da Lei Kandir aos estados foi ajustado por acordo.",
+          "tramitacao": "Senado concluiu a votação em turno suplementar em 18/11/2026 (69 votos a 2). Segue agora para a Câmara dos Deputados. Ainda não é lei.",
+          "fonte": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/18/senado-completa-votacao-e-ajuste-fiscal-segue-para-a-camara"
+        }
+      ],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Brasil — Senado pede explicações ao TCU sobre a CBS",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/senado-pede-explicacoes-tcu-sobre-aliquota-de-113-da-cbs"
+        },
+        {
+          "nome": "Agência Senado — ajuste fiscal segue para a Câmara",
+          "url": "https://www12.senado.leg.br/noticias/materias/2026/11/18/senado-completa-votacao-e-ajuste-fiscal-segue-para-a-camara"
+        },
+        {
+          "nome": "Jornal Contábil — saldo credor de IBS e CBS",
+          "url": "https://jornalcontabil.com.br/noticia/saldo-credor-de-ibs-e-cbs-pode-virar-dinheiro-no-caixa-das-empresas/"
+        },
+        {
+          "nome": "Jornal Contábil — API RAD da CBS",
+          "url": "https://jornalcontabil.com.br/noticia/cbs-nova-api-da-receita-muda-rotina-de-empresas-e-contadores/"
+        },
+        {
+          "nome": "API de Dados Abertos da Câmara — PECs apresentadas desde 12/11 (nenhuma)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC&dataApresentacaoInicio=2026-11-12&itens=100"
+        }
+      ]
+    },
+    {
       "data": "2026-11-18",
       "atualizadoAs": "07:15",
       "semNovidades": false,
