@@ -1,6 +1,54 @@
 {
   "boletins": [
     {
+      "data": "2026-11-20",
+      "atualizadoAs": "07:05",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "O presidente Lula assinou, na quinta-feira (19), o decreto que regulamenta a escala 5x2 (cinco dias de trabalho por dois de descanso). Segundo a reportagem, o limite semanal cai de 44 para 42 horas a partir de dezembro e para 40 horas em dezembro de 2027. O ministro do Trabalho, Luiz Marinho, explicou que o salário mensal não muda, mas o valor da hora de referência sobe (divisor 210 com 42 horas e 200 com 40 horas), o que encarece a hora extra. A liminar do ministro Flávio Dino (STF) permite distribuir as 42 horas em até 8h24 por dia durante a transição, sem hora extra pelos 24 minutos adicionais.",
+          "impacto": "Quem tem escala 6x1 ou usa hora extra com frequência deve rever escalas e custo da folha com o contador. O decreto foi noticiado pela imprensa; confira o texto oficial e as convenções coletivas da categoria antes de mudar rotinas.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/veja-como-sera-o-calculo-da-hora-extra-com-escala-de-trabalho-5x2",
+          "quando": "19/11, 16:39"
+        },
+        {
+          "fato": "O Confaz (Conselho Nacional de Política Fazendária, que reúne os secretários de Fazenda dos estados) prorrogou, pelo Convênio ICMS nº 133/2026, publicado no Diário Oficial da União de 18/11, incentivos previstos em 26 convênios até 31/12/2027. Segundo a reportagem, a medida mantém as condições vigentes em 31/12/2026, sem ampliar os benefícios, e alcança áreas como saúde, educação, pesquisa, transporte e saneamento.",
+          "impacto": "A prorrogação não é liberação automática: cada operação precisa se enquadrar nas condições do convênio correspondente. Se o seu negócio usa algum benefício de ICMS, confirme com o contador se ele está entre os prorrogados.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/icms-26-beneficios-fiscais-sao-prorrogados-para-2027/",
+          "quando": "19/11, 18:00"
+        },
+        {
+          "fato": "Reportagem do Jornal Contábil resume simplificações para pequenos negócios previstas no Decreto nº 13.140/2026 e na Resolução CGSN nº 195/2026 (CGSN = Comitê Gestor do Simples Nacional). Para o nanoempreendedor (atividade por conta própria de faturamento muito reduzido), o decreto dispensa inscrição no CNPJ e emissão de documentos fiscais eletrônicos ligados aos novos tributos sobre o consumo, desde que não opte pelo regime regular de IBS e CBS. Para o MEI (Microempreendedor Individual), a resolução permite usar a declaração anual simplificada (DASN-Simei) como documento fiscal eletrônico em vendas a consumidores finais pessoa física sem CNPJ.",
+          "impacto": "As dispensas têm condições e não valem para todas as atividades e operações. MEI e nanoempreendedores devem conferir com o contador se se enquadram e a partir de quando cada regra vale.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/mei-novas-regras-dispensam-obrigacoes-fiscais-veja-quem-ganha/",
+          "quando": "19/11, 17:31"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Brasil – Economia",
+          "url": "https://agenciabrasil.ebc.com.br/economia"
+        },
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias"
+        },
+        {
+          "nome": "API de Dados Abertos da Câmara (PECs)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC"
+        }
+      ]
+    },
+    {
       "data": "2026-11-19",
       "atualizadoAs": "07:10",
       "semNovidades": false,
