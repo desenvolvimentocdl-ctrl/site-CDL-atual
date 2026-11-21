@@ -1,6 +1,47 @@
 {
   "boletins": [
     {
+      "data": "2026-11-21",
+      "atualizadoAs": "07:10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Reportagem do Jornal Contábil explica que, a partir de 2027, o crédito de IBS (Imposto sobre Bens e Serviços) e CBS (Contribuição sobre Bens e Serviços) nas compras de fornecedores do Simples Nacional dependerá de como o fornecedor recolhe esses tributos. Segundo a matéria, com base na Lei Complementar nº 214/2025, o fornecedor pode manter IBS e CBS dentro da guia unificada do Simples (DAS) ou optar pelo regime regular, mantendo os demais tributos no Simples. No primeiro caso, o comprador do regime regular aproveita crédito limitado ao valor de IBS e CBS devido pelo fornecedor no Simples; no segundo, os créditos seguem as regras do regime regular.",
+          "impacto": "Lojas que compram de pequenos fornecedores podem ter crédito diferente conforme a opção de cada um. Vale perguntar ao fornecedor qual regime ele vai adotar e conversar com o contador antes de renegociar preços. A reportagem não traz percentuais; confira as regras nos textos oficiais.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/simples-nacional-compras-de-fornecedores-podem-mudar-em-2027/",
+          "quando": "19/11, 15:54"
+        },
+        {
+          "fato": "A Receita Federal anunciou, na quarta-feira (18), uma parceria com o Conselho Federal de Contabilidade (CFC) para identificar empresas do regime regular que ainda têm dificuldade em destacar a CBS (Contribuição sobre Bens e Serviços) nas notas fiscais eletrônicas e avisar os contadores responsáveis. O anúncio foi feito na segunda reunião da Sala de Situação da Reforma Tributária. CFC e Fenacon também lançaram um canal digital para receber dúvidas e divulgar orientações.",
+          "impacto": "Se a empresa emite notas com CBS, o contador pode receber avisos sobre erros no preenchimento. Vale manter o sistema de emissão atualizado e alinhar com o contador a correção de eventuais inconsistências.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/cbs-contadores-receberao-alertas-sobre-erros-dos-clientes/",
+          "quando": "19/11, 12:13"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br"
+        },
+        {
+          "nome": "Agência Brasil – Economia",
+          "url": "https://agenciabrasil.ebc.com.br/economia"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias"
+        },
+        {
+          "nome": "API de Dados Abertos da Câmara (PECs)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC"
+        }
+      ]
+    },
+    {
       "data": "2026-11-20",
       "atualizadoAs": "07:05",
       "semNovidades": false,
