@@ -1,6 +1,32 @@
 {
   "boletins": [
     {
+      "data": "2026-11-23",
+      "atualizadoAs": "07:00",
+      "semNovidades": true,
+      "comercio": [],
+      "legislacao": [],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br"
+        },
+        {
+          "nome": "Agência Brasil – Economia",
+          "url": "https://agenciabrasil.ebc.com.br/economia"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias"
+        },
+        {
+          "nome": "API de Dados Abertos da Câmara (PECs)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC"
+        }
+      ]
+    },
+    {
       "data": "2026-11-21",
       "atualizadoAs": "07:10",
       "semNovidades": false,
