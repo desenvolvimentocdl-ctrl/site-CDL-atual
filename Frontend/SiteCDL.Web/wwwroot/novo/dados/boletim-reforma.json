@@ -1,6 +1,55 @@
 {
   "boletins": [
     {
+      "data": "2026-11-24",
+      "atualizadoAs": "07:10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Portaria da Receita Federal publicada na segunda-feira (23) abriu o ambiente de testes do piloto da CBS (Contribuição sobre Bens e Serviços) a qualquer empresa com CNPJ. Não é mais preciso indicação de entidade representativa nem pedido prévio de participação; basta cumprir os requisitos operacionais, cadastrais e de segurança. Para usar o Portal Piloto, a empresa precisa dar procuração digital aos representantes. A Receita poderá limitar, suspender ou bloquear acessos para preservar a estabilidade do sistema, e falhas podem ser reportadas pelo canal Receita Atende.",
+          "impacto": "Quem quiser testar a emissão e a rotina da CBS antes da entrada definitiva pode participar sem burocracia extra. Vale combinar com o contador quem receberá a procuração digital e quais funcionalidades serão usadas.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/receita-amplia-participacao-em-piloto-da-cbs-para-todas-empresas",
+          "quando": "23/11, 08:40"
+        },
+        {
+          "fato": "Reportagem do Jornal Contábil informa que o Ato Conjunto RFB/CGIBS nº 7/2026 ajustou prazos: as notas fiscais de locação de imóveis passam a ser exigidas em janeiro de 2027, e o documento específico para venda de imóveis (NF-e ABI, modelo 77) em 1º de março de 2027. A reportagem lembra que a pessoa física só entra como contribuinte de IBS (Imposto sobre Bens e Serviços) e CBS nas operações imobiliárias se atingir os limites da Lei Complementar nº 214/2025; quem aluga um ou dois imóveis abaixo dos limites não é enquadrado automaticamente.",
+          "impacto": "Lojistas que alugam o ponto comercial ou que têm imóveis alugados a terceiros podem passar a receber ou emitir nota de locação. Confirme com o contador e com a imobiliária se o seu caso está dentro da regra.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/alugueis-e-venda-de-imoveis-terao-novas-notas-fiscais-em-2027/",
+          "quando": "23/11, 16:41"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PLP 299/2026",
+          "ementa": "Projeto de lei complementar de ajuste fiscal das contas públicas para 2027. Segundo a Agência Brasil, prevê redução de despesas e ampliação de arrecadação e reduz benefícios tributários; já foi aprovado pelo Senado em 18/11.",
+          "tramitacao": "Plenário da Câmara dos Deputados aprovou o texto-base na noite de 23/11 (353 votos a favor, 128 contra e 5 abstenções), sem alterações ao texto do Senado. Faltam os destaques (propostas de mudança em pontos específicos) serem votados; depois, segue para sanção presidencial.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-texto-base-do-projeto-de-ajuste-fiscal"
+        }
+      ],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Brasil – Economia",
+          "url": "https://agenciabrasil.ebc.com.br/economia"
+        },
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias"
+        },
+        {
+          "nome": "API de Dados Abertos da Câmara (PECs)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC"
+        }
+      ]
+    },
+    {
       "data": "2026-11-23",
       "atualizadoAs": "07:00",
       "semNovidades": true,
