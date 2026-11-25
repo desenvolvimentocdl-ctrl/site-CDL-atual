@@ -1,6 +1,51 @@
 {
   "boletins": [
     {
+      "data": "2026-11-25",
+      "atualizadoAs": "07:10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Segundo o Jornal Contábil, a Resolução CGSN nº 196, de 16/11/2026 (CGSN = Comitê Gestor do Simples Nacional), adapta o Simples Nacional à reforma tributária. As mudanças ligadas à CBS (Contribuição sobre Bens e Serviços) e ao IBS (Imposto sobre Bens e Serviços) começam em 1º de janeiro de 2027, com transição até 2033. Como regra geral, a receita passa a ser considerada na emissão do documento fiscal. Quem vende a órgãos públicos deve identificar essas receitas separadamente nas declarações. No regime de caixa, valores de operações feitas até 31/12/2026 ainda não recebidos entram na apuração de dezembro de 2026, sem tributação repetida no recebimento. A Defis 2026 deve ser entregue até 31/03/2027.",
+          "impacto": "Lojistas do Simples devem alinhar com o contador a data de emissão das notas e, se usam regime de caixa, o que será apurado em dezembro de 2026.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/simples-nacional-veja-o-que-muda-com-a-nova-resolucao-do-cgsn/",
+          "quando": "24/11, 16:11"
+        },
+        {
+          "fato": "O Ministério do Trabalho (Secretaria de Inspeção do Trabalho) publicou a Nota Orientativa nº 12/2026, que atualiza o recolhimento do FGTS em processos trabalhistas e acordos. Para processos e acordos a partir de 1º/05/2026, o recolhimento é feito pelo FGTS Digital; até 30/04/2026, segue pela guia SEFIP 660. Pagar direto ao trabalhador não substitui o depósito na conta vinculada do FGTS, e a dívida pode continuar em aberto, sujeita a multa e juros.",
+          "impacto": "Empresas com ações ou acordos trabalhistas devem conferir com o contador por qual sistema recolher o FGTS e evitar informar duas vezes bases já enviadas ao eSocial.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/fgts-digital-muda-regras-para-processos-trabalhistas/",
+          "quando": "24/11, 14:08"
+        }
+      ],
+      "legislacao": [
+        {
+          "sigla": "PLP 299/2026",
+          "ementa": "Lei complementar de ajuste fiscal para 2027. Segundo a Agência Brasil, eleva de 10% para 20% a redução linear de benefícios tributários federais (isenções, créditos presumidos, regimes especiais; Simples Nacional e Zona Franca de Manaus preservados) e permite ao governo limitar temporariamente o uso de créditos tributários para compensar outros tributos. Os créditos não são extintos, mas a empresa pode ter de pagar em dinheiro.",
+          "tramitacao": "Fato novo: sancionada pelo presidente em 24/11/2026 (publicação às 17h54), após aprovação do Senado em 19/11 e da Câmara em 23/11. Para o Imposto de Renda, a mudança vale a partir de 1º/01/2027; as contribuições seguem a noventena (90 dias após a sanção). Os detalhes dependem de regulamentação do Executivo.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/entenda-o-pacote-fiscal-que-preve-ajuste-de-ate-r-56-bilhoes"
+        }
+      ],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Agência Brasil – Economia",
+          "url": "https://agenciabrasil.ebc.com.br/economia"
+        },
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br"
+        },
+        {
+          "nome": "API de Dados Abertos da Câmara (PECs)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes?siglaTipo=PEC"
+        }
+      ]
+    },
+    {
       "data": "2026-11-24",
       "atualizadoAs": "07:10",
       "semNovidades": false,
