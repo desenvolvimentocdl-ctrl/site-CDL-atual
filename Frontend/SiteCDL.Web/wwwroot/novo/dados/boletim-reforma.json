@@ -1,6 +1,61 @@
 {
   "boletins": [
     {
+      "data": "2026-11-27",
+      "atualizadoAs": "07:10",
+      "semNovidades": false,
+      "comercio": [
+        {
+          "fato": "Segundo o Jornal Contábil, a Receita Federal identificou cerca de 72 mil empresas que emitiram notas fiscais eletrônicas sem destacar, ou destacando só em parte, os campos da CBS (Contribuição sobre Bens e Serviços) e do IBS (Imposto sobre Bens e Serviços). A análise cobriu as notas dos 30 dias anteriores a 15/11/2026 e considerou empresas com mais de 150 documentos no período. A Receita, o CGIBS (Comitê Gestor do IBS) e o CFC (Conselho Federal de Contabilidade) vão orientar os contadores responsáveis. A Receita esclareceu que a falta de destaque, por si só, não é irregularidade tributária.",
+          "impacto": "Vale perguntar ao contador ou ao fornecedor do sistema emissor de notas se os campos de CBS e IBS já estão configurados corretamente, antes da nova etapa de implantação em 2027.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/receita-identifica-falhas-em-notas-de-72-mil-empresas-e-alerta-contadores/",
+          "quando": "26/11, 12:28"
+        },
+        {
+          "fato": "Segundo o Jornal Contábil, a Receita Federal fez em 26/11, às 15h, uma transmissão ao vivo sobre as mudanças no PGDAS (programa que gera a guia do Simples Nacional) diante da reforma tributária, tratando da integração com a apuração assistida de CBS e IBS, débitos e pagamentos. O texto informa ainda que, a partir de janeiro de 2027, as empresas do Simples não precisarão mais escolher entre regime de caixa e de competência: a receita seguirá o regime de competência, isto é, vale o mês da venda, e não o do recebimento.",
+          "impacto": "Quem é do Simples Nacional e vende a prazo deve conversar com o contador sobre como o reconhecimento da receita pelo mês da venda pode afetar o cálculo mensal do imposto em 2027.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/novo-pgdas-receita-federal-esclarece-mudancas-para-2027/",
+          "quando": "26/11, 16:09"
+        },
+        {
+          "fato": "Segundo o Jornal Contábil, a Nota Orientativa nº 13/2026 do FGTS Digital trata das rescisões feitas em dezembro e janeiro. Se o prazo de pagamento da rescisão (10 dias) vencer antes de 20/01, o FGTS sobre o 13º salário também deve ser recolhido no prazo da rescisão, e não em 20/01/2027. Exemplo do texto: desligamento em 14/12/2026 leva o recolhimento até 24/12.",
+          "impacto": "Lojas que costumam desligar temporários ou funcionários no fim do ano devem alinhar com o departamento pessoal o prazo do FGTS sobre o 13º para evitar pendência.",
+          "fonte": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/noticia/fgts-digital-empresas-devem-redobrar-atencao-nas-rescisoes-de-dezembro/",
+          "quando": "26/11, 17:26"
+        },
+        {
+          "fato": "Segundo a Agência Brasil, o Banco Central apresentou no Fórum Pix, em 26/11, a agenda de 2027: melhorias no Pix Automático (pagamentos recorrentes), regras para mensagens enviadas junto às transferências, um indicador de probabilidade de fraude calculado em tempo real e uma ferramenta para facilitar a devolução de valores enviados por engano. Os detalhes ainda não foram divulgados.",
+          "impacto": "Ainda sem efeito imediato. Pode beneficiar lojas que cobram mensalidades e assinaturas pelo Pix Automático e reforçar a segurança contra golpes.",
+          "fonte": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pix-tera-novas-regras-de-seguranca-e-melhorias-em-2027",
+          "quando": "26/11, 18:36"
+        }
+      ],
+      "legislacao": [],
+      "juridico": [],
+      "fontes": [
+        {
+          "nome": "Jornal Contábil",
+          "url": "https://jornalcontabil.com.br/feed/"
+        },
+        {
+          "nome": "Agência Brasil – Economia",
+          "url": "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml"
+        },
+        {
+          "nome": "Agência Senado",
+          "url": "https://www12.senado.leg.br/noticias/rss"
+        },
+        {
+          "nome": "API Dados Abertos da Câmara (PECs)",
+          "url": "https://dadosabertos.camara.leg.br/api/v2/proposicoes"
+        }
+      ]
+    },
+    {
       "data": "2026-11-26",
       "atualizadoAs": "07:05",
       "semNovidades": false,
@@ -720,43 +775,6 @@
         {
           "nome": "Receita Federal — calculadora da transação",
           "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-disponibiliza-calculadora-para-apoiar-contribuintes-na-analise-de-opcoes-de-transacao-tributaria"
-        }
-      ]
-    },
-    {
-      "data": "2026-11-09",
-      "semNovidades": false,
-      "comercio": [
-        {
-          "fato": "Governo publicou a Medida Provisória 1.399/2026 com as alíquotas do Imposto Seletivo (IS, tributo sobre produtos prejudiciais à saúde e ao meio ambiente) para 2027. A cobrança começa em 2/2/2027. Até 31/12/2027, para veículos, cigarros e outros fumígenos, bebidas alcoólicas e bebidas açucaradas, as alíquotas equivalem às atuais do IPI, após fatores de conversão.",
-          "impacto": "Quem vende bebidas, cigarros ou veículos deve conferir com o fornecedor e o contador como ficam os preços a partir de fevereiro de 2027. A MP ainda será analisada pelo Congresso.",
-          "fonte": "Ministério da Fazenda",
-          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/governo-federal-define-aliquotas-do-imposto-seletivo-para-2027-por-meio-de-medida-provisoria",
-          "quando": "05/11"
-        }
-      ],
-      "legislacao": [],
-      "juridico": [
-        {
-          "fato": "STF decidiu, por 6 votos a 5 (Tema 118, RE 592.616), que o ISS não entra na base de cálculo do PIS e da Cofins.",
-          "efeito": "Interessa a quem presta serviço fora do Simples. Ainda falta definir a partir de quando a decisão vale (modulação), o que pode ocorrer em embargos; quem já tem ação na Justiça tende a ser mais beneficiado. Converse com o contador antes de pedir créditos.",
-          "fonte": "Conjur",
-          "url": "https://conjur.com.br/2026-nov-08/iss-sai-da-base-do-pis-cofins-e-o-valor-da-vitoria-agora-depende-da-modulacao/",
-          "quando": "08/11/2026 (decisão de 21/10)"
-        }
-      ],
-      "fontes": [
-        {
-          "nome": "Ministério da Fazenda",
-          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/governo-federal-define-aliquotas-do-imposto-seletivo-para-2027-por-meio-de-medida-provisoria"
-        },
-        {
-          "nome": "Agência Brasil — MP do Imposto Seletivo",
-          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-publica-mp-das-aliquotas-do-imposto-seletivo-para-2027"
-        },
-        {
-          "nome": "Conjur",
-          "url": "https://conjur.com.br/2026-nov-08/iss-sai-da-base-do-pis-cofins-e-o-valor-da-vitoria-agora-depende-da-modulacao/"
         }
       ]
     }
